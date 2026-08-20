@@ -1,0 +1,71 @@
+package_id: tcses-144-2024-fixed-combustion-reviewed
+version: 1.0.1
+status: frozen
+professional_review_status: passed
+standard:
+  name: T/CSES 144—2024
+  path: /Users/wushuo/Desktop/环境学院论文/1 城市大气污染源排放清单编制技术指南 T_CSES 144-2024.pdf
+  sha256: bc46346443e76ccf063ae5e2b1d1c5d7a8544fb4f7cf6b11239c80bca66181a9
+scope:
+  records:
+    industrial_boiler: 4025
+    power_heat: 367
+  pollutants:
+  - SO2
+  - NOX
+  - CO
+  - VOCS
+  - PM10
+  - PM25
+  - BC
+  - OC
+  - NH3
+  method_path:
+  - coefficient
+  - coal_mass_balance
+  monitoring_path: false
+files:
+- path: mappings/source_combustion_aliases.csv
+  sha256: 1e7b50b7cf826dd400af59545f0283db501784266db624642e50942a8a0d590f
+- path: mappings/source_control_aliases.csv
+  sha256: e86883708c898c60cb2d9d868f23666e860ed99480c79ba3a11bad2b2144921d
+- path: mappings/source_fuel_aliases.csv
+  sha256: 5defcd292d9fa18ef929827c9c9da58608b70dd747eedec8d2d2a028ceaeb505
+- path: mappings/standard_combustion_technologies.csv
+  sha256: 1ce05e87623ff08cb01155f87270e0f3f4f879c4eb8d17bfa85705ec1cbc1e16
+- path: mappings/standard_control_technologies.csv
+  sha256: b061dcfb2c17be05d6c697f1273217bcde2e88ebb1ba1725692a6082387264e8
+- path: mappings/standard_fuels.csv
+  sha256: 72c0605669382e5d01cd5b7dfb7fd165dc3703ed7142b53386ee3e031ef5eb45
+- path: parameters/ammonia_slip_factors.csv
+  sha256: 9aa0dad0843fdec892fad487972ade9597667e5d251940f16e475ccf988c0914
+- path: parameters/coal_parameters.csv
+  sha256: 1b72ac259d8c077d370fdc1e3b1bb954f477aa522a233b00b26ca0fa751a3299
+- path: parameters/control_efficiencies.csv
+  sha256: 056fb6ec7012b184b28bd26980219350ddcb72dee36837bbae78fb6bb1e55b6e
+- path: parameters/industrial_boiler_emission_factors.csv
+  sha256: fd3ae6fc8aa9b5130d338f8d8346c55471b045db1d8f2284c3a4f24d30219fb4
+- path: parameters/power_heat_emission_factors.csv
+  sha256: c252f90047361981ee6a3028530f77bad3db54d087abe557a6c8bc8306fc516a
+- path: professional_review_snapshot.md
+  sha256: 08a2c542e34737eae03afe6afffe103b559df0174c7e7f376d14498968dae2c1
+- path: references.yaml
+  sha256: fd976ff48e911687898281e784ed523959fbf92092f101dcead284a7d55497e2
+- path: rule_index.json
+  sha256: 6b400bd3181ec33acedfd23a072f40eef1e3ef2761c7d57e3499d557899167d4
+- path: rules/controls.yaml
+  sha256: f436349b9110fd47bba0699ceaa9acade2557b3abed1615a80c277f57a10a8d6
+- path: rules/formulas.yaml
+  sha256: 1ffcba92538087190dd04ac6e0781b13dea91d315a4d93bc7f7de75c9836fdec
+- path: rules/methods.yaml
+  sha256: f7f48657eba9a91ff3a579c5a3ae431d4699675c25bf5e14e1928b75482d23e3
+- path: rules/operational.yaml
+  sha256: 973909f1064b5a550e2f26235d0c001450d4fcbc419c2e7ad78ceef048af1b47
+- path: rules/quality_control.yaml
+  sha256: 9d7fbfa99a8edaeaf3e82e626571a7e1d0ae3120dc5606dd7c5faa4dd3287940
+- path: rules/scope.yaml
+  sha256: 0c6037575c691b6751ea65a6c0d1eb38cb58c3c1ab279031215ea09dbb14e759
+- path: rules.yaml
+  sha256: ad0fc7d0a4d84729ddc041d67647c48c72e1996ab3e64f15a9cac0622abfa641
+- path: tests/rule_tests.jsonl
+  sha256: feaea56ec1557f59854190032ff47ed81801dd073d4163a27eaa9ee2f276643e

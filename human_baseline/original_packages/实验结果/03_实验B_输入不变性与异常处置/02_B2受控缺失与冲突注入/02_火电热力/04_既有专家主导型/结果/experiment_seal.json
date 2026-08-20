@@ -1,0 +1,42 @@
+{
+  "run_id": "B-B2-POW-HUM",
+  "method_bundle_hash": "731de9bf825a69a9baa2886db13b22ef602b3925ebe6d2e3d8478bb8ce6611e0",
+  "run_manifest_sha256": "8be0112406e5d493bc241c5b82b783e81c68a0c1539339a9f37d6f30c463717a",
+  "execution_metrics_sha256": "d63fabd93e77b1928b7ecb558b2699b9b2ae0941b2966d2f80b1f1b95e95ce74",
+  "input_hashes": {
+    "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/02_B2受控缺失与冲突注入/02_火电热力/04_既有专家主导型/结果/固定燃烧源-火电、热力生产与供应_调整.xlsx": "8eba19822359ff6d4060d5dbd343fd0b4b6f4de76d323795e0f118fcc5c13b8a"
+  },
+  "files": [
+    {
+      "path": "evaluation/normalized_items.csv",
+      "sha256": "bc89ca239a6142f0bcf97741589b9ea8bdf4e09040fbab4200e136c75fb02560",
+      "bytes": 1174511
+    },
+    {
+      "path": "evaluation/reference_independent_report.json",
+      "sha256": "d6e40dbe54c7f2cfbd8d1fc8c37964ef197c92a5c4297a00e55a6875bf6955c8",
+      "bytes": 37196
+    },
+    {
+      "path": "outputs/generic_exception_list.csv",
+      "sha256": "359a5f59f9f689822841af775da603a0d6fa96978d3b1012f63d8dc6286634eb",
+      "bytes": 47
+    },
+    {
+      "path": "outputs/generic_inventory_items.csv",
+      "sha256": "17166ee85f87baffaa176b90e2ab7f2b781575586e578e4664a987432036fe71",
+      "bytes": 634748
+    },
+    {
+      "path": "人工结果说明.json",
+      "sha256": "ae4d5b9c3a139ca811e6de44b8139b9882177d237c16d0500cfaa0d6d2df7e23",
+      "bytes": 729
+    },
+    {
+      "path": "固定燃烧源-火电、热力生产与供应_调整.xlsx",
+      "sha256": "8eba19822359ff6d4060d5dbd343fd0b4b6f4de76d323795e0f118fcc5c13b8a",
+      "bytes": 302984
+    }
+  ],
+  "status": "user_supplied_complete"
+}

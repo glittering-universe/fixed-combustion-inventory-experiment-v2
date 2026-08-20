@@ -1,0 +1,87 @@
+{
+  "version": "2.0.0",
+  "scale_percent": 100,
+  "candidate_count": 5922,
+  "candidate_entity_count": 3710,
+  "row_counts_by_source": {
+    "B102-2002": 5922,
+    "B101-2001": 18734,
+    "B101-2002": 43902
+  },
+  "workbooks": [
+    {
+      "source_tag": "B102-2002",
+      "role": "device_fuel_base",
+      "sheet": "Sheet1",
+      "row_count": 5922,
+      "column_count": 93,
+      "shard_index": 1,
+      "shard_count": 1,
+      "output_path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/inputs/scales/100/基102-2002_原始结构脱敏输入.xlsx",
+      "output_sha256": "6cbce53d6b15b59b28c6628512a2466523c0220624379e0734c4692b48386812",
+      "writer": "physical_copy_of_prepared_full_input"
+    },
+    {
+      "source_tag": "B101-2001",
+      "role": "enterprise_master",
+      "sheet": "Sheet1",
+      "row_count": 4684,
+      "column_count": 133,
+      "shard_index": 1,
+      "shard_count": 4,
+      "output_path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/inputs/scales/100/基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+      "output_sha256": "4cb10540b3dd114f86a616da78e97b8e2b55656e04512aea3d853d3d9ac2ec24",
+      "writer": "physical_copy_of_prepared_full_input"
+    },
+    {
+      "source_tag": "B101-2001",
+      "role": "enterprise_master",
+      "sheet": "Sheet1",
+      "row_count": 4684,
+      "column_count": 133,
+      "shard_index": 2,
+      "shard_count": 4,
+      "output_path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/inputs/scales/100/基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+      "output_sha256": "9e08ce3eb078fa25debd81a5a13559a5981405a71ac34ef063e05f1328231e39",
+      "writer": "physical_copy_of_prepared_full_input"
+    },
+    {
+      "source_tag": "B101-2001",
+      "role": "enterprise_master",
+      "sheet": "Sheet1",
+      "row_count": 4684,
+      "column_count": 133,
+      "shard_index": 3,
+      "shard_count": 4,
+      "output_path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/inputs/scales/100/基101-2001_原始结构脱敏输入_分片03-of04.xlsx",
+      "output_sha256": "b95d80ad0d4070e850134b3e75c330cdcba6c1083bdb982ced8b634643681fb0",
+      "writer": "physical_copy_of_prepared_full_input"
+    },
+    {
+      "source_tag": "B101-2001",
+      "role": "enterprise_master",
+      "sheet": "Sheet1",
+      "row_count": 4682,
+      "column_count": 133,
+      "shard_index": 4,
+      "shard_count": 4,
+      "output_path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/inputs/scales/100/基101-2001_原始结构脱敏输入_分片04-of04.xlsx",
+      "output_sha256": "6a6c04d5f515e1b725ffea0a9ef7caf38ac551fc6cd05f3dab06acdebdd33e5b",
+      "writer": "physical_copy_of_prepared_full_input"
+    },
+    {
+      "source_tag": "B101-2002",
+      "role": "control_facility_base",
+      "sheet": "Sheet1",
+      "row_count": 43902,
+      "column_count": 17,
+      "shard_index": 1,
+      "shard_count": 1,
+      "output_path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/inputs/scales/100/基101-2002_原始结构脱敏输入.xlsx",
+      "output_sha256": "bf922f88db0e20cf891863beae03b92cfcbf97d71b2476c8b3551f39a3fd9aee",
+      "writer": "physical_copy_of_prepared_full_input"
+    }
+  ],
+  "source_identity_index_path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/inputs/scales/100/source_identity_index.json",
+  "source_identity_index_sha256": "b4d1abd9cba0b3bbbbd0287e70af860321fe12b9ee9d89d05a8e8439ed491c54"
+}

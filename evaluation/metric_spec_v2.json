@@ -1,0 +1,71 @@
+{
+  "version": "2.0.0",
+  "name_zh": "排放清单编制综合性能指数-核心版",
+  "name_en": "Emission Inventory Compilation Performance Index - Core",
+  "short_name": "EICPI_core",
+  "primary_experiment": "A",
+  "core_formula": "100*(0.35*D+0.35*N+0.30*E)",
+  "core_weights": {
+    "D": 0.35,
+    "N": 0.35,
+    "E": 0.3
+  },
+  "independent_quality_gate": false,
+  "dimensions": {
+    "D": {
+      "name_en": "Domain Decision Validity",
+      "name_zh": "专业决策有效性",
+      "aggregation": "passed_applicable_decision_atoms",
+      "atoms": [
+        "source_destination",
+        "terminal_disposition",
+        "calculation_basis",
+        "control_application",
+        "exception_root_cause"
+      ],
+      "human_observability": "Unrecorded calculation-basis and control-process atoms in expert-led outputs are NA, not failures. Observable source, terminal, and exception decisions remain scored."
+    },
+    "N": {
+      "name_en": "Numerical Integrity",
+      "name_zh": "数值完整性与正确性",
+      "aggregation": "passed_applicable_numeric_atoms",
+      "atoms": [
+        "result_completeness",
+        "reference_value",
+        "internal_recalculation"
+      ],
+      "na_rule": "Reference-value and internal-recalculation atoms are NA when their required observable values or process inputs do not exist; missing required output is scored once by result_completeness."
+    },
+    "E": {
+      "name_en": "Relative Execution-Time Efficiency",
+      "name_zh": "相对运行时间效率",
+      "formula": "clip(ln(t_human/t_method)/ln(t_human/t_deterministic),0,1)",
+      "anchors": "Empirical, source-class-specific seconds per record from Experiment A",
+      "invalid_anchor_rule": "NA unless t_human > t_deterministic > 0 and t_method > 0"
+    }
+  },
+  "control_field_relevance": {
+    "SO2": ["efficiency"],
+    "NOx": ["efficiency"],
+    "CO": ["efficiency"],
+    "VOC": ["efficiency"],
+    "PM10": ["fine_efficiency", "coarse_efficiency"],
+    "PM2.5": ["fine_efficiency"],
+    "BC": ["fine_efficiency"],
+    "OC": ["fine_efficiency"],
+    "NH3": []
+  },
+  "aggregation": {
+    "run_repetitions": "median score with min/max and pooled atom counts",
+    "macro": "equal arithmetic mean of INDUSTRIAL and POWER source-class scores",
+    "micro_D_N": "pooled passed/applicable atoms across source classes",
+    "micro_E": "expected target-source-count weighted mean across source classes"
+  },
+  "independent_reports": {
+    "B1": "Input-structure semantic retention; does not enter EICPI_core",
+    "B2": "Controlled missing/conflict disposition, root-cause and unaffected-result diagnostics; does not enter EICPI_core",
+    "C": "Scale/resource profile; does not enter EICPI_core",
+    "D": "Ablation-specific D/N changes versus same-target Full; no ablation EICPI_core ranking"
+  },
+  "reference_interpretation": "D and N quantify agreement with the frozen reviewed operational reference, not independent measurement truth."
+}

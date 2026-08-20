@@ -1,0 +1,82 @@
+# 固定燃烧源候选规则包 — 范围规则 (rules/scope.yaml)
+# 依据：T/CSES 144-2024 第1章、第5.1-5.2节、第6.1-6.2节、第7.1节、第8.3节
+rules:
+  - rule_id: r_scope_power_heat
+    rule_type: scope
+    source:
+      document: T/CSES 144—2024
+      section: 第7.1节 核算范围
+      physical_pdf_pages: [9]
+    scope:
+      source_sector: 电力热力源
+    conditions:
+      industry_code: [D4411, D4412, D4417, D4430]
+      facility: 企业生产设施
+    action:
+      type: select_scope
+      selected_scope: power_heat_fixed_combustion
+    on_missing: not_applicable
+
+  - rule_id: r_scope_industrial_boiler
+    rule_type: scope
+    source:
+      document: T/CSES 144—2024
+      section: 第8.3节 化石燃料固定燃烧
+      physical_pdf_pages: [14]
+    scope:
+      source_sector: 工业源
+    conditions:
+      combustion_category: 化石燃料固定燃烧
+      industry: [采矿业, 制造业]
+      equipment: 工业锅炉
+    action:
+      type: select_scope
+      selected_scope: industrial_fossil_fixed_combustion
+    on_missing: not_applicable
+
+  - rule_id: r_scope_level4_unit
+    rule_type: scope
+    source:
+      document: T/CSES 144—2024
+      section: 第5.1节、第6.2节 a)
+      physical_pdf_pages: [6, 8]
+    scope:
+      calculation_structure: 排放源四级分类
+    conditions:
+      level: 第四级
+    action:
+      type: select_scope
+      selected_scope: level4_basic_calculation_unit
+    on_missing: withhold
+
+  - rule_id: r_scope_point_area
+    rule_type: scope
+    source:
+      document: T/CSES 144—2024
+      section: 第6.2节 b)
+      physical_pdf_pages: [8]
+    scope:
+      spatial_scale: 点源或面源
+    conditions:
+      fixed_position_and_activity_available:
+        true: 点源
+        false: 面源
+    action:
+      type: select_scope
+      selected_scope: point_source | area_source
+    on_missing: report_issue
+
+  - rule_id: r_scope_pollutants
+    rule_type: scope
+    source:
+      document: T/CSES 144—2024
+      section: 第1章 范围
+      physical_pdf_pages: [4]
+    scope:
+      inventory_pollutants: [SO2, NOx, VOCs, PM10, PM2.5, BC, OC, CO, NH3]
+    conditions:
+      pollutant: [SO2, NOx, VOCs, PM10, PM2.5, BC, OC, CO, NH3]
+    action:
+      type: select_scope
+      selected_scope: pollutant_in_standard_scope
+    on_missing: not_applicable

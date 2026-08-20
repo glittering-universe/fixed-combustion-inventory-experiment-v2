@@ -1,0 +1,85 @@
+rules:
+- rule_id: r_control_efficiency_table
+  rule_type: control
+  source:
+    source_type: T_CSES
+    document: T/CSES 144—2024
+    section: A.1
+    physical_pdf_pages:
+    - 33
+    - 34
+    - 35
+  scope:
+    parameter: 控制措施平均去除效率
+  conditions:
+    lookup_key:
+    - control_technology
+    - pollutant
+    pollutants:
+    - SO2
+    - NOX
+    - VOCS
+    - PM25
+    - PM25_10
+    - BC
+    - OC
+  action:
+    type: assign_control
+    parameter_table: parameters/control_efficiencies.csv
+  on_missing: withhold
+- rule_id: r_control_none
+  rule_type: control
+  source:
+    source_type: T_CSES
+    document: T/CSES 144—2024
+    section: 3.4、A.1
+    physical_pdf_pages:
+    - 5
+    - 35
+  scope:
+    control_status: 无控制技术
+  conditions:
+    control_technology: 无控制技术
+  action:
+    type: assign_control
+    eta: 0
+    label: 无适用治理措施按0
+  on_missing: not_applicable
+- rule_id: r_control_pm25_10_definition
+  rule_type: control
+  source:
+    source_type: T_CSES
+    document: T/CSES 144—2024
+    section: A.1注a
+    physical_pdf_pages:
+    - 35
+  scope:
+    particle_fraction: PM25_10
+  conditions:
+    definition: 2.5um<diameter<=10um
+  action:
+    type: assign_control
+    formula: G_PM25_10=G_PM10-G_PM25
+  on_missing: withhold
+- rule_id: r_control_nh3_slip
+  rule_type: control
+  source:
+    source_type: T_CSES
+    document: T/CSES 144—2024
+    section: E.1烟气脱硝行
+    physical_pdf_pages:
+    - 50
+  scope:
+    process:
+    - SCR
+    - SNCR
+    pollutant: NH3
+  conditions:
+    factor:
+      SCR: 0.16
+      SNCR: 0.17
+    unit: g/kg煤
+  action:
+    type: assign_control
+    parameter_table: parameters/ammonia_slip_factors.csv
+  on_missing: withhold

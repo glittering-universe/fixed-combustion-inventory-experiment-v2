@@ -1,0 +1,74 @@
+{
+  "version": "2.0.0",
+  "primary_keys": {
+    "expected_sources.csv": [
+      "variant",
+      "source_id"
+    ],
+    "expected_items.csv": [
+      "variant",
+      "evaluation_item_id"
+    ],
+    "expected_source_pollutant_totals.csv": [
+      "variant",
+      "evaluation_total_id"
+    ],
+    "expected_exceptions.csv": [
+      "variant",
+      "exception_group_id"
+    ],
+    "expected_injection_outcomes.csv": [
+      "target",
+      "root_cause",
+      "source_id"
+    ]
+  },
+  "variants": {
+    "B0": "Unperturbed frozen input semantics; also supplies B1/C/D expectations by key selection.",
+    "B2": "Controlled missing/conflict input semantics."
+  },
+  "status_definitions": {
+    "calculated": "All required source, activity, parameter and formula conditions for this source-pollutant item are satisfied; numeric zero remains a valid number.",
+    "information_insufficient": "A required calculation fact or parameter is absent or unmappable; generation and emission must be blank.",
+    "source_data_invalid": "A source relation or hard numeric constraint is invalid; generation and emission must be blank.",
+    "not_involved": "The fuel or process item is demonstrably outside this fossil fixed-combustion calculation; generation and emission must be blank."
+  },
+  "method_modes": {
+    "constant": "Appendix D.1/E.7 constant emission factor.",
+    "capacity_lookup": "D.1 coal NOx capacity-band factor.",
+    "coal_sulfur_balance": "Formula (3) and C.1.",
+    "coal_particle_balance": "Formulas (4)-(6) and C.1-C.3.",
+    "ammonia_slip": "E.1 SCR/SNCR NH3 factor.",
+    "empirical_zero": "Reviewed explicit zero path, not a T/CSES combustion factor."
+  },
+  "units": {
+    "expected_generation_t": "t/year for the inventory year",
+    "expected_emission_t": "t/year for the inventory year",
+    "activity_record.value": "kg for mass fuels or m3 for gaseous fuels",
+    "parameter_record.value": "g/kg or g/m3",
+    "control_efficiency": "fraction in [0,1]"
+  },
+  "field_semantics": {
+    "evaluation_item_id": "Public source/component/pollutant ID, stable across B0/B1/C/D and independent of Full internal rule IDs.",
+    "expected_native_parameter_ids": "Native frozen-rule IDs retained for Full trace audit only; never used as a cross-method correctness key.",
+    "parameter_evaluation_ids": "Public hashes of method category, parameter role, value, unit and normalized standard reference; compared as a multiset.",
+    "applicability_mask": "Per-state scoring mask for status, activity, method, parameter, control, value, exception, minimum recalculation and trace.",
+    "expected_reason_codes": "Sorted JSON array; may include nonblocking notices on calculated items.",
+    "expected_value_applicable": "True only when both expected_generation_t and expected_emission_t must be numeric.",
+    "reference_basis": "High-level origin of the expected decision; detailed citations remain in expected_standard_reference."
+  },
+  "pollutant_normalization": {
+    "SO2": "SO2",
+    "NOX": "NOx",
+    "NOx": "NOx",
+    "CO": "CO",
+    "VOCS": "VOC",
+    "VOC": "VOC",
+    "PM10": "PM10",
+    "PM25": "PM2.5",
+    "PM2.5": "PM2.5",
+    "BC": "BC",
+    "OC": "OC",
+    "NH3": "NH3"
+  }
+}

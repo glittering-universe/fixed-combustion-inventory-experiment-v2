@@ -1,0 +1,4 @@
+interface:
+  display_name: "T/CSES核算规则实施"
+  short_description: "使用冻结规则包批量匹配核算方法参数及其技术指南出处"
+  default_prompt: "使用冻结T/CSES规则包批量实施核算规则。"

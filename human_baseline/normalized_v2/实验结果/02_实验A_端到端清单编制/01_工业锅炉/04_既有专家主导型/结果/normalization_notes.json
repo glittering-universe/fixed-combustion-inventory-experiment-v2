@@ -1,0 +1,37 @@
+{
+  "schema_version": "human-baseline-normalization-v2.0.0",
+  "method": "既有专家主导型清单编制流程",
+  "target": "INDUSTRIAL",
+  "source_workbook": "实验结果/02_实验A_端到端清单编制/01_工业锅炉/04_既有专家主导型/结果/固定燃烧源-工业锅炉_调整.xlsx",
+  "source_workbook_sha256": "623dc9104b32577d9bbd2b72570bbb62089e6c689788c72f8d9d5dd15aab2b4f",
+  "raw_inputs": {
+    "base102": {
+      "path": "/Users/wushuo/Desktop/环境学院论文/01 环境统计数据/2022年基表查询工业企业锅炉_燃气轮机污染物和温室气体排放及治理情况(基102表)2023102002.xlsx",
+      "sha256": "8674112476e2543f9bb2f57f791a3d42036868374d2fd788e8e747196411ca96"
+    },
+    "base101_enterprise": {
+      "path": "/Users/wushuo/Desktop/环境学院论文/01 环境统计数据/2022年基表查询工业企业污染物和温室气体排放及治理情况(基101表)2023102001.xlsx",
+      "sha256": "c15890b824fc5b091927e57a68b27e2cc4d1e3c1e90d0caf4f26510b9a5160ff"
+    },
+    "base101_control": {
+      "path": "/Users/wushuo/Desktop/环境学院论文/01 环境统计数据/2022年基表查询工业企业污染物和温室气体排放及治理情况(基101表)2023102002.xlsx",
+      "sha256": "14674d7e1b63c4cb75b20fc66ba35d37e02256deb7410d1cec9b95e56db277cb"
+    }
+  },
+  "candidate_source_count": 5922,
+  "human_scope_include_count": 4160,
+  "human_scope_not_selected_count": 1762,
+  "controlled_extra_observation_count": 0,
+  "calculation_total_row_count": 37440,
+  "reported_total_row_count": 37440,
+  "not_observable_total_row_count": 0,
+  "exception_count": 0,
+  "process_record_policy": "No reference or raw-table values are used to reconstruct human activity, parameter, control, rule, or intermediate-calculation records; unreported process fields are NA.",
+  "scope_policy": "Presence in the preserved expert target workbook is an include decision; absence from that target workbook is not-selected-for-target. Controlled B2 extra rows do not expand the 4,160/426 expert scope decisions.",
+  "timing": {
+    "seconds_per_candidate_record": 11.52,
+    "candidate_record_count": 5922,
+    "total_seconds": 68221.44,
+    "basis": "extrapolated_from_user_supplied_per_candidate_rate"
+  }
+}

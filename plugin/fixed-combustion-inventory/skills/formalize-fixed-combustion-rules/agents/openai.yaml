@@ -1,0 +1,4 @@
+interface:
+  display_name: "固定燃烧规则整理"
+  short_description: "从T/CSES技术指南形成候选固定燃烧规则包并完成自动检查"
+  default_prompt: "从指定指南范围整理固定燃烧候选规则包并运行自动检查。"

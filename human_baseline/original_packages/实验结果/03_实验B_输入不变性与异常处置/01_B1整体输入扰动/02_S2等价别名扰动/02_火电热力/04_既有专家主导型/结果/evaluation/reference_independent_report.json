@@ -1,0 +1,1553 @@
+{
+  "evaluation_version": "1.2.0",
+  "run_id": "B-S2-POW-HUM",
+  "method": "expert_led",
+  "target": "POWER",
+  "scale_percent": 100,
+  "input_variant": "S2",
+  "method_bundle_hash": "731de9bf825a69a9baa2886db13b22ef602b3925ebe6d2e3d8478bb8ce6611e0",
+  "sealed_integrity": {
+    "status": "pass",
+    "failures": [],
+    "ignored_reevaluation_derivatives": [
+      "evaluation/normalized_items.csv",
+      "evaluation/reference_independent_report.json"
+    ]
+  },
+  "structural_and_arithmetic_checks": {
+    "status": "fail",
+    "failures": [
+      "SCOPE_ROWS_MISSING",
+      "UNEXPECTED_SCOPE_ROWS",
+      "MINIMUM_RECALCULATION_RECORD_MISSING:3834"
+    ],
+    "diagnostics": [],
+    "expected_rows": 3303,
+    "observed_rows": 3834,
+    "unique_rows": 3834,
+    "duplicate_count": 0,
+    "missing_count": 639,
+    "unexpected_count": 1170,
+    "invalid_statuses": [],
+    "target_mismatch_count": 0,
+    "status_counts": {
+      "calculated": 3834
+    },
+    "calculated_count": 3834,
+    "minimum_recalculation_complete_count": 0,
+    "complete_process_record_count": 0,
+    "complete_process_record_coverage": 0.0,
+    "independent_minimum_recalculation": {
+      "status": "pass",
+      "calculated_rows": 3834,
+      "recomputed_rows": 0,
+      "allow_calculation_items_checked": 0,
+      "not_applicable_items_checked": 0,
+      "failure_counts": {},
+      "examples": [],
+      "note": "expert_led_has_no_item_level_admission; final values use reference comparison and missing process evidence lowers T"
+    },
+    "numeric_checks": {
+      "missing_or_nonnumeric": 0,
+      "negative": 0,
+      "emission_exceeds_generation": 0,
+      "noncalculated_with_numeric": 0,
+      "pm25_exceeds_pm10": 0
+    },
+    "examples": {
+      "duplicates": [],
+      "missing": [
+        [
+          "SRC-IND-000117",
+          "BC"
+        ],
+        [
+          "SRC-IND-000117",
+          "CO"
+        ],
+        [
+          "SRC-IND-000117",
+          "NH3"
+        ],
+        [
+          "SRC-IND-000117",
+          "NOx"
+        ],
+        [
+          "SRC-IND-000117",
+          "OC"
+        ],
+        [
+          "SRC-IND-000117",
+          "PM10"
+        ],
+        [
+          "SRC-IND-000117",
+          "PM2.5"
+        ],
+        [
+          "SRC-IND-000117",
+          "SO2"
+        ],
+        [
+          "SRC-IND-000117",
+          "VOC"
+        ],
+        [
+          "SRC-IND-000257",
+          "BC"
+        ]
+      ],
+      "unexpected": [
+        [
+          "SRC-PWR-000024",
+          "BC"
+        ],
+        [
+          "SRC-PWR-000024",
+          "CO"
+        ],
+        [
+          "SRC-PWR-000024",
+          "NH3"
+        ],
+        [
+          "SRC-PWR-000024",
+          "NOx"
+        ],
+        [
+          "SRC-PWR-000024",
+          "OC"
+        ],
+        [
+          "SRC-PWR-000024",
+          "PM10"
+        ],
+        [
+          "SRC-PWR-000024",
+          "PM2.5"
+        ],
+        [
+          "SRC-PWR-000024",
+          "SO2"
+        ],
+        [
+          "SRC-PWR-000024",
+          "VOC"
+        ],
+        [
+          "SRC-PWR-000025",
+          "BC"
+        ]
+      ],
+      "target_mismatch": []
+    }
+  },
+  "workbook_formula_checks": {
+    "status": "not_available",
+    "formula_error_count": null,
+    "external_link_count": null,
+    "files": []
+  },
+  "method_boundary_audit": {
+    "status": "not_available",
+    "reason": "no_agent_session_export"
+  },
+  "reference_package": {
+    "status": "available",
+    "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/reference/frozen/v1.0.1"
+  },
+  "reference_comparison": {
+    "evaluation_version": "reference-comparator-1.0.0",
+    "run_id": "B-S2-POW-HUM",
+    "method": "expert_led",
+    "target": "POWER",
+    "reference_variant": "B0",
+    "extractor": "generic_source_pollutant_contract",
+    "reference_package_version": "1.0.1",
+    "denominators": {
+      "expected_source_pollutant_items": 3303,
+      "reference_numeric_items": 3178,
+      "trace_component_items": 3559,
+      "minimum_recalculation_component_items": 3434,
+      "expected_user_judgment_groups": 56,
+      "actual_user_judgment_groups": 0
+    },
+    "alignment": {
+      "observed_items": 3834,
+      "missing_items": 639,
+      "extra_items": 1170,
+      "missing_examples": [
+        "SRC-IND-000117::BC",
+        "SRC-IND-000117::CO",
+        "SRC-IND-000117::NH3",
+        "SRC-IND-000117::NOx",
+        "SRC-IND-000117::OC",
+        "SRC-IND-000117::PM10",
+        "SRC-IND-000117::PM2.5",
+        "SRC-IND-000117::SO2",
+        "SRC-IND-000117::VOC",
+        "SRC-IND-000257::BC",
+        "SRC-IND-000257::CO",
+        "SRC-IND-000257::NH3",
+        "SRC-IND-000257::NOx",
+        "SRC-IND-000257::OC",
+        "SRC-IND-000257::PM10",
+        "SRC-IND-000257::PM2.5",
+        "SRC-IND-000257::SO2",
+        "SRC-IND-000257::VOC",
+        "SRC-IND-000258::BC",
+        "SRC-IND-000258::CO"
+      ],
+      "extra_examples": [
+        "SRC-PWR-000024::BC",
+        "SRC-PWR-000024::CO",
+        "SRC-PWR-000024::NH3",
+        "SRC-PWR-000024::NOx",
+        "SRC-PWR-000024::OC",
+        "SRC-PWR-000024::PM10",
+        "SRC-PWR-000024::PM2.5",
+        "SRC-PWR-000024::SO2",
+        "SRC-PWR-000024::VOC",
+        "SRC-PWR-000025::BC",
+        "SRC-PWR-000025::CO",
+        "SRC-PWR-000025::NH3",
+        "SRC-PWR-000025::NOx",
+        "SRC-PWR-000025::OC",
+        "SRC-PWR-000025::PM10",
+        "SRC-PWR-000025::PM2.5",
+        "SRC-PWR-000025::SO2",
+        "SRC-PWR-000025::VOC",
+        "SRC-PWR-000026::BC",
+        "SRC-PWR-000026::CO"
+      ]
+    },
+    "component_structure_diagnostics": {
+      "expected_component_items": 3559,
+      "observed_component_items": 3834,
+      "missing_component_items": 1151,
+      "extra_component_items": 1426,
+      "missing_examples": [
+        "SRC-IND-000117::fuel_1::BC",
+        "SRC-IND-000117::fuel_1::CO",
+        "SRC-IND-000117::fuel_1::NOx",
+        "SRC-IND-000117::fuel_1::OC",
+        "SRC-IND-000117::fuel_1::PM10",
+        "SRC-IND-000117::fuel_1::PM2.5",
+        "SRC-IND-000117::fuel_1::SO2",
+        "SRC-IND-000117::fuel_1::VOC",
+        "SRC-IND-000117::nh3_slip::NH3",
+        "SRC-IND-000257::fuel_1::BC",
+        "SRC-IND-000257::fuel_1::CO",
+        "SRC-IND-000257::fuel_1::NOx",
+        "SRC-IND-000257::fuel_1::OC",
+        "SRC-IND-000257::fuel_1::PM10",
+        "SRC-IND-000257::fuel_1::PM2.5",
+        "SRC-IND-000257::fuel_1::SO2",
+        "SRC-IND-000257::fuel_1::VOC",
+        "SRC-IND-000257::nh3_slip::NH3",
+        "SRC-IND-000258::fuel_1::BC",
+        "SRC-IND-000258::fuel_1::CO"
+      ],
+      "extra_examples": [
+        "SRC-PWR-000024::aggregate_only::BC",
+        "SRC-PWR-000024::aggregate_only::CO",
+        "SRC-PWR-000024::aggregate_only::NH3",
+        "SRC-PWR-000024::aggregate_only::NOx",
+        "SRC-PWR-000024::aggregate_only::OC",
+        "SRC-PWR-000024::aggregate_only::PM10",
+        "SRC-PWR-000024::aggregate_only::PM2.5",
+        "SRC-PWR-000024::aggregate_only::SO2",
+        "SRC-PWR-000024::aggregate_only::VOC",
+        "SRC-PWR-000025::aggregate_only::BC",
+        "SRC-PWR-000025::aggregate_only::CO",
+        "SRC-PWR-000025::aggregate_only::NH3",
+        "SRC-PWR-000025::aggregate_only::NOx",
+        "SRC-PWR-000025::aggregate_only::OC",
+        "SRC-PWR-000025::aggregate_only::PM10",
+        "SRC-PWR-000025::aggregate_only::PM2.5",
+        "SRC-PWR-000025::aggregate_only::SO2",
+        "SRC-PWR-000025::aggregate_only::VOC",
+        "SRC-PWR-000026::aggregate_only::BC",
+        "SRC-PWR-000026::aggregate_only::CO"
+      ]
+    },
+    "formal_quality_gates": {
+      "record_destination_complete": "fail",
+      "unsupported_dispositions_zero": "fail",
+      "critical_errors_zero": "fail",
+      "minimum_recalculation_complete": "fail"
+    },
+    "formal_metrics": {
+      "S_standard_implementation": 0.0,
+      "A1_automatic_legal_terminal_state": 0.8065395095367848,
+      "A2_user_judgment_score": 0.5,
+      "A_automation_and_human_burden": 0.6532697547683923,
+      "Q_numeric_validity": 0.19949653870358716,
+      "T_complete_process_record_coverage": 0.0,
+      "R": "not_computable_single_run",
+      "E1": "not_computable_single_variant",
+      "E2": "not_computable_without_independent_L_U",
+      "EICPI": "not_computable"
+    },
+    "exception_group_diagnostics": {
+      "expected_user_groups": 56,
+      "actual_user_groups": 0,
+      "missing_expected_groups": 56,
+      "extra_actual_groups": 0,
+      "expected_group_recall": 0.0,
+      "reported_group_burden_score": 1.0,
+      "missing_examples": [
+        "SRC-IND-000257|activity_unit_unresolved",
+        "SRC-IND-000257|fuel_mapping_unresolved",
+        "SRC-IND-000258|activity_unit_unresolved",
+        "SRC-IND-000258|fuel_mapping_unresolved",
+        "SRC-IND-000259|activity_unit_unresolved",
+        "SRC-IND-000259|fuel_mapping_unresolved",
+        "SRC-IND-001262|ammonia_slip_activity_missing",
+        "SRC-IND-002364|coordinate_plausibility_review",
+        "SRC-IND-002862|coordinate_plausibility_review",
+        "SRC-IND-004138|source_relationship_missing",
+        "SRC-IND-004139|source_relationship_missing",
+        "SRC-IND-004161|source_relationship_missing",
+        "SRC-PWR-000014|ammonia_slip_activity_missing",
+        "SRC-PWR-000015|ammonia_slip_activity_missing",
+        "SRC-PWR-000016|ammonia_slip_activity_missing",
+        "SRC-PWR-000017|ammonia_slip_activity_missing",
+        "SRC-PWR-000018|ammonia_slip_activity_missing",
+        "SRC-PWR-000019|ammonia_slip_activity_missing",
+        "SRC-PWR-000020|ammonia_slip_activity_missing",
+        "SRC-PWR-000021|ammonia_slip_activity_missing"
+      ],
+      "extra_examples": []
+    },
+    "B2_targeted_diagnostics": "not_applicable",
+    "diagnostic_examples": [
+      {
+        "evaluation_total_id": "SRC-IND-000117::BC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000117::CO",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000117::NH3",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000117::NOx",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000117::OC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000117::PM10",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000117::PM2.5",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000117::SO2",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000117::VOC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000257::BC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000257::CO",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000257::NH3",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000257::NOx",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000257::OC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000257::PM10",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000257::PM2.5",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000257::SO2",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000257::VOC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000258::BC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000258::CO",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000258::NH3",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000258::NOx",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000258::OC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000258::PM10",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000258::PM2.5",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000258::SO2",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000258::VOC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000259::BC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000259::CO",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000259::NH3",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000259::NOx",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000259::OC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000259::PM10",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000259::PM2.5",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000259::SO2",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000259::VOC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000508::BC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000508::CO",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000508::NH3",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000508::NOx",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000508::OC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000508::PM10",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000508::PM2.5",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000508::SO2",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000508::VOC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000519::BC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000519::CO",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000519::NH3",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000519::NOx",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000519::OC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000519::PM10",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000519::PM2.5",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000519::SO2",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000519::VOC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000568::BC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000568::CO",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000568::NH3",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000568::NOx",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000568::OC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000568::PM10",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000568::PM2.5",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000568::SO2",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000568::VOC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000659::BC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000659::CO",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000659::NH3",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000659::NOx",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000659::OC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000659::PM10",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000659::PM2.5",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000659::SO2",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000659::VOC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000660::BC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000660::CO",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000660::NH3",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000660::NOx",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000660::OC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000660::PM10",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000660::PM2.5",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000660::SO2",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000660::VOC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000664::BC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000664::CO",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000664::NH3",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000664::NOx",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000664::OC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000664::PM10",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000664::PM2.5",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000664::SO2",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000664::VOC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000667::BC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000667::CO",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000667::NH3",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000667::NOx",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000667::OC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000667::PM10",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000667::PM2.5",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000667::SO2",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000667::VOC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000747::BC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000747::CO",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000747::NH3",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000747::NOx",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000747::OC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000747::PM10",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000747::PM2.5",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000747::SO2",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000747::VOC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000748::BC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000748::CO",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000748::NH3",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000748::NOx",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000748::OC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000748::PM10",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000748::PM2.5",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000748::SO2",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000748::VOC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000754::BC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000754::CO",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000754::NH3",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000754::NOx",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000754::OC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000754::PM10",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000754::PM2.5",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000754::SO2",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000754::VOC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000755::BC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000755::CO",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000755::NH3",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000755::NOx",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000755::OC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000755::PM10",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000755::PM2.5",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000755::SO2",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000755::VOC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000756::BC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000756::CO",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000756::NH3",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000756::NOx",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000756::OC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000756::PM10",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000756::PM2.5",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000756::SO2",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000756::VOC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000763::BC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000763::CO",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000763::NH3",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000763::NOx",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000763::OC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000763::PM10",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000763::PM2.5",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000763::SO2",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000763::VOC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000764::BC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000764::CO",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000764::NH3",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000764::NOx",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000764::OC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000764::PM10",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000764::PM2.5",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000764::SO2",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-000764::VOC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001262::BC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001262::CO",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001262::NH3",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001262::NOx",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001262::OC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001262::PM10",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001262::PM2.5",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001262::SO2",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001262::VOC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001298::BC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001298::CO",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001298::NH3",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001298::NOx",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001298::OC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001298::PM10",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001298::PM2.5",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001298::SO2",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001298::VOC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001299::BC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001299::CO",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001299::NH3",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001299::NOx",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001299::OC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001299::PM10",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001299::PM2.5",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001299::SO2",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001299::VOC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001443::BC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001443::CO",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001443::NH3",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001443::NOx",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001443::OC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001443::PM10",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001443::PM2.5",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001443::SO2",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001443::VOC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001715::BC",
+        "failures": [
+          "missing_item"
+        ]
+      },
+      {
+        "evaluation_total_id": "SRC-IND-001715::CO",
+        "failures": [
+          "missing_item"
+        ]
+      }
+    ],
+    "notes": [
+      "Formal S/A/Q use the common source×pollutant layer; component alignment is a separate structure diagnostic used by the relevant ablation.",
+      "Activity, method and parameter multisets remain component diagnostics and do not enter cross-method common S.",
+      "A2 averages required root-group recall and the normalized reported-group burden, so omission cannot receive full credit.",
+      "Internal Full parameter IDs are not scored.",
+      "EICPI remains not computable until independently pre-specified time thresholds and cross-run metrics are available."
+    ]
+  },
+  "formal_quality_gates": {
+    "record_destination_complete": "fail",
+    "unsupported_dispositions_zero": "fail",
+    "critical_errors_zero": "fail",
+    "minimum_recalculation_complete": "fail"
+  },
+  "formal_metrics": {
+    "S": 0.0,
+    "A1": 0.8065395095367848,
+    "A2": 0.5,
+    "A": 0.6532697547683923,
+    "Q": 0.19949653870358716,
+    "T": 0.0,
+    "R": "not_computable_single_run",
+    "E1": "not_computable_single_variant",
+    "E2": "raw_time_only",
+    "EICPI": "not_computable"
+  }
+}

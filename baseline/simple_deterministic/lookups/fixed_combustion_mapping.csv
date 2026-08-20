@@ -1,0 +1,9 @@
+﻿raw_value,standard_combustion_technology,mapping_status,observed_count,source_type,note
+其他,,fuel_dependent_or_ambiguous,389,reviewed_operational_mapping,气/液体燃料按燃料确定；煤炭记录需单独核定
+其他层燃炉,,fuel_dependent_or_ambiguous,44,reviewed_operational_mapping,气/液体燃料按燃料确定；煤炭记录需单独核定
+室燃炉,,fuel_dependent_or_ambiguous,3516,reviewed_operational_mapping,气/液体燃料按燃料确定；煤炭记录需单独核定
+层燃炉,,fuel_dependent_or_ambiguous,5,reviewed_operational_mapping,气/液体燃料按燃料确定；煤炭记录需单独核定
+循环流化床锅炉,流化床炉,mapped,198,reviewed_operational_mapping,标准同义名称
+抛煤机炉,自动炉排层燃炉,mapped,14,reviewed_operational_mapping,机械加煤层燃炉
+煤粉炉,煤粉炉,mapped,128,reviewed_operational_mapping,标准原词
+链条炉,自动炉排层燃炉,mapped,102,reviewed_operational_mapping,机械加煤层燃炉

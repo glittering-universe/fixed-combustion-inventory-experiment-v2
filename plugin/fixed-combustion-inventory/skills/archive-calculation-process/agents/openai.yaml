@@ -1,0 +1,4 @@
+interface:
+  display_name: "完整核算过程记录归档"
+  short_description: "归档逐核算项的输入处理规则参数公式状态以及输出定位信息"
+  default_prompt: "归档当前运行的完整核算过程记录并封存运行包。"

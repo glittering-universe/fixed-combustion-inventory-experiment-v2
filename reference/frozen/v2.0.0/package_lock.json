@@ -1,0 +1,71 @@
+{
+  "package_name": "independent_professional_reference_package",
+  "version": "2.0.0",
+  "status": "audited_frozen",
+  "files": {
+    "README.md": {
+      "sha256": "cec101e6e698a6a1f12d03fb89f127e71016d8c470d489661a5c0d66ca09e0ec",
+      "bytes": 1424
+    },
+    "compare_run_to_reference.py": {
+      "sha256": "7c2545707fe3b9861650ed300844c0323036309312fd21d11d6033dd9865f83e",
+      "bytes": 41729
+    },
+    "decision_register.csv": {
+      "sha256": "7de5fdd6ccb25b872d78a4b47c997a5489be4afd393f7dc2e7bfd0a158594788",
+      "bytes": 3643
+    },
+    "evaluation_protocol.json": {
+      "sha256": "330612b73365a5bf64ba0b7c5694e96044287d95e9faa7a6d076ce13ae2195a1",
+      "bytes": 1733
+    },
+    "expected_aggregates.csv": {
+      "sha256": "1b535882fe28a26c54c2d6bb8a8b649fe64972f4066ba1a412917ef44e28fb71",
+      "bytes": 7095
+    },
+    "expected_exceptions.csv": {
+      "sha256": "14b70e4ec8a152d929daf68040ce4d6515c0421f46b5ab337fbd7c1814e2c4da",
+      "bytes": 10495703
+    },
+    "expected_injection_outcomes.csv": {
+      "sha256": "852bb42aac0be73f7342dc2be0f4b5e459c81a2aad24fc0fa57a3660ab90b30d",
+      "bytes": 22907
+    },
+    "expected_items.csv": {
+      "sha256": "870bdc03143985cbda6665c204c216d30724fe506274034868f05228ea0e86c9",
+      "bytes": 132221810
+    },
+    "expected_source_pollutant_totals.csv": {
+      "sha256": "e8005dae8bcfd74e730545f7babd7ffd0ee4aa5c6da88b3f9926cdb2472d3eae",
+      "bytes": 20561151
+    },
+    "expected_sources.csv": {
+      "sha256": "9223358329f9c152ae42004c1b85bdc1af349a59016fcabdbeb4fbaf30102152",
+      "bytes": 2218502
+    },
+    "manifest.json": {
+      "sha256": "faaff6994532a83629825a11715f39f5b6683402f1ed153223e088ec7c26ee0c",
+      "bytes": 15990
+    },
+    "reason_code_equivalence.json": {
+      "sha256": "57e39726843dac7b79787890bb3e83195781ebe367dec621259eb2b933702c83",
+      "bytes": 12683
+    },
+    "reference_schema.json": {
+      "sha256": "019c9e12f96cee1ddb8327023c2922334a7f73e74ae9e86024fbab372f16a2cb",
+      "bytes": 3200
+    },
+    "subagent_audit.md": {
+      "sha256": "ca0d577dcaa492c029298421943f8bd9d22c864486352c9e7b007eed6747befa",
+      "bytes": 428
+    },
+    "tolerances.json": {
+      "sha256": "98dededb1b674099547850df93acb82e666c75d5170fe0cfd87909d8ec52d95e",
+      "bytes": 1793
+    },
+    "validation_report.json": {
+      "sha256": "e7d86a165edc0490872b9691da358f3a5b437cd6ba3fbff4d9faa13f9a8f0032",
+      "bytes": 488
+    }
+  }
+}

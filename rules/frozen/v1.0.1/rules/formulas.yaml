@@ -1,0 +1,164 @@
+rules:
+- rule_id: r_formula_coefficient_method
+  rule_type: formula
+  source:
+    source_type: T_CSES
+    document: T/CSES 144—2024
+    section: 公式(2)
+    physical_pdf_pages:
+    - 9
+  scope:
+    pollutants:
+    - SO2
+    - NOX
+    - CO
+    - VOCS
+    - PM10
+    - PM25
+    - BC
+    - OC
+  conditions:
+    units:
+    - g/kg
+    - g/m3
+    output: t
+  action:
+    type: assign_formula
+    formula: G_t=A*EF/1000000; E_t=G_t*(1-eta)
+  on_missing: withhold
+- rule_id: r_formula_so2_balance
+  rule_type: formula
+  source:
+    source_type: T_CSES
+    document: T/CSES 144—2024
+    section: 公式(3)、C.1
+    physical_pdf_pages:
+    - 10
+    - 40
+  scope:
+    fuel: 煤炭
+    pollutant: SO2
+  conditions:
+    source_sulfur_unit: '%'
+    required:
+    - S_percent
+    - sr
+  action:
+    type: assign_formula
+    standard_formula: EF=2*S*(1-sr)
+    excel_formula_for_percent_input: EF_g_per_kg=20*S_percent*(1-sr)
+  on_missing: withhold
+- rule_id: r_formula_pm_balance
+  rule_type: formula
+  source:
+    source_type: T_CSES
+    document: T/CSES 144—2024
+    section: 公式(4)、C.1、C.2
+    physical_pdf_pages:
+    - 10
+    - 40
+    - 41
+  scope:
+    fuel: 煤炭
+    pollutants:
+    - PM10
+    - PM25
+  conditions:
+    source_ash_unit: '%'
+    required:
+    - Aar_percent
+    - ar
+    - fPM
+  action:
+    type: assign_formula
+    standard_formula: EF=Aar*(1-ar)*fPM
+    excel_formula_for_percent_input: EF_g_per_kg=10*Aar_percent*(1-ar)*fPM
+  on_missing: withhold
+- rule_id: r_formula_bc
+  rule_type: formula
+  source:
+    source_type: T_CSES
+    document: T/CSES 144—2024
+    section: 公式(5)、C.3
+    physical_pdf_pages:
+    - 10
+    - 42
+  scope:
+    fuel: 煤炭
+    pollutant: BC
+  conditions:
+    required:
+    - EF_PM25
+    - fBC
+  action:
+    type: assign_formula
+    formula: EF_BC=EF_PM25*fBC
+  on_missing: withhold
+- rule_id: r_formula_oc
+  rule_type: formula
+  source:
+    source_type: T_CSES
+    document: T/CSES 144—2024
+    section: 公式(6)、C.3
+    physical_pdf_pages:
+    - 10
+    - 42
+  scope:
+    fuel: 煤炭
+    pollutant: OC
+  conditions:
+    required:
+    - EF_PM25
+    - fOC
+  action:
+    type: assign_formula
+    formula: EF_OC=EF_PM25*fOC
+  on_missing: withhold
+- rule_id: r_formula_nox_capacity_lookup
+  rule_type: formula
+  source:
+    source_type: T_CSES
+    document: T/CSES 144—2024
+    section: D.1注b
+    physical_pdf_pages:
+    - 45
+  scope:
+    department: 电力生产
+    fuel:
+    - 煤炭
+    - 煤矸石
+    pollutant: NOX
+  conditions:
+    capacity_mw:
+      <=100: 8.96
+      '>100_and_<300': 8.19
+      '>=300': 7.21
+  action:
+    type: assign_formula
+    formula: EF_NOX=capacity_lookup(capacity_mw)
+  on_missing: withhold
+- rule_id: r_formula_pm10_after_control
+  rule_type: formula
+  source:
+    source_type: T_CSES_DERIVED
+    document: T/CSES 144—2024
+    section: 公式(2)、A.1注a
+    physical_pdf_pages:
+    - 9
+    - 35
+  scope:
+    pollutant: PM10
+  conditions:
+    constraint: G_PM25<=G_PM10
+    fractions:
+    - fine
+    - coarse
+  action:
+    type: assign_formula
+    formula: E_PM10=G_PM2.5*(1-eta_fine)+(G_PM10-G_PM2.5)*(1-eta_coarse)
+    coverage_tokens:
+    - G_PM2.5
+    - G_PM10-G_PM2.5
+    - eta_fine
+    - eta_coarse
+  on_missing: withhold

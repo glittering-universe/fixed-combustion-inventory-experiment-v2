@@ -1,0 +1,19 @@
+{
+  "method": "既有专家主导型清单编制流程",
+  "status": "provided",
+  "source_workbook": "固定燃烧源-工业锅炉_调整.xlsx",
+  "source_workbook_sha256": "a4d36afbc71f17025a0b4c99d8f3b649bdd42c2f4c90061297c564a16ea30ad1",
+  "source_workbook_bytes": 2189845,
+  "normalization_policy": "原始工作簿字节保持不变；另行生成规范化评价文件",
+  "seconds_per_record": 11.52,
+  "record_count": 4025,
+  "total_seconds": 46368.0,
+  "normalization": {
+    "source_rows": 4160,
+    "normalized_source_pollutant_rows": 37440,
+    "calculated_rows": 37440,
+    "information_insufficient_rows": 0,
+    "source_tag": "IND"
+  },
+  "normalized_output": "outputs/generic_inventory_items.csv"
+}

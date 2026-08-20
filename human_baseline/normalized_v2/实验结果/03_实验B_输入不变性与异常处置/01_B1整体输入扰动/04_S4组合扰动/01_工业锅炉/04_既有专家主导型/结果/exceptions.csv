@@ -1,0 +1,2 @@
+﻿exception_id,source_id,observation_id,target,human_workbook_row,pollutant,category,description
+HUMAN-V2-INDUSTRIAL-000001,SRC-RAW-E18849DC2C3F6E400DCA,SRC-RAW-E18849DC2C3F6E400DCA,INDUSTRIAL,33,OC,HUMAN_TOTAL_NOT_REPORTED,generation or final emission total is not numerically observable in the supplied workbook

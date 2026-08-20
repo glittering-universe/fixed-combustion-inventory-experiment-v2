@@ -1,0 +1,19 @@
+{
+  "method": "既有专家主导型清单编制流程",
+  "status": "provided",
+  "source_workbook": "固定燃烧源-火电、热力生产与供应_调整.xlsx",
+  "source_workbook_sha256": "17bf35853884f23ceb6f23f0e76d8cefa9cfd6df100bc300947b22484999e262",
+  "source_workbook_bytes": 290986,
+  "normalization_policy": "原始工作簿字节保持不变；另行生成规范化评价文件",
+  "seconds_per_record": 11.52,
+  "record_count": 367,
+  "total_seconds": 4227.84,
+  "normalization": {
+    "source_rows": 426,
+    "normalized_source_pollutant_rows": 3834,
+    "calculated_rows": 3834,
+    "information_insufficient_rows": 0,
+    "source_tag": "PWR"
+  },
+  "normalized_output": "outputs/generic_inventory_items.csv"
+}

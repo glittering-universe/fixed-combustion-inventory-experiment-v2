@@ -1,0 +1,22 @@
+name: fixed-combustion-inventory
+version: 0.2.0
+description: Raw-base-table, rule-constrained fixed-combustion emission-inventory compilation for the T/CSES experiment
+provides_tools:
+  - extract_tcses_rule_scope
+  - adapt_environmental_workbooks
+  - build_device_emission_sources
+  - generate_pollutant_calculation_items
+  - execute_tcses_calculation_rules
+  - control_calculation_admission
+  - calculate_fixed_combustion_emissions
+  - validate_and_export_fixed_combustion_inventory
+  - archive_complete_calculation_process
+  - validate_fixed_combustion_rule_package
+  - compare_fixed_combustion_rule_coverage
+  - generate_device_pollutant_slots
+  - record_agent_rule_choices
+  - record_agent_admission_decisions
+  - archive_minimal_calculation_process
+provides_hooks:
+  - pre_tool_call
+  - post_tool_call

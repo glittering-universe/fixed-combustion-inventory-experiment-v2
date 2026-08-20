@@ -1,0 +1,86 @@
+rules:
+- rule_id: r_scope_power_heat
+  rule_type: scope
+  source:
+    source_type: T_CSES
+    document: T/CSES 144—2024
+    section: '7.1'
+    physical_pdf_pages:
+    - 9
+  scope:
+    source_sector: 电力热力源
+  conditions:
+    industry_code:
+    - '4411'
+    - '4412'
+    - '4417'
+    - '4430'
+  action:
+    type: select_scope
+    selected_scope: power_heat_fixed_combustion
+  on_missing: not_applicable
+- rule_id: r_scope_industrial_boiler
+  rule_type: scope
+  source:
+    source_type: T_CSES
+    document: T/CSES 144—2024
+    section: '8.3'
+    physical_pdf_pages:
+    - 14
+  scope:
+    source_sector: 工业源化石燃料固定燃烧
+  conditions:
+    industry:
+    - 采矿业
+    - 制造业
+    equipment: 工业锅炉
+  action:
+    type: select_scope
+    selected_scope: industrial_fossil_fixed_combustion
+  on_missing: not_applicable
+- rule_id: r_scope_level4_unit
+  rule_type: scope
+  source:
+    source_type: T_CSES
+    document: T/CSES 144—2024
+    section: 5.1、6.2
+    physical_pdf_pages:
+    - 6
+    - 8
+  scope:
+    calculation_structure: 第四级排放源
+  conditions:
+    dimensions:
+    - 行业
+    - 燃料
+    - 燃烧技术
+    - 末端控制技术
+  action:
+    type: select_scope
+    selected_scope: level4_basic_calculation_unit
+  on_missing: withhold
+- rule_id: r_scope_pollutants
+  rule_type: scope
+  source:
+    source_type: T_CSES
+    document: T/CSES 144—2024
+    section: '1'
+    physical_pdf_pages:
+    - 4
+  scope:
+    inventory_pollutants:
+    - SO2
+    - NOX
+    - CO
+    - VOCS
+    - PM10
+    - PM25
+    - BC
+    - OC
+    - NH3
+  conditions:
+    pollutant_in_scope: true
+  action:
+    type: select_scope
+    selected_scope: pollutant_in_standard_scope
+  on_missing: not_applicable

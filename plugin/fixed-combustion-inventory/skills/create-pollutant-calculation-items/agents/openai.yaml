@@ -1,0 +1,4 @@
+interface:
+  display_name: "污染物排放核算项生成"
+  short_description: "批量生成燃料和治理过程对应的污染物排放核算项及依赖关系"
+  default_prompt: "为当前运行范围批量生成污染物排放核算项。"

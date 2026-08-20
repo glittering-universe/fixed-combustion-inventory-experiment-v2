@@ -1,0 +1,23 @@
+{
+  "version": "2.0.0",
+  "status": "pass",
+  "errors": [],
+  "checks": {
+    "source_rows": 11844,
+    "item_rows": 86378,
+    "total_rows": 83898,
+    "exception_rows": 19718,
+    "b0_target_counts": {
+      "INDUSTRIAL": 4046,
+      "EXCLUDE": 1261,
+      "POWER": 615
+    },
+    "not_involved_component_items": 1677,
+    "b2_plan_counts": {
+      "preexisting_problem": 4,
+      "positive_injection": 20,
+      "negative_control": 6
+    },
+    "b2_eligible_targeted_records": 26
+  }
+}

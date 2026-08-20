@@ -1,0 +1,51 @@
+{
+  "version": "2.0.0",
+  "reference_variant_routing": {
+    "A": "B0",
+    "B0": "B0",
+    "B1_S1_to_S4": "B0",
+    "B2": "B2",
+    "C_25_50_75_100": "B0_filtered_by_target_neutral_candidate_ids",
+    "D": "B0"
+  },
+  "public_keys": {
+    "source": [
+      "variant",
+      "source_id"
+    ],
+    "item": [
+      "variant",
+      "evaluation_item_id"
+    ],
+    "source_pollutant_total": [
+      "variant",
+      "evaluation_total_id"
+    ],
+    "exception_group": [
+      "variant",
+      "exception_group_id"
+    ]
+  },
+  "item_scoring_order": [
+    "align_public_ids",
+    "evaluate_presence_and_terminal_state",
+    "apply_applicability_mask",
+    "normalize_method_parameter_control_and_standard_reference",
+    "compare_unrounded_values",
+    "enforce_hard_constraints",
+    "aggregate_diagnostics"
+  ],
+  "missing_or_extra_rows": "count_as_error; never change the reference denominator",
+  "noncalculated_policy": "state_and_blank_value_are_scored; inapplicable method/parameter/control fields are not double-penalized",
+  "B1": "pair each method S1-S4 with that method B0 by public item ID; separately compare each variant with B0 reference semantics",
+  "B2": {
+    "full_correctness": "all B2 items remain eligible",
+    "targeted_injection_diagnostic": "only expected_injection_outcomes.scoring_eligible=true enters denominator",
+    "negative_control": "score unchanged semantics separately"
+  },
+  "metric_boundaries": {
+    "D": "source destination, terminal disposition, calculation basis, pollutant-relevant control and required exception root atoms",
+    "N": "result completeness, reference value and independent recalculation atoms",
+    "E": "source-specific empirical human/deterministic log time anchors"
+  }
+}

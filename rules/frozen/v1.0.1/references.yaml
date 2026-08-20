@@ -1,0 +1,23 @@
+standard:
+- title: T/CSES 144—2024 城市大气污染源排放清单编制技术指南
+  path: /Users/wushuo/Desktop/环境学院论文/1 城市大气污染源排放清单编制技术指南 T_CSES 144-2024.pdf
+  sha256: bc46346443e76ccf063ae5e2b1d1c5d7a8544fb4f7cf6b11239c80bca66181a9
+  role: 范围、方法、公式与缺省参数
+supporting_sources:
+- title: 生态环境部公告2021年第24号及工业锅炉产排污系数手册
+  url: https://www.mee.gov.cn/xxgk2018/xxgk/xxgk01/202106/t20210618_839512.html
+  role: 气体燃料活动水平单位一致性解释
+- title: 广东省大气污染物排放源清单编制指南（2024年11月稿）
+  path: /Users/wushuo/Desktop/环境学院论文/广东省大气污染物排放源清单编制指南-202411.docx
+  role: 表3注c气体燃料因子单位一致性解释，不替换T/CSES因子值
+- title: 固定燃烧源清单实验实施协议v4
+  path: /Users/wushuo/Desktop/环境学院论文/论文研究笔记/固定燃烧源清单实验实施协议.md
+  role: 当前数据范围、经验缺失处置、禁止逻辑与输出要求
+source_hierarchy:
+- T_CSES
+- T_CSES_DERIVED
+- EXTERNAL_UNIT_INTERPRETATION
+- DATA_SCOPE_DECISION
+- EMPIRICAL_ASSUMPTION
+- CALCULATION_SAFETY_RULE
+- IMPLEMENTATION_REQUIREMENT

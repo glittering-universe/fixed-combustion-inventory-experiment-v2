@@ -1,0 +1,165 @@
+{
+  "schema_version": "human-baseline-normalization-v2.0.0",
+  "status": "ok",
+  "package_count": 14,
+  "raw_candidate_count": 5922,
+  "preserved_originals_unchanged": true,
+  "original_workbook_hashes": {
+    "实验结果/02_实验A_端到端清单编制/01_工业锅炉/04_既有专家主导型/结果/固定燃烧源-工业锅炉_调整.xlsx": "623dc9104b32577d9bbd2b72570bbb62089e6c689788c72f8d9d5dd15aab2b4f",
+    "实验结果/02_实验A_端到端清单编制/02_火电热力/04_既有专家主导型/结果/固定燃烧源-火电、热力生产与供应_调整.xlsx": "ba902bb2026d7ea1ecd43426916c268aa8779afffbed0070e8641efab3343fb4",
+    "实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/01_工业锅炉/04_既有专家主导型/结果/固定燃烧源-工业锅炉_调整.xlsx": "623dc9104b32577d9bbd2b72570bbb62089e6c689788c72f8d9d5dd15aab2b4f",
+    "实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/02_火电热力/04_既有专家主导型/结果/固定燃烧源-火电、热力生产与供应_调整.xlsx": "ba902bb2026d7ea1ecd43426916c268aa8779afffbed0070e8641efab3343fb4",
+    "实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/01_S1表头形式扰动/01_工业锅炉/04_既有专家主导型/结果/固定燃烧源-工业锅炉_调整.xlsx": "a4d36afbc71f17025a0b4c99d8f3b649bdd42c2f4c90061297c564a16ea30ad1",
+    "实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/01_S1表头形式扰动/02_火电热力/04_既有专家主导型/结果/固定燃烧源-火电、热力生产与供应_调整.xlsx": "17bf35853884f23ceb6f23f0e76d8cefa9cfd6df100bc300947b22484999e262",
+    "实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/02_S2等价别名扰动/01_工业锅炉/04_既有专家主导型/结果/固定燃烧源-工业锅炉_调整.xlsx": "9607a8efb43cc66f8845bb17639d8c5261be1d70487395895014a3ae664438c9",
+    "实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/02_S2等价别名扰动/02_火电热力/04_既有专家主导型/结果/固定燃烧源-火电、热力生产与供应_调整.xlsx": "cadcdd9d8465a35e1be780c24667744dde64341e891ace66e10e8313a637f427",
+    "实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/03_S3列与工作表顺序扰动/01_工业锅炉/04_既有专家主导型/结果/固定燃烧源-工业锅炉_调整.xlsx": "9410c16bb152ac208968b06dcc7bca875a49d9152c06a103b9b734cc93a257a3",
+    "实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/03_S3列与工作表顺序扰动/02_火电热力/04_既有专家主导型/结果/固定燃烧源-火电、热力生产与供应_调整.xlsx": "fa4c275db5fcb7ab42b1675653bafd379703c5a6334bdc16ad836b2819e890c5",
+    "实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/04_S4组合扰动/01_工业锅炉/04_既有专家主导型/结果/固定燃烧源-工业锅炉_调整.xlsx": "677d2465e83a79867dfd2e8ac9d2823255e7f07945250ffe763a0939b1da95c5",
+    "实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/04_S4组合扰动/02_火电热力/04_既有专家主导型/结果/固定燃烧源-火电、热力生产与供应_调整.xlsx": "e343305dae1c653c962b0b6d4b264c407148864a25a201311598886ce7c4d2aa",
+    "实验结果/03_实验B_输入不变性与异常处置/02_B2受控缺失与冲突注入/01_工业锅炉/04_既有专家主导型/结果/固定燃烧源-工业锅炉_调整.xlsx": "c1101cebf60121f1e7265a8fcd4baaaceeb959dcb5049d7055e73ee53c028941",
+    "实验结果/03_实验B_输入不变性与异常处置/02_B2受控缺失与冲突注入/02_火电热力/04_既有专家主导型/结果/固定燃烧源-火电、热力生产与供应_调整.xlsx": "8eba19822359ff6d4060d5dbd343fd0b4b6f4de76d323795e0f118fcc5c13b8a"
+  },
+  "packages": [
+    {
+      "workbook": "实验结果/02_实验A_端到端清单编制/01_工业锅炉/04_既有专家主导型/结果/固定燃烧源-工业锅炉_调整.xlsx",
+      "output": "实验结果/02_实验A_端到端清单编制/01_工业锅炉/04_既有专家主导型/结果",
+      "target": "INDUSTRIAL",
+      "scope_included": 4160,
+      "controlled_extra_observations": 0,
+      "calculation_rows": 37440,
+      "not_observable_rows": 0,
+      "exceptions": 0
+    },
+    {
+      "workbook": "实验结果/02_实验A_端到端清单编制/02_火电热力/04_既有专家主导型/结果/固定燃烧源-火电、热力生产与供应_调整.xlsx",
+      "output": "实验结果/02_实验A_端到端清单编制/02_火电热力/04_既有专家主导型/结果",
+      "target": "POWER",
+      "scope_included": 426,
+      "controlled_extra_observations": 0,
+      "calculation_rows": 3834,
+      "not_observable_rows": 0,
+      "exceptions": 0
+    },
+    {
+      "workbook": "实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/01_工业锅炉/04_既有专家主导型/结果/固定燃烧源-工业锅炉_调整.xlsx",
+      "output": "实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/01_工业锅炉/04_既有专家主导型/结果",
+      "target": "INDUSTRIAL",
+      "scope_included": 4160,
+      "controlled_extra_observations": 0,
+      "calculation_rows": 37440,
+      "not_observable_rows": 0,
+      "exceptions": 0
+    },
+    {
+      "workbook": "实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/02_火电热力/04_既有专家主导型/结果/固定燃烧源-火电、热力生产与供应_调整.xlsx",
+      "output": "实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/02_火电热力/04_既有专家主导型/结果",
+      "target": "POWER",
+      "scope_included": 426,
+      "controlled_extra_observations": 0,
+      "calculation_rows": 3834,
+      "not_observable_rows": 0,
+      "exceptions": 0
+    },
+    {
+      "workbook": "实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/01_S1表头形式扰动/01_工业锅炉/04_既有专家主导型/结果/固定燃烧源-工业锅炉_调整.xlsx",
+      "output": "实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/01_S1表头形式扰动/01_工业锅炉/04_既有专家主导型/结果",
+      "target": "INDUSTRIAL",
+      "scope_included": 4160,
+      "controlled_extra_observations": 0,
+      "calculation_rows": 37440,
+      "not_observable_rows": 0,
+      "exceptions": 0
+    },
+    {
+      "workbook": "实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/01_S1表头形式扰动/02_火电热力/04_既有专家主导型/结果/固定燃烧源-火电、热力生产与供应_调整.xlsx",
+      "output": "实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/01_S1表头形式扰动/02_火电热力/04_既有专家主导型/结果",
+      "target": "POWER",
+      "scope_included": 426,
+      "controlled_extra_observations": 0,
+      "calculation_rows": 3834,
+      "not_observable_rows": 0,
+      "exceptions": 0
+    },
+    {
+      "workbook": "实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/02_S2等价别名扰动/01_工业锅炉/04_既有专家主导型/结果/固定燃烧源-工业锅炉_调整.xlsx",
+      "output": "实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/02_S2等价别名扰动/01_工业锅炉/04_既有专家主导型/结果",
+      "target": "INDUSTRIAL",
+      "scope_included": 4160,
+      "controlled_extra_observations": 0,
+      "calculation_rows": 37440,
+      "not_observable_rows": 0,
+      "exceptions": 0
+    },
+    {
+      "workbook": "实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/02_S2等价别名扰动/02_火电热力/04_既有专家主导型/结果/固定燃烧源-火电、热力生产与供应_调整.xlsx",
+      "output": "实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/02_S2等价别名扰动/02_火电热力/04_既有专家主导型/结果",
+      "target": "POWER",
+      "scope_included": 426,
+      "controlled_extra_observations": 0,
+      "calculation_rows": 3834,
+      "not_observable_rows": 0,
+      "exceptions": 0
+    },
+    {
+      "workbook": "实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/03_S3列与工作表顺序扰动/01_工业锅炉/04_既有专家主导型/结果/固定燃烧源-工业锅炉_调整.xlsx",
+      "output": "实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/03_S3列与工作表顺序扰动/01_工业锅炉/04_既有专家主导型/结果",
+      "target": "INDUSTRIAL",
+      "scope_included": 4160,
+      "controlled_extra_observations": 0,
+      "calculation_rows": 37440,
+      "not_observable_rows": 0,
+      "exceptions": 0
+    },
+    {
+      "workbook": "实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/03_S3列与工作表顺序扰动/02_火电热力/04_既有专家主导型/结果/固定燃烧源-火电、热力生产与供应_调整.xlsx",
+      "output": "实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/03_S3列与工作表顺序扰动/02_火电热力/04_既有专家主导型/结果",
+      "target": "POWER",
+      "scope_included": 426,
+      "controlled_extra_observations": 0,
+      "calculation_rows": 3834,
+      "not_observable_rows": 0,
+      "exceptions": 0
+    },
+    {
+      "workbook": "实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/04_S4组合扰动/01_工业锅炉/04_既有专家主导型/结果/固定燃烧源-工业锅炉_调整.xlsx",
+      "output": "实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/04_S4组合扰动/01_工业锅炉/04_既有专家主导型/结果",
+      "target": "INDUSTRIAL",
+      "scope_included": 4160,
+      "controlled_extra_observations": 0,
+      "calculation_rows": 37440,
+      "not_observable_rows": 1,
+      "exceptions": 1
+    },
+    {
+      "workbook": "实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/04_S4组合扰动/02_火电热力/04_既有专家主导型/结果/固定燃烧源-火电、热力生产与供应_调整.xlsx",
+      "output": "实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/04_S4组合扰动/02_火电热力/04_既有专家主导型/结果",
+      "target": "POWER",
+      "scope_included": 426,
+      "controlled_extra_observations": 0,
+      "calculation_rows": 3834,
+      "not_observable_rows": 1,
+      "exceptions": 1
+    },
+    {
+      "workbook": "实验结果/03_实验B_输入不变性与异常处置/02_B2受控缺失与冲突注入/01_工业锅炉/04_既有专家主导型/结果/固定燃烧源-工业锅炉_调整.xlsx",
+      "output": "实验结果/03_实验B_输入不变性与异常处置/02_B2受控缺失与冲突注入/01_工业锅炉/04_既有专家主导型/结果",
+      "target": "INDUSTRIAL",
+      "scope_included": 4160,
+      "controlled_extra_observations": 0,
+      "calculation_rows": 37440,
+      "not_observable_rows": 54,
+      "exceptions": 54
+    },
+    {
+      "workbook": "实验结果/03_实验B_输入不变性与异常处置/02_B2受控缺失与冲突注入/02_火电热力/04_既有专家主导型/结果/固定燃烧源-火电、热力生产与供应_调整.xlsx",
+      "output": "实验结果/03_实验B_输入不变性与异常处置/02_B2受控缺失与冲突注入/02_火电热力/04_既有专家主导型/结果",
+      "target": "POWER",
+      "scope_included": 426,
+      "controlled_extra_observations": 15,
+      "calculation_rows": 3969,
+      "not_observable_rows": 54,
+      "exceptions": 54
+    }
+  ]
+}

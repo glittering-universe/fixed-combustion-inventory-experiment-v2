@@ -1,0 +1,42 @@
+{
+  "run_id": "B-B0-IND-HUM",
+  "method_bundle_hash": "731de9bf825a69a9baa2886db13b22ef602b3925ebe6d2e3d8478bb8ce6611e0",
+  "run_manifest_sha256": "f522caedbdc1420d9aa10a312d15383f8002b7702afb3f921acb94d80ee12f05",
+  "execution_metrics_sha256": "6be1ca1bcaac69a49a867785683272cb86994d3d33211b49b982b8b15764d151",
+  "input_hashes": {
+    "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/01_工业锅炉/04_既有专家主导型/结果/固定燃烧源-工业锅炉_调整.xlsx": "623dc9104b32577d9bbd2b72570bbb62089e6c689788c72f8d9d5dd15aab2b4f"
+  },
+  "files": [
+    {
+      "path": "evaluation/normalized_items.csv",
+      "sha256": "ed5b8708911737f88cb20b871f3568105dd9a2f8bdbf3ea71acdd57200fde1f5",
+      "bytes": 10922520
+    },
+    {
+      "path": "evaluation/reference_independent_report.json",
+      "sha256": "deb923e004f89be3cb8f86ba0ad8baef031e6a703944b1114904fb26684343c2",
+      "bytes": 39087
+    },
+    {
+      "path": "outputs/generic_exception_list.csv",
+      "sha256": "359a5f59f9f689822841af775da603a0d6fa96978d3b1012f63d8dc6286634eb",
+      "bytes": 47
+    },
+    {
+      "path": "outputs/generic_inventory_items.csv",
+      "sha256": "2293d6c23e6898193fbf02fc506fa4b6917ccb8d97a64be59510f44da618e991",
+      "bytes": 5830647
+    },
+    {
+      "path": "人工结果说明.json",
+      "sha256": "5ed711aa49cf4b772b9a2b4d3a0499066906795e9f3054a74ef23cdc2719b339",
+      "bytes": 715
+    },
+    {
+      "path": "固定燃烧源-工业锅炉_调整.xlsx",
+      "sha256": "623dc9104b32577d9bbd2b72570bbb62089e6c689788c72f8d9d5dd15aab2b4f",
+      "bytes": 2945964
+    }
+  ],
+  "status": "user_supplied_complete"
+}

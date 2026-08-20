@@ -1,0 +1,655 @@
+{
+  "setup_version": "2.0.0",
+  "profile": "fixed-combustion-inventory",
+  "input_contract": "raw_base_tables_v2",
+  "evaluation_contract": "DNE_v2",
+  "reference_package": "reference/frozen/v2.0.0",
+  "runtime_python": ".venv/bin/python",
+  "files": [
+    {
+      "path": "evaluation/metric_spec_v2.json",
+      "sha256": "05af3dc8412c45129d0730b9dca067cac6c68b171ef9d305bb45572b000746c6",
+      "bytes": 2973
+    },
+    {
+      "path": "human_baseline/normalized_v2/normalization_index.json",
+      "sha256": "566871fa334a1afb59e01e6a717712bb0251b18436095462896f2ba9af5f3333",
+      "bytes": 11917
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/02_实验A_端到端清单编制/01_工业锅炉/04_既有专家主导型/结果/calculation_totals.csv",
+      "sha256": "0a58fcb95102c7496613b76342c6449f83cd6907edc178bf9ca4ef29fec5ade1",
+      "bytes": 6344959
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/02_实验A_端到端清单编制/01_工业锅炉/04_既有专家主导型/结果/exceptions.csv",
+      "sha256": "693beaeaf8a7d0527c41ba5bb9e598129c29e13ddbf914fc81b52e29560f5ebb",
+      "bytes": 99
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/02_实验A_端到端清单编制/01_工业锅炉/04_既有专家主导型/结果/normalization_notes.json",
+      "sha256": "4fdbc30b7773d7822321507cc0cefa50d0c7d43ffc009ad1491d0db0995ed453",
+      "bytes": 2252
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/02_实验A_端到端清单编制/01_工业锅炉/04_既有专家主导型/结果/source_decisions.csv",
+      "sha256": "a866409ad7d0ae67730f4d58cf1a5b41fdda4432113d98a698806372eda57630",
+      "bytes": 870387
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/02_实验A_端到端清单编制/02_火电热力/04_既有专家主导型/结果/calculation_totals.csv",
+      "sha256": "93629180b7d90869ce746a7fa68ff78cc92a2812c8c6c93199d37b22f52e24e8",
+      "bytes": 661906
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/02_实验A_端到端清单编制/02_火电热力/04_既有专家主导型/结果/exceptions.csv",
+      "sha256": "693beaeaf8a7d0527c41ba5bb9e598129c29e13ddbf914fc81b52e29560f5ebb",
+      "bytes": 99
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/02_实验A_端到端清单编制/02_火电热力/04_既有专家主导型/结果/normalization_notes.json",
+      "sha256": "3add94d10e94df540a28c9b5c101f5f47bcbc2fc542b9b19ea42f7c837bac31d",
+      "bytes": 2262
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/02_实验A_端到端清单编制/02_火电热力/04_既有专家主导型/结果/source_decisions.csv",
+      "sha256": "f01a85b4d93b46773590c066d05043693c2c3dae45e786105d6a748ee14ec26f",
+      "bytes": 847875
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/01_工业锅炉/04_既有专家主导型/结果/calculation_totals.csv",
+      "sha256": "0a58fcb95102c7496613b76342c6449f83cd6907edc178bf9ca4ef29fec5ade1",
+      "bytes": 6344959
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/01_工业锅炉/04_既有专家主导型/结果/exceptions.csv",
+      "sha256": "693beaeaf8a7d0527c41ba5bb9e598129c29e13ddbf914fc81b52e29560f5ebb",
+      "bytes": 99
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/01_工业锅炉/04_既有专家主导型/结果/normalization_notes.json",
+      "sha256": "b4360afcf4c33c043d38294fc68d53961a86613e15e711f53f3bb0372ec60b1b",
+      "bytes": 2303
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/01_工业锅炉/04_既有专家主导型/结果/source_decisions.csv",
+      "sha256": "0c164234c5a41bd45792b460677fa39838774ceedacab30d12aed84a5e913093",
+      "bytes": 862067
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/02_火电热力/04_既有专家主导型/结果/calculation_totals.csv",
+      "sha256": "93629180b7d90869ce746a7fa68ff78cc92a2812c8c6c93199d37b22f52e24e8",
+      "bytes": 661906
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/02_火电热力/04_既有专家主导型/结果/exceptions.csv",
+      "sha256": "693beaeaf8a7d0527c41ba5bb9e598129c29e13ddbf914fc81b52e29560f5ebb",
+      "bytes": 99
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/02_火电热力/04_既有专家主导型/结果/normalization_notes.json",
+      "sha256": "f084fe53bbf25371905722d4f55ab2023ad02419dc752300dfb339a9f14c9ed7",
+      "bytes": 2313
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/02_火电热力/04_既有专家主导型/结果/source_decisions.csv",
+      "sha256": "631c5339892770573ad5c87aa3733a40d436f632b5404b74466636c2c2c7e4b4",
+      "bytes": 847071
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/01_S1表头形式扰动/01_工业锅炉/04_既有专家主导型/结果/calculation_totals.csv",
+      "sha256": "01237dfe0f95b0166cbc1313b77ab66f7e076483cdebb65af4b7ae69d895fcf1",
+      "bytes": 6350312
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/01_S1表头形式扰动/01_工业锅炉/04_既有专家主导型/结果/exceptions.csv",
+      "sha256": "693beaeaf8a7d0527c41ba5bb9e598129c29e13ddbf914fc81b52e29560f5ebb",
+      "bytes": 99
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/01_S1表头形式扰动/01_工业锅炉/04_既有专家主导型/结果/normalization_notes.json",
+      "sha256": "b0f0a6955dc6cb10c64dc4e0083f55e138aa651dbec75b479750c9e895975b9d",
+      "bytes": 2309
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/01_S1表头形式扰动/01_工业锅炉/04_既有专家主导型/结果/source_decisions.csv",
+      "sha256": "0c164234c5a41bd45792b460677fa39838774ceedacab30d12aed84a5e913093",
+      "bytes": 862067
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/01_S1表头形式扰动/02_火电热力/04_既有专家主导型/结果/calculation_totals.csv",
+      "sha256": "a161aff9ac1fad748552fed0e1fe16f6cfd7413f9cb297496abeda43c8e5a609",
+      "bytes": 661888
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/01_S1表头形式扰动/02_火电热力/04_既有专家主导型/结果/exceptions.csv",
+      "sha256": "693beaeaf8a7d0527c41ba5bb9e598129c29e13ddbf914fc81b52e29560f5ebb",
+      "bytes": 99
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/01_S1表头形式扰动/02_火电热力/04_既有专家主导型/结果/normalization_notes.json",
+      "sha256": "524e25f5fdaa343784e6db289b2f6fad6849f484031703e83bb91aaddcbac20c",
+      "bytes": 2319
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/01_S1表头形式扰动/02_火电热力/04_既有专家主导型/结果/source_decisions.csv",
+      "sha256": "631c5339892770573ad5c87aa3733a40d436f632b5404b74466636c2c2c7e4b4",
+      "bytes": 847071
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/02_S2等价别名扰动/01_工业锅炉/04_既有专家主导型/结果/calculation_totals.csv",
+      "sha256": "3b326720fd9deef5e6e63473bcf82ddbe08c860a20acd8ac431e546408563e8a",
+      "bytes": 6350314
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/02_S2等价别名扰动/01_工业锅炉/04_既有专家主导型/结果/exceptions.csv",
+      "sha256": "693beaeaf8a7d0527c41ba5bb9e598129c29e13ddbf914fc81b52e29560f5ebb",
+      "bytes": 99
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/02_S2等价别名扰动/01_工业锅炉/04_既有专家主导型/结果/normalization_notes.json",
+      "sha256": "8012df85e1704aa2ce3737979efa96187f5dc50932e29036e2a386a833174180",
+      "bytes": 2309
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/02_S2等价别名扰动/01_工业锅炉/04_既有专家主导型/结果/source_decisions.csv",
+      "sha256": "0c164234c5a41bd45792b460677fa39838774ceedacab30d12aed84a5e913093",
+      "bytes": 862067
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/02_S2等价别名扰动/02_火电热力/04_既有专家主导型/结果/calculation_totals.csv",
+      "sha256": "93629180b7d90869ce746a7fa68ff78cc92a2812c8c6c93199d37b22f52e24e8",
+      "bytes": 661906
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/02_S2等价别名扰动/02_火电热力/04_既有专家主导型/结果/exceptions.csv",
+      "sha256": "693beaeaf8a7d0527c41ba5bb9e598129c29e13ddbf914fc81b52e29560f5ebb",
+      "bytes": 99
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/02_S2等价别名扰动/02_火电热力/04_既有专家主导型/结果/normalization_notes.json",
+      "sha256": "fd65c3e7d1ba1c599e1b7577e101feb29f904833e4ff8d87b684e241be60fe48",
+      "bytes": 2319
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/02_S2等价别名扰动/02_火电热力/04_既有专家主导型/结果/source_decisions.csv",
+      "sha256": "631c5339892770573ad5c87aa3733a40d436f632b5404b74466636c2c2c7e4b4",
+      "bytes": 847071
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/03_S3列与工作表顺序扰动/01_工业锅炉/04_既有专家主导型/结果/calculation_totals.csv",
+      "sha256": "3eef19f808e9e287ac2e12138a41d002c321e412bbf42961ba5ab199f615f5c3",
+      "bytes": 6350313
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/03_S3列与工作表顺序扰动/01_工业锅炉/04_既有专家主导型/结果/exceptions.csv",
+      "sha256": "693beaeaf8a7d0527c41ba5bb9e598129c29e13ddbf914fc81b52e29560f5ebb",
+      "bytes": 99
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/03_S3列与工作表顺序扰动/01_工业锅炉/04_既有专家主导型/结果/normalization_notes.json",
+      "sha256": "d8b0a421d0b2dbdd0fa0b6b0fcdb871db33d8e1d348615f1e8f19cfac55f750b",
+      "bytes": 2318
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/03_S3列与工作表顺序扰动/01_工业锅炉/04_既有专家主导型/结果/source_decisions.csv",
+      "sha256": "0c164234c5a41bd45792b460677fa39838774ceedacab30d12aed84a5e913093",
+      "bytes": 862067
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/03_S3列与工作表顺序扰动/02_火电热力/04_既有专家主导型/结果/calculation_totals.csv",
+      "sha256": "8723263746802dbc7e432b7c577ea917fac19f52beeb8b6d61abbcde55f284c6",
+      "bytes": 661899
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/03_S3列与工作表顺序扰动/02_火电热力/04_既有专家主导型/结果/exceptions.csv",
+      "sha256": "693beaeaf8a7d0527c41ba5bb9e598129c29e13ddbf914fc81b52e29560f5ebb",
+      "bytes": 99
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/03_S3列与工作表顺序扰动/02_火电热力/04_既有专家主导型/结果/normalization_notes.json",
+      "sha256": "6f6c4ad6f6a8429cecbc704eb2473b7086e50084ab57cc19c1fc95dcadc5a25d",
+      "bytes": 2328
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/03_S3列与工作表顺序扰动/02_火电热力/04_既有专家主导型/结果/source_decisions.csv",
+      "sha256": "631c5339892770573ad5c87aa3733a40d436f632b5404b74466636c2c2c7e4b4",
+      "bytes": 847071
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/04_S4组合扰动/01_工业锅炉/04_既有专家主导型/结果/calculation_totals.csv",
+      "sha256": "5e53929ab0d7fd6db7b4b7035c15b8f6e63245c28d8bd866c63d7cacdc227c6d",
+      "bytes": 6350333
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/04_S4组合扰动/01_工业锅炉/04_既有专家主导型/结果/exceptions.csv",
+      "sha256": "d896d042b3aa4e4903cbc675adc36572d16f426252051b66594de1537432f9d6",
+      "bytes": 317
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/04_S4组合扰动/01_工业锅炉/04_既有专家主导型/结果/normalization_notes.json",
+      "sha256": "9b8e6a391c701a4ee5420c0ffa450634d5c74f968d2e1c42e547295aac4ce351",
+      "bytes": 2303
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/04_S4组合扰动/01_工业锅炉/04_既有专家主导型/结果/source_decisions.csv",
+      "sha256": "0c164234c5a41bd45792b460677fa39838774ceedacab30d12aed84a5e913093",
+      "bytes": 862067
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/04_S4组合扰动/02_火电热力/04_既有专家主导型/结果/calculation_totals.csv",
+      "sha256": "cc8d4fb7d37b1486662d2c5591278fc97781bc15b89dde2684982df40cff0305",
+      "bytes": 661924
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/04_S4组合扰动/02_火电热力/04_既有专家主导型/结果/exceptions.csv",
+      "sha256": "ef6d32bd1bc642bfc54f6443b627f8a5b2620871e579d556aff2aaa775ea6de7",
+      "bytes": 308
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/04_S4组合扰动/02_火电热力/04_既有专家主导型/结果/normalization_notes.json",
+      "sha256": "f44d1146cbad65ee183f349a54754b32db6b0ead8a48331126884be668e667b9",
+      "bytes": 2313
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/04_S4组合扰动/02_火电热力/04_既有专家主导型/结果/source_decisions.csv",
+      "sha256": "631c5339892770573ad5c87aa3733a40d436f632b5404b74466636c2c2c7e4b4",
+      "bytes": 847071
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/02_B2受控缺失与冲突注入/01_工业锅炉/04_既有专家主导型/结果/calculation_totals.csv",
+      "sha256": "52a18dc7f826b3c9b722d328951bc980fc2694fd22d552857d63945f93755d09",
+      "bytes": 6350790
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/02_B2受控缺失与冲突注入/01_工业锅炉/04_既有专家主导型/结果/exceptions.csv",
+      "sha256": "28198e8a144f54f73dd910615123281848cc54c3005e3da808da06c823cfc67a",
+      "bytes": 11937
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/02_B2受控缺失与冲突注入/01_工业锅炉/04_既有专家主导型/结果/normalization_notes.json",
+      "sha256": "cd9d0e78762b0432dd74194fe7d5bb6e78c6fd4f0f6ad0cd2a6bb48c5c24a97e",
+      "bytes": 2296
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/02_B2受控缺失与冲突注入/01_工业锅炉/04_既有专家主导型/结果/source_decisions.csv",
+      "sha256": "0c164234c5a41bd45792b460677fa39838774ceedacab30d12aed84a5e913093",
+      "bytes": 862067
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/02_B2受控缺失与冲突注入/02_火电热力/04_既有专家主导型/结果/calculation_totals.csv",
+      "sha256": "81edfbe3f84455e61b304b824d689b890fec3e29f13d5a39240b6721c0085727",
+      "bytes": 689583
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/02_B2受控缺失与冲突注入/02_火电热力/04_既有专家主导型/结果/exceptions.csv",
+      "sha256": "f8d1c4c1b77f7f149c486ab0c26aa82d03a1f86174b6d8d9508cd24ce5d970cd",
+      "bytes": 12531
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/02_B2受控缺失与冲突注入/02_火电热力/04_既有专家主导型/结果/normalization_notes.json",
+      "sha256": "fe71fafec41d88d95bd7b22ccf7e45ee81f086e017db9abbe499e56acf411f99",
+      "bytes": 2307
+    },
+    {
+      "path": "human_baseline/normalized_v2/实验结果/03_实验B_输入不变性与异常处置/02_B2受控缺失与冲突注入/02_火电热力/04_既有专家主导型/结果/source_decisions.csv",
+      "sha256": "631c5339892770573ad5c87aa3733a40d436f632b5404b74466636c2c2c7e4b4",
+      "bytes": 847071
+    },
+    {
+      "path": "human_baseline/original_packages/实验结果/02_实验A_端到端清单编制/01_工业锅炉/04_既有专家主导型/结果/固定燃烧源-工业锅炉_调整.xlsx",
+      "sha256": "623dc9104b32577d9bbd2b72570bbb62089e6c689788c72f8d9d5dd15aab2b4f",
+      "bytes": 2945964
+    },
+    {
+      "path": "human_baseline/original_packages/实验结果/02_实验A_端到端清单编制/02_火电热力/04_既有专家主导型/结果/固定燃烧源-火电、热力生产与供应_调整.xlsx",
+      "sha256": "ba902bb2026d7ea1ecd43426916c268aa8779afffbed0070e8641efab3343fb4",
+      "bytes": 393285
+    },
+    {
+      "path": "human_baseline/original_packages/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/01_工业锅炉/04_既有专家主导型/结果/固定燃烧源-工业锅炉_调整.xlsx",
+      "sha256": "623dc9104b32577d9bbd2b72570bbb62089e6c689788c72f8d9d5dd15aab2b4f",
+      "bytes": 2945964
+    },
+    {
+      "path": "human_baseline/original_packages/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/02_火电热力/04_既有专家主导型/结果/固定燃烧源-火电、热力生产与供应_调整.xlsx",
+      "sha256": "ba902bb2026d7ea1ecd43426916c268aa8779afffbed0070e8641efab3343fb4",
+      "bytes": 393285
+    },
+    {
+      "path": "human_baseline/original_packages/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/01_S1表头形式扰动/01_工业锅炉/04_既有专家主导型/结果/固定燃烧源-工业锅炉_调整.xlsx",
+      "sha256": "a4d36afbc71f17025a0b4c99d8f3b649bdd42c2f4c90061297c564a16ea30ad1",
+      "bytes": 2189845
+    },
+    {
+      "path": "human_baseline/original_packages/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/01_S1表头形式扰动/02_火电热力/04_既有专家主导型/结果/固定燃烧源-火电、热力生产与供应_调整.xlsx",
+      "sha256": "17bf35853884f23ceb6f23f0e76d8cefa9cfd6df100bc300947b22484999e262",
+      "bytes": 290986
+    },
+    {
+      "path": "human_baseline/original_packages/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/02_S2等价别名扰动/01_工业锅炉/04_既有专家主导型/结果/固定燃烧源-工业锅炉_调整.xlsx",
+      "sha256": "9607a8efb43cc66f8845bb17639d8c5261be1d70487395895014a3ae664438c9",
+      "bytes": 2189643
+    },
+    {
+      "path": "human_baseline/original_packages/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/02_S2等价别名扰动/02_火电热力/04_既有专家主导型/结果/固定燃烧源-火电、热力生产与供应_调整.xlsx",
+      "sha256": "cadcdd9d8465a35e1be780c24667744dde64341e891ace66e10e8313a637f427",
+      "bytes": 290978
+    },
+    {
+      "path": "human_baseline/original_packages/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/03_S3列与工作表顺序扰动/01_工业锅炉/04_既有专家主导型/结果/固定燃烧源-工业锅炉_调整.xlsx",
+      "sha256": "9410c16bb152ac208968b06dcc7bca875a49d9152c06a103b9b734cc93a257a3",
+      "bytes": 2189758
+    },
+    {
+      "path": "human_baseline/original_packages/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/03_S3列与工作表顺序扰动/02_火电热力/04_既有专家主导型/结果/固定燃烧源-火电、热力生产与供应_调整.xlsx",
+      "sha256": "fa4c275db5fcb7ab42b1675653bafd379703c5a6334bdc16ad836b2819e890c5",
+      "bytes": 290981
+    },
+    {
+      "path": "human_baseline/original_packages/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/04_S4组合扰动/01_工业锅炉/04_既有专家主导型/结果/固定燃烧源-工业锅炉_调整.xlsx",
+      "sha256": "677d2465e83a79867dfd2e8ac9d2823255e7f07945250ffe763a0939b1da95c5",
+      "bytes": 2189804
+    },
+    {
+      "path": "human_baseline/original_packages/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/04_S4组合扰动/02_火电热力/04_既有专家主导型/结果/固定燃烧源-火电、热力生产与供应_调整.xlsx",
+      "sha256": "e343305dae1c653c962b0b6d4b264c407148864a25a201311598886ce7c4d2aa",
+      "bytes": 290978
+    },
+    {
+      "path": "human_baseline/original_packages/实验结果/03_实验B_输入不变性与异常处置/02_B2受控缺失与冲突注入/01_工业锅炉/04_既有专家主导型/结果/固定燃烧源-工业锅炉_调整.xlsx",
+      "sha256": "c1101cebf60121f1e7265a8fcd4baaaceeb959dcb5049d7055e73ee53c028941",
+      "bytes": 2195973
+    },
+    {
+      "path": "human_baseline/original_packages/实验结果/03_实验B_输入不变性与异常处置/02_B2受控缺失与冲突注入/02_火电热力/04_既有专家主导型/结果/固定燃烧源-火电、热力生产与供应_调整.xlsx",
+      "sha256": "8eba19822359ff6d4060d5dbd343fd0b4b6f4de76d323795e0f118fcc5c13b8a",
+      "bytes": 302984
+    },
+    {
+      "path": "inputs/experiment_b/B2/evaluation_class_audit.json",
+      "sha256": "ace0de1bf15a720b39717db86b4c14f58db440da7e6c5e230bb5daced5a164a7",
+      "bytes": 5880
+    },
+    {
+      "path": "inputs/experiment_b/B2/injection_manifest.json",
+      "sha256": "e5185077be5a0d0d73e6b7f2e00cbdf1617f3c3c4333fe2f9c4a4ff7649ff5eb",
+      "bytes": 10955
+    },
+    {
+      "path": "inputs/experiment_b/B2/source_identity_index.json",
+      "sha256": "b4d1abd9cba0b3bbbbd0287e70af860321fe12b9ee9d89d05a8e8439ed491c54",
+      "bytes": 1780553
+    },
+    {
+      "path": "inputs/experiment_b/B2/variant_manifest.json",
+      "sha256": "c3bc9bbcf45e16a75df1798116638939bafa6ee73d0683731852dc195448ff6d",
+      "bytes": 1397
+    },
+    {
+      "path": "inputs/experiment_b/B2/基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+      "sha256": "4cb10540b3dd114f86a616da78e97b8e2b55656e04512aea3d853d3d9ac2ec24",
+      "bytes": 2953658
+    },
+    {
+      "path": "inputs/experiment_b/B2/基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+      "sha256": "9e08ce3eb078fa25debd81a5a13559a5981405a71ac34ef063e05f1328231e39",
+      "bytes": 2865008
+    },
+    {
+      "path": "inputs/experiment_b/B2/基101-2001_原始结构脱敏输入_分片03-of04.xlsx",
+      "sha256": "b95d80ad0d4070e850134b3e75c330cdcba6c1083bdb982ced8b634643681fb0",
+      "bytes": 2808547
+    },
+    {
+      "path": "inputs/experiment_b/B2/基101-2001_原始结构脱敏输入_分片04-of04.xlsx",
+      "sha256": "6a6c04d5f515e1b725ffea0a9ef7caf38ac551fc6cd05f3dab06acdebdd33e5b",
+      "bytes": 2769621
+    },
+    {
+      "path": "inputs/experiment_b/B2/基101-2002_原始结构脱敏输入.xlsx",
+      "sha256": "bf922f88db0e20cf891863beae03b92cfcbf97d71b2476c8b3551f39a3fd9aee",
+      "bytes": 3524667
+    },
+    {
+      "path": "inputs/experiment_b/B2/基102-2002_原始结构脱敏输入.xlsx",
+      "sha256": "409b06fda178dbe346d9f739faeacc1a1dda7d7ce86142ca16bfec4aa7658a20",
+      "bytes": 2103917
+    },
+    {
+      "path": "inputs/experiment_b/S1/source_identity_index.json",
+      "sha256": "b4d1abd9cba0b3bbbbd0287e70af860321fe12b9ee9d89d05a8e8439ed491c54",
+      "bytes": 1780553
+    },
+    {
+      "path": "inputs/experiment_b/S1/variant_manifest.json",
+      "sha256": "d59593cdb19d7b15fb893531b4993c43ab06ea7bde209bb8c6be4da056461814",
+      "bytes": 5984
+    },
+    {
+      "path": "inputs/experiment_b/S1/基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+      "sha256": "80e08ad412eaa8ea720515a6c80ffd27b01383a08de4b41f8fbf9709e23584fd",
+      "bytes": 2881692
+    },
+    {
+      "path": "inputs/experiment_b/S1/基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+      "sha256": "05c7fa6a070e754e9195349c83167e7cc56de5dd27af1d2d73aebab85c3fbddd",
+      "bytes": 2788497
+    },
+    {
+      "path": "inputs/experiment_b/S1/基101-2001_原始结构脱敏输入_分片03-of04.xlsx",
+      "sha256": "4d921c581113fa2f0f3ae222b5a658c8023f9e28fb90775bfd79390e01c8bf83",
+      "bytes": 2732966
+    },
+    {
+      "path": "inputs/experiment_b/S1/基101-2001_原始结构脱敏输入_分片04-of04.xlsx",
+      "sha256": "03215b8632a623c56fd53e6ea20c5865a1e3659148b77bc91c8030e69091d69f",
+      "bytes": 2691831
+    },
+    {
+      "path": "inputs/experiment_b/S1/基101-2002_原始结构脱敏输入.xlsx",
+      "sha256": "3bfbcb6f3c3fb27e45906f98ef05aad89d7070ddc0d2ec2bec9dca5013084889",
+      "bytes": 3513753
+    },
+    {
+      "path": "inputs/experiment_b/S1/基102-2002_原始结构脱敏输入.xlsx",
+      "sha256": "c91dbb6861fa87c5d4e05233620b4461ae63cd58339df5286d641f2f864737cb",
+      "bytes": 2104063
+    },
+    {
+      "path": "inputs/experiment_b/S2/source_identity_index.json",
+      "sha256": "b4d1abd9cba0b3bbbbd0287e70af860321fe12b9ee9d89d05a8e8439ed491c54",
+      "bytes": 1780553
+    },
+    {
+      "path": "inputs/experiment_b/S2/variant_manifest.json",
+      "sha256": "4445024aad5d9a1750adb24518a873acc3494eb8cae3b0007372bf99efb60930",
+      "bytes": 5984
+    },
+    {
+      "path": "inputs/experiment_b/S2/基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+      "sha256": "8402a11ae8a210b1e9b659762c4de4429fc99159ae644e4eb093b36028af93be",
+      "bytes": 2881339
+    },
+    {
+      "path": "inputs/experiment_b/S2/基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+      "sha256": "3b267ad63fc31818fe95b63d664f198724847878e58481cc39c2465a496f9f38",
+      "bytes": 2787783
+    },
+    {
+      "path": "inputs/experiment_b/S2/基101-2001_原始结构脱敏输入_分片03-of04.xlsx",
+      "sha256": "6a028d25ab0cab6e554651cba412b9d6bd41c72f15cea512257287d2ef5b14a9",
+      "bytes": 2732445
+    },
+    {
+      "path": "inputs/experiment_b/S2/基101-2001_原始结构脱敏输入_分片04-of04.xlsx",
+      "sha256": "fd8f37934e83d207cdea0d3e9992f35507df620dae91b477b41583c0c272fd03",
+      "bytes": 2691477
+    },
+    {
+      "path": "inputs/experiment_b/S2/基101-2002_原始结构脱敏输入.xlsx",
+      "sha256": "84e7e3430bbcc901e87300d41b756f2fc0cbf2e0d40bb18a4bd12cc5fb0f098f",
+      "bytes": 3513468
+    },
+    {
+      "path": "inputs/experiment_b/S2/基102-2002_原始结构脱敏输入.xlsx",
+      "sha256": "d93c35c71e2d31bff3402578c91ea8bf37c2e7033cb92f7d13be0326779b87bb",
+      "bytes": 2103809
+    },
+    {
+      "path": "inputs/experiment_b/S3/source_identity_index.json",
+      "sha256": "b4d1abd9cba0b3bbbbd0287e70af860321fe12b9ee9d89d05a8e8439ed491c54",
+      "bytes": 1780553
+    },
+    {
+      "path": "inputs/experiment_b/S3/variant_manifest.json",
+      "sha256": "e0a13963c5d7b78898a020cd30cbf7941b6a38f5445232d7957665ae59ed2f88",
+      "bytes": 5984
+    },
+    {
+      "path": "inputs/experiment_b/S3/基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+      "sha256": "223be90f32eff0a85abee27b8a1c76c4af54d3b578436e42e10ce3119864686e",
+      "bytes": 2897818
+    },
+    {
+      "path": "inputs/experiment_b/S3/基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+      "sha256": "186a27d903f6b490012ef5e76a2d501eda65dc478c707f89259f05f7f6d7ce72",
+      "bytes": 2798041
+    },
+    {
+      "path": "inputs/experiment_b/S3/基101-2001_原始结构脱敏输入_分片03-of04.xlsx",
+      "sha256": "178d00e0ca35f8c7d3b9ed159fe58f19f774b859c9674ad24fd1c573055f9375",
+      "bytes": 2742023
+    },
+    {
+      "path": "inputs/experiment_b/S3/基101-2001_原始结构脱敏输入_分片04-of04.xlsx",
+      "sha256": "b4b2e502fc36e338b416925cd9f7f9623ed0a8f9c53f4889037663bd3f992d2b",
+      "bytes": 2699921
+    },
+    {
+      "path": "inputs/experiment_b/S3/基101-2002_原始结构脱敏输入.xlsx",
+      "sha256": "5c717e7090f2c632baf376b014b8659320cf10dce9eea2a61e75486373d37ad5",
+      "bytes": 3547810
+    },
+    {
+      "path": "inputs/experiment_b/S3/基102-2002_原始结构脱敏输入.xlsx",
+      "sha256": "c8a3160158e5314142ce52e19cc139e9b4182648e6c561d5c819bb88caf1c8ac",
+      "bytes": 2132152
+    },
+    {
+      "path": "inputs/experiment_b/S4/source_identity_index.json",
+      "sha256": "b4d1abd9cba0b3bbbbd0287e70af860321fe12b9ee9d89d05a8e8439ed491c54",
+      "bytes": 1780553
+    },
+    {
+      "path": "inputs/experiment_b/S4/variant_manifest.json",
+      "sha256": "d2c904b4388526a7dadb93d53d9605ea8292250ecae8192fb4c845781254fa31",
+      "bytes": 5984
+    },
+    {
+      "path": "inputs/experiment_b/S4/基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+      "sha256": "e1111a4ce508ca563cb8551e329ea8b982491d3525ba26acde033d27938c297e",
+      "bytes": 2898108
+    },
+    {
+      "path": "inputs/experiment_b/S4/基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+      "sha256": "86f748974afcf9a9f41f65ccc837e028f714bbb642bcac550c7cfa2db180bdb6",
+      "bytes": 2798182
+    },
+    {
+      "path": "inputs/experiment_b/S4/基101-2001_原始结构脱敏输入_分片03-of04.xlsx",
+      "sha256": "e5b69f3c93f127e32d64939136bd0c39fb4f2b217439e6206dbca21a22a08df3",
+      "bytes": 2742244
+    },
+    {
+      "path": "inputs/experiment_b/S4/基101-2001_原始结构脱敏输入_分片04-of04.xlsx",
+      "sha256": "57760ba9d5b112f9b949ece76562fe31cd38021f2c5efd31aae2f8954777c849",
+      "bytes": 2700167
+    },
+    {
+      "path": "inputs/experiment_b/S4/基101-2002_原始结构脱敏输入.xlsx",
+      "sha256": "e69d6d4f1d5eea97d8d956645138ef95970820f0cdebbd5c17b9f26e745df420",
+      "bytes": 3547693
+    },
+    {
+      "path": "inputs/experiment_b/S4/基102-2002_原始结构脱敏输入.xlsx",
+      "sha256": "dc51ccc5a853d1298d648f0a7e2c831795f14224e78ba012b1e790308b1727d4",
+      "bytes": 2132288
+    },
+    {
+      "path": "inputs/prepared/raw_input_manifest.json",
+      "sha256": "e91c3a37f4310a509d2b6b3b5222b774d9398d75ae491ffc5c6ddbe48a0344fb",
+      "bytes": 7914
+    },
+    {
+      "path": "inputs/prepared/source_identity_index.json",
+      "sha256": "b4d1abd9cba0b3bbbbd0287e70af860321fe12b9ee9d89d05a8e8439ed491c54",
+      "bytes": 1780553
+    },
+    {
+      "path": "inputs/prepared/基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+      "sha256": "4cb10540b3dd114f86a616da78e97b8e2b55656e04512aea3d853d3d9ac2ec24",
+      "bytes": 2953658
+    },
+    {
+      "path": "inputs/prepared/基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+      "sha256": "9e08ce3eb078fa25debd81a5a13559a5981405a71ac34ef063e05f1328231e39",
+      "bytes": 2865008
+    },
+    {
+      "path": "inputs/prepared/基101-2001_原始结构脱敏输入_分片03-of04.xlsx",
+      "sha256": "b95d80ad0d4070e850134b3e75c330cdcba6c1083bdb982ced8b634643681fb0",
+      "bytes": 2808547
+    },
+    {
+      "path": "inputs/prepared/基101-2001_原始结构脱敏输入_分片04-of04.xlsx",
+      "sha256": "6a6c04d5f515e1b725ffea0a9ef7caf38ac551fc6cd05f3dab06acdebdd33e5b",
+      "bytes": 2769621
+    },
+    {
+      "path": "inputs/prepared/基101-2002_原始结构脱敏输入.xlsx",
+      "sha256": "bf922f88db0e20cf891863beae03b92cfcbf97d71b2476c8b3551f39a3fd9aee",
+      "bytes": 3524667
+    },
+    {
+      "path": "inputs/prepared/基102-2002_原始结构脱敏输入.xlsx",
+      "sha256": "6cbce53d6b15b59b28c6628512a2466523c0220624379e0734c4692b48386812",
+      "bytes": 2138668
+    },
+    {
+      "path": "matrix/frozen_experiment_matrix.csv",
+      "sha256": "ea68415338f1c4da65734b57965566a1f61179715b1a24b07d79503e368cd407",
+      "bytes": 25544
+    },
+    {
+      "path": "matrix/frozen_experiment_matrix.json",
+      "sha256": "7ea14195c19e509ab9498e6421319d6eaec4b03251cad12e76eddb3ca234c83e",
+      "bytes": 70051
+    },
+    {
+      "path": "method_package/frozen_manifest.json",
+      "sha256": "ec1520dccaf4abd0fef001768b23cb51c172add52e819b1beca110893418780d",
+      "bytes": 13445
+    },
+    {
+      "path": "reference/frozen/v2.0.0/package_lock.json",
+      "sha256": "8cbdb9af596e44f479d494ec99ca34f5c579c99681e55a39d12c51200033d220",
+      "bytes": 2437
+    },
+    {
+      "path": "reproduction/bootstrap_environment.sh",
+      "sha256": "872c1f3b46fdf01366962d6410782db0057bf8affa01aaf6d8693d4c47822894",
+      "bytes": 626
+    },
+    {
+      "path": "requirements.lock.txt",
+      "sha256": "622358d88f0f1573c0963540d88edce98d90dfe1ce982d065570e177f3d3b2f9",
+      "bytes": 75
+    },
+    {
+      "path": "rules/frozen/v1.0.1/rule_package_lock.json",
+      "sha256": "8fcb7ca7ee3a8870d7c78da410ea3710a5f71411a7334cffd77d15fea807e973",
+      "bytes": 403
+    }
+  ]
+}

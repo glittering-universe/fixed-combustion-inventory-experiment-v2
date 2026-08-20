@@ -1,0 +1,87 @@
+# 固定燃烧源候选规则包 — 治理与控制规则 (rules/controls.yaml)
+# 依据：T/CSES 144-2024 第3.4节、第7.2.1.2节、第8.3.1节、附录A 表A.1、附录E 表E.1
+rules:
+  - rule_id: r_control_efficiency_table
+    rule_type: control
+    source:
+      document: T/CSES 144—2024
+      section: 附录A 表A.1 污染物控制措施平均去除效率推荐值（单位：%）
+      physical_pdf_pages: [33, 34, 35]
+    scope:
+      parameter: 控制措施平均去除效率
+    conditions:
+      lookup_key: [control_technology, pollutant]
+      pollutants: [SO2, NOx, VOCs, PM2.5, PM2.5-10, BC, OC]
+      efficiency_unit: "%"
+    action:
+      type: assign_control
+      eta_average: 查附录A 表A.1
+      parameter_table: parameters/control_efficiencies.csv
+    on_missing: report_issue
+
+  - rule_id: r_control_none
+    rule_type: control
+    source:
+      document: T/CSES 144—2024
+      section: 第3.4节、附录A 表A.1（无控制技术行）
+      physical_pdf_pages: [5, 35]
+    scope:
+      control_status: 无污染控制设备或措施
+    conditions:
+      control_technology: 无控制技术
+    action:
+      type: assign_control
+      eta: 0
+      note: 无控制设备或措施时，排放系数等于产生系数
+    on_missing: not_applicable
+
+  - rule_id: r_control_eta_source_default
+    rule_type: control
+    source:
+      document: T/CSES 144—2024
+      section: 第7.2.1.2节、第8.3.1节
+      physical_pdf_pages: [9, 14]
+    scope:
+      source: [电力热力源, 工业源化石燃料固定燃烧]
+    conditions:
+      actual_removal_efficiency_unavailable: true
+      default_reference: [附录A 表A.1, 生态环境部公告2021年第24号附表1]
+    action:
+      type: assign_control
+      eta_source: 附录A 表A.1
+    on_missing: withhold
+
+  - rule_id: r_control_pm25_10_definition
+    rule_type: control
+    source:
+      document: T/CSES 144—2024
+      section: 附录A 表A.1 注a
+      physical_pdf_pages: [35]
+    scope:
+      particle_fraction: PM2.5-10
+    conditions:
+      size_range: 粒径大于2.5μm且小于等于10μm的颗粒物
+    action:
+      type: assign_control
+      pm25_10_ef: EF_PM10 - EF_PM2.5
+    on_missing: withhold
+
+  - rule_id: r_control_nh3_slip
+    rule_type: control
+    source:
+      document: T/CSES 144—2024
+      section: 附录E 表E.1（烟气脱硝行）
+      physical_pdf_pages: [50]
+    scope:
+      process: 脱硝设施（烟气脱硝）
+      pollutant: NH3
+    conditions:
+      slip_factor:
+        脱硝烟气-选择性非催化还原: 0.17
+        脱硝烟气-选择性催化还原: 0.16
+      unit: g/kg煤
+    action:
+      type: assign_control
+      nh3_slip_source: 附录E 表E.1
+      parameter_table: parameters/ammonia_slip_factors.csv
+    on_missing: withhold

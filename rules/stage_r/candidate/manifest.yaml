@@ -1,0 +1,50 @@
+package_id: tcses-144-2024-fixed-combustion
+version: 0.1.0-candidate
+status: awaiting_professional_review
+standard:
+  name: T/CSES 144—2024
+  path: /Users/wushuo/Desktop/环境学院论文/1 城市大气污染源排放清单编制技术指南 T_CSES 144-2024.pdf
+  sha256: bc46346443e76ccf063ae5e2b1d1c5d7a8544fb4f7cf6b11239c80bca66181a9
+scope:
+  chapters:
+    - 通用核算方法与公式
+    - 7
+    - 8.3
+    - 15
+  appendices:
+    - A
+    - C
+    - D
+    - E.1
+    - E.7
+files:
+  - path: rules/scope.yaml
+    sha256: d047e113993ed357a8a3d9532888785bfd145f831b2c54ede0bf3eab1fc5d441
+  - path: rules/methods.yaml
+    sha256: 5b660fd519f0018308eea2e76dfa99b5c739a2dc3ac3cef01ff1d86c9dd61986
+  - path: rules/formulas.yaml
+    sha256: aef3d12a6e077b567109ff0cedd4a939825ec2768a471a2abc1d25226eccf5db
+  - path: rules/controls.yaml
+    sha256: 4fb7fc9cd70e6a36b661a75f28937f7d001720b88d073801d64188b68c9a5513
+  - path: rules/quality_control.yaml
+    sha256: ba79c28f7ba71d2e2fe7a8917d11711db8280f1a0ab1c402f6c3b83dc14c50f5
+  - path: parameters/power_heat_emission_factors.csv
+    sha256: c252f90047361981ee6a3028530f77bad3db54d087abe557a6c8bc8306fc516a
+  - path: parameters/industrial_boiler_emission_factors.csv
+    sha256: ea63354fc5ea37db5518bb1513afbdcad8d2a7f6be643c7059a3aa329dcca592
+  - path: parameters/coal_parameters.csv
+    sha256: 06e6ce295d2eb819b4b783c842824f345ce98f55ecb1873bd970317c6de4acc4
+  - path: parameters/control_efficiencies.csv
+    sha256: 056fb6ec7012b184b28bd26980219350ddcb72dee36837bbae78fb6bb1e55b6e
+  - path: parameters/ammonia_slip_factors.csv
+    sha256: 9aa0dad0843fdec892fad487972ade9597667e5d251940f16e475ccf988c0914
+  - path: mappings/standard_fuels.csv
+    sha256: 72c0605669382e5d01cd5b7dfb7fd165dc3703ed7142b53386ee3e031ef5eb45
+  - path: mappings/standard_combustion_technologies.csv
+    sha256: 1ce05e87623ff08cb01155f87270e0f3f4f879c4eb8d17bfa85705ec1cbc1e16
+  - path: mappings/standard_control_technologies.csv
+    sha256: b061dcfb2c17be05d6c697f1273217bcde2e88ebb1ba1725692a6082387264e8
+  - path: tests/rule_tests.jsonl
+    sha256: a61f67d2410dac901c85aa4bf6d5ba3c689c851bd0d739b396d152f49d8f5660
+  - path: professional_review_snapshot.md
+    sha256: 0a3b91d2aeac4461ab7606360597be7478b76b9130988722c60ca0536327f856

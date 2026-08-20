@@ -1,0 +1,15 @@
+{
+  "candidate_path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/rules/stage_r/candidate",
+  "counts": {
+    "mappings": 103,
+    "parameters": 1286,
+    "rules": 34,
+    "tests": 20
+  },
+  "errors": [],
+  "professional_review_status": "not_performed",
+  "source_pdf_sha256": "bc46346443e76ccf063ae5e2b1d1c5d7a8544fb4f7cf6b11239c80bca66181a9",
+  "stage": "rule_package_validation",
+  "success": true,
+  "warnings": []
+}

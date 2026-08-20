@@ -1,0 +1,72 @@
+rules:
+- rule_id: r_qc_activity_review
+  rule_type: quality_control
+  source:
+    document: T/CSES 144—2024
+    section: 第15.1.3节 活动水平数据审核
+    physical_pdf_pages:
+    - 30
+  scope:
+    data_stage: 活动水平数据
+  conditions:
+    review_dimensions:
+    - 完整性
+    - 规范性
+    - 一致性
+    - 合理性
+    - 准确性
+    accuracy_items:
+    - 燃煤硫分
+    - 污染治理设施去除效率
+  action:
+    type: check_quality
+    check: 活动水平数据五性审核
+  on_missing: report_issue
+- rule_id: r_qc_calculation_review
+  rule_type: quality_control
+  source:
+    document: T/CSES 144—2024
+    section: 第15.1.4节 排放量核算质控
+    physical_pdf_pages:
+    - 30
+    - 31
+  scope:
+    data_stage: 排放量核算
+  conditions:
+    completeness: 全部产排污节点、全部污染物种类
+    method_rationality:
+    - 监测数据法
+    - 产排污系数法
+    - 物料衡算法
+    coefficient_method_checks:
+    - 优先采用生态环境部公告2021年第24号系数
+    - 正确选用本文件产排污系数
+    - 注意数据单位转换并计算准确
+    mass_balance_checks:
+    - 燃煤硫分灰分等数据符合技术规范
+    - 单位换算、小数点、计算方法准确
+    result_review: 自上而下校核（宏观占比 → 区域对比 → 重点企业逐一校验）
+  action:
+    type: check_quality
+    check: 核算过程完整性、核算方法合理性、核算结果合理性
+  on_missing: report_issue
+- rule_id: r_qc_inventory_review
+  rule_type: quality_control
+  source:
+    document: T/CSES 144—2024
+    section: 第15.1.5节 排放清单审核
+    physical_pdf_pages:
+    - 31
+  scope:
+    data_stage: 排放清单成品
+  conditions:
+    review_dimensions:
+    - 数据完整性
+    - 填报规范性
+    - 数据准确性
+    - 数据合理性
+    rationality_method: 对比法（污染物排放量比例、单位产品或能源消费排放强度、平均去除效率等衍生指标）
+  action:
+    type: check_quality
+    check: 排放清单四性审核
+  on_missing: report_issue

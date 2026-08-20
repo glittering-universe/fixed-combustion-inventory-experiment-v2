@@ -1,0 +1,335 @@
+{
+  "version": "2.0.0",
+  "matching": "prefix_before_colon_then_alias_to_canonical_root",
+  "aggregation_rule": "merge_same_source_and_canonical_root_across_pollutants",
+  "codes": {
+    "ACTIVITY_MISSING": {
+      "canonical_root_cause": "activity_level_missing",
+      "requires_user_judgment": true
+    },
+    "ACTIVITY_OR_UNIT_MISSING": {
+      "canonical_root_cause": "activity_or_unit_unresolved",
+      "requires_user_judgment": true
+    },
+    "ACTIVITY_OUT_OF_RANGE": {
+      "canonical_root_cause": "activity_level_invalid",
+      "requires_user_judgment": true
+    },
+    "ACTIVITY_UNIT_UNSUPPORTED": {
+      "canonical_root_cause": "activity_unit_unresolved",
+      "requires_user_judgment": true
+    },
+    "ASH_MISSING": {
+      "canonical_root_cause": "ash_parameter_missing",
+      "requires_user_judgment": true
+    },
+    "ASH_OUT_OF_RANGE": {
+      "canonical_root_cause": "ash_parameter_invalid",
+      "requires_user_judgment": true
+    },
+    "CAPACITY_MISSING": {
+      "canonical_root_cause": "capacity_parameter_missing",
+      "requires_user_judgment": true
+    },
+    "CAPACITY_OUT_OF_RANGE": {
+      "canonical_root_cause": "capacity_parameter_invalid",
+      "requires_user_judgment": true
+    },
+    "COAL_BC_PARAMETER_MISSING": {
+      "canonical_root_cause": "coal_parameter_missing",
+      "requires_user_judgment": true
+    },
+    "COAL_OC_PARAMETER_MISSING": {
+      "canonical_root_cause": "coal_parameter_missing",
+      "requires_user_judgment": true
+    },
+    "COAL_PARAMETER_NOT_FOUND": {
+      "canonical_root_cause": "coal_parameter_missing",
+      "requires_user_judgment": true
+    },
+    "COAL_PARTICLE_PARAMETER_MISSING": {
+      "canonical_root_cause": "coal_parameter_missing",
+      "requires_user_judgment": true
+    },
+    "COMBUSTION_TECHNOLOGY_AMBIGUOUS": {
+      "canonical_root_cause": "combustion_technology_unresolved",
+      "requires_user_judgment": true
+    },
+    "COMBUSTION_TECHNOLOGY_UNMAPPED": {
+      "canonical_root_cause": "combustion_technology_unresolved",
+      "requires_user_judgment": true
+    },
+    "COMBUSTION_TECH_UNMAPPED": {
+      "canonical_root_cause": "combustion_technology_unresolved",
+      "requires_user_judgment": true
+    },
+    "CONTROLLED_NEGATIVE_CONTROL_EXPECTS_NO_SEMANTIC_CHANGE": {
+      "canonical_root_cause": "controlled_negative_control",
+      "requires_user_judgment": false
+    },
+    "CONTROL_INFO_MISSING_DENOX": {
+      "canonical_root_cause": "authorized_missing_control_metadata",
+      "requires_user_judgment": false
+    },
+    "CONTROL_INFO_MISSING_DESULF": {
+      "canonical_root_cause": "authorized_missing_control_metadata",
+      "requires_user_judgment": false
+    },
+    "CONTROL_INFO_MISSING_DUST": {
+      "canonical_root_cause": "authorized_missing_control_metadata",
+      "requires_user_judgment": false
+    },
+    "CONTROL_MISSING_ZERO": {
+      "canonical_root_cause": "authorized_missing_control_zero",
+      "requires_user_judgment": false
+    },
+    "CONTROL_RELATION_AMBIGUOUS": {
+      "canonical_root_cause": "control_relation_ambiguous",
+      "requires_user_judgment": true
+    },
+    "CONTROL_RELATION_CATEGORY_LEVEL": {
+      "canonical_root_cause": "authorized_control_relation_category_level",
+      "requires_user_judgment": false
+    },
+    "CONTROL_TECH_UNMAPPED": {
+      "canonical_root_cause": "authorized_unmapped_control_zero",
+      "requires_user_judgment": false
+    },
+    "CONTROL_TECH_UNMAPPED_CANDIDATE": {
+      "canonical_root_cause": "authorized_unmapped_control_zero",
+      "requires_user_judgment": false
+    },
+    "CONTROL_UNMAPPED_ZERO": {
+      "canonical_root_cause": "authorized_unmapped_control_zero",
+      "requires_user_judgment": false
+    },
+    "COORDINATE_REVIEW_REQUIRED": {
+      "canonical_root_cause": "coordinate_plausibility_review",
+      "requires_user_judgment": true
+    },
+    "DENITRIFICATION_INFO_MISSING_ZERO": {
+      "canonical_root_cause": "authorized_missing_denitrification_zero_nh3",
+      "requires_user_judgment": false
+    },
+    "DENITRIFICATION_UNMAPPED_ZERO": {
+      "canonical_root_cause": "authorized_unmapped_denitrification_zero_nh3",
+      "requires_user_judgment": false
+    },
+    "DENOX_INFO_MISSING_ZERO": {
+      "canonical_root_cause": "authorized_missing_denitrification_zero_nh3",
+      "requires_user_judgment": false
+    },
+    "EMISSION_FACTOR_NOT_FOUND": {
+      "canonical_root_cause": "factor_applicability_unresolved",
+      "requires_user_judgment": true
+    },
+    "FACTOR_ACTIVITY_UNIT_MISMATCH": {
+      "canonical_root_cause": "activity_parameter_unit_conflict",
+      "requires_user_judgment": true
+    },
+    "FACTOR_APPLICABILITY_UNRESOLVED": {
+      "canonical_root_cause": "factor_applicability_unresolved",
+      "requires_user_judgment": true
+    },
+    "FACTOR_INPUT_MISSING": {
+      "canonical_root_cause": "factor_input_unresolved",
+      "requires_user_judgment": true
+    },
+    "FACTOR_UNIT_MISSING": {
+      "canonical_root_cause": "parameter_unit_missing",
+      "requires_user_judgment": true
+    },
+    "FACTOR_UNMATCHED": {
+      "canonical_root_cause": "factor_applicability_unresolved",
+      "requires_user_judgment": true
+    },
+    "FUEL_MISSING": {
+      "canonical_root_cause": "fuel_mapping_unresolved",
+      "requires_user_judgment": true
+    },
+    "FUEL_OUTSIDE_FIXED_FOSSIL_SCOPE": {
+      "canonical_root_cause": "fuel_outside_fixed_combustion_scope",
+      "requires_user_judgment": false
+    },
+    "FUEL_OUTSIDE_FOSSIL_SCOPE": {
+      "canonical_root_cause": "fuel_outside_fixed_combustion_scope",
+      "requires_user_judgment": false
+    },
+    "FUEL_OUTSIDE_SCOPE": {
+      "canonical_root_cause": "fuel_outside_fixed_combustion_scope",
+      "requires_user_judgment": false
+    },
+    "FUEL_TYPE_MISSING": {
+      "canonical_root_cause": "fuel_mapping_unresolved",
+      "requires_user_judgment": true
+    },
+    "FUEL_UNMAPPED": {
+      "canonical_root_cause": "fuel_mapping_unresolved",
+      "requires_user_judgment": true
+    },
+    "LOW_NOX_FIELD_CONFLICT": {
+      "canonical_root_cause": "control_information_conflict",
+      "requires_user_judgment": true
+    },
+    "MULTI_PROCESS_MAX_ASSUMPTION": {
+      "canonical_root_cause": "authorized_multiple_control_maximum",
+      "requires_user_judgment": false
+    },
+    "MULTI_PROCESS_MAX_DEFAULT": {
+      "canonical_root_cause": "authorized_multiple_control_maximum",
+      "requires_user_judgment": false
+    },
+    "NEGATIVE_EMISSION": {
+      "canonical_root_cause": "numeric_hard_constraint_conflict",
+      "requires_user_judgment": true
+    },
+    "NEGATIVE_GENERATION": {
+      "canonical_root_cause": "numeric_hard_constraint_conflict",
+      "requires_user_judgment": true
+    },
+    "NH3_COAL_ACTIVITY_MISSING": {
+      "canonical_root_cause": "ammonia_slip_activity_missing",
+      "requires_user_judgment": true
+    },
+    "NH3_FACTOR_REQUIRES_COAL_ACTIVITY": {
+      "canonical_root_cause": "ammonia_slip_activity_missing",
+      "requires_user_judgment": true
+    },
+    "NH3_FACTOR_SCOPE_MISMATCH": {
+      "canonical_root_cause": "ammonia_slip_activity_missing",
+      "requires_user_judgment": true
+    },
+    "NH3_MULTI_PROCESS_ALLOCATION_UNRESOLVED": {
+      "canonical_root_cause": "ammonia_slip_process_allocation_unresolved",
+      "requires_user_judgment": true
+    },
+    "NH3_NOT_APPLICABLE_NO_SCR_SNCR": {
+      "canonical_root_cause": "nh3_not_applicable_no_scr_sncr",
+      "requires_user_judgment": false
+    },
+    "NH3_SCR_SNCR_SLIP": {
+      "canonical_root_cause": "ammonia_slip_calculated",
+      "requires_user_judgment": false
+    },
+    "NO_APPLICABLE_CONTROL_ZERO": {
+      "canonical_root_cause": "authorized_no_applicable_control_zero",
+      "requires_user_judgment": false
+    },
+    "NO_SCR_SNCR": {
+      "canonical_root_cause": "nh3_not_applicable_no_scr_sncr",
+      "requires_user_judgment": false
+    },
+    "NO_SCR_SNCR_ZERO": {
+      "canonical_root_cause": "nh3_not_applicable_no_scr_sncr",
+      "requires_user_judgment": false
+    },
+    "OTHER_FUEL_TCE_UNRESOLVED": {
+      "canonical_root_cause": "other_fuel_tce_unresolved",
+      "requires_user_judgment": true
+    },
+    "PM25_PAIR_MISSING": {
+      "canonical_root_cause": "pm25_dependency_missing",
+      "requires_user_judgment": true
+    },
+    "PM_SIZE_CONSTRAINT_VIOLATION": {
+      "canonical_root_cause": "particle_size_constraint_conflict",
+      "requires_user_judgment": true
+    },
+    "PM_SIZE_RELATION": {
+      "canonical_root_cause": "particle_size_constraint_conflict",
+      "requires_user_judgment": true
+    },
+    "POTENTIAL_DUPLICATE_FUEL_SLOT": {
+      "canonical_root_cause": "potential_duplicate_fuel_slot",
+      "requires_user_judgment": true
+    },
+    "SOURCE_RELATION_CONFLICT": {
+      "canonical_root_cause": "source_relationship_conflict",
+      "requires_user_judgment": true
+    },
+    "SOURCE_RELATION_MISSING": {
+      "canonical_root_cause": "source_relationship_missing",
+      "requires_user_judgment": true
+    },
+    "SULFUR_MISSING": {
+      "canonical_root_cause": "sulfur_parameter_missing",
+      "requires_user_judgment": true
+    },
+    "SULFUR_OUT_OF_RANGE": {
+      "canonical_root_cause": "sulfur_parameter_invalid",
+      "requires_user_judgment": true
+    },
+    "SULFUR_UNIT_INVALID": {
+      "canonical_root_cause": "sulfur_parameter_invalid",
+      "requires_user_judgment": true
+    },
+    "T_CSES_COAL_BC_OC_PARAMETER_GAP": {
+      "canonical_root_cause": "coal_parameter_missing",
+      "requires_user_judgment": true
+    },
+    "T_CSES_COAL_PARAMETER_GAP": {
+      "canonical_root_cause": "coal_parameter_missing",
+      "requires_user_judgment": true
+    },
+    "UNRESOLVED_OTHER_FUEL_TCE": {
+      "canonical_root_cause": "other_fuel_tce_unresolved",
+      "requires_user_judgment": true
+    }
+  },
+  "generic_root_rules": [
+    {
+      "rule_id": "GEN-ROOT-NH3-FACTOR",
+      "regex": "NO_EF_NH3|NH3_NO_FACTOR|NO_FACTOR_NH3|NH3_NO_EF|NO_NH3_FACTOR|NH3.{0,40}(未提供|无).{0,20}(产生系数|排放系数|因子)",
+      "canonical_root_cause": "pollutant_parameter_missing",
+      "requires_user_judgment": true
+    },
+    {
+      "rule_id": "GEN-ROOT-FUEL-MAPPING",
+      "regex": "NO_EF_FUEL|FUEL_NO_FACTOR|FUEL_TYPE_UNKNOWN|FUEL_TYPE_UNMAPPED|FUEL_UNMAPPED|UNKNOWN_FUEL|NO_EF_FUEL_TYPE|缺少燃料类型|燃料类型.{0,30}(无对应|不在|无法映射)|其他燃料.{0,40}(无对应|无法|未给出燃料类型)",
+      "canonical_root_cause": "fuel_mapping_unresolved",
+      "requires_user_judgment": true
+    },
+    {
+      "rule_id": "GEN-ROOT-COMBUSTION-TECH",
+      "regex": "NO_EF_TECH|TECH_UNKNOWN|COMBUSTION_UNKNOWN|MISSING_TECH|NO_TECH_COAL|NO_TECH_PARAM|COAL_TECH_UNKNOWN|燃烧方式.{0,30}(缺失|其他|未知|无法)|燃烧技术.{0,30}(未知|无法|缺失)",
+      "canonical_root_cause": "combustion_technology_unresolved",
+      "requires_user_judgment": true
+    },
+    {
+      "rule_id": "GEN-ROOT-ACTIVITY",
+      "regex": "NO_FUEL_RECORD|NO_ACTIVITY_DATA|NO_ACTIVITY|ACT_MISSING|ACTIVITY_MISSING|无任何燃料.{0,20}(活动|消耗|数据)|缺少燃料消耗|活动水平.{0,20}(缺失|为空)|源记录.{0,20}(为空行|为空记录|无任何燃料)",
+      "canonical_root_cause": "activity_level_missing",
+      "requires_user_judgment": true
+    },
+    {
+      "rule_id": "GEN-ROOT-COAL-PARAMETER",
+      "regex": "MB_PARAM_UNAVAILABLE|FUEL_PARAM_MISSING|COKE_MB_PARAMS|物料衡算参数.{0,20}(未提供|缺失|无法)",
+      "canonical_root_cause": "coal_parameter_missing",
+      "requires_user_judgment": true
+    },
+    {
+      "rule_id": "GEN-ROOT-OTHER-TCE",
+      "regex": "OTHER_FUEL_TCE_UNRESOLVED|UNRESOLVED_OTHER_FUEL_TCE|FUEL_UNIT_TCE|NO_EF_TCE|FUEL_TCE_NO_TYPE|吨标准煤.{0,50}(无法换算|无对应|无.*系数)",
+      "canonical_root_cause": "other_fuel_tce_unresolved",
+      "requires_user_judgment": true
+    },
+    {
+      "rule_id": "GEN-ROOT-ACTIVITY-UNIT",
+      "regex": "UNIT_MISMATCH|UNIT_UNKNOWN|ACTIVITY_UNIT_UNSUPPORTED",
+      "canonical_root_cause": "activity_unit_unresolved",
+      "requires_user_judgment": true
+    },
+    {
+      "rule_id": "GEN-ROOT-SOURCE-RELATION",
+      "regex": "INVALID_BLANK_RECORD|EMPTY_RECORD|冻结.*(空记录|为空)|整行为空|无任何源字段|表尾批注|图例行",
+      "canonical_root_cause": "source_relationship_missing",
+      "requires_user_judgment": true
+    },
+    {
+      "rule_id": "GEN-ROOT-CONTROL",
+      "regex": "CONTROL_EFF_UNKNOWN|治理工艺.{0,40}(无法匹配|无对应|未计入)|除尘工艺.{0,40}(无法匹配|无对应|未计入)",
+      "canonical_root_cause": "control_information_conflict",
+      "requires_user_judgment": true
+    }
+  ]
+}
