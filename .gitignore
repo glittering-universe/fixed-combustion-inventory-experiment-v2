@@ -18,6 +18,9 @@ profiles/*/logs/
 实验结果/04_实验C_规模与资源表现/
 实验结果/05_实验D_方法组成贡献/
 实验结果/90_试运行与开发验证/
+matrix/execution_state.jsonl
+matrix/run_console/
+matrix/controller_logs/
 
 # Generated render/preview files are reproducible QA intermediates.
 documentation/rendered*/
