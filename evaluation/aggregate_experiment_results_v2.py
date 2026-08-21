@@ -47,6 +47,15 @@ ROOT = Path(__file__).resolve().parents[1]
 MATRIX = ROOT / "matrix" / "frozen_experiment_matrix.json"
 METRIC_SPEC = ROOT / "evaluation" / "metric_spec_v2.json"
 POLLUTANTS = ("SO2", "NOx", "CO", "VOC", "PM10", "PM2.5", "BC", "OC", "NH3")
+AGENT_RUNNERS = frozenset({"generic_agent", "full_agent", "ablation_agent"})
+MATRIX_MANIFEST_BINDINGS = (
+    ("run_id", "run_id"),
+    ("method", "experiment_method"),
+    ("target", "target"),
+    ("input_variant", "input_variant"),
+    ("scale_percent", "scale_percent"),
+    ("method_bundle_hash", "method_bundle_hash"),
+)
 METHOD_ALIASES = {
     "constant": "emission_factor_method",
     "capacity_lookup": "emission_factor_method",
@@ -155,7 +164,7 @@ def normalize_path(run_dir: Path) -> Path:
             "reason_codes", "minimum_recalculation_complete", "complete_process_record", "run_id", "method",
         )
         with destination.open("w", encoding="utf-8-sig", newline="") as handle:
-            writer = csv.DictWriter(handle, fieldnames=fields)
+            writer = csv.DictWriter(handle, fieldnames=fields, lineterminator="\n")
             writer.writeheader(); writer.writerows(rows)
         return destination
     subprocess.run(
@@ -392,6 +401,135 @@ def load_seal_module():
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
+
+
+def _diagnostic_values(value: Any) -> list[str]:
+    if value in (None, ""):
+        return []
+    if isinstance(value, (list, tuple, set)):
+        return [str(item) for item in value if item not in (None, "")]
+    return [str(value)]
+
+
+def verify_seal_and_collect_boundary_diagnostic(
+    row: dict[str, Any],
+    run_dir: Path,
+    manifest: dict[str, Any],
+    seal_helper: Any,
+) -> dict[str, Any]:
+    """Hard-check the seal and collect non-gating Agent-boundary diagnostics."""
+
+    seal_status = seal_helper.verify_experiment_seal(run_dir, manifest)
+    if seal_status.get("status") != "pass":
+        raise RuntimeError(
+            f"sealed integrity failed for {row['run_id']}: {seal_status.get('failures')}"
+        )
+    binding_failures = [
+        {
+            "matrix_field": matrix_field,
+            "manifest_field": manifest_field,
+            "matrix_value": row.get(matrix_field),
+            "manifest_value": manifest.get(manifest_field),
+        }
+        for matrix_field, manifest_field in MATRIX_MANIFEST_BINDINGS
+        if (
+            row.get(matrix_field) != manifest.get(manifest_field)
+            or type(row.get(matrix_field)) is not type(manifest.get(manifest_field))
+        )
+    ]
+    if binding_failures:
+        raise RuntimeError(
+            f"matrix-manifest binding failed for {row['run_id']}: "
+            f"{json.dumps(binding_failures, ensure_ascii=False, separators=(',', ':'))}"
+        )
+    if row.get("runner") not in AGENT_RUNNERS:
+        return {
+            "status": "not_applicable",
+            "failures": [],
+            "warnings": [],
+            "reason": "non_agent_method",
+            "diagnostic_only": True,
+            "enters_DNE": False,
+        }
+    try:
+        raw = seal_helper.method_boundary_audit(run_dir, manifest)
+        if not isinstance(raw, dict):
+            raise TypeError("method boundary audit did not return a mapping")
+        result = dict(raw)
+        result["status"] = str(raw.get("status") or "not_available")
+        result["failures"] = _diagnostic_values(raw.get("failures"))
+        result["warnings"] = _diagnostic_values(raw.get("warnings"))
+        if raw.get("reason") and str(raw["reason"]) not in result["warnings"]:
+            result["warnings"].append(str(raw["reason"]))
+    except Exception as exc:  # diagnostic collection must not become a score gate
+        return {
+            "status": "audit_error",
+            "failures": ["METHOD_BOUNDARY_AUDIT_ERROR"],
+            "warnings": [f"{type(exc).__name__}: {exc}"],
+            "diagnostic_only": True,
+            "enters_DNE": False,
+        }
+    result["diagnostic_only"] = True
+    result["enters_DNE"] = False
+    return result
+
+
+def summarize_method_boundary_diagnostics(
+    rows: list[dict[str, Any]],
+    scores: dict[str, dict[str, Any]],
+) -> dict[str, Any]:
+    """Summarize Agent method-boundary observations without changing D/N/E."""
+
+    agent_rows = [row for row in rows if row.get("runner") in AGENT_RUNNERS]
+    status_counts: dict[str, int] = defaultdict(int)
+    failure_counts: dict[str, int] = defaultdict(int)
+    warning_counts: dict[str, int] = defaultdict(int)
+    run_diagnostics: list[dict[str, Any]] = []
+    completed_statuses = {"pass", "fail"}
+    for row in agent_rows:
+        score = scores.get(row["run_id"])
+        if score is None or "method_boundary" not in score:
+            continue
+        diagnostic = score["method_boundary"]
+        status = str(diagnostic.get("status") or "not_available")
+        failures = _diagnostic_values(diagnostic.get("failures"))
+        warnings = _diagnostic_values(diagnostic.get("warnings"))
+        status_counts[status] += 1
+        for code in failures:
+            failure_counts[code] += 1
+        for code in warnings:
+            warning_counts[code] += 1
+        run_diagnostics.append({
+            "run_id": row["run_id"],
+            "runner": row.get("runner"),
+            "method": row.get("method"),
+            "target": row.get("target"),
+            "status": status,
+            "failures": failures,
+            "warnings": warnings,
+        })
+    return {
+        "diagnostic_only": True,
+        "enters_DNE": False,
+        "interpretation": (
+            "Method-boundary audit is reported for Agent runs as an independent diagnostic; "
+            "it is not an additional quality gate and does not change D, N, E, or EICPI_core."
+        ),
+        "agent_run_count": len(agent_rows),
+        "audited_agent_run_count": sum(
+            item["status"] in completed_statuses for item in run_diagnostics
+        ),
+        "all_agent_runs_audited": (
+            len(run_diagnostics) == len(agent_rows)
+            and all(item["status"] in completed_statuses for item in run_diagnostics)
+        ),
+        "status_counts": dict(sorted(status_counts.items())),
+        "runs_with_failures": sum(bool(item["failures"]) for item in run_diagnostics),
+        "runs_with_warnings": sum(bool(item["warnings"]) for item in run_diagnostics),
+        "failure_code_counts": dict(sorted(failure_counts.items())),
+        "warning_code_counts": dict(sorted(warning_counts.items())),
+        "runs": run_diagnostics,
+    }
 
 
 def exception_groups(
@@ -806,15 +944,24 @@ def write_run_csv(path: Path, rows: list[dict[str, Any]]) -> None:
         "experiment", "run_id", "method", "target", "input_variant", "scale_percent", "repetition",
         "D", "D_passed", "D_applicable", "D_NA", "N", "N_passed", "N_applicable", "N_NA",
         "E", "EICPI_core_0_100", "record_count", "seconds_per_record",
+        "method_boundary_status", "method_boundary_failures", "method_boundary_warnings",
     )
     with path.open("w", encoding="utf-8-sig", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fields)
+        writer = csv.DictWriter(handle, fieldnames=fields, lineterminator="\n")
         writer.writeheader()
         for row in rows:
+            boundary = row.get("method_boundary") or {}
             writer.writerow({
                 **{name: row.get(name) for name in ("experiment", "run_id", "method", "target", "input_variant", "scale_percent", "repetition", "E", "EICPI_core_0_100", "record_count", "seconds_per_record")},
                 "D": row["D"]["score"], "D_passed": row["D"]["passed"], "D_applicable": row["D"]["applicable"], "D_NA": row["D"]["not_applicable"],
                 "N": row["N"]["score"], "N_passed": row["N"]["passed"], "N_applicable": row["N"]["applicable"], "N_NA": row["N"]["not_applicable"],
+                "method_boundary_status": boundary.get("status", "not_available"),
+                "method_boundary_failures": json.dumps(
+                    _diagnostic_values(boundary.get("failures")), ensure_ascii=False, separators=(",", ":"),
+                ),
+                "method_boundary_warnings": json.dumps(
+                    _diagnostic_values(boundary.get("warnings")), ensure_ascii=False, separators=(",", ":"),
+                ),
             })
 
 
@@ -849,14 +996,9 @@ def main() -> None:
         if not (run_dir / "experiment_seal.json").is_file():
             continue
         manifest = load_json(run_dir / "run_manifest.json")
-        seal_status = seal_helper.verify_experiment_seal(run_dir, manifest)
-        if seal_status.get("status") != "pass":
-            raise RuntimeError(f"sealed integrity failed for {row['run_id']}: {seal_status.get('failures')}")
-        boundary_status = seal_helper.method_boundary_audit(run_dir, manifest)
-        if row.get("runner") in {"generic_agent", "full_agent", "ablation_agent"} and boundary_status.get("status") != "pass":
-            raise RuntimeError(
-                f"method boundary failed for {row['run_id']}: {boundary_status.get('failures') or boundary_status.get('reason')}"
-            )
+        boundary_status = verify_seal_and_collect_boundary_diagnostic(
+            row, run_dir, manifest, seal_helper,
+        )
         score, context = evaluate_one(row, run_dir, reference, helper)
         score["method_boundary"] = boundary_status
         sealed_rows.append(row)
@@ -902,6 +1044,9 @@ def main() -> None:
     b2 = b2_report(independent_rows["B2"], scores, contexts, reference, independent_rows["B1"])
     c = c_report(independent_rows["C"], scores)
     d = d_report(independent_rows["D"], scores)
+    method_boundary_diagnostics = summarize_method_boundary_diagnostics(
+        matrix["rows"], scores,
+    )
     summary = {
         "evaluation_version": "2.0.0",
         "metric_spec": str(METRIC_SPEC.relative_to(ROOT)),
@@ -920,6 +1065,9 @@ def main() -> None:
         "independent_reports": {
             "B1": "experiment_B1_v2.json", "B2": "experiment_B2_v2.json",
             "C": "experiment_C_v2.json", "D": "experiment_D_v2.json",
+        },
+        "independent_diagnostics": {
+            "method_boundary": method_boundary_diagnostics,
         },
     }
     write_run_csv(output_dir / "run_scores_v2.csv", [scores[row["run_id"]] for row in sealed_rows])

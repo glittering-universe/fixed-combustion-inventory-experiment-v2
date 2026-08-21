@@ -31,6 +31,7 @@ FILES = [
     "reproduction/run_all_machine_experiments.sh",
     "reproduction/run_one_machine_experiment.sh",
     "reproduction/aggregate_results.sh",
+    "reproduction/build_formal_archive_index.py",
     "reproduction/build_reproduction_manifest.py",
     "reproduction/tests/test_reproduction_v2.py",
     "method_package/full_prompt.md",

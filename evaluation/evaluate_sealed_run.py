@@ -86,6 +86,12 @@ ABLATION_REQUIRED_STAGE_TOOLS = {
 
 ALL_SPECIALIZED_STAGE_TOOLS = set(FULL_REQUIRED_STAGE_TOOLS) | FULL_FORBIDDEN_STAGE_TOOLS
 
+TRUSTED_PYTHON_EXECUTABLES = {
+    str(Path.home() / ".hermes/hermes-agent/venv/bin/python3"),
+    str(Path(__file__).resolve().parents[1] / ".venv/bin/python"),
+    str(Path(__file__).resolve().parents[1] / ".venv/bin/python3"),
+}
+
 # Evaluator-owned derivatives. Early expert-led packages listed these files in
 # their seal alongside the immutable human workbook. Re-evaluation may
 # legitimately regenerate them, so their evaluator-version hashes are not used
@@ -466,6 +472,96 @@ def workbook_qa(run_dir: Path) -> dict[str, Any]:
     }
 
 
+def argument_strings(value: Any) -> list[str]:
+    if isinstance(value, str):
+        return [value]
+    if isinstance(value, dict):
+        return [text for item in value.values() for text in argument_strings(item)]
+    if isinstance(value, list):
+        return [text for item in value for text in argument_strings(item)]
+    return []
+
+
+def trusted_python_used_as_program(arguments: str, occurrence_start: int) -> bool:
+    """Allow only an exact trusted interpreter token used to execute Python."""
+    for executable in TRUSTED_PYTHON_EXECUTABLES:
+        if not arguments.startswith(executable, occurrence_start):
+            continue
+        tail = arguments[occurrence_start + len(executable):]
+        if re.match(r"\s+(?:-c\b|--version\b|[^\s;&|]+\.py\b)", tail):
+            return True
+        escaped = re.escape(executable)
+        shell_loop = re.search(
+            rf"\bfor\s+(\w+)\s+in\s+[^;]*{escaped}(?=\s|;)[^;]*;\s*do\b.*\$\1\s+"
+            rf"(?:-c\b|--version\b|[^\s;&|]+\.py\b)",
+            arguments,
+            flags=re.DOTALL,
+        )
+        if shell_loop:
+            return True
+        assignments = re.findall(
+            rf"\b([A-Za-z_]\w*)\s*=\s*['\"]{escaped}['\"]",
+            arguments,
+        )
+        for variable in assignments:
+            if re.search(
+                rf"subprocess\.(?:run|Popen|call|check_call|check_output)\s*\(\s*"
+                rf"\[\s*{re.escape(variable)}\s*,\s*['\"](?:-c|--version)['\"]",
+                arguments,
+            ):
+                return True
+        if re.search(
+            rf"subprocess\.(?:run|Popen|call|check_call|check_output)\s*\(\s*"
+            rf"\[\s*['\"]{escaped}['\"]\s*,\s*['\"](?:-c|--version)['\"]",
+            arguments,
+        ):
+            return True
+    return False
+
+
+def tool_call_outcome(result_message: dict[str, Any] | None) -> str:
+    """Classify a recorded call without treating a rejected tool name as access."""
+    if result_message is None:
+        return "unknown"
+    content = result_message.get("content")
+    text = content if isinstance(content, str) else json.dumps(content, ensure_ascii=False)
+    if re.search(r"Tool ['\"][^'\"]+['\"] does not exist\b", text, flags=re.IGNORECASE):
+        return "not_executed"
+    try:
+        payload = json.loads(text) if isinstance(text, str) else content
+    except (json.JSONDecodeError, TypeError):
+        payload = None
+    if isinstance(payload, dict):
+        if payload.get("success") is False:
+            return "failed"
+        status = str(payload.get("status") or "").strip().lower()
+        if status in {"error", "failed", "failure"}:
+            return "failed"
+        if payload.get("error") not in (None, "", False):
+            return "failed"
+        if "exit_code" in payload and payload.get("exit_code") not in (None, 0):
+            return "failed"
+        if payload.get("success") is True or status in {"success", "complete", "completed", "pass", "ok"}:
+            return "success"
+        if "exit_code" in payload and payload.get("exit_code") == 0:
+            return "success"
+    return "success"
+
+
+def ordered_stage_chain_positions(invoked_tools: list[str], required: tuple[str, ...]) -> list[int] | None:
+    """Return one complete ordered subsequence, if the successful call stream has one."""
+    positions: list[int] = []
+    cursor = 0
+    for stage in required:
+        try:
+            position = invoked_tools.index(stage, cursor)
+        except ValueError:
+            return None
+        positions.append(position)
+        cursor = position + 1
+    return positions
+
+
 def method_boundary_audit(run_dir: Path, manifest: dict[str, Any]) -> dict[str, Any]:
     session_path = run_dir / "session_export" / "session.jsonl"
     method = manifest.get("experiment_method")
@@ -475,12 +571,20 @@ def method_boundary_audit(run_dir: Path, manifest: dict[str, Any]) -> dict[str, 
             "reason": "no_agent_session_export",
         }
     session = json.loads(session_path.read_text(encoding="utf-8"))
+    result_messages = {
+        str(message.get("tool_call_id")): message
+        for message in session.get("messages", [])
+        if message.get("role") == "tool" and message.get("tool_call_id")
+    }
     tool_counts: Counter[str] = Counter()
     viewed_skills: list[str] = []
     fixed_capability_calls: list[str] = []
     invoked_tools: list[str] = []
+    executed_invoked_tools: list[str] = []
+    successful_invoked_tools: list[str] = []
     exploration_calls: list[str] = []
     outside_run_paths: list[str] = []
+    warnings: list[str] = []
     allowed_prefixes = {str(run_dir)}
     for source in manifest.get("inputs", []):
         original = str(source.get("path") or "")
@@ -501,11 +605,24 @@ def method_boundary_audit(run_dir: Path, manifest: dict[str, Any]) -> dict[str, 
                     parsed_arguments = candidate
             except json.JSONDecodeError:
                 parsed_arguments = None
+            call_id = str(call.get("id") or call.get("call_id") or "")
+            outcome = tool_call_outcome(result_messages.get(call_id))
+            if outcome == "not_executed":
+                warnings.append("NONEXISTENT_TOOL_CALL_NOT_EXECUTED")
+            invocation_recorded = False
             if name == "tool_call" and parsed_arguments and parsed_arguments.get("name"):
                 effective_name = str(parsed_arguments["name"])
                 invoked_tools.append(effective_name)
+                invocation_recorded = True
             elif name not in {"skill_view", "tool_describe"}:
                 invoked_tools.append(effective_name)
+                invocation_recorded = True
+            if invocation_recorded and outcome != "not_executed":
+                executed_invoked_tools.append(effective_name)
+            if invocation_recorded and outcome == "success":
+                successful_invoked_tools.append(effective_name)
+            elif invocation_recorded and outcome == "failed" and effective_name in ALL_SPECIALIZED_STAGE_TOOLS:
+                warnings.append("FAILED_STAGE_ATTEMPT_IGNORED")
             if name == "skill_view":
                 try:
                     viewed_skills.append(str(json.loads(arguments).get("name") or ""))
@@ -514,11 +631,17 @@ def method_boundary_audit(run_dir: Path, manifest: dict[str, Any]) -> dict[str, 
             if name in {"skill_view", "tool_describe", "tool_search", "skills_list"} or effective_name.startswith("summarize_"):
                 exploration_calls.append(effective_name)
             capability_text = f"{name}\n{arguments}".lower()
-            if "fixed-combustion-inventory" in capability_text:
+            if outcome != "not_executed" and "fixed-combustion-inventory" in capability_text:
                 fixed_capability_calls.append(name)
-            for match in re.finditer(r"/Users/wushuo/", arguments):
-                if not any(arguments.startswith(prefix, match.start()) for prefix in allowed_prefixes):
-                    outside_run_paths.append(arguments[match.start():match.start() + 180])
+            if outcome == "not_executed":
+                continue
+            path_texts = argument_strings(parsed_arguments) if parsed_arguments is not None else [arguments]
+            for path_text in path_texts:
+                for match in re.finditer(r"/Users/wushuo/", path_text):
+                    if trusted_python_used_as_program(path_text, match.start()):
+                        continue
+                    if not any(path_text.startswith(prefix, match.start()) for prefix in allowed_prefixes):
+                        outside_run_paths.append(path_text[match.start():match.start() + 180])
 
     failures: list[str] = []
     if method == "generic_tool_agent":
@@ -527,18 +650,13 @@ def method_boundary_audit(run_dir: Path, manifest: dict[str, Any]) -> dict[str, 
         if outside_run_paths:
             failures.append("GENERIC_ACCESSED_PATH_OUTSIDE_RUN_PACKAGE")
     elif method == "full":
-        stage_positions: list[int] = []
-        missing_stages: list[str] = []
-        for stage in FULL_REQUIRED_STAGE_TOOLS:
-            try:
-                stage_positions.append(invoked_tools.index(stage))
-            except ValueError:
-                missing_stages.append(stage)
+        missing_stages = [stage for stage in FULL_REQUIRED_STAGE_TOOLS if stage not in successful_invoked_tools]
+        stage_positions = ordered_stage_chain_positions(successful_invoked_tools, FULL_REQUIRED_STAGE_TOOLS)
         if missing_stages:
             failures.append("FULL_REQUIRED_STAGE_MISSING")
-        elif stage_positions != sorted(stage_positions) or len(set(stage_positions)) != len(stage_positions):
+        elif stage_positions is None:
             failures.append("FULL_REQUIRED_STAGE_ORDER_INVALID")
-        forbidden = sorted(set(invoked_tools) & FULL_FORBIDDEN_STAGE_TOOLS)
+        forbidden = sorted(set(executed_invoked_tools) & FULL_FORBIDDEN_STAGE_TOOLS)
         if forbidden:
             failures.append("FULL_FORBIDDEN_CAPABILITY_USED")
         if outside_run_paths:
@@ -547,13 +665,13 @@ def method_boundary_audit(run_dir: Path, manifest: dict[str, Any]) -> dict[str, 
         # tool discovery and harmless read-only inspection are exploration cost.
     elif method in ABLATION_REQUIRED_STAGE_TOOLS:
         required = ABLATION_REQUIRED_STAGE_TOOLS[str(method)]
-        missing = [stage for stage in required if stage not in invoked_tools]
-        positions = [invoked_tools.index(stage) for stage in required if stage in invoked_tools]
+        missing = [stage for stage in required if stage not in successful_invoked_tools]
+        positions = ordered_stage_chain_positions(successful_invoked_tools, required)
         if missing:
             failures.append("ABLATION_REQUIRED_STAGE_MISSING")
-        elif positions != sorted(positions) or len(set(positions)) != len(positions):
+        elif positions is None:
             failures.append("ABLATION_REQUIRED_STAGE_ORDER_INVALID")
-        forbidden = sorted((set(invoked_tools) & ALL_SPECIALIZED_STAGE_TOOLS) - set(required))
+        forbidden = sorted((set(executed_invoked_tools) & ALL_SPECIALIZED_STAGE_TOOLS) - set(required))
         if forbidden:
             failures.append("ABLATION_FORBIDDEN_STAGE_USED")
         if outside_run_paths:
@@ -563,21 +681,28 @@ def method_boundary_audit(run_dir: Path, manifest: dict[str, Any]) -> dict[str, 
         else ABLATION_REQUIRED_STAGE_TOOLS.get(str(method), ())
     )
     forbidden_for_method = (
-        sorted(set(invoked_tools) & FULL_FORBIDDEN_STAGE_TOOLS) if method == "full"
-        else sorted((set(invoked_tools) & ALL_SPECIALIZED_STAGE_TOOLS) - set(required_for_method))
+        sorted(set(executed_invoked_tools) & FULL_FORBIDDEN_STAGE_TOOLS) if method == "full"
+        else sorted((set(executed_invoked_tools) & ALL_SPECIALIZED_STAGE_TOOLS) - set(required_for_method))
         if method in ABLATION_REQUIRED_STAGE_TOOLS else []
     )
     return {
         "status": "pass" if not failures else "fail",
         "failures": failures,
+        "warnings": list(dict.fromkeys(warnings)),
         "tool_counts": dict(tool_counts),
         "viewed_skills": viewed_skills,
         "invoked_tools": invoked_tools,
+        "successful_invoked_tools": successful_invoked_tools,
         "required_stage_tools": list(required_for_method),
         "forbidden_stage_tools": forbidden_for_method,
         "exploration_call_count": len(exploration_calls),
         "exploration_calls": exploration_calls,
-        "exploration_included_in_EICPI": False,
+        "exploration_calls_have_independent_DNE_penalty": False,
+        "exploration_elapsed_time_included_in_wall_seconds": True,
+        "exploration_scoring_note": (
+            "Exploration calls do not incur an independent D/N/E penalty; their elapsed time "
+            "remains included in the end-to-end wall_seconds used by E."
+        ),
         "fixed_capability_call_count": len(fixed_capability_calls),
         "outside_run_path_count": len(outside_run_paths),
         "outside_run_path_examples": outside_run_paths[:10],

@@ -22,8 +22,8 @@
     },
     {
       "path": "reproduction/README.md",
-      "sha256": "357df23ff1363a4b2c01dab00d32a3ba0d86ae36d1598d69f0c0af00f39ac0c9",
-      "bytes": 3186
+      "sha256": "5021236ac08b08d5630166ed02c7aee3f63b3d1f384b9927a6692f399c899d3f",
+      "bytes": 3361
     },
     {
       "path": "reproduction/check_environment.py",
@@ -51,9 +51,14 @@
       "bytes": 414
     },
     {
+      "path": "reproduction/build_formal_archive_index.py",
+      "sha256": "222a804da29263df6fec05b292e2340db3fe01cb779490f70c68a4a3482eaac5",
+      "bytes": 5904
+    },
+    {
       "path": "reproduction/build_reproduction_manifest.py",
-      "sha256": "b6728245d03bde2d46303b98c4639a351632ecaee508a31fac6ca5653016c70c",
-      "bytes": 6010
+      "sha256": "88b565e15781437fc6f19c456c4e6a7dd255580d7be0373332b3f82ac8834a06",
+      "bytes": 6060
     },
     {
       "path": "reproduction/tests/test_reproduction_v2.py",
@@ -197,18 +202,18 @@
     },
     {
       "path": "evaluation/aggregate_experiment_results_v2.py",
-      "sha256": "10a62b83345e0cf02e8b18d0acab4b2ece9b7f07005c17c90cb76988f81097b7",
-      "bytes": 45193
+      "sha256": "0e55ef683d22cedf4828dfece6677cc6c7636d5ce89de187d8671f736e6fb64b",
+      "bytes": 51086
     },
     {
       "path": "evaluation/README_DNE_V2.md",
-      "sha256": "b061b6ec524005098a592cc2cdeb6ecd1642c98fe30245c9c895bd6bf003e6f3",
-      "bytes": 2802
+      "sha256": "aad44c22adddc92fa47bb19109f2cdd7fb20d67184337c35e1e9c105f114c4b1",
+      "bytes": 3389
     },
     {
       "path": "evaluation/evaluate_sealed_run.py",
-      "sha256": "4d4075c9f8df94752e07284af17c5d3d13428158dafb6304fc66297d5782bf8c",
-      "bytes": 39605
+      "sha256": "4ca429bc35a48f405424e1e4176d6c667dd969a99aedc8c2edf18cc696bff2e2",
+      "bytes": 45191
     },
     {
       "path": "evaluation/normalize_run_output.py",
@@ -227,8 +232,8 @@
     },
     {
       "path": "evaluation/tests/test_dne_aggregation.py",
-      "sha256": "8eb3487b3e415f26b724190ccc4dffe294b08447acb001a1380b79f752688b4c",
-      "bytes": 8138
+      "sha256": "e3baf8a055b10d1eaae0c5e961f90d734b101960e80e6ec2939698eedfd905b6",
+      "bytes": 19336
     },
     {
       "path": "evaluation/tests/test_normalize_generic_output.py",
@@ -237,8 +242,8 @@
     },
     {
       "path": "evaluation/tests/test_seal_boundary_v2.py",
-      "sha256": "7c3a23268b7014f102f8940ae9c616b56ba4a33312a7c358d3241f6d8f8e2107",
-      "bytes": 6244
+      "sha256": "1858244f80f5b3f3abde5b285d941d8f9086b6d6477fa3a82a254d32e99e2f4c",
+      "bytes": 15792
     },
     {
       "path": "evaluation/tests/test_specialized_normalization.py",

@@ -1,0 +1,1542 @@
+{
+  "experiment": "B2",
+  "enters_EICPI_core": false,
+  "runs": [
+    {
+      "run_id": "B-B2-IND-DET",
+      "method": "deterministic_program",
+      "target": "INDUSTRIAL",
+      "designed_records": 15,
+      "eligible_records": 13,
+      "excluded_preexisting_problem": 2,
+      "positive_injections": 10,
+      "negative_controls": 3,
+      "affected_disposition": {
+        "correct": 3,
+        "total": 10,
+        "rate": 0.3
+      },
+      "root_cause": {
+        "correct": 0,
+        "total": 10,
+        "rate": 0.0
+      },
+      "targeted_detection": {
+        "correct": 0,
+        "total": 10,
+        "rate": 0.0
+      },
+      "unaffected_reference_correctness": {
+        "correct": 2,
+        "total": 10,
+        "rate": 0.2
+      },
+      "unaffected_unchanged_vs_method_B0": {
+        "correct": 10,
+        "total": 10,
+        "rate": 1.0
+      },
+      "negative_control_whole_source": {
+        "correct": 0,
+        "total": 3,
+        "rate": 0.0
+      },
+      "negative_control_unchanged_vs_method_B0": {
+        "correct": 3,
+        "total": 3,
+        "rate": 1.0
+      },
+      "D": {
+        "passed": 97508,
+        "applicable": 109054,
+        "not_applicable": 3774,
+        "score": 0.8941258459111999,
+        "by_kind": {
+          "calculation_basis": {
+            "passed": 31282,
+            "applicable": 35056,
+            "not_applicable": 0,
+            "score": 0.8923436786855318
+          },
+          "control_application": {
+            "passed": 27882,
+            "applicable": 31282,
+            "not_applicable": 3774,
+            "score": 0.8913112972316348
+          },
+          "exception_root_cause": {
+            "passed": 0,
+            "applicable": 380,
+            "not_applicable": 0,
+            "score": 0.0
+          },
+          "source_destination": {
+            "passed": 5922,
+            "applicable": 5922,
+            "not_applicable": 0,
+            "score": 1.0
+          },
+          "terminal_disposition": {
+            "passed": 32422,
+            "applicable": 36414,
+            "not_applicable": 0,
+            "score": 0.8903718350085132
+          }
+        }
+      },
+      "N": {
+        "passed": 95834,
+        "applicable": 102901,
+        "not_applicable": 10264,
+        "score": 0.9313223389471433,
+        "by_kind": {
+          "internal_recalculation": {
+            "passed": 35203,
+            "applicable": 35205,
+            "not_applicable": 5132,
+            "score": 0.9999431898878001
+          },
+          "reference_value": {
+            "passed": 28105,
+            "applicable": 31282,
+            "not_applicable": 5132,
+            "score": 0.8984399974426187
+          },
+          "result_completeness": {
+            "passed": 32526,
+            "applicable": 36414,
+            "not_applicable": 0,
+            "score": 0.893227879387049
+          }
+        }
+      },
+      "outcomes": [
+        {
+          "source_id": "SRC-RAW-9AAF620407C54396A867",
+          "positive_injection": true,
+          "affected_disposition_correct": false,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-42923CF3A707087450FB",
+          "positive_injection": true,
+          "affected_disposition_correct": false,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-5810F198DFBC21BBAF58",
+          "positive_injection": true,
+          "affected_disposition_correct": false,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-D8333CABBDCF22B6AB37",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-48EC88DCAB198382370E",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-FF1045ABC23B668A936E",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-10C601149B4B00D90918",
+          "positive_injection": true,
+          "affected_disposition_correct": false,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": true
+        },
+        {
+          "source_id": "SRC-RAW-FA6CE82F65D745F12FCF",
+          "positive_injection": true,
+          "affected_disposition_correct": false,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": true
+        },
+        {
+          "source_id": "SRC-RAW-46119431773A9235066F",
+          "positive_injection": true,
+          "affected_disposition_correct": false,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-0D301274CFA9EB4D2854",
+          "positive_injection": true,
+          "affected_disposition_correct": false,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-E012C40BCD2A49BE820E",
+          "positive_injection": false,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": true,
+          "targeted_detection_correct": true,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": true
+        },
+        {
+          "source_id": "SRC-RAW-D8B4062ABE2FF777978E",
+          "positive_injection": false,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": true,
+          "targeted_detection_correct": true,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": true
+        },
+        {
+          "source_id": "SRC-RAW-781ABAACD80E4E2B94B5",
+          "positive_injection": false,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": true,
+          "targeted_detection_correct": true,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": true
+        }
+      ]
+    },
+    {
+      "run_id": "B-B2-IND-GEN",
+      "method": "generic_tool_agent",
+      "target": "INDUSTRIAL",
+      "designed_records": 15,
+      "eligible_records": 13,
+      "excluded_preexisting_problem": 2,
+      "positive_injections": 10,
+      "negative_controls": 3,
+      "affected_disposition": {
+        "correct": 5,
+        "total": 10,
+        "rate": 0.5
+      },
+      "root_cause": {
+        "correct": 0,
+        "total": 10,
+        "rate": 0.0
+      },
+      "targeted_detection": {
+        "correct": 0,
+        "total": 10,
+        "rate": 0.0
+      },
+      "unaffected_reference_correctness": {
+        "correct": 2,
+        "total": 10,
+        "rate": 0.2
+      },
+      "unaffected_unchanged_vs_method_B0": {
+        "correct": 2,
+        "total": 10,
+        "rate": 0.2
+      },
+      "negative_control_whole_source": {
+        "correct": 0,
+        "total": 3,
+        "rate": 0.0
+      },
+      "negative_control_unchanged_vs_method_B0": {
+        "correct": 0,
+        "total": 3,
+        "rate": 0.0
+      },
+      "D": {
+        "passed": 61458,
+        "applicable": 108957,
+        "not_applicable": 3774,
+        "score": 0.5640573804344833,
+        "by_kind": {
+          "calculation_basis": {
+            "passed": 0,
+            "applicable": 35056,
+            "not_applicable": 0,
+            "score": 0.0
+          },
+          "control_application": {
+            "passed": 27571,
+            "applicable": 31282,
+            "not_applicable": 3774,
+            "score": 0.8813694776548814
+          },
+          "exception_root_cause": {
+            "passed": 1,
+            "applicable": 283,
+            "not_applicable": 0,
+            "score": 0.0035335689045936395
+          },
+          "source_destination": {
+            "passed": 3923,
+            "applicable": 5922,
+            "not_applicable": 0,
+            "score": 0.6624451198919284
+          },
+          "terminal_disposition": {
+            "passed": 29963,
+            "applicable": 36414,
+            "not_applicable": 0,
+            "score": 0.8228428626352502
+          }
+        }
+      },
+      "N": {
+        "passed": 62518,
+        "applicable": 115818,
+        "not_applicable": 14010,
+        "score": 0.5397951959108256,
+        "by_kind": {
+          "internal_recalculation": {
+            "passed": 3702,
+            "applicable": 33111,
+            "not_applicable": 7005,
+            "score": 0.11180574431457824
+          },
+          "reference_value": {
+            "passed": 28414,
+            "applicable": 29409,
+            "not_applicable": 7005,
+            "score": 0.96616681968105
+          },
+          "result_completeness": {
+            "passed": 30402,
+            "applicable": 53298,
+            "not_applicable": 0,
+            "score": 0.5704154002026343
+          }
+        }
+      },
+      "outcomes": [
+        {
+          "source_id": "SRC-RAW-9AAF620407C54396A867",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-42923CF3A707087450FB",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-5810F198DFBC21BBAF58",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-D8333CABBDCF22B6AB37",
+          "positive_injection": true,
+          "affected_disposition_correct": false,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-48EC88DCAB198382370E",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-FF1045ABC23B668A936E",
+          "positive_injection": true,
+          "affected_disposition_correct": false,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-10C601149B4B00D90918",
+          "positive_injection": true,
+          "affected_disposition_correct": false,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-FA6CE82F65D745F12FCF",
+          "positive_injection": true,
+          "affected_disposition_correct": false,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-46119431773A9235066F",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-0D301274CFA9EB4D2854",
+          "positive_injection": true,
+          "affected_disposition_correct": false,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-E012C40BCD2A49BE820E",
+          "positive_injection": false,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": true,
+          "targeted_detection_correct": true,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-D8B4062ABE2FF777978E",
+          "positive_injection": false,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": true,
+          "targeted_detection_correct": true,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-781ABAACD80E4E2B94B5",
+          "positive_injection": false,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": true,
+          "targeted_detection_correct": true,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        }
+      ]
+    },
+    {
+      "run_id": "B-B2-IND-FULL",
+      "method": "full",
+      "target": "INDUSTRIAL",
+      "designed_records": 15,
+      "eligible_records": 13,
+      "excluded_preexisting_problem": 2,
+      "positive_injections": 10,
+      "negative_controls": 3,
+      "affected_disposition": {
+        "correct": 10,
+        "total": 10,
+        "rate": 1.0
+      },
+      "root_cause": {
+        "correct": 2,
+        "total": 10,
+        "rate": 0.2
+      },
+      "targeted_detection": {
+        "correct": 2,
+        "total": 10,
+        "rate": 0.2
+      },
+      "unaffected_reference_correctness": {
+        "correct": 10,
+        "total": 10,
+        "rate": 1.0
+      },
+      "unaffected_unchanged_vs_method_B0": {
+        "correct": 10,
+        "total": 10,
+        "rate": 1.0
+      },
+      "negative_control_whole_source": {
+        "correct": 3,
+        "total": 3,
+        "rate": 1.0
+      },
+      "negative_control_unchanged_vs_method_B0": {
+        "correct": 3,
+        "total": 3,
+        "rate": 1.0
+      },
+      "D": {
+        "passed": 108942,
+        "applicable": 108961,
+        "not_applicable": 3774,
+        "score": 0.9998256256825837,
+        "by_kind": {
+          "calculation_basis": {
+            "passed": 35056,
+            "applicable": 35056,
+            "not_applicable": 0,
+            "score": 1.0
+          },
+          "control_application": {
+            "passed": 31282,
+            "applicable": 31282,
+            "not_applicable": 3774,
+            "score": 1.0
+          },
+          "exception_root_cause": {
+            "passed": 268,
+            "applicable": 287,
+            "not_applicable": 0,
+            "score": 0.9337979094076655
+          },
+          "source_destination": {
+            "passed": 5922,
+            "applicable": 5922,
+            "not_applicable": 0,
+            "score": 1.0
+          },
+          "terminal_disposition": {
+            "passed": 36414,
+            "applicable": 36414,
+            "not_applicable": 0,
+            "score": 1.0
+          }
+        }
+      },
+      "N": {
+        "passed": 110435,
+        "applicable": 110435,
+        "not_applicable": 2716,
+        "score": 1.0,
+        "by_kind": {
+          "internal_recalculation": {
+            "passed": 38965,
+            "applicable": 38965,
+            "not_applicable": 1358,
+            "score": 1.0
+          },
+          "reference_value": {
+            "passed": 35056,
+            "applicable": 35056,
+            "not_applicable": 1358,
+            "score": 1.0
+          },
+          "result_completeness": {
+            "passed": 36414,
+            "applicable": 36414,
+            "not_applicable": 0,
+            "score": 1.0
+          }
+        }
+      },
+      "outcomes": [
+        {
+          "source_id": "SRC-RAW-9AAF620407C54396A867",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-42923CF3A707087450FB",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-5810F198DFBC21BBAF58",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-D8333CABBDCF22B6AB37",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-48EC88DCAB198382370E",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-FF1045ABC23B668A936E",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-10C601149B4B00D90918",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": true,
+          "targeted_detection_correct": true,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-FA6CE82F65D745F12FCF",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": true,
+          "targeted_detection_correct": true,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-46119431773A9235066F",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-0D301274CFA9EB4D2854",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-E012C40BCD2A49BE820E",
+          "positive_injection": false,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": true,
+          "targeted_detection_correct": true,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": true
+        },
+        {
+          "source_id": "SRC-RAW-D8B4062ABE2FF777978E",
+          "positive_injection": false,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": true,
+          "targeted_detection_correct": true,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": true
+        },
+        {
+          "source_id": "SRC-RAW-781ABAACD80E4E2B94B5",
+          "positive_injection": false,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": true,
+          "targeted_detection_correct": true,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": true
+        }
+      ]
+    },
+    {
+      "run_id": "B-B2-IND-HUM",
+      "method": "expert_led",
+      "target": "INDUSTRIAL",
+      "status": "not_comparable_legacy_human_result_did_not_process_raw_v2_injections"
+    },
+    {
+      "run_id": "B-B2-POW-GEN",
+      "method": "generic_tool_agent",
+      "target": "POWER",
+      "designed_records": 15,
+      "eligible_records": 13,
+      "excluded_preexisting_problem": 2,
+      "positive_injections": 10,
+      "negative_controls": 3,
+      "affected_disposition": {
+        "correct": 8,
+        "total": 10,
+        "rate": 0.8
+      },
+      "root_cause": {
+        "correct": 2,
+        "total": 10,
+        "rate": 0.2
+      },
+      "targeted_detection": {
+        "correct": 2,
+        "total": 10,
+        "rate": 0.2
+      },
+      "unaffected_reference_correctness": {
+        "correct": 2,
+        "total": 10,
+        "rate": 0.2
+      },
+      "unaffected_unchanged_vs_method_B0": {
+        "correct": 2,
+        "total": 10,
+        "rate": 0.2
+      },
+      "negative_control_whole_source": {
+        "correct": 0,
+        "total": 3,
+        "rate": 0.0
+      },
+      "negative_control_unchanged_vs_method_B0": {
+        "correct": 0,
+        "total": 3,
+        "rate": 0.0
+      },
+      "D": {
+        "passed": 7048,
+        "applicable": 18119,
+        "not_applicable": 461,
+        "score": 0.38898393951101057,
+        "by_kind": {
+          "calculation_basis": {
+            "passed": 0,
+            "applicable": 3254,
+            "not_applicable": 0,
+            "score": 0.0
+          },
+          "control_application": {
+            "passed": 1986,
+            "applicable": 2793,
+            "not_applicable": 461,
+            "score": 0.7110633727175081
+          },
+          "exception_root_cause": {
+            "passed": 4,
+            "applicable": 615,
+            "not_applicable": 0,
+            "score": 0.0065040650406504065
+          },
+          "source_destination": {
+            "passed": 615,
+            "applicable": 5922,
+            "not_applicable": 0,
+            "score": 0.1038500506585613
+          },
+          "terminal_disposition": {
+            "passed": 4443,
+            "applicable": 5535,
+            "not_applicable": 0,
+            "score": 0.802710027100271
+          }
+        }
+      },
+      "N": {
+        "passed": 10363,
+        "applicable": 59351,
+        "not_applicable": 5484,
+        "score": 0.17460531414803457,
+        "by_kind": {
+          "internal_recalculation": {
+            "passed": 3260,
+            "applicable": 3260,
+            "not_applicable": 2742,
+            "score": 1.0
+          },
+          "reference_value": {
+            "passed": 2070,
+            "applicable": 2793,
+            "not_applicable": 2742,
+            "score": 0.7411385606874329
+          },
+          "result_completeness": {
+            "passed": 5033,
+            "applicable": 53298,
+            "not_applicable": 0,
+            "score": 0.09443131074336748
+          }
+        }
+      },
+      "outcomes": [
+        {
+          "source_id": "SRC-RAW-73B3CA59765D5D325DCB",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": true,
+          "targeted_detection_correct": true,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-DEF5DB5EE0A1EC4F7517",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": true,
+          "targeted_detection_correct": true,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-4124B4DC2795F28D7751",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-39F79DE3E1F2B10AD763",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-60CCDE1B74EEAAA63955",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-39E2EF967D6F6B1CFD28",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-2ACE0CAADC82D19FC682",
+          "positive_injection": true,
+          "affected_disposition_correct": false,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-F48BB468C8612404A070",
+          "positive_injection": true,
+          "affected_disposition_correct": false,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-C5503FD15062A20FAC67",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-6B09B8B9D54AECCD8964",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-C19A926AA8A833CBF154",
+          "positive_injection": false,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-AF4055E81C013D09C04D",
+          "positive_injection": false,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": true,
+          "targeted_detection_correct": true,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-63C74C970704DB13D46B",
+          "positive_injection": false,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        }
+      ]
+    },
+    {
+      "run_id": "B-B2-POW-FULL",
+      "method": "full",
+      "target": "POWER",
+      "designed_records": 15,
+      "eligible_records": 13,
+      "excluded_preexisting_problem": 2,
+      "positive_injections": 10,
+      "negative_controls": 3,
+      "affected_disposition": {
+        "correct": 10,
+        "total": 10,
+        "rate": 1.0
+      },
+      "root_cause": {
+        "correct": 2,
+        "total": 10,
+        "rate": 0.2
+      },
+      "targeted_detection": {
+        "correct": 2,
+        "total": 10,
+        "rate": 0.2
+      },
+      "unaffected_reference_correctness": {
+        "correct": 10,
+        "total": 10,
+        "rate": 1.0
+      },
+      "unaffected_unchanged_vs_method_B0": {
+        "correct": 9,
+        "total": 10,
+        "rate": 0.9
+      },
+      "negative_control_whole_source": {
+        "correct": 3,
+        "total": 3,
+        "rate": 1.0
+      },
+      "negative_control_unchanged_vs_method_B0": {
+        "correct": 3,
+        "total": 3,
+        "rate": 1.0
+      },
+      "D": {
+        "passed": 17848,
+        "applicable": 17867,
+        "not_applicable": 461,
+        "score": 0.9989365870039738,
+        "by_kind": {
+          "calculation_basis": {
+            "passed": 3254,
+            "applicable": 3254,
+            "not_applicable": 0,
+            "score": 1.0
+          },
+          "control_application": {
+            "passed": 2793,
+            "applicable": 2793,
+            "not_applicable": 461,
+            "score": 1.0
+          },
+          "exception_root_cause": {
+            "passed": 344,
+            "applicable": 363,
+            "not_applicable": 0,
+            "score": 0.9476584022038568
+          },
+          "source_destination": {
+            "passed": 5922,
+            "applicable": 5922,
+            "not_applicable": 0,
+            "score": 1.0
+          },
+          "terminal_disposition": {
+            "passed": 5535,
+            "applicable": 5535,
+            "not_applicable": 0,
+            "score": 1.0
+          }
+        }
+      },
+      "N": {
+        "passed": 12390,
+        "applicable": 12390,
+        "not_applicable": 4562,
+        "score": 1.0,
+        "by_kind": {
+          "internal_recalculation": {
+            "passed": 3601,
+            "applicable": 3601,
+            "not_applicable": 2281,
+            "score": 1.0
+          },
+          "reference_value": {
+            "passed": 3254,
+            "applicable": 3254,
+            "not_applicable": 2281,
+            "score": 1.0
+          },
+          "result_completeness": {
+            "passed": 5535,
+            "applicable": 5535,
+            "not_applicable": 0,
+            "score": 1.0
+          }
+        }
+      },
+      "outcomes": [
+        {
+          "source_id": "SRC-RAW-73B3CA59765D5D325DCB",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-DEF5DB5EE0A1EC4F7517",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-4124B4DC2795F28D7751",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-39F79DE3E1F2B10AD763",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-60CCDE1B74EEAAA63955",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-39E2EF967D6F6B1CFD28",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-2ACE0CAADC82D19FC682",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": true,
+          "targeted_detection_correct": true,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-F48BB468C8612404A070",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": true,
+          "targeted_detection_correct": true,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-C5503FD15062A20FAC67",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-6B09B8B9D54AECCD8964",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-C19A926AA8A833CBF154",
+          "positive_injection": false,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": true,
+          "targeted_detection_correct": true,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": true
+        },
+        {
+          "source_id": "SRC-RAW-AF4055E81C013D09C04D",
+          "positive_injection": false,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": true,
+          "targeted_detection_correct": true,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": true
+        },
+        {
+          "source_id": "SRC-RAW-63C74C970704DB13D46B",
+          "positive_injection": false,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": true,
+          "targeted_detection_correct": true,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": true
+        }
+      ]
+    },
+    {
+      "run_id": "B-B2-POW-DET",
+      "method": "deterministic_program",
+      "target": "POWER",
+      "designed_records": 15,
+      "eligible_records": 13,
+      "excluded_preexisting_problem": 2,
+      "positive_injections": 10,
+      "negative_controls": 3,
+      "affected_disposition": {
+        "correct": 3,
+        "total": 10,
+        "rate": 0.3
+      },
+      "root_cause": {
+        "correct": 0,
+        "total": 10,
+        "rate": 0.0
+      },
+      "targeted_detection": {
+        "correct": 0,
+        "total": 10,
+        "rate": 0.0
+      },
+      "unaffected_reference_correctness": {
+        "correct": 2,
+        "total": 10,
+        "rate": 0.2
+      },
+      "unaffected_unchanged_vs_method_B0": {
+        "correct": 10,
+        "total": 10,
+        "rate": 1.0
+      },
+      "negative_control_whole_source": {
+        "correct": 0,
+        "total": 3,
+        "rate": 0.0
+      },
+      "negative_control_unchanged_vs_method_B0": {
+        "correct": 3,
+        "total": 3,
+        "rate": 1.0
+      },
+      "D": {
+        "passed": 15393,
+        "applicable": 18064,
+        "not_applicable": 461,
+        "score": 0.8521368467670505,
+        "by_kind": {
+          "calculation_basis": {
+            "passed": 2785,
+            "applicable": 3254,
+            "not_applicable": 0,
+            "score": 0.8558696988322065
+          },
+          "control_application": {
+            "passed": 1820,
+            "applicable": 2793,
+            "not_applicable": 461,
+            "score": 0.6516290726817042
+          },
+          "exception_root_cause": {
+            "passed": 0,
+            "applicable": 560,
+            "not_applicable": 0,
+            "score": 0.0
+          },
+          "source_destination": {
+            "passed": 5922,
+            "applicable": 5922,
+            "not_applicable": 0,
+            "score": 1.0
+          },
+          "terminal_disposition": {
+            "passed": 4866,
+            "applicable": 5535,
+            "not_applicable": 0,
+            "score": 0.8791327913279133
+          }
+        }
+      },
+      "N": {
+        "passed": 10131,
+        "applicable": 11451,
+        "not_applicable": 5504,
+        "score": 0.8847262247838616,
+        "by_kind": {
+          "internal_recalculation": {
+            "passed": 3131,
+            "applicable": 3133,
+            "not_applicable": 2752,
+            "score": 0.999361634216406
+          },
+          "reference_value": {
+            "passed": 1968,
+            "applicable": 2783,
+            "not_applicable": 2752,
+            "score": 0.7071505569529285
+          },
+          "result_completeness": {
+            "passed": 5032,
+            "applicable": 5535,
+            "not_applicable": 0,
+            "score": 0.9091237579042457
+          }
+        }
+      },
+      "outcomes": [
+        {
+          "source_id": "SRC-RAW-73B3CA59765D5D325DCB",
+          "positive_injection": true,
+          "affected_disposition_correct": false,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-DEF5DB5EE0A1EC4F7517",
+          "positive_injection": true,
+          "affected_disposition_correct": false,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-4124B4DC2795F28D7751",
+          "positive_injection": true,
+          "affected_disposition_correct": false,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-39F79DE3E1F2B10AD763",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-60CCDE1B74EEAAA63955",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-39E2EF967D6F6B1CFD28",
+          "positive_injection": true,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-2ACE0CAADC82D19FC682",
+          "positive_injection": true,
+          "affected_disposition_correct": false,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": true
+        },
+        {
+          "source_id": "SRC-RAW-F48BB468C8612404A070",
+          "positive_injection": true,
+          "affected_disposition_correct": false,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": true
+        },
+        {
+          "source_id": "SRC-RAW-C5503FD15062A20FAC67",
+          "positive_injection": true,
+          "affected_disposition_correct": false,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-6B09B8B9D54AECCD8964",
+          "positive_injection": true,
+          "affected_disposition_correct": false,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-C19A926AA8A833CBF154",
+          "positive_injection": false,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": true
+        },
+        {
+          "source_id": "SRC-RAW-AF4055E81C013D09C04D",
+          "positive_injection": false,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": true,
+          "targeted_detection_correct": true,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": true
+        },
+        {
+          "source_id": "SRC-RAW-63C74C970704DB13D46B",
+          "positive_injection": false,
+          "affected_disposition_correct": true,
+          "root_cause_group_correct": false,
+          "targeted_detection_correct": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": true
+        }
+      ]
+    },
+    {
+      "run_id": "B-B2-POW-HUM",
+      "method": "expert_led",
+      "target": "POWER",
+      "status": "not_comparable_legacy_human_result_did_not_process_raw_v2_injections"
+    }
+  ]
+}

@@ -10,6 +10,7 @@
 - 人工基线：`human_baseline/original_packages/` 只读保存原始工作簿，`human_baseline/normalized_v2/` 提供规范化副本。复现脚本只把规范化 CSV/JSON 复制到物理结果路径，不覆盖原始包；
 - 参照包：`reference/frozen/v2.0.0`；
 - 评价：`evaluation/aggregate_experiment_results_v2.py`，按 D/N/E 与 `EICPI_core` 汇总，不使用旧 S/A/Q/T/R/E、独立质量门槛或绝对 L/U 时间阈值。
+- 归档索引：`reproduction/build_formal_archive_index.py`，仅在 150 个运行全部封存且汇总完成后生成运行哈希与 94 个 Hermes 会话的轻量索引。
 
 ## 运行前检查
 
