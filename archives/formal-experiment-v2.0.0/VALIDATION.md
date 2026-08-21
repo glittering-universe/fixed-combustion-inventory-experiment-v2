@@ -5,7 +5,7 @@
 - 冻结矩阵：150 次（机器 136，人工 14）。
 - 实验分布：A=20，B=48，C=72，D=10。
 - 物理封存包：150/150。
-- Agent 会话导出：94/94，Hermes Desktop Profile 中对应 94 个唯一且已结束的正式会话。
+- Agent 会话导出：94/94，会话 ID 全部唯一；94 份封存导出均记录 `agent_close` 和结束时间。Hermes Desktop Profile 的 `state.db` 中，最后一次 D-Full 会话的 `ended_at` 未回写，但对应封存导出、用量日志和运行包均明确记录为完成。
 - 冻结矩阵与运行 manifest 的 `run_id`、方法、源类、输入版本、规模和方法包哈希零错配。
 - 汇总：`sealed_runs_evaluated=150`，`pending_runs=0`，不设置独立质量门槛。
 
