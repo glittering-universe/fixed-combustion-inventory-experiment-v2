@@ -18,7 +18,7 @@
 \mathrm{EICPI}_{\mathrm{core}}=100(0.35D+0.35N+0.30E).
 \]
 
-其中 D 为专业决策有效性，N 为数值完整性与正确性，E 为相对运行时间效率。E 在每个源类内部以既有专家流程和简单确定性脚本的实测单位耗时作为对数双锚点，不使用人为设定的绝对时间阈值。本版本不设置独立质量门槛。
+其中 D 为专业决策有效性，N 为数值完整性与正确性，E 为相对运行时间效率。活动评价版本 v2.1 将 D 分为常规判断和异常判断两个一级分量；异常按源级根因集合与受影响污染物终态联合计分，不再按全部核算原子池化。E 在每个源类内部以既有专家流程和简单确定性脚本的实测单位耗时作为对数双锚点，不使用人为设定的绝对时间阈值。本版本不设置独立质量门槛。
 
 实验 B1、B2、C、D 分别单独报告输入语义保持、受控异常处置、规模资源表现和组件消融，不进入核心综合分。人工流程只在实验 A 作为同条件核心比较；保留的旧人工 B1/B2 文件不被解释为对新版扰动或注入的反事实结果。
 
@@ -26,11 +26,11 @@
 
 全部运行完成后写入 `实验结果/00_总汇总与索引/`：
 
-- `run_scores_v2.csv`
-- `aggregate_summary_v2.json`
-- `experiment_B1_v2.json`
-- `experiment_B2_v2.json`
-- `experiment_C_v2.json`
-- `experiment_D_v2.json`
+- `run_scores_v2_1.csv`
+- `aggregate_summary_v2_1.json`
+- `experiment_B1_v2_1.json`
+- `experiment_B2_v2_1.json`
+- `experiment_C_v2_1.json`
+- `experiment_D_v2_1.json`
 
-详见 `README_DNE_V2.md`。
+详见 `README_DNE_V2_1.md`。v2.0 六份输出及 `README_DNE_V2.md` 原样保留，作为评价协议修订前的历史结果，不再作为当前论文结果来源。

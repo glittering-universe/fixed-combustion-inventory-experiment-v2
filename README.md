@@ -1,4 +1,4 @@
-# 固定燃烧源清单原始基表实验 v2
+# 固定燃烧源清单原始基表实验 v2 / 评价 v2.1
 
 本仓库是重新设计后的唯一活动实验版本。所有机器方法从同一组答案隔离的原始结构环境统计基表开始，对基102中的5,922条设备候选自主完成源类判定、排放核算、异常处置和结果输出。
 
@@ -10,7 +10,7 @@
 - 源类闭合：工业锅炉4,046条、火电热力615条、范围外1,261条。
 - 规则：T/CSES 144-2024固定燃烧规则包v1.0.1。
 - 专业引擎：3.0.0。
-- 评价：D/N/E v2，`EICPI_core = 100(0.35D + 0.35N + 0.30E)`，不设置独立质量门槛。
+- 评价：D/N/E v2.1，`EICPI_core = 100(0.35D + 0.35N + 0.30E)`，不设置独立质量门槛。v2.1 是实验完成后针对异常类别失衡的协议修订，不修改封存运行。
 - 方法边界：所有 Agent 运行都进行独立边界审计；边界异常如实报告，不另行改变 D/N/E 或中断无门槛综合评价。
 - Hermes Profile：`fixed-combustion-inventory`，正式运行前为空会话库，正式会话可在Desktop中查看。
 
@@ -38,7 +38,7 @@
 - 简单脚本：`baseline/simple_deterministic/`
 - 人工规范化：`human_baseline/normalize_human_v2.py`
 - 独立参照：`reference/frozen/v2.0.0/`
-- D/N/E评价：`evaluation/aggregate_experiment_results_v2.py`
+- D/N/E评价：`evaluation/aggregate_experiment_results_v2.py`（活动指标定义见 `evaluation/metric_spec_v2_1.json`）
 - 一键复现：`reproduction/run_all_machine_experiments.sh`
 
 旧实验的完整Git历史、LFS对象、正式运行包、Hermes会话数据库和历史归档已保存到私有GitHub Release `legacy-pre-raw-input-20260821`，不再保留于本地活动仓库。

@@ -1,0 +1,4274 @@
+{
+  "experiment": "B2",
+  "enters_EICPI_core": false,
+  "interpretation": "Five-class macro-F1 uses only the 26 scoring-eligible controlled objects and scores new root causes plus disposition changes relative to the same method's B0.",
+  "designed_records": 30,
+  "eligible_records": 26,
+  "excluded_preexisting_problem": 4,
+  "five_class_macro_f1_by_method": {
+    "deterministic_program": {
+      "eligible_records": 26,
+      "classes": [
+        "ACTIVITY_MISSING",
+        "POLLUTANT_PARAMETER_MISSING",
+        "SOURCE_RELATION_MISSING",
+        "HARD_CONSTRAINT_CONFLICT",
+        "NO_ANOMALY"
+      ],
+      "macro_f1": 0.14999999999999997,
+      "accuracy": 0.23076923076923078,
+      "by_class": {
+        "ACTIVITY_MISSING": {
+          "support": 6,
+          "predicted": 0,
+          "true_positive": 0,
+          "false_positive": 0,
+          "false_negative": 6,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "POLLUTANT_PARAMETER_MISSING": {
+          "support": 6,
+          "predicted": 0,
+          "true_positive": 0,
+          "false_positive": 0,
+          "false_negative": 6,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "SOURCE_RELATION_MISSING": {
+          "support": 4,
+          "predicted": 0,
+          "true_positive": 0,
+          "false_positive": 0,
+          "false_negative": 4,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "HARD_CONSTRAINT_CONFLICT": {
+          "support": 4,
+          "predicted": 0,
+          "true_positive": 0,
+          "false_positive": 0,
+          "false_negative": 4,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "NO_ANOMALY": {
+          "support": 6,
+          "predicted": 10,
+          "true_positive": 6,
+          "false_positive": 4,
+          "false_negative": 0,
+          "precision": 0.6,
+          "recall": 1.0,
+          "f1": 0.7499999999999999
+        }
+      }
+    },
+    "full": {
+      "eligible_records": 26,
+      "classes": [
+        "ACTIVITY_MISSING",
+        "POLLUTANT_PARAMETER_MISSING",
+        "SOURCE_RELATION_MISSING",
+        "HARD_CONSTRAINT_CONFLICT",
+        "NO_ANOMALY"
+      ],
+      "macro_f1": 0.4,
+      "accuracy": 0.38461538461538464,
+      "by_class": {
+        "ACTIVITY_MISSING": {
+          "support": 6,
+          "predicted": 0,
+          "true_positive": 0,
+          "false_positive": 0,
+          "false_negative": 6,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "POLLUTANT_PARAMETER_MISSING": {
+          "support": 6,
+          "predicted": 0,
+          "true_positive": 0,
+          "false_positive": 0,
+          "false_negative": 6,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "SOURCE_RELATION_MISSING": {
+          "support": 4,
+          "predicted": 4,
+          "true_positive": 4,
+          "false_positive": 0,
+          "false_negative": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "HARD_CONSTRAINT_CONFLICT": {
+          "support": 4,
+          "predicted": 0,
+          "true_positive": 0,
+          "false_positive": 0,
+          "false_negative": 4,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "NO_ANOMALY": {
+          "support": 6,
+          "predicted": 6,
+          "true_positive": 6,
+          "false_positive": 0,
+          "false_negative": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    },
+    "generic_tool_agent": {
+      "eligible_records": 26,
+      "classes": [
+        "ACTIVITY_MISSING",
+        "POLLUTANT_PARAMETER_MISSING",
+        "SOURCE_RELATION_MISSING",
+        "HARD_CONSTRAINT_CONFLICT",
+        "NO_ANOMALY"
+      ],
+      "macro_f1": 0.13333333333333333,
+      "accuracy": 0.11538461538461539,
+      "by_class": {
+        "ACTIVITY_MISSING": {
+          "support": 6,
+          "predicted": 3,
+          "true_positive": 3,
+          "false_positive": 0,
+          "false_negative": 3,
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666
+        },
+        "POLLUTANT_PARAMETER_MISSING": {
+          "support": 6,
+          "predicted": 0,
+          "true_positive": 0,
+          "false_positive": 0,
+          "false_negative": 6,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "SOURCE_RELATION_MISSING": {
+          "support": 4,
+          "predicted": 0,
+          "true_positive": 0,
+          "false_positive": 0,
+          "false_negative": 4,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "HARD_CONSTRAINT_CONFLICT": {
+          "support": 4,
+          "predicted": 0,
+          "true_positive": 0,
+          "false_positive": 0,
+          "false_negative": 4,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "NO_ANOMALY": {
+          "support": 6,
+          "predicted": 0,
+          "true_positive": 0,
+          "false_positive": 0,
+          "false_negative": 6,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        }
+      }
+    }
+  },
+  "runs": [
+    {
+      "run_id": "B-B2-IND-DET",
+      "method": "deterministic_program",
+      "target": "INDUSTRIAL",
+      "designed_records": 15,
+      "eligible_records": 13,
+      "excluded_preexisting_problem": 2,
+      "positive_injections": 10,
+      "negative_controls": 3,
+      "affected_disposition_transition": {
+        "correct": 3,
+        "total": 10,
+        "rate": 0.3
+      },
+      "injected_root_recall": {
+        "correct": 0,
+        "total": 10,
+        "rate": 0.0
+      },
+      "targeted_handling_success": {
+        "correct": 0,
+        "total": 10,
+        "rate": 0.0
+      },
+      "unaffected_reference_correctness": {
+        "correct": 2,
+        "total": 10,
+        "rate": 0.2
+      },
+      "unaffected_unchanged_vs_method_B0": {
+        "correct": 10,
+        "total": 10,
+        "rate": 1.0
+      },
+      "negative_control_whole_source": {
+        "correct": 0,
+        "total": 3,
+        "rate": 0.0
+      },
+      "negative_control_unchanged_vs_method_B0": {
+        "correct": 3,
+        "total": 3,
+        "rate": 1.0
+      },
+      "five_class_classification": {
+        "eligible_records": 13,
+        "classes": [
+          "ACTIVITY_MISSING",
+          "POLLUTANT_PARAMETER_MISSING",
+          "SOURCE_RELATION_MISSING",
+          "HARD_CONSTRAINT_CONFLICT",
+          "NO_ANOMALY"
+        ],
+        "macro_f1": 0.14999999999999997,
+        "accuracy": 0.23076923076923078,
+        "by_class": {
+          "ACTIVITY_MISSING": {
+            "support": 3,
+            "predicted": 0,
+            "true_positive": 0,
+            "false_positive": 0,
+            "false_negative": 3,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "POLLUTANT_PARAMETER_MISSING": {
+            "support": 3,
+            "predicted": 0,
+            "true_positive": 0,
+            "false_positive": 0,
+            "false_negative": 3,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "SOURCE_RELATION_MISSING": {
+            "support": 2,
+            "predicted": 0,
+            "true_positive": 0,
+            "false_positive": 0,
+            "false_negative": 2,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "HARD_CONSTRAINT_CONFLICT": {
+            "support": 2,
+            "predicted": 0,
+            "true_positive": 0,
+            "false_positive": 0,
+            "false_negative": 2,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "NO_ANOMALY": {
+            "support": 3,
+            "predicted": 5,
+            "true_positive": 3,
+            "false_positive": 2,
+            "false_negative": 0,
+            "precision": 0.6,
+            "recall": 1.0,
+            "f1": 0.7499999999999999
+          }
+        }
+      },
+      "overall_reference_D_diagnostic": {
+        "score": 0.44916571471375866,
+        "D_regular": 0.8983314294275173,
+        "D_exception": 0.0,
+        "regular": {
+          "passed": 95940,
+          "applicable": 106798,
+          "not_applicable": 3774,
+          "score": 0.8983314294275173,
+          "by_kind": {
+            "calculation_basis": {
+              "passed": 31282,
+              "applicable": 35056,
+              "not_applicable": 0,
+              "score": 0.8923436786855318
+            },
+            "control_application": {
+              "passed": 27882,
+              "applicable": 31282,
+              "not_applicable": 3774,
+              "score": 0.8913112972316348
+            },
+            "source_destination": {
+              "passed": 5922,
+              "applicable": 5922,
+              "not_applicable": 0,
+              "score": 1.0
+            },
+            "terminal_disposition": {
+              "passed": 30854,
+              "applicable": 34538,
+              "not_applicable": 0,
+              "score": 0.893334877526203
+            }
+          }
+        },
+        "exception": {
+          "passed": 0,
+          "applicable": 267,
+          "not_applicable": 0,
+          "score": 0.0,
+          "failed_source_count": 267,
+          "failed_source_examples": [
+            {
+              "source_id": "SRC-RAW-016884A74403910FC27F",
+              "expected_root_causes": [
+                "other_fuel_tce_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-01C7E3F947D794BE948E",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-025DC4469A5FDDA07CF8",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-0364C1615A4478B5D6AF",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-047B5DC7001BE36DF321",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-05A3F69CD0063E32B769",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-0B1D2647DB40F49FEC15",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0B3A552A799ABE9315B1",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0BAB7158094C39A40FA6",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0BAE74BA2397CF47D951",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-0C7656189CF468228BE7",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-0CD50FAFD598F78B9A62",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0D301274CFA9EB4D2854",
+              "expected_root_causes": [
+                "ash_parameter_invalid"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0D37E4DC70046446405D",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-0E136B6ED278D2B88251",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0E5D25C698FC766F5E54",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0EF8DA82CE4CEF4F06DD",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0FF9EAE742E1CA475E9D",
+              "expected_root_causes": [
+                "control_information_conflict"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-10C601149B4B00D90918",
+              "expected_root_causes": [
+                "source_relationship_missing"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-10DBDEEDC62C021AC9CD",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-112558671E36FAB5E1CF",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-11261CB1D223C6D26809",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-129F135EBADEDAB59D1A",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-12EC93D336D3CEE3F8C8",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-1453EF7D6625C7EBD5A3",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-14A06513A8F387C57BA4",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-158963CA46A327265B5D",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-16A75D53146530607FC2",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-1712D4E3603143978196",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-18E1B3B43BCE322909B9",
+              "expected_root_causes": [
+                "potential_duplicate_fuel_slot"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            }
+          ]
+        },
+        "legacy_atom_micro_score": 0.8941258459111999,
+        "passed": 97508,
+        "applicable": 109054,
+        "not_applicable": 3774,
+        "by_kind": {
+          "calculation_basis": {
+            "passed": 31282,
+            "applicable": 35056,
+            "not_applicable": 0,
+            "score": 0.8923436786855318
+          },
+          "control_application": {
+            "passed": 27882,
+            "applicable": 31282,
+            "not_applicable": 3774,
+            "score": 0.8913112972316348
+          },
+          "exception_root_cause": {
+            "passed": 0,
+            "applicable": 380,
+            "not_applicable": 0,
+            "score": 0.0
+          },
+          "source_destination": {
+            "passed": 5922,
+            "applicable": 5922,
+            "not_applicable": 0,
+            "score": 1.0
+          },
+          "terminal_disposition": {
+            "passed": 32422,
+            "applicable": 36414,
+            "not_applicable": 0,
+            "score": 0.8903718350085132
+          }
+        },
+        "raw_counts": {
+          "passed": 97508,
+          "applicable": 109054,
+          "not_applicable": 3774,
+          "total": 112828
+        },
+        "diagnostics": {
+          "detection_precision": 1.0,
+          "detection_recall": 0.3782771535580524,
+          "detection_f1": 0.5489130434782609,
+          "root_cause_macro_jaccard": 0.0,
+          "exception_disposition_accuracy": 0.38202247191011235
+        }
+      },
+      "overall_reference_N_diagnostic": {
+        "passed": 95834,
+        "applicable": 102901,
+        "not_applicable": 10264,
+        "score": 0.9313223389471433,
+        "by_kind": {
+          "internal_recalculation": {
+            "passed": 35203,
+            "applicable": 35205,
+            "not_applicable": 5132,
+            "score": 0.9999431898878001
+          },
+          "reference_value": {
+            "passed": 28105,
+            "applicable": 31282,
+            "not_applicable": 5132,
+            "score": 0.8984399974426187
+          },
+          "result_completeness": {
+            "passed": 32526,
+            "applicable": 36414,
+            "not_applicable": 0,
+            "score": 0.893227879387049
+          }
+        }
+      },
+      "outcomes": [
+        {
+          "source_id": "SRC-RAW-9AAF620407C54396A867",
+          "positive_injection": true,
+          "expected_class": "ACTIVITY_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "activity_level_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": false,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-42923CF3A707087450FB",
+          "positive_injection": true,
+          "expected_class": "ACTIVITY_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "activity_level_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": false,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-5810F198DFBC21BBAF58",
+          "positive_injection": true,
+          "expected_class": "ACTIVITY_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "activity_level_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": false,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-D8333CABBDCF22B6AB37",
+          "positive_injection": true,
+          "expected_class": "POLLUTANT_PARAMETER_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "ash_parameter_missing",
+            "sulfur_parameter_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-48EC88DCAB198382370E",
+          "positive_injection": true,
+          "expected_class": "POLLUTANT_PARAMETER_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "ash_parameter_missing",
+            "sulfur_parameter_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-FF1045ABC23B668A936E",
+          "positive_injection": true,
+          "expected_class": "POLLUTANT_PARAMETER_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "ash_parameter_missing",
+            "sulfur_parameter_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-10C601149B4B00D90918",
+          "positive_injection": true,
+          "expected_class": "SOURCE_RELATION_MISSING",
+          "predicted_class": "NO_ANOMALY",
+          "expected_injected_root_causes": [
+            "source_relationship_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": false,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": true
+        },
+        {
+          "source_id": "SRC-RAW-FA6CE82F65D745F12FCF",
+          "positive_injection": true,
+          "expected_class": "SOURCE_RELATION_MISSING",
+          "predicted_class": "NO_ANOMALY",
+          "expected_injected_root_causes": [
+            "source_relationship_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": false,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": true
+        },
+        {
+          "source_id": "SRC-RAW-46119431773A9235066F",
+          "positive_injection": true,
+          "expected_class": "HARD_CONSTRAINT_CONFLICT",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "ash_parameter_invalid"
+          ],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": false,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-0D301274CFA9EB4D2854",
+          "positive_injection": true,
+          "expected_class": "HARD_CONSTRAINT_CONFLICT",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "ash_parameter_invalid"
+          ],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": false,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-E012C40BCD2A49BE820E",
+          "positive_injection": false,
+          "expected_class": "NO_ANOMALY",
+          "predicted_class": "NO_ANOMALY",
+          "expected_injected_root_causes": [],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": null,
+          "injected_root_recalled": null,
+          "targeted_handling_success": null,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": true
+        },
+        {
+          "source_id": "SRC-RAW-D8B4062ABE2FF777978E",
+          "positive_injection": false,
+          "expected_class": "NO_ANOMALY",
+          "predicted_class": "NO_ANOMALY",
+          "expected_injected_root_causes": [],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": null,
+          "injected_root_recalled": null,
+          "targeted_handling_success": null,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": true
+        },
+        {
+          "source_id": "SRC-RAW-781ABAACD80E4E2B94B5",
+          "positive_injection": false,
+          "expected_class": "NO_ANOMALY",
+          "predicted_class": "NO_ANOMALY",
+          "expected_injected_root_causes": [],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": null,
+          "injected_root_recalled": null,
+          "targeted_handling_success": null,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": true
+        }
+      ]
+    },
+    {
+      "run_id": "B-B2-IND-GEN",
+      "method": "generic_tool_agent",
+      "target": "INDUSTRIAL",
+      "designed_records": 15,
+      "eligible_records": 13,
+      "excluded_preexisting_problem": 2,
+      "positive_injections": 10,
+      "negative_controls": 3,
+      "affected_disposition_transition": {
+        "correct": 5,
+        "total": 10,
+        "rate": 0.5
+      },
+      "injected_root_recall": {
+        "correct": 0,
+        "total": 10,
+        "rate": 0.0
+      },
+      "targeted_handling_success": {
+        "correct": 0,
+        "total": 10,
+        "rate": 0.0
+      },
+      "unaffected_reference_correctness": {
+        "correct": 2,
+        "total": 10,
+        "rate": 0.2
+      },
+      "unaffected_unchanged_vs_method_B0": {
+        "correct": 2,
+        "total": 10,
+        "rate": 0.2
+      },
+      "negative_control_whole_source": {
+        "correct": 0,
+        "total": 3,
+        "rate": 0.0
+      },
+      "negative_control_unchanged_vs_method_B0": {
+        "correct": 0,
+        "total": 3,
+        "rate": 0.0
+      },
+      "five_class_classification": {
+        "eligible_records": 13,
+        "classes": [
+          "ACTIVITY_MISSING",
+          "POLLUTANT_PARAMETER_MISSING",
+          "SOURCE_RELATION_MISSING",
+          "HARD_CONSTRAINT_CONFLICT",
+          "NO_ANOMALY"
+        ],
+        "macro_f1": 0.0,
+        "accuracy": 0.0,
+        "by_class": {
+          "ACTIVITY_MISSING": {
+            "support": 3,
+            "predicted": 0,
+            "true_positive": 0,
+            "false_positive": 0,
+            "false_negative": 3,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "POLLUTANT_PARAMETER_MISSING": {
+            "support": 3,
+            "predicted": 0,
+            "true_positive": 0,
+            "false_positive": 0,
+            "false_negative": 3,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "SOURCE_RELATION_MISSING": {
+            "support": 2,
+            "predicted": 0,
+            "true_positive": 0,
+            "false_positive": 0,
+            "false_negative": 2,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "HARD_CONSTRAINT_CONFLICT": {
+            "support": 2,
+            "predicted": 0,
+            "true_positive": 0,
+            "false_positive": 0,
+            "false_negative": 2,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "NO_ANOMALY": {
+            "support": 3,
+            "predicted": 0,
+            "true_positive": 0,
+            "false_positive": 0,
+            "false_negative": 3,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        }
+      },
+      "overall_reference_D_diagnostic": {
+        "score": 0.2838583989745154,
+        "D_regular": 0.5639993258300717,
+        "D_exception": 0.0037174721189591076,
+        "regular": {
+          "passed": 60234,
+          "applicable": 106798,
+          "not_applicable": 3774,
+          "score": 0.5639993258300717,
+          "by_kind": {
+            "calculation_basis": {
+              "passed": 0,
+              "applicable": 35056,
+              "not_applicable": 0,
+              "score": 0.0
+            },
+            "control_application": {
+              "passed": 27571,
+              "applicable": 31282,
+              "not_applicable": 3774,
+              "score": 0.8813694776548814
+            },
+            "source_destination": {
+              "passed": 3923,
+              "applicable": 5922,
+              "not_applicable": 0,
+              "score": 0.6624451198919284
+            },
+            "terminal_disposition": {
+              "passed": 28740,
+              "applicable": 34538,
+              "not_applicable": 0,
+              "score": 0.8321269326538885
+            }
+          }
+        },
+        "exception": {
+          "passed": 1,
+          "applicable": 269,
+          "not_applicable": 0,
+          "score": 0.0037174721189591076,
+          "failed_source_count": 268,
+          "failed_source_examples": [
+            {
+              "source_id": "SRC-RAW-016884A74403910FC27F",
+              "expected_root_causes": [
+                "other_fuel_tce_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-01C7E3F947D794BE948E",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-025DC4469A5FDDA07CF8",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0364C1615A4478B5D6AF",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-047B5DC7001BE36DF321",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-05A3F69CD0063E32B769",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0B1D2647DB40F49FEC15",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0B3A552A799ABE9315B1",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0BAB7158094C39A40FA6",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0BAE74BA2397CF47D951",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0C7656189CF468228BE7",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0CD50FAFD598F78B9A62",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0D301274CFA9EB4D2854",
+              "expected_root_causes": [
+                "ash_parameter_invalid"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0D37E4DC70046446405D",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0E136B6ED278D2B88251",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0E5D25C698FC766F5E54",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0EF8DA82CE4CEF4F06DD",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-0FF9EAE742E1CA475E9D",
+              "expected_root_causes": [
+                "control_information_conflict"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-10C601149B4B00D90918",
+              "expected_root_causes": [
+                "source_relationship_missing"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-10DBDEEDC62C021AC9CD",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-112558671E36FAB5E1CF",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-11261CB1D223C6D26809",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-129F135EBADEDAB59D1A",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-12EC93D336D3CEE3F8C8",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-1453EF7D6625C7EBD5A3",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-14A06513A8F387C57BA4",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-158963CA46A327265B5D",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-16A75D53146530607FC2",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-1712D4E3603143978196",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-18E1B3B43BCE322909B9",
+              "expected_root_causes": [
+                "potential_duplicate_fuel_slot"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            }
+          ]
+        },
+        "legacy_atom_micro_score": 0.5640573804344833,
+        "passed": 61458,
+        "applicable": 108957,
+        "not_applicable": 3774,
+        "by_kind": {
+          "calculation_basis": {
+            "passed": 0,
+            "applicable": 35056,
+            "not_applicable": 0,
+            "score": 0.0
+          },
+          "control_application": {
+            "passed": 27571,
+            "applicable": 31282,
+            "not_applicable": 3774,
+            "score": 0.8813694776548814
+          },
+          "exception_root_cause": {
+            "passed": 1,
+            "applicable": 283,
+            "not_applicable": 0,
+            "score": 0.0035335689045936395
+          },
+          "source_destination": {
+            "passed": 3923,
+            "applicable": 5922,
+            "not_applicable": 0,
+            "score": 0.6624451198919284
+          },
+          "terminal_disposition": {
+            "passed": 29963,
+            "applicable": 36414,
+            "not_applicable": 0,
+            "score": 0.8228428626352502
+          }
+        },
+        "raw_counts": {
+          "passed": 61458,
+          "applicable": 108957,
+          "not_applicable": 3774,
+          "total": 112731
+        },
+        "diagnostics": {
+          "detection_precision": 0.6,
+          "detection_recall": 0.011235955056179775,
+          "detection_f1": 0.022058823529411763,
+          "root_cause_macro_jaccard": 0.3333333333333333,
+          "exception_disposition_accuracy": 0.352059925093633
+        }
+      },
+      "overall_reference_N_diagnostic": {
+        "passed": 62518,
+        "applicable": 115818,
+        "not_applicable": 14010,
+        "score": 0.5397951959108256,
+        "by_kind": {
+          "internal_recalculation": {
+            "passed": 3702,
+            "applicable": 33111,
+            "not_applicable": 7005,
+            "score": 0.11180574431457824
+          },
+          "reference_value": {
+            "passed": 28414,
+            "applicable": 29409,
+            "not_applicable": 7005,
+            "score": 0.96616681968105
+          },
+          "result_completeness": {
+            "passed": 30402,
+            "applicable": 53298,
+            "not_applicable": 0,
+            "score": 0.5704154002026343
+          }
+        }
+      },
+      "outcomes": [
+        {
+          "source_id": "SRC-RAW-9AAF620407C54396A867",
+          "positive_injection": true,
+          "expected_class": "ACTIVITY_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "activity_level_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-42923CF3A707087450FB",
+          "positive_injection": true,
+          "expected_class": "ACTIVITY_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "activity_level_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-5810F198DFBC21BBAF58",
+          "positive_injection": true,
+          "expected_class": "ACTIVITY_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "activity_level_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-D8333CABBDCF22B6AB37",
+          "positive_injection": true,
+          "expected_class": "POLLUTANT_PARAMETER_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "ash_parameter_missing",
+            "sulfur_parameter_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": false,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-48EC88DCAB198382370E",
+          "positive_injection": true,
+          "expected_class": "POLLUTANT_PARAMETER_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "ash_parameter_missing",
+            "sulfur_parameter_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-FF1045ABC23B668A936E",
+          "positive_injection": true,
+          "expected_class": "POLLUTANT_PARAMETER_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "ash_parameter_missing",
+            "sulfur_parameter_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": false,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-10C601149B4B00D90918",
+          "positive_injection": true,
+          "expected_class": "SOURCE_RELATION_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "source_relationship_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": false,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-FA6CE82F65D745F12FCF",
+          "positive_injection": true,
+          "expected_class": "SOURCE_RELATION_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "source_relationship_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": false,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-46119431773A9235066F",
+          "positive_injection": true,
+          "expected_class": "HARD_CONSTRAINT_CONFLICT",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "ash_parameter_invalid"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "unmapped::generic_natural_language_exception"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-0D301274CFA9EB4D2854",
+          "positive_injection": true,
+          "expected_class": "HARD_CONSTRAINT_CONFLICT",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "ash_parameter_invalid"
+          ],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": false,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-E012C40BCD2A49BE820E",
+          "positive_injection": false,
+          "expected_class": "NO_ANOMALY",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": null,
+          "injected_root_recalled": null,
+          "targeted_handling_success": null,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-D8B4062ABE2FF777978E",
+          "positive_injection": false,
+          "expected_class": "NO_ANOMALY",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": null,
+          "injected_root_recalled": null,
+          "targeted_handling_success": null,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-781ABAACD80E4E2B94B5",
+          "positive_injection": false,
+          "expected_class": "NO_ANOMALY",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": null,
+          "injected_root_recalled": null,
+          "targeted_handling_success": null,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        }
+      ]
+    },
+    {
+      "run_id": "B-B2-IND-FULL",
+      "method": "full",
+      "target": "INDUSTRIAL",
+      "designed_records": 15,
+      "eligible_records": 13,
+      "excluded_preexisting_problem": 2,
+      "positive_injections": 10,
+      "negative_controls": 3,
+      "affected_disposition_transition": {
+        "correct": 10,
+        "total": 10,
+        "rate": 1.0
+      },
+      "injected_root_recall": {
+        "correct": 2,
+        "total": 10,
+        "rate": 0.2
+      },
+      "targeted_handling_success": {
+        "correct": 2,
+        "total": 10,
+        "rate": 0.2
+      },
+      "unaffected_reference_correctness": {
+        "correct": 10,
+        "total": 10,
+        "rate": 1.0
+      },
+      "unaffected_unchanged_vs_method_B0": {
+        "correct": 10,
+        "total": 10,
+        "rate": 1.0
+      },
+      "negative_control_whole_source": {
+        "correct": 3,
+        "total": 3,
+        "rate": 1.0
+      },
+      "negative_control_unchanged_vs_method_B0": {
+        "correct": 3,
+        "total": 3,
+        "rate": 1.0
+      },
+      "five_class_classification": {
+        "eligible_records": 13,
+        "classes": [
+          "ACTIVITY_MISSING",
+          "POLLUTANT_PARAMETER_MISSING",
+          "SOURCE_RELATION_MISSING",
+          "HARD_CONSTRAINT_CONFLICT",
+          "NO_ANOMALY"
+        ],
+        "macro_f1": 0.4,
+        "accuracy": 0.38461538461538464,
+        "by_class": {
+          "ACTIVITY_MISSING": {
+            "support": 3,
+            "predicted": 0,
+            "true_positive": 0,
+            "false_positive": 0,
+            "false_negative": 3,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "POLLUTANT_PARAMETER_MISSING": {
+            "support": 3,
+            "predicted": 0,
+            "true_positive": 0,
+            "false_positive": 0,
+            "false_negative": 3,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "SOURCE_RELATION_MISSING": {
+            "support": 2,
+            "predicted": 2,
+            "true_positive": 2,
+            "false_positive": 0,
+            "false_negative": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "HARD_CONSTRAINT_CONFLICT": {
+            "support": 2,
+            "predicted": 0,
+            "true_positive": 0,
+            "false_positive": 0,
+            "false_negative": 2,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "NO_ANOMALY": {
+            "support": 3,
+            "predicted": 3,
+            "true_positive": 3,
+            "false_positive": 0,
+            "false_negative": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          }
+        }
+      },
+      "overall_reference_D_diagnostic": {
+        "score": 0.9850187265917603,
+        "D_regular": 1.0,
+        "D_exception": 0.9700374531835206,
+        "regular": {
+          "passed": 106798,
+          "applicable": 106798,
+          "not_applicable": 3774,
+          "score": 1.0,
+          "by_kind": {
+            "calculation_basis": {
+              "passed": 35056,
+              "applicable": 35056,
+              "not_applicable": 0,
+              "score": 1.0
+            },
+            "control_application": {
+              "passed": 31282,
+              "applicable": 31282,
+              "not_applicable": 3774,
+              "score": 1.0
+            },
+            "source_destination": {
+              "passed": 5922,
+              "applicable": 5922,
+              "not_applicable": 0,
+              "score": 1.0
+            },
+            "terminal_disposition": {
+              "passed": 34538,
+              "applicable": 34538,
+              "not_applicable": 0,
+              "score": 1.0
+            }
+          }
+        },
+        "exception": {
+          "passed": 259,
+          "applicable": 267,
+          "not_applicable": 0,
+          "score": 0.9700374531835206,
+          "failed_source_count": 8,
+          "failed_source_examples": [
+            {
+              "source_id": "SRC-RAW-0D301274CFA9EB4D2854",
+              "expected_root_causes": [
+                "ash_parameter_invalid"
+              ],
+              "actual_root_causes": [
+                "factor_input_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-42923CF3A707087450FB",
+              "expected_root_causes": [
+                "activity_level_missing"
+              ],
+              "actual_root_causes": [
+                "activity_or_unit_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-46119431773A9235066F",
+              "expected_root_causes": [
+                "ash_parameter_invalid"
+              ],
+              "actual_root_causes": [
+                "factor_input_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-48EC88DCAB198382370E",
+              "expected_root_causes": [
+                "ash_parameter_missing",
+                "sulfur_parameter_missing"
+              ],
+              "actual_root_causes": [
+                "factor_input_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-5810F198DFBC21BBAF58",
+              "expected_root_causes": [
+                "activity_level_missing"
+              ],
+              "actual_root_causes": [
+                "activity_or_unit_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-9AAF620407C54396A867",
+              "expected_root_causes": [
+                "activity_level_missing"
+              ],
+              "actual_root_causes": [
+                "activity_or_unit_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-D8333CABBDCF22B6AB37",
+              "expected_root_causes": [
+                "ash_parameter_missing",
+                "sulfur_parameter_missing"
+              ],
+              "actual_root_causes": [
+                "factor_input_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-FF1045ABC23B668A936E",
+              "expected_root_causes": [
+                "ash_parameter_missing",
+                "sulfur_parameter_missing"
+              ],
+              "actual_root_causes": [
+                "factor_input_unresolved"
+              ],
+              "disposition_passed": true
+            }
+          ]
+        },
+        "legacy_atom_micro_score": 0.9998256256825837,
+        "passed": 108942,
+        "applicable": 108961,
+        "not_applicable": 3774,
+        "by_kind": {
+          "calculation_basis": {
+            "passed": 35056,
+            "applicable": 35056,
+            "not_applicable": 0,
+            "score": 1.0
+          },
+          "control_application": {
+            "passed": 31282,
+            "applicable": 31282,
+            "not_applicable": 3774,
+            "score": 1.0
+          },
+          "exception_root_cause": {
+            "passed": 268,
+            "applicable": 287,
+            "not_applicable": 0,
+            "score": 0.9337979094076655
+          },
+          "source_destination": {
+            "passed": 5922,
+            "applicable": 5922,
+            "not_applicable": 0,
+            "score": 1.0
+          },
+          "terminal_disposition": {
+            "passed": 36414,
+            "applicable": 36414,
+            "not_applicable": 0,
+            "score": 1.0
+          }
+        },
+        "raw_counts": {
+          "passed": 108942,
+          "applicable": 108961,
+          "not_applicable": 3774,
+          "total": 112735
+        },
+        "diagnostics": {
+          "detection_precision": 1.0,
+          "detection_recall": 1.0,
+          "detection_f1": 1.0,
+          "root_cause_macro_jaccard": 0.9700374531835206,
+          "exception_disposition_accuracy": 1.0
+        }
+      },
+      "overall_reference_N_diagnostic": {
+        "passed": 110435,
+        "applicable": 110435,
+        "not_applicable": 2716,
+        "score": 1.0,
+        "by_kind": {
+          "internal_recalculation": {
+            "passed": 38965,
+            "applicable": 38965,
+            "not_applicable": 1358,
+            "score": 1.0
+          },
+          "reference_value": {
+            "passed": 35056,
+            "applicable": 35056,
+            "not_applicable": 1358,
+            "score": 1.0
+          },
+          "result_completeness": {
+            "passed": 36414,
+            "applicable": 36414,
+            "not_applicable": 0,
+            "score": 1.0
+          }
+        }
+      },
+      "outcomes": [
+        {
+          "source_id": "SRC-RAW-9AAF620407C54396A867",
+          "positive_injection": true,
+          "expected_class": "ACTIVITY_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "activity_level_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "activity_or_unit_unresolved"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-42923CF3A707087450FB",
+          "positive_injection": true,
+          "expected_class": "ACTIVITY_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "activity_level_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "activity_or_unit_unresolved"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-5810F198DFBC21BBAF58",
+          "positive_injection": true,
+          "expected_class": "ACTIVITY_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "activity_level_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "activity_or_unit_unresolved"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-D8333CABBDCF22B6AB37",
+          "positive_injection": true,
+          "expected_class": "POLLUTANT_PARAMETER_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "ash_parameter_missing",
+            "sulfur_parameter_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "factor_input_unresolved"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-48EC88DCAB198382370E",
+          "positive_injection": true,
+          "expected_class": "POLLUTANT_PARAMETER_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "ash_parameter_missing",
+            "sulfur_parameter_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "factor_input_unresolved"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-FF1045ABC23B668A936E",
+          "positive_injection": true,
+          "expected_class": "POLLUTANT_PARAMETER_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "ash_parameter_missing",
+            "sulfur_parameter_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "factor_input_unresolved"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-10C601149B4B00D90918",
+          "positive_injection": true,
+          "expected_class": "SOURCE_RELATION_MISSING",
+          "predicted_class": "SOURCE_RELATION_MISSING",
+          "expected_injected_root_causes": [
+            "source_relationship_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "source_relationship_missing"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": true,
+          "targeted_handling_success": true,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-FA6CE82F65D745F12FCF",
+          "positive_injection": true,
+          "expected_class": "SOURCE_RELATION_MISSING",
+          "predicted_class": "SOURCE_RELATION_MISSING",
+          "expected_injected_root_causes": [
+            "source_relationship_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "source_relationship_missing"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": true,
+          "targeted_handling_success": true,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-46119431773A9235066F",
+          "positive_injection": true,
+          "expected_class": "HARD_CONSTRAINT_CONFLICT",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "ash_parameter_invalid"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "factor_input_unresolved"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-0D301274CFA9EB4D2854",
+          "positive_injection": true,
+          "expected_class": "HARD_CONSTRAINT_CONFLICT",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "ash_parameter_invalid"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "factor_input_unresolved"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-E012C40BCD2A49BE820E",
+          "positive_injection": false,
+          "expected_class": "NO_ANOMALY",
+          "predicted_class": "NO_ANOMALY",
+          "expected_injected_root_causes": [],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": null,
+          "injected_root_recalled": null,
+          "targeted_handling_success": null,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": true
+        },
+        {
+          "source_id": "SRC-RAW-D8B4062ABE2FF777978E",
+          "positive_injection": false,
+          "expected_class": "NO_ANOMALY",
+          "predicted_class": "NO_ANOMALY",
+          "expected_injected_root_causes": [],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": null,
+          "injected_root_recalled": null,
+          "targeted_handling_success": null,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": true
+        },
+        {
+          "source_id": "SRC-RAW-781ABAACD80E4E2B94B5",
+          "positive_injection": false,
+          "expected_class": "NO_ANOMALY",
+          "predicted_class": "NO_ANOMALY",
+          "expected_injected_root_causes": [],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": null,
+          "injected_root_recalled": null,
+          "targeted_handling_success": null,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": true
+        }
+      ]
+    },
+    {
+      "run_id": "B-B2-IND-HUM",
+      "method": "expert_led",
+      "target": "INDUSTRIAL",
+      "status": "not_comparable_legacy_human_result_did_not_process_raw_v2_injections"
+    },
+    {
+      "run_id": "B-B2-POW-GEN",
+      "method": "generic_tool_agent",
+      "target": "POWER",
+      "designed_records": 15,
+      "eligible_records": 13,
+      "excluded_preexisting_problem": 2,
+      "positive_injections": 10,
+      "negative_controls": 3,
+      "affected_disposition_transition": {
+        "correct": 8,
+        "total": 10,
+        "rate": 0.8
+      },
+      "injected_root_recall": {
+        "correct": 2,
+        "total": 10,
+        "rate": 0.2
+      },
+      "targeted_handling_success": {
+        "correct": 2,
+        "total": 10,
+        "rate": 0.2
+      },
+      "unaffected_reference_correctness": {
+        "correct": 2,
+        "total": 10,
+        "rate": 0.2
+      },
+      "unaffected_unchanged_vs_method_B0": {
+        "correct": 2,
+        "total": 10,
+        "rate": 0.2
+      },
+      "negative_control_whole_source": {
+        "correct": 0,
+        "total": 3,
+        "rate": 0.0
+      },
+      "negative_control_unchanged_vs_method_B0": {
+        "correct": 0,
+        "total": 3,
+        "rate": 0.0
+      },
+      "five_class_classification": {
+        "eligible_records": 13,
+        "classes": [
+          "ACTIVITY_MISSING",
+          "POLLUTANT_PARAMETER_MISSING",
+          "SOURCE_RELATION_MISSING",
+          "HARD_CONSTRAINT_CONFLICT",
+          "NO_ANOMALY"
+        ],
+        "macro_f1": 0.2,
+        "accuracy": 0.23076923076923078,
+        "by_class": {
+          "ACTIVITY_MISSING": {
+            "support": 3,
+            "predicted": 3,
+            "true_positive": 3,
+            "false_positive": 0,
+            "false_negative": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "POLLUTANT_PARAMETER_MISSING": {
+            "support": 3,
+            "predicted": 0,
+            "true_positive": 0,
+            "false_positive": 0,
+            "false_negative": 3,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "SOURCE_RELATION_MISSING": {
+            "support": 2,
+            "predicted": 0,
+            "true_positive": 0,
+            "false_positive": 0,
+            "false_negative": 2,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "HARD_CONSTRAINT_CONFLICT": {
+            "support": 2,
+            "predicted": 0,
+            "true_positive": 0,
+            "false_positive": 0,
+            "false_negative": 2,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "NO_ANOMALY": {
+            "support": 3,
+            "predicted": 0,
+            "true_positive": 0,
+            "false_positive": 0,
+            "false_negative": 3,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        }
+      },
+      "overall_reference_D_diagnostic": {
+        "score": 0.1749642690898124,
+        "D_regular": 0.34351828176936844,
+        "D_exception": 0.00641025641025641,
+        "regular": {
+          "passed": 5374,
+          "applicable": 15644,
+          "not_applicable": 461,
+          "score": 0.34351828176936844,
+          "by_kind": {
+            "calculation_basis": {
+              "passed": 0,
+              "applicable": 3254,
+              "not_applicable": 0,
+              "score": 0.0
+            },
+            "control_application": {
+              "passed": 1986,
+              "applicable": 2793,
+              "not_applicable": 461,
+              "score": 0.7110633727175081
+            },
+            "source_destination": {
+              "passed": 615,
+              "applicable": 5922,
+              "not_applicable": 0,
+              "score": 0.1038500506585613
+            },
+            "terminal_disposition": {
+              "passed": 2773,
+              "applicable": 3675,
+              "not_applicable": 0,
+              "score": 0.7545578231292517
+            }
+          }
+        },
+        "exception": {
+          "passed": 2,
+          "applicable": 312,
+          "not_applicable": 0,
+          "score": 0.00641025641025641,
+          "failed_source_count": 310,
+          "failed_source_examples": [
+            {
+              "source_id": "SRC-RAW-008874CA96532DE69412",
+              "expected_root_causes": [],
+              "actual_root_causes": [
+                "unmapped::generic_natural_language_exception"
+              ],
+              "disposition_passed": null
+            },
+            {
+              "source_id": "SRC-RAW-0180EDF55F46EA2F4653",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0249A5BFBA1950F087DA",
+              "expected_root_causes": [
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::generic_natural_language_exception"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-02F1AE3DC01E0E3EA7CE",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "coordinate_plausibility_review",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::generic_natural_language_exception"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-052001AE00EAE9CB3DBA",
+              "expected_root_causes": [],
+              "actual_root_causes": [
+                "unmapped::generic_natural_language_exception"
+              ],
+              "disposition_passed": null
+            },
+            {
+              "source_id": "SRC-RAW-054673ABE84F2132BAFA",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::generic_natural_language_exception"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0741B2CBDE286E52D2D7",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::generic_natural_language_exception"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-07703F4FDC2BBC59EB13",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::generic_natural_language_exception"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-07BDEFC16D760A9208C5",
+              "expected_root_causes": [
+                "ammonia_slip_process_allocation_unresolved",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::generic_natural_language_exception"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-08B2C44FC36AD162FE1C",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::generic_natural_language_exception"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0A8630DDA10E683839D8",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::generic_natural_language_exception"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0AABDC67D57CBEAD439E",
+              "expected_root_causes": [
+                "ammonia_slip_process_allocation_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::generic_natural_language_exception"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0AF6331A11D3D11BD4D1",
+              "expected_root_causes": [
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::generic_natural_language_exception"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-0BE9435BF40121D62373",
+              "expected_root_causes": [
+                "other_fuel_tce_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::generic_natural_language_exception"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-0BF4CB61A653A4369038",
+              "expected_root_causes": [
+                "source_relationship_missing"
+              ],
+              "actual_root_causes": [
+                "unmapped::generic_natural_language_exception"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0C5EB7447E404E0508DD",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0D262D8A4A3A8915D725",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::generic_natural_language_exception"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0DFDA30AD817180A387D",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::generic_natural_language_exception"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0E55BDF55B378E70243D",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0EF47272983579D66EA4",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::generic_natural_language_exception"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0F78070620303CB1FC66",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::generic_natural_language_exception"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0FB380EDC0CB23D20FB6",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::generic_natural_language_exception"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0FD603FE496911B6B2BD",
+              "expected_root_causes": [
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::generic_natural_language_exception"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-10245DCA80053978E850",
+              "expected_root_causes": [],
+              "actual_root_causes": [
+                "unmapped::generic_natural_language_exception"
+              ],
+              "disposition_passed": null
+            },
+            {
+              "source_id": "SRC-RAW-10D0195568BAD16A31F9",
+              "expected_root_causes": [
+                "other_fuel_tce_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::generic_natural_language_exception"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-1119D64A2A06965F0B17",
+              "expected_root_causes": [
+                "ammonia_slip_process_allocation_unresolved",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::generic_natural_language_exception"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-13B7FAA548A4568DB8AA",
+              "expected_root_causes": [
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::generic_natural_language_exception"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-151442F52F3793299450",
+              "expected_root_causes": [
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::generic_natural_language_exception"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-15606025516ABDF51A22",
+              "expected_root_causes": [
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::generic_natural_language_exception"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-1681A08DA31856CE6747",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing"
+              ],
+              "actual_root_causes": [
+                "unmapped::generic_natural_language_exception"
+              ],
+              "disposition_passed": false
+            }
+          ]
+        },
+        "legacy_atom_micro_score": 0.38898393951101057,
+        "passed": 7048,
+        "applicable": 18119,
+        "not_applicable": 461,
+        "by_kind": {
+          "calculation_basis": {
+            "passed": 0,
+            "applicable": 3254,
+            "not_applicable": 0,
+            "score": 0.0
+          },
+          "control_application": {
+            "passed": 1986,
+            "applicable": 2793,
+            "not_applicable": 461,
+            "score": 0.7110633727175081
+          },
+          "exception_root_cause": {
+            "passed": 4,
+            "applicable": 615,
+            "not_applicable": 0,
+            "score": 0.0065040650406504065
+          },
+          "source_destination": {
+            "passed": 615,
+            "applicable": 5922,
+            "not_applicable": 0,
+            "score": 0.1038500506585613
+          },
+          "terminal_disposition": {
+            "passed": 4443,
+            "applicable": 5535,
+            "not_applicable": 0,
+            "score": 0.802710027100271
+          }
+        },
+        "raw_counts": {
+          "passed": 7048,
+          "applicable": 18119,
+          "not_applicable": 461,
+          "total": 18580
+        },
+        "diagnostics": {
+          "detection_precision": 0.8326996197718631,
+          "detection_recall": 0.8171641791044776,
+          "detection_f1": 0.8248587570621468,
+          "root_cause_macro_jaccard": 0.0136986301369863,
+          "exception_disposition_accuracy": 0.4626865671641791
+        }
+      },
+      "overall_reference_N_diagnostic": {
+        "passed": 10363,
+        "applicable": 59351,
+        "not_applicable": 5484,
+        "score": 0.17460531414803457,
+        "by_kind": {
+          "internal_recalculation": {
+            "passed": 3260,
+            "applicable": 3260,
+            "not_applicable": 2742,
+            "score": 1.0
+          },
+          "reference_value": {
+            "passed": 2070,
+            "applicable": 2793,
+            "not_applicable": 2742,
+            "score": 0.7411385606874329
+          },
+          "result_completeness": {
+            "passed": 5033,
+            "applicable": 53298,
+            "not_applicable": 0,
+            "score": 0.09443131074336748
+          }
+        }
+      },
+      "outcomes": [
+        {
+          "source_id": "SRC-RAW-73B3CA59765D5D325DCB",
+          "positive_injection": true,
+          "expected_class": "ACTIVITY_MISSING",
+          "predicted_class": "ACTIVITY_MISSING",
+          "expected_injected_root_causes": [
+            "activity_level_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "activity_level_missing"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": true,
+          "targeted_handling_success": true,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-DEF5DB5EE0A1EC4F7517",
+          "positive_injection": true,
+          "expected_class": "ACTIVITY_MISSING",
+          "predicted_class": "ACTIVITY_MISSING",
+          "expected_injected_root_causes": [
+            "activity_level_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "activity_level_missing"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": true,
+          "targeted_handling_success": true,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-4124B4DC2795F28D7751",
+          "positive_injection": true,
+          "expected_class": "ACTIVITY_MISSING",
+          "predicted_class": "ACTIVITY_MISSING",
+          "expected_injected_root_causes": [
+            "activity_level_missing",
+            "ammonia_slip_activity_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "activity_level_missing"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-39F79DE3E1F2B10AD763",
+          "positive_injection": true,
+          "expected_class": "POLLUTANT_PARAMETER_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "ash_parameter_missing",
+            "sulfur_parameter_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "unmapped::generic_natural_language_exception"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-60CCDE1B74EEAAA63955",
+          "positive_injection": true,
+          "expected_class": "POLLUTANT_PARAMETER_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "ash_parameter_missing",
+            "sulfur_parameter_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "unmapped::generic_natural_language_exception"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-39E2EF967D6F6B1CFD28",
+          "positive_injection": true,
+          "expected_class": "POLLUTANT_PARAMETER_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "ash_parameter_missing",
+            "sulfur_parameter_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "unmapped::generic_natural_language_exception"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-2ACE0CAADC82D19FC682",
+          "positive_injection": true,
+          "expected_class": "SOURCE_RELATION_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "source_relationship_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": false,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-F48BB468C8612404A070",
+          "positive_injection": true,
+          "expected_class": "SOURCE_RELATION_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "source_relationship_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": false,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-C5503FD15062A20FAC67",
+          "positive_injection": true,
+          "expected_class": "HARD_CONSTRAINT_CONFLICT",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "ash_parameter_invalid"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "unmapped::generic_natural_language_exception"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-6B09B8B9D54AECCD8964",
+          "positive_injection": true,
+          "expected_class": "HARD_CONSTRAINT_CONFLICT",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "ash_parameter_invalid"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "unmapped::generic_natural_language_exception"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-C19A926AA8A833CBF154",
+          "positive_injection": false,
+          "expected_class": "NO_ANOMALY",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "fuel_mapping_unresolved"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "unmapped::generic_natural_language_exception"
+          ],
+          "affected_disposition_transition_correct": null,
+          "injected_root_recalled": null,
+          "targeted_handling_success": null,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-AF4055E81C013D09C04D",
+          "positive_injection": false,
+          "expected_class": "NO_ANOMALY",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": null,
+          "injected_root_recalled": null,
+          "targeted_handling_success": null,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-63C74C970704DB13D46B",
+          "positive_injection": false,
+          "expected_class": "NO_ANOMALY",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "other_fuel_tce_unresolved"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "unmapped::generic_natural_language_exception"
+          ],
+          "affected_disposition_transition_correct": null,
+          "injected_root_recalled": null,
+          "targeted_handling_success": null,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        }
+      ]
+    },
+    {
+      "run_id": "B-B2-POW-FULL",
+      "method": "full",
+      "target": "POWER",
+      "designed_records": 15,
+      "eligible_records": 13,
+      "excluded_preexisting_problem": 2,
+      "positive_injections": 10,
+      "negative_controls": 3,
+      "affected_disposition_transition": {
+        "correct": 10,
+        "total": 10,
+        "rate": 1.0
+      },
+      "injected_root_recall": {
+        "correct": 2,
+        "total": 10,
+        "rate": 0.2
+      },
+      "targeted_handling_success": {
+        "correct": 2,
+        "total": 10,
+        "rate": 0.2
+      },
+      "unaffected_reference_correctness": {
+        "correct": 10,
+        "total": 10,
+        "rate": 1.0
+      },
+      "unaffected_unchanged_vs_method_B0": {
+        "correct": 9,
+        "total": 10,
+        "rate": 0.9
+      },
+      "negative_control_whole_source": {
+        "correct": 3,
+        "total": 3,
+        "rate": 1.0
+      },
+      "negative_control_unchanged_vs_method_B0": {
+        "correct": 3,
+        "total": 3,
+        "rate": 1.0
+      },
+      "five_class_classification": {
+        "eligible_records": 13,
+        "classes": [
+          "ACTIVITY_MISSING",
+          "POLLUTANT_PARAMETER_MISSING",
+          "SOURCE_RELATION_MISSING",
+          "HARD_CONSTRAINT_CONFLICT",
+          "NO_ANOMALY"
+        ],
+        "macro_f1": 0.4,
+        "accuracy": 0.38461538461538464,
+        "by_class": {
+          "ACTIVITY_MISSING": {
+            "support": 3,
+            "predicted": 0,
+            "true_positive": 0,
+            "false_positive": 0,
+            "false_negative": 3,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "POLLUTANT_PARAMETER_MISSING": {
+            "support": 3,
+            "predicted": 0,
+            "true_positive": 0,
+            "false_positive": 0,
+            "false_negative": 3,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "SOURCE_RELATION_MISSING": {
+            "support": 2,
+            "predicted": 2,
+            "true_positive": 2,
+            "false_positive": 0,
+            "false_negative": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "HARD_CONSTRAINT_CONFLICT": {
+            "support": 2,
+            "predicted": 0,
+            "true_positive": 0,
+            "false_positive": 0,
+            "false_negative": 2,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "NO_ANOMALY": {
+            "support": 3,
+            "predicted": 3,
+            "true_positive": 3,
+            "false_positive": 0,
+            "false_negative": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          }
+        }
+      },
+      "overall_reference_D_diagnostic": {
+        "score": 0.9850746268656716,
+        "D_regular": 1.0,
+        "D_exception": 0.9701492537313433,
+        "regular": {
+          "passed": 15644,
+          "applicable": 15644,
+          "not_applicable": 461,
+          "score": 1.0,
+          "by_kind": {
+            "calculation_basis": {
+              "passed": 3254,
+              "applicable": 3254,
+              "not_applicable": 0,
+              "score": 1.0
+            },
+            "control_application": {
+              "passed": 2793,
+              "applicable": 2793,
+              "not_applicable": 461,
+              "score": 1.0
+            },
+            "source_destination": {
+              "passed": 5922,
+              "applicable": 5922,
+              "not_applicable": 0,
+              "score": 1.0
+            },
+            "terminal_disposition": {
+              "passed": 3675,
+              "applicable": 3675,
+              "not_applicable": 0,
+              "score": 1.0
+            }
+          }
+        },
+        "exception": {
+          "passed": 260,
+          "applicable": 268,
+          "not_applicable": 0,
+          "score": 0.9701492537313433,
+          "failed_source_count": 8,
+          "failed_source_examples": [
+            {
+              "source_id": "SRC-RAW-39E2EF967D6F6B1CFD28",
+              "expected_root_causes": [
+                "ash_parameter_missing",
+                "sulfur_parameter_missing"
+              ],
+              "actual_root_causes": [
+                "factor_input_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-39F79DE3E1F2B10AD763",
+              "expected_root_causes": [
+                "ash_parameter_missing",
+                "sulfur_parameter_missing"
+              ],
+              "actual_root_causes": [
+                "factor_input_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-4124B4DC2795F28D7751",
+              "expected_root_causes": [
+                "activity_level_missing",
+                "ammonia_slip_activity_missing"
+              ],
+              "actual_root_causes": [
+                "activity_or_unit_unresolved",
+                "ammonia_slip_activity_missing"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-60CCDE1B74EEAAA63955",
+              "expected_root_causes": [
+                "ash_parameter_missing",
+                "sulfur_parameter_missing"
+              ],
+              "actual_root_causes": [
+                "factor_input_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-6B09B8B9D54AECCD8964",
+              "expected_root_causes": [
+                "ash_parameter_invalid"
+              ],
+              "actual_root_causes": [
+                "factor_input_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-73B3CA59765D5D325DCB",
+              "expected_root_causes": [
+                "activity_level_missing"
+              ],
+              "actual_root_causes": [
+                "activity_or_unit_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-C5503FD15062A20FAC67",
+              "expected_root_causes": [
+                "ash_parameter_invalid"
+              ],
+              "actual_root_causes": [
+                "factor_input_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-DEF5DB5EE0A1EC4F7517",
+              "expected_root_causes": [
+                "activity_level_missing"
+              ],
+              "actual_root_causes": [
+                "activity_or_unit_unresolved"
+              ],
+              "disposition_passed": true
+            }
+          ]
+        },
+        "legacy_atom_micro_score": 0.9989365870039738,
+        "passed": 17848,
+        "applicable": 17867,
+        "not_applicable": 461,
+        "by_kind": {
+          "calculation_basis": {
+            "passed": 3254,
+            "applicable": 3254,
+            "not_applicable": 0,
+            "score": 1.0
+          },
+          "control_application": {
+            "passed": 2793,
+            "applicable": 2793,
+            "not_applicable": 461,
+            "score": 1.0
+          },
+          "exception_root_cause": {
+            "passed": 344,
+            "applicable": 363,
+            "not_applicable": 0,
+            "score": 0.9476584022038568
+          },
+          "source_destination": {
+            "passed": 5922,
+            "applicable": 5922,
+            "not_applicable": 0,
+            "score": 1.0
+          },
+          "terminal_disposition": {
+            "passed": 5535,
+            "applicable": 5535,
+            "not_applicable": 0,
+            "score": 1.0
+          }
+        },
+        "raw_counts": {
+          "passed": 17848,
+          "applicable": 17867,
+          "not_applicable": 461,
+          "total": 18328
+        },
+        "diagnostics": {
+          "detection_precision": 1.0,
+          "detection_recall": 1.0,
+          "detection_f1": 1.0,
+          "root_cause_macro_jaccard": 0.9713930348258707,
+          "exception_disposition_accuracy": 1.0
+        }
+      },
+      "overall_reference_N_diagnostic": {
+        "passed": 12390,
+        "applicable": 12390,
+        "not_applicable": 4562,
+        "score": 1.0,
+        "by_kind": {
+          "internal_recalculation": {
+            "passed": 3601,
+            "applicable": 3601,
+            "not_applicable": 2281,
+            "score": 1.0
+          },
+          "reference_value": {
+            "passed": 3254,
+            "applicable": 3254,
+            "not_applicable": 2281,
+            "score": 1.0
+          },
+          "result_completeness": {
+            "passed": 5535,
+            "applicable": 5535,
+            "not_applicable": 0,
+            "score": 1.0
+          }
+        }
+      },
+      "outcomes": [
+        {
+          "source_id": "SRC-RAW-73B3CA59765D5D325DCB",
+          "positive_injection": true,
+          "expected_class": "ACTIVITY_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "activity_level_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "activity_or_unit_unresolved"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-DEF5DB5EE0A1EC4F7517",
+          "positive_injection": true,
+          "expected_class": "ACTIVITY_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "activity_level_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "activity_or_unit_unresolved"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-4124B4DC2795F28D7751",
+          "positive_injection": true,
+          "expected_class": "ACTIVITY_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "activity_level_missing",
+            "ammonia_slip_activity_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "activity_or_unit_unresolved",
+            "ammonia_slip_activity_missing"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": false,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-39F79DE3E1F2B10AD763",
+          "positive_injection": true,
+          "expected_class": "POLLUTANT_PARAMETER_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "ash_parameter_missing",
+            "sulfur_parameter_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "factor_input_unresolved"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-60CCDE1B74EEAAA63955",
+          "positive_injection": true,
+          "expected_class": "POLLUTANT_PARAMETER_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "ash_parameter_missing",
+            "sulfur_parameter_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "factor_input_unresolved"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-39E2EF967D6F6B1CFD28",
+          "positive_injection": true,
+          "expected_class": "POLLUTANT_PARAMETER_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "ash_parameter_missing",
+            "sulfur_parameter_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "factor_input_unresolved"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-2ACE0CAADC82D19FC682",
+          "positive_injection": true,
+          "expected_class": "SOURCE_RELATION_MISSING",
+          "predicted_class": "SOURCE_RELATION_MISSING",
+          "expected_injected_root_causes": [
+            "source_relationship_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "source_relationship_missing"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": true,
+          "targeted_handling_success": true,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-F48BB468C8612404A070",
+          "positive_injection": true,
+          "expected_class": "SOURCE_RELATION_MISSING",
+          "predicted_class": "SOURCE_RELATION_MISSING",
+          "expected_injected_root_causes": [
+            "source_relationship_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "source_relationship_missing"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": true,
+          "targeted_handling_success": true,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-C5503FD15062A20FAC67",
+          "positive_injection": true,
+          "expected_class": "HARD_CONSTRAINT_CONFLICT",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "ash_parameter_invalid"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "factor_input_unresolved"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-6B09B8B9D54AECCD8964",
+          "positive_injection": true,
+          "expected_class": "HARD_CONSTRAINT_CONFLICT",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "ash_parameter_invalid"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "factor_input_unresolved"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-C19A926AA8A833CBF154",
+          "positive_injection": false,
+          "expected_class": "NO_ANOMALY",
+          "predicted_class": "NO_ANOMALY",
+          "expected_injected_root_causes": [
+            "fuel_mapping_unresolved"
+          ],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": null,
+          "injected_root_recalled": null,
+          "targeted_handling_success": null,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": true
+        },
+        {
+          "source_id": "SRC-RAW-AF4055E81C013D09C04D",
+          "positive_injection": false,
+          "expected_class": "NO_ANOMALY",
+          "predicted_class": "NO_ANOMALY",
+          "expected_injected_root_causes": [],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": null,
+          "injected_root_recalled": null,
+          "targeted_handling_success": null,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": true
+        },
+        {
+          "source_id": "SRC-RAW-63C74C970704DB13D46B",
+          "positive_injection": false,
+          "expected_class": "NO_ANOMALY",
+          "predicted_class": "NO_ANOMALY",
+          "expected_injected_root_causes": [
+            "other_fuel_tce_unresolved"
+          ],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": null,
+          "injected_root_recalled": null,
+          "targeted_handling_success": null,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": true,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": true
+        }
+      ]
+    },
+    {
+      "run_id": "B-B2-POW-DET",
+      "method": "deterministic_program",
+      "target": "POWER",
+      "designed_records": 15,
+      "eligible_records": 13,
+      "excluded_preexisting_problem": 2,
+      "positive_injections": 10,
+      "negative_controls": 3,
+      "affected_disposition_transition": {
+        "correct": 3,
+        "total": 10,
+        "rate": 0.3
+      },
+      "injected_root_recall": {
+        "correct": 0,
+        "total": 10,
+        "rate": 0.0
+      },
+      "targeted_handling_success": {
+        "correct": 0,
+        "total": 10,
+        "rate": 0.0
+      },
+      "unaffected_reference_correctness": {
+        "correct": 2,
+        "total": 10,
+        "rate": 0.2
+      },
+      "unaffected_unchanged_vs_method_B0": {
+        "correct": 10,
+        "total": 10,
+        "rate": 1.0
+      },
+      "negative_control_whole_source": {
+        "correct": 0,
+        "total": 3,
+        "rate": 0.0
+      },
+      "negative_control_unchanged_vs_method_B0": {
+        "correct": 3,
+        "total": 3,
+        "rate": 1.0
+      },
+      "five_class_classification": {
+        "eligible_records": 13,
+        "classes": [
+          "ACTIVITY_MISSING",
+          "POLLUTANT_PARAMETER_MISSING",
+          "SOURCE_RELATION_MISSING",
+          "HARD_CONSTRAINT_CONFLICT",
+          "NO_ANOMALY"
+        ],
+        "macro_f1": 0.14999999999999997,
+        "accuracy": 0.23076923076923078,
+        "by_class": {
+          "ACTIVITY_MISSING": {
+            "support": 3,
+            "predicted": 0,
+            "true_positive": 0,
+            "false_positive": 0,
+            "false_negative": 3,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "POLLUTANT_PARAMETER_MISSING": {
+            "support": 3,
+            "predicted": 0,
+            "true_positive": 0,
+            "false_positive": 0,
+            "false_negative": 3,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "SOURCE_RELATION_MISSING": {
+            "support": 2,
+            "predicted": 0,
+            "true_positive": 0,
+            "false_positive": 0,
+            "false_negative": 2,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "HARD_CONSTRAINT_CONFLICT": {
+            "support": 2,
+            "predicted": 0,
+            "true_positive": 0,
+            "false_positive": 0,
+            "false_negative": 2,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "NO_ANOMALY": {
+            "support": 3,
+            "predicted": 5,
+            "true_positive": 3,
+            "false_positive": 2,
+            "false_negative": 0,
+            "precision": 0.6,
+            "recall": 1.0,
+            "f1": 0.7499999999999999
+          }
+        }
+      },
+      "overall_reference_D_diagnostic": {
+        "score": 0.43908207619534645,
+        "D_regular": 0.8781641523906929,
+        "D_exception": 0.0,
+        "regular": {
+          "passed": 13738,
+          "applicable": 15644,
+          "not_applicable": 461,
+          "score": 0.8781641523906929,
+          "by_kind": {
+            "calculation_basis": {
+              "passed": 2785,
+              "applicable": 3254,
+              "not_applicable": 0,
+              "score": 0.8558696988322065
+            },
+            "control_application": {
+              "passed": 1820,
+              "applicable": 2793,
+              "not_applicable": 461,
+              "score": 0.6516290726817042
+            },
+            "source_destination": {
+              "passed": 5922,
+              "applicable": 5922,
+              "not_applicable": 0,
+              "score": 1.0
+            },
+            "terminal_disposition": {
+              "passed": 3211,
+              "applicable": 3675,
+              "not_applicable": 0,
+              "score": 0.8737414965986394
+            }
+          }
+        },
+        "exception": {
+          "passed": 0,
+          "applicable": 270,
+          "not_applicable": 0,
+          "score": 0.0,
+          "failed_source_count": 270,
+          "failed_source_examples": [
+            {
+              "source_id": "SRC-RAW-0180EDF55F46EA2F4653",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0249A5BFBA1950F087DA",
+              "expected_root_causes": [
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-02F1AE3DC01E0E3EA7CE",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "coordinate_plausibility_review",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-03DE8EF23ED7B791BADC",
+              "expected_root_causes": [],
+              "actual_root_causes": [
+                "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+              ],
+              "disposition_passed": null
+            },
+            {
+              "source_id": "SRC-RAW-054673ABE84F2132BAFA",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0741B2CBDE286E52D2D7",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-07703F4FDC2BBC59EB13",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-07BDEFC16D760A9208C5",
+              "expected_root_causes": [
+                "ammonia_slip_process_allocation_unresolved",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-08B2C44FC36AD162FE1C",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0A8630DDA10E683839D8",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0AABDC67D57CBEAD439E",
+              "expected_root_causes": [
+                "ammonia_slip_process_allocation_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0AF6331A11D3D11BD4D1",
+              "expected_root_causes": [
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-0BE9435BF40121D62373",
+              "expected_root_causes": [
+                "other_fuel_tce_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-0BF4CB61A653A4369038",
+              "expected_root_causes": [
+                "source_relationship_missing"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0C5EB7447E404E0508DD",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0D262D8A4A3A8915D725",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0DFDA30AD817180A387D",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0E55BDF55B378E70243D",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0EF47272983579D66EA4",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0F78070620303CB1FC66",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0FB380EDC0CB23D20FB6",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0FD603FE496911B6B2BD",
+              "expected_root_causes": [
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-0FD82B1672C4D5D5BD9F",
+              "expected_root_causes": [],
+              "actual_root_causes": [
+                "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+              ],
+              "disposition_passed": null
+            },
+            {
+              "source_id": "SRC-RAW-10D0195568BAD16A31F9",
+              "expected_root_causes": [
+                "other_fuel_tce_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-1119D64A2A06965F0B17",
+              "expected_root_causes": [
+                "ammonia_slip_process_allocation_unresolved",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-13B7FAA548A4568DB8AA",
+              "expected_root_causes": [
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-151442F52F3793299450",
+              "expected_root_causes": [
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-15606025516ABDF51A22",
+              "expected_root_causes": [
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-1681A08DA31856CE6747",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-17F4109476657E8B4986",
+              "expected_root_causes": [
+                "other_fuel_tce_unresolved"
+              ],
+              "actual_root_causes": [
+                "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+              ],
+              "disposition_passed": true
+            }
+          ]
+        },
+        "legacy_atom_micro_score": 0.8521368467670505,
+        "passed": 15393,
+        "applicable": 18064,
+        "not_applicable": 461,
+        "by_kind": {
+          "calculation_basis": {
+            "passed": 2785,
+            "applicable": 3254,
+            "not_applicable": 0,
+            "score": 0.8558696988322065
+          },
+          "control_application": {
+            "passed": 1820,
+            "applicable": 2793,
+            "not_applicable": 461,
+            "score": 0.6516290726817042
+          },
+          "exception_root_cause": {
+            "passed": 0,
+            "applicable": 560,
+            "not_applicable": 0,
+            "score": 0.0
+          },
+          "source_destination": {
+            "passed": 5922,
+            "applicable": 5922,
+            "not_applicable": 0,
+            "score": 1.0
+          },
+          "terminal_disposition": {
+            "passed": 4866,
+            "applicable": 5535,
+            "not_applicable": 0,
+            "score": 0.8791327913279133
+          }
+        },
+        "raw_counts": {
+          "passed": 15393,
+          "applicable": 18064,
+          "not_applicable": 461,
+          "total": 18525
+        },
+        "diagnostics": {
+          "detection_precision": 0.9902439024390244,
+          "detection_recall": 0.7574626865671642,
+          "detection_f1": 0.8583509513742072,
+          "root_cause_macro_jaccard": 0.0,
+          "exception_disposition_accuracy": 0.458955223880597
+        }
+      },
+      "overall_reference_N_diagnostic": {
+        "passed": 10131,
+        "applicable": 11451,
+        "not_applicable": 5504,
+        "score": 0.8847262247838616,
+        "by_kind": {
+          "internal_recalculation": {
+            "passed": 3131,
+            "applicable": 3133,
+            "not_applicable": 2752,
+            "score": 0.999361634216406
+          },
+          "reference_value": {
+            "passed": 1968,
+            "applicable": 2783,
+            "not_applicable": 2752,
+            "score": 0.7071505569529285
+          },
+          "result_completeness": {
+            "passed": 5032,
+            "applicable": 5535,
+            "not_applicable": 0,
+            "score": 0.9091237579042457
+          }
+        }
+      },
+      "outcomes": [
+        {
+          "source_id": "SRC-RAW-73B3CA59765D5D325DCB",
+          "positive_injection": true,
+          "expected_class": "ACTIVITY_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "activity_level_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": false,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-DEF5DB5EE0A1EC4F7517",
+          "positive_injection": true,
+          "expected_class": "ACTIVITY_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "activity_level_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": false,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-4124B4DC2795F28D7751",
+          "positive_injection": true,
+          "expected_class": "ACTIVITY_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "activity_level_missing",
+            "ammonia_slip_activity_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": false,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-39F79DE3E1F2B10AD763",
+          "positive_injection": true,
+          "expected_class": "POLLUTANT_PARAMETER_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "ash_parameter_missing",
+            "sulfur_parameter_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-60CCDE1B74EEAAA63955",
+          "positive_injection": true,
+          "expected_class": "POLLUTANT_PARAMETER_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "ash_parameter_missing",
+            "sulfur_parameter_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-39E2EF967D6F6B1CFD28",
+          "positive_injection": true,
+          "expected_class": "POLLUTANT_PARAMETER_MISSING",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "ash_parameter_missing",
+            "sulfur_parameter_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [
+            "unmapped::DIRECT_INPUT_OR_LOOKUP_MISSING"
+          ],
+          "affected_disposition_transition_correct": true,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-2ACE0CAADC82D19FC682",
+          "positive_injection": true,
+          "expected_class": "SOURCE_RELATION_MISSING",
+          "predicted_class": "NO_ANOMALY",
+          "expected_injected_root_causes": [
+            "source_relationship_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": false,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": true
+        },
+        {
+          "source_id": "SRC-RAW-F48BB468C8612404A070",
+          "positive_injection": true,
+          "expected_class": "SOURCE_RELATION_MISSING",
+          "predicted_class": "NO_ANOMALY",
+          "expected_injected_root_causes": [
+            "source_relationship_missing"
+          ],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": false,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": true,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": true
+        },
+        {
+          "source_id": "SRC-RAW-C5503FD15062A20FAC67",
+          "positive_injection": true,
+          "expected_class": "HARD_CONSTRAINT_CONFLICT",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "ash_parameter_invalid"
+          ],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": false,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-6B09B8B9D54AECCD8964",
+          "positive_injection": true,
+          "expected_class": "HARD_CONSTRAINT_CONFLICT",
+          "predicted_class": "UNRESOLVED_OR_MISCLASSIFIED",
+          "expected_injected_root_causes": [
+            "ash_parameter_invalid"
+          ],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": false,
+          "injected_root_recalled": false,
+          "targeted_handling_success": false,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": false
+        },
+        {
+          "source_id": "SRC-RAW-C19A926AA8A833CBF154",
+          "positive_injection": false,
+          "expected_class": "NO_ANOMALY",
+          "predicted_class": "NO_ANOMALY",
+          "expected_injected_root_causes": [
+            "fuel_mapping_unresolved"
+          ],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": null,
+          "injected_root_recalled": null,
+          "targeted_handling_success": null,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": true
+        },
+        {
+          "source_id": "SRC-RAW-AF4055E81C013D09C04D",
+          "positive_injection": false,
+          "expected_class": "NO_ANOMALY",
+          "predicted_class": "NO_ANOMALY",
+          "expected_injected_root_causes": [],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": null,
+          "injected_root_recalled": null,
+          "targeted_handling_success": null,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": true
+        },
+        {
+          "source_id": "SRC-RAW-63C74C970704DB13D46B",
+          "positive_injection": false,
+          "expected_class": "NO_ANOMALY",
+          "predicted_class": "NO_ANOMALY",
+          "expected_injected_root_causes": [
+            "other_fuel_tce_unresolved"
+          ],
+          "new_actual_root_causes_vs_B0": [],
+          "affected_disposition_transition_correct": null,
+          "injected_root_recalled": null,
+          "targeted_handling_success": null,
+          "unaffected_items_reference_correct": false,
+          "whole_source_reference_correct": false,
+          "unaffected_items_unchanged_vs_B0": true,
+          "whole_source_unchanged_vs_B0": true
+        }
+      ]
+    },
+    {
+      "run_id": "B-B2-POW-HUM",
+      "method": "expert_led",
+      "target": "POWER",
+      "status": "not_comparable_legacy_human_result_did_not_process_raw_v2_injections"
+    }
+  ]
+}

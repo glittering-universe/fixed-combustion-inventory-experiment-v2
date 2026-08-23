@@ -1,8 +1,9 @@
 {
-  "manifest_version": "2.0.0",
-  "purpose": "fixed-combustion raw-input A-D reproduction entrypoints",
+  "manifest_version": "2.1.0",
+  "purpose": "fixed-combustion raw-input A-D runs with post-experiment DNE-v2.1 evaluation",
   "input_contract": "raw_base_tables_v2",
-  "evaluation_contract": "DNE_v2",
+  "evaluation_contract": "DNE_v2.1",
+  "formal_setup_evaluation_contract": "DNE_v2",
   "reference_package": "reference/frozen/v2.0.0",
   "runtime": {
     "python": "./.venv/bin/python",
@@ -22,13 +23,13 @@
     },
     {
       "path": "reproduction/README.md",
-      "sha256": "5021236ac08b08d5630166ed02c7aee3f63b3d1f384b9927a6692f399c899d3f",
-      "bytes": 3361
+      "sha256": "3e42ba94e0b9004cf2883e58847028cab5c3701532c96b8e8e020462180486c9",
+      "bytes": 3418
     },
     {
       "path": "reproduction/check_environment.py",
-      "sha256": "07ac79cd717438bfd57c898e9ca2c2399487c736fa7d413f9c04f0dfd5008a8a",
-      "bytes": 12241
+      "sha256": "60df2a1d7b54a165a8d2cd93832fa3db3f09de11bb2b32046d7d6d657020dbef",
+      "bytes": 12885
     },
     {
       "path": "reproduction/copy_human_inputs.py",
@@ -51,19 +52,24 @@
       "bytes": 414
     },
     {
+      "path": "reproduction/build_evaluation_revision_index.py",
+      "sha256": "b39842b7e5f4772615ea7a88888c227a767244ba8b2bc23489e4ed475ea03ba4",
+      "bytes": 3247
+    },
+    {
       "path": "reproduction/build_formal_archive_index.py",
       "sha256": "222a804da29263df6fec05b292e2340db3fe01cb779490f70c68a4a3482eaac5",
       "bytes": 5904
     },
     {
       "path": "reproduction/build_reproduction_manifest.py",
-      "sha256": "88b565e15781437fc6f19c456c4e6a7dd255580d7be0373332b3f82ac8834a06",
-      "bytes": 6060
+      "sha256": "b76b11f380704dd54ce4acfaecaaa1ecc5f7fe4c1028719ba508291df58e538b",
+      "bytes": 6299
     },
     {
       "path": "reproduction/tests/test_reproduction_v2.py",
-      "sha256": "ff754a80c9d121c193f0372e80ee0dd18e97cd7b4ddf07c1fdb8506d9114e47e",
-      "bytes": 6370
+      "sha256": "886871999387d042b64e187eab6f05353c0465d9fbcc102072a86e0129c4d29c",
+      "bytes": 6707
     },
     {
       "path": "method_package/full_prompt.md",
@@ -196,19 +202,34 @@
       "bytes": 2973
     },
     {
+      "path": "evaluation/metric_spec_v2_1.json",
+      "sha256": "95441f03d0bd1335183d862c17ec1338a653f565c077c13557a1b4cb578d8e5b",
+      "bytes": 3479
+    },
+    {
       "path": "evaluation/score_dne.py",
-      "sha256": "ffe29ba15291e013644a7f02b810a65604fcf7e7ba45a957522ea121ebb72bca",
-      "bytes": 18424
+      "sha256": "77d770dbe14b596f2a418749fdd64e2df547df0a38778c8fd0e33e0fa5b2a3a6",
+      "bytes": 23888
     },
     {
       "path": "evaluation/aggregate_experiment_results_v2.py",
-      "sha256": "0e55ef683d22cedf4828dfece6677cc6c7636d5ce89de187d8671f736e6fb64b",
-      "bytes": 51086
+      "sha256": "44cdbe950cd5b5e56cb5d29a44ea4ab7e13a5e31eef55e406133c0803a97f897",
+      "bytes": 67068
+    },
+    {
+      "path": "evaluation/README.md",
+      "sha256": "db532deb96fbf8f035aa03a22281561080d08a779b2746ba9c4df07fddf776c0",
+      "bytes": 2022
     },
     {
       "path": "evaluation/README_DNE_V2.md",
       "sha256": "aad44c22adddc92fa47bb19109f2cdd7fb20d67184337c35e1e9c105f114c4b1",
       "bytes": 3389
+    },
+    {
+      "path": "evaluation/README_DNE_V2_1.md",
+      "sha256": "cd2980a8a938f54436fc3e5d2e4f754a7439afdeb4f39145f0e7f4cac06a5dfa",
+      "bytes": 3195
     },
     {
       "path": "evaluation/evaluate_sealed_run.py",
@@ -227,13 +248,13 @@
     },
     {
       "path": "evaluation/tests/test_dne_scoring.py",
-      "sha256": "50db1db582a13548ac837e579cdd0238bb59bc6b00ccc6cf75c990dc40c7ecbc",
-      "bytes": 7355
+      "sha256": "318cc86c10dccfa9dc8733464e3e164d2d9ba795dde3b3b24874d9e965239998",
+      "bytes": 13385
     },
     {
       "path": "evaluation/tests/test_dne_aggregation.py",
-      "sha256": "e3baf8a055b10d1eaae0c5e961f90d734b101960e80e6ec2939698eedfd905b6",
-      "bytes": 19336
+      "sha256": "e6e37bfc45e15a229da444b377ff965bec5bb37f8b078baac9146c7565250fcf",
+      "bytes": 32910
     },
     {
       "path": "evaluation/tests/test_normalize_generic_output.py",

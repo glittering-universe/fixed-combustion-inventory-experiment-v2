@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Aggregate the formal experiment with the three-dimensional D/N/E metric.
+"""Aggregate the formal experiment with the D/N/E v2.1 metric.
 
 Experiment A alone supplies the primary EICPI_core comparison.  B1, B2, C,
 and D are emitted as independent diagnostic reports and never enter the core
-score.  The evaluator reads sealed packages; it does not alter their contents.
+score.  D is a hierarchical regular/exception composite so routine-volume
+imbalance cannot hide exception failures.  The evaluator reads sealed packages;
+it does not alter their contents.
 """
 
 from __future__ import annotations
@@ -29,7 +31,6 @@ from compare_normalized_runs import (
     semantic_equal,
 )
 from score_dne import (
-    aggregate_targets,
     core_score,
     independent_recalculation,
     pollutant_control_signature,
@@ -37,6 +38,7 @@ from score_dne import (
     score_decision_atoms,
     score_numeric_atoms,
     summarize_atoms,
+    summarize_domain_decisions,
 )
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "experiment_control"))
@@ -45,8 +47,15 @@ from result_layout import result_leaf, summary_dir  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 MATRIX = ROOT / "matrix" / "frozen_experiment_matrix.json"
-METRIC_SPEC = ROOT / "evaluation" / "metric_spec_v2.json"
+METRIC_SPEC = ROOT / "evaluation" / "metric_spec_v2_1.json"
 POLLUTANTS = ("SO2", "NOx", "CO", "VOC", "PM10", "PM2.5", "BC", "OC", "NH3")
+B2_CLASSES = (
+    "ACTIVITY_MISSING",
+    "POLLUTANT_PARAMETER_MISSING",
+    "SOURCE_RELATION_MISSING",
+    "HARD_CONSTRAINT_CONFLICT",
+    "NO_ANOMALY",
+)
 AGENT_RUNNERS = frozenset({"generic_agent", "full_agent", "ablation_agent"})
 MATRIX_MANIFEST_BINDINGS = (
     ("run_id", "run_id"),
@@ -569,6 +578,43 @@ def exception_groups(
     return expected, actual
 
 
+def reviewed_exception_dispositions(
+    selected: dict[str, list[dict[str, str]]],
+    d_atoms: list[Any],
+) -> tuple[dict[str, bool], set[str]]:
+    """Build source-level exception dispositions from reviewed exception rows.
+
+    Only rows explicitly requiring user judgement define the exception stratum.
+    Their affected pollutant terminal decisions are conjoined at source level and
+    removed from the routine denominator so the same disposition is scored once.
+    """
+
+    affected_by_source: dict[str, set[str]] = defaultdict(set)
+    for exception in selected["exceptions"]:
+        if str(exception.get("requires_user_judgment") or "").strip().lower() != "true":
+            continue
+        source_id = str(exception.get("source_id") or "")
+        pollutants = parse_json(exception.get("affected_pollutants"), [])
+        if source_id and isinstance(pollutants, list):
+            affected_by_source[source_id].update(str(item) for item in pollutants if item)
+
+    atom_by_id = {str(atom.atom_id): atom for atom in d_atoms}
+    terminal_ids = {
+        f"terminal:{source_id}::{pollutant}"
+        for source_id, pollutants in affected_by_source.items()
+        for pollutant in pollutants
+    }
+    disposition_by_source = {
+        source_id: bool(pollutants) and all(
+            atom_by_id.get(f"terminal:{source_id}::{pollutant}") is not None
+            and atom_by_id[f"terminal:{source_id}::{pollutant}"].passed is True
+            for pollutant in pollutants
+        )
+        for source_id, pollutants in affected_by_source.items()
+    }
+    return disposition_by_source, terminal_ids
+
+
 def evaluate_one(
     row: dict[str, Any],
     run_dir: Path,
@@ -593,7 +639,17 @@ def evaluate_one(
         method=row["method"],
     )
     n_atoms = score_numeric_atoms(expected, actual, method=row["method"])
-    d_summary, n_summary = summarize_atoms(d_atoms), summarize_atoms(n_atoms)
+    exception_dispositions, exception_terminal_atom_ids = reviewed_exception_dispositions(
+        selected, d_atoms,
+    )
+    d_summary = summarize_domain_decisions(
+        d_atoms,
+        expected_exceptions,
+        actual_exceptions,
+        exception_dispositions,
+        exception_terminal_atom_ids,
+    )
+    n_summary = summarize_atoms(n_atoms)
     process_values = [
         str(item.get("complete_process_record", "")).strip().lower()
         for item in normalized_rows
@@ -617,6 +673,8 @@ def evaluate_one(
     context = {
         "expected": expected, "actual": actual, "expected_sources": expected_sources,
         "expected_exception_groups": expected_exceptions, "actual_exception_groups": actual_exceptions,
+        "exception_disposition_by_source": exception_dispositions,
+        "exception_terminal_atom_ids": exception_terminal_atom_ids,
         "d_atoms": d_atoms, "n_atoms": n_atoms, "selected": selected,
     }
     return score, context
@@ -624,16 +682,73 @@ def evaluate_one(
 
 def summarize_a_repetitions(run_scores: list[dict[str, Any]]) -> dict[str, Any]:
     result: dict[str, Any] = {"run_count": len(run_scores)}
-    for dimension in ("D", "N"):
-        values = [item[dimension]["score"] for item in run_scores if item[dimension]["score"] is not None]
-        result[dimension] = {
-            "score": statistics.median(values) if values else None,
-            "min": min(values) if values else None,
-            "max": max(values) if values else None,
-            "passed": sum(int(item[dimension]["passed"]) for item in run_scores),
-            "applicable": sum(int(item[dimension]["applicable"]) for item in run_scores),
-            "not_applicable": sum(int(item[dimension].get("not_applicable", 0)) for item in run_scores),
+    regular_values = [
+        item["D"].get("D_regular") for item in run_scores
+        if item["D"].get("D_regular") is not None
+    ]
+    exception_values = [
+        item["D"].get("D_exception") for item in run_scores
+        if item["D"].get("D_exception") is not None
+    ]
+    regular_score = statistics.median(regular_values) if regular_values else None
+    exception_score = statistics.median(exception_values) if exception_values else None
+    d_components = [value for value in (regular_score, exception_score) if value is not None]
+
+    def pooled_component(name: str, score: float | None) -> dict[str, Any]:
+        components = [item["D"].get(name, {}) for item in run_scores]
+        return {
+            "score": score,
+            "passed": sum(int(component.get("passed", 0)) for component in components),
+            "applicable": sum(int(component.get("applicable", 0)) for component in components),
+            "not_applicable": sum(int(component.get("not_applicable", 0)) for component in components),
         }
+
+    diagnostic_names = (
+        "detection_f1",
+        "root_cause_macro_jaccard",
+        "exception_disposition_accuracy",
+    )
+    diagnostic_summary = {}
+    for name in diagnostic_names:
+        values = [
+            item["D"].get("diagnostics", {}).get(name) for item in run_scores
+            if item["D"].get("diagnostics", {}).get(name) is not None
+        ]
+        diagnostic_summary[name] = statistics.median(values) if values else None
+    raw_counts = {
+        key: sum(int(item["D"].get("raw_counts", {}).get(key, 0)) for item in run_scores)
+        for key in ("passed", "applicable", "not_applicable", "total")
+    }
+    legacy_values = [
+        item["D"].get("legacy_atom_micro_score") for item in run_scores
+        if item["D"].get("legacy_atom_micro_score") is not None
+    ]
+    d_scores = [item["D"].get("score") for item in run_scores if item["D"].get("score") is not None]
+    result["D"] = {
+        "score": statistics.mean(d_components) if d_components else None,
+        "min": min(d_scores) if d_scores else None,
+        "max": max(d_scores) if d_scores else None,
+        "D_regular": regular_score,
+        "D_exception": exception_score,
+        "regular": pooled_component("regular", regular_score),
+        "exception": pooled_component("exception", exception_score),
+        "diagnostics": diagnostic_summary,
+        "legacy_atom_micro_score": statistics.median(legacy_values) if legacy_values else None,
+        "raw_counts": raw_counts,
+        # Compatibility fields are raw atom counts only; they never determine D v2.1.
+        "passed": raw_counts["passed"],
+        "applicable": raw_counts["applicable"],
+        "not_applicable": raw_counts["not_applicable"],
+    }
+    n_values = [item["N"]["score"] for item in run_scores if item["N"]["score"] is not None]
+    result["N"] = {
+        "score": statistics.median(n_values) if n_values else None,
+        "min": min(n_values) if n_values else None,
+        "max": max(n_values) if n_values else None,
+        "passed": sum(int(item["N"]["passed"]) for item in run_scores),
+        "applicable": sum(int(item["N"]["applicable"]) for item in run_scores),
+        "not_applicable": sum(int(item["N"].get("not_applicable", 0)) for item in run_scores),
+    }
     e_values = [item["E"] for item in run_scores if item.get("E") is not None]
     result["E"] = statistics.median(e_values) if e_values else None
     result["E_range"] = {"min": min(e_values), "max": max(e_values)} if e_values else None
@@ -641,6 +756,77 @@ def summarize_a_repetitions(run_scores: list[dict[str, Any]]) -> dict[str, Any]:
     result["EICPI_core_0_100"] = core_score(result["D"]["score"], result["N"]["score"], result["E"])
     result["run_ids"] = [item["run_id"] for item in run_scores if item.get("run_id")]
     return result
+
+
+def aggregate_a_targets(target_rows: dict[str, dict[str, Any]]) -> dict[str, Any]:
+    """Aggregate A without letting source-class size recreate atom-level D dilution.
+
+    D is formed from the source-class means of its two first-level components.
+    The reported D micro value deliberately equals this hierarchical composite;
+    raw decision-atom pooling is retained only as a diagnostic inside each run.
+    N keeps its prespecified atom micro aggregation and E keeps record weighting.
+    """
+
+    rows = list(target_rows.values())
+
+    def mean_dimension(component: str) -> float | None:
+        values = [
+            float(row["D"][component]) for row in rows
+            if row.get("D", {}).get(component) is not None
+        ]
+        return statistics.mean(values) if values else None
+
+    d_regular = mean_dimension("D_regular")
+    d_exception = mean_dimension("D_exception")
+    d_components = [value for value in (d_regular, d_exception) if value is not None]
+    hierarchical_d = statistics.mean(d_components) if d_components else None
+    d_diagnostics = {}
+    for name in (
+        "detection_f1",
+        "root_cause_macro_jaccard",
+        "exception_disposition_accuracy",
+    ):
+        values = [
+            float(row["D"]["diagnostics"][name]) for row in rows
+            if row.get("D", {}).get("diagnostics", {}).get(name) is not None
+        ]
+        d_diagnostics[name] = statistics.mean(values) if values else None
+
+    n_scores = [float(row["N"]["score"]) for row in rows if row.get("N", {}).get("score") is not None]
+    macro_n = statistics.mean(n_scores) if n_scores else None
+    n_passed = sum(int(row["N"].get("passed", 0)) for row in rows if row.get("N"))
+    n_applicable = sum(int(row["N"].get("applicable", 0)) for row in rows if row.get("N"))
+    micro_n = n_passed / n_applicable if n_applicable else None
+
+    e_values = [float(row["E"]) for row in rows if row.get("E") is not None]
+    macro_e = statistics.mean(e_values) if e_values else None
+    e_weight = sum(int(row.get("record_count", 0)) for row in rows if row.get("E") is not None)
+    micro_e = (
+        sum(float(row["E"]) * int(row.get("record_count", 0)) for row in rows if row.get("E") is not None)
+        / e_weight if e_weight else None
+    )
+
+    macro = {
+        "D": hierarchical_d,
+        "D_regular": d_regular,
+        "D_exception": d_exception,
+        "D_aggregation": "hierarchical_component_macro",
+        "D_diagnostics": d_diagnostics,
+        "N": macro_n,
+        "E": macro_e,
+    }
+    micro = {
+        "D": hierarchical_d,
+        "D_regular": d_regular,
+        "D_exception": d_exception,
+        "D_aggregation": "hierarchical_component_macro",
+        "D_diagnostics": d_diagnostics,
+        "N": micro_n,
+        "E": micro_e,
+    }
+    macro["EICPI_core_0_100"] = core_score(macro["D"], macro["N"], macro["E"])
+    micro["EICPI_core_0_100"] = core_score(micro["D"], micro["N"], micro["E"])
+    return {"macro": macro, "micro": micro}
 
 
 def partition_experiments(rows: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], dict[str, list[dict[str, Any]]]]:
@@ -781,6 +967,45 @@ def _total_reference_correct(expected: dict[str, Any] | None, actual: dict[str, 
     return generation_ok and emission_ok
 
 
+def multiclass_macro_f1(
+    expected_labels: list[str],
+    predicted_labels: list[str],
+    classes: list[str] | tuple[str, ...] = B2_CLASSES,
+) -> dict[str, Any]:
+    """Return an auditable one-vs-rest macro-F1 over the frozen B2 classes."""
+
+    if len(expected_labels) != len(predicted_labels):
+        raise ValueError("expected and predicted label counts differ")
+    by_class: dict[str, dict[str, Any]] = {}
+    for label in classes:
+        tp = sum(expected == label and predicted == label for expected, predicted in zip(expected_labels, predicted_labels))
+        fp = sum(expected != label and predicted == label for expected, predicted in zip(expected_labels, predicted_labels))
+        fn = sum(expected == label and predicted != label for expected, predicted in zip(expected_labels, predicted_labels))
+        precision = tp / (tp + fp) if tp + fp else 0.0
+        recall = tp / (tp + fn) if tp + fn else 0.0
+        f1 = 2 * precision * recall / (precision + recall) if precision + recall else 0.0
+        by_class[label] = {
+            "support": sum(expected == label for expected in expected_labels),
+            "predicted": sum(predicted == label for predicted in predicted_labels),
+            "true_positive": tp,
+            "false_positive": fp,
+            "false_negative": fn,
+            "precision": precision,
+            "recall": recall,
+            "f1": f1,
+        }
+    return {
+        "eligible_records": len(expected_labels),
+        "classes": list(classes),
+        "macro_f1": statistics.mean(item["f1"] for item in by_class.values()) if by_class else None,
+        "accuracy": (
+            sum(expected == predicted for expected, predicted in zip(expected_labels, predicted_labels))
+            / len(expected_labels) if expected_labels else None
+        ),
+        "by_class": by_class,
+    }
+
+
 def b2_report(
     rows: list[dict[str, Any]],
     scores: dict[str, dict[str, Any]],
@@ -810,10 +1035,39 @@ def b2_report(
         ]
         eligible = [item for item in designed if item.get("scoring_eligible") == "true"]
         baseline = b0_index.get((row["method"], row["target"]))
+        baseline_context = contexts.get(baseline["run_id"]) if baseline else None
         baseline_rows = (
             read_normalized_rows(Path(scores[baseline["run_id"]]["normalized_output"])) if baseline else {}
         )
         injected_rows = read_normalized_rows(Path(scores[row["run_id"]]["normalized_output"]))
+
+        def roots_by_source(groups: set[tuple[str, str]]) -> dict[str, set[str]]:
+            grouped: dict[str, set[str]] = defaultdict(set)
+            for source_id, root in groups:
+                grouped[source_id].add(root)
+            return grouped
+
+        baseline_actual_roots = roots_by_source(
+            baseline_context["actual_exception_groups"] if baseline_context else set()
+        )
+        injected_actual_roots = roots_by_source(actual_groups)
+
+        def injected_expected_roots(item: dict[str, str]) -> set[str]:
+            return {
+                exception["canonical_root_cause"]
+                for exception in context["selected"]["exceptions"]
+                if exception["source_id"] == item["source_id"]
+                and exception.get("injection_root_cause") == item.get("root_cause")
+                and exception.get("requires_user_judgment") == "true"
+            }
+
+        root_signatures: dict[str, set[frozenset[str]]] = defaultdict(set)
+        for candidate in eligible:
+            if candidate.get("plan_class") == "negative_control":
+                continue
+            roots = injected_expected_roots(candidate)
+            if roots:
+                root_signatures[candidate["root_cause"]].add(frozenset(roots))
 
         def unchanged(source_id: str, pollutants: set[str]) -> bool | None:
             if not baseline:
@@ -835,19 +1089,25 @@ def b2_report(
             source_id = item["source_id"]
             affected = set(parse_json(item.get("expected_affected_pollutants"), []))
             positive = item.get("plan_class") != "negative_control"
-            affected_disposition = all(
+            baseline_actual = (baseline_context or {}).get("actual", {})
+            baseline_statuses = parse_json(item.get("baseline_statuses"), {})
+            injected_statuses = parse_json(item.get("b2_statuses"), {})
+            affected_disposition = bool(affected) and all(
                 actual.get(f"{source_id}::{pollutant}", {}).get("status")
-                == expected.get(f"{source_id}::{pollutant}", {}).get("expected_status")
+                == injected_statuses.get(pollutant)
+                and (
+                    baseline_statuses.get(pollutant) == injected_statuses.get(pollutant)
+                    or actual.get(f"{source_id}::{pollutant}", {}).get("status")
+                    != baseline_actual.get(f"{source_id}::{pollutant}", {}).get("status")
+                )
                 for pollutant in affected
             )
-            expected_injected_roots = {
-                exception["canonical_root_cause"] for exception in context["selected"]["exceptions"]
-                if exception["source_id"] == source_id
-                and exception.get("injection_root_cause") == item.get("root_cause")
-                and exception.get("requires_user_judgment") == "true"
-            }
-            actual_roots = {root for source, root in actual_groups if source == source_id}
-            root_correct = expected_injected_roots.issubset(actual_roots)
+            expected_injected_roots = injected_expected_roots(item)
+            new_actual_roots = (
+                injected_actual_roots.get(source_id, set())
+                - baseline_actual_roots.get(source_id, set())
+            )
+            root_recalled = bool(expected_injected_roots) and expected_injected_roots.issubset(new_actual_roots)
             unaffected = set(POLLUTANTS) - affected
             unaffected_correct = all(
                 _total_reference_correct(expected.get(f"{source_id}::{pollutant}"), actual.get(f"{source_id}::{pollutant}"))
@@ -857,15 +1117,38 @@ def b2_report(
                 _total_reference_correct(expected.get(f"{source_id}::{pollutant}"), actual.get(f"{source_id}::{pollutant}"))
                 for pollutant in POLLUTANTS
             )
+            unchanged_unaffected = unchanged(source_id, unaffected)
+            unchanged_whole = unchanged(source_id, set(POLLUTANTS))
+            matching_labels = [
+                label for label, signatures in root_signatures.items()
+                if frozenset(new_actual_roots) in signatures
+            ]
+            if not positive and not new_actual_roots and unchanged_whole is True:
+                predicted_label = "NO_ANOMALY"
+            elif positive and len(matching_labels) == 1 and affected_disposition:
+                predicted_label = matching_labels[0]
+            elif positive and not new_actual_roots and unchanged_whole is True:
+                predicted_label = "NO_ANOMALY"
+            elif len(matching_labels) == 1:
+                # A recognized cause without the required disposition is not a
+                # successfully handled class in this joint metric.
+                predicted_label = "UNRESOLVED_OR_MISCLASSIFIED"
+            else:
+                predicted_label = "UNRESOLVED_OR_MISCLASSIFIED"
+            expected_label = item["root_cause"] if positive else "NO_ANOMALY"
             outcomes.append({
                 "source_id": source_id, "positive_injection": positive,
-                "affected_disposition_correct": affected_disposition,
-                "root_cause_group_correct": root_correct,
-                "targeted_detection_correct": affected_disposition and root_correct,
+                "expected_class": expected_label,
+                "predicted_class": predicted_label,
+                "expected_injected_root_causes": sorted(expected_injected_roots),
+                "new_actual_root_causes_vs_B0": sorted(new_actual_roots),
+                "affected_disposition_transition_correct": affected_disposition if positive else None,
+                "injected_root_recalled": root_recalled if positive else None,
+                "targeted_handling_success": (affected_disposition and root_recalled) if positive else None,
                 "unaffected_items_reference_correct": unaffected_correct,
                 "whole_source_reference_correct": whole_source,
-                "unaffected_items_unchanged_vs_B0": unchanged(source_id, unaffected),
-                "whole_source_unchanged_vs_B0": unchanged(source_id, set(POLLUTANTS)),
+                "unaffected_items_unchanged_vs_B0": unchanged_unaffected,
+                "whole_source_unchanged_vs_B0": unchanged_whole,
             })
         positive = [item for item in outcomes if item["positive_injection"]]
         negative = [item for item in outcomes if not item["positive_injection"]]
@@ -878,17 +1161,45 @@ def b2_report(
             "designed_records": len(designed), "eligible_records": len(eligible),
             "excluded_preexisting_problem": len(designed) - len(eligible),
             "positive_injections": len(positive), "negative_controls": len(negative),
-            "affected_disposition": ratio(positive, "affected_disposition_correct"),
-            "root_cause": ratio(positive, "root_cause_group_correct"),
-            "targeted_detection": ratio(positive, "targeted_detection_correct"),
+            "affected_disposition_transition": ratio(positive, "affected_disposition_transition_correct"),
+            "injected_root_recall": ratio(positive, "injected_root_recalled"),
+            "targeted_handling_success": ratio(positive, "targeted_handling_success"),
             "unaffected_reference_correctness": ratio(positive, "unaffected_items_reference_correct"),
             "unaffected_unchanged_vs_method_B0": ratio(positive, "unaffected_items_unchanged_vs_B0"),
             "negative_control_whole_source": ratio(negative, "whole_source_reference_correct"),
             "negative_control_unchanged_vs_method_B0": ratio(negative, "whole_source_unchanged_vs_B0"),
-            "D": scores[row["run_id"]]["D"], "N": scores[row["run_id"]]["N"],
+            "five_class_classification": multiclass_macro_f1(
+                [item["expected_class"] for item in outcomes],
+                [item["predicted_class"] for item in outcomes],
+            ),
+            "overall_reference_D_diagnostic": scores[row["run_id"]]["D"],
+            "overall_reference_N_diagnostic": scores[row["run_id"]]["N"],
             "outcomes": outcomes,
         })
-    return {"experiment": "B2", "enters_EICPI_core": False, "runs": runs}
+    comparable_runs = [item for item in runs if "outcomes" in item]
+    by_method_outcomes: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for run in comparable_runs:
+        by_method_outcomes[run["method"]].extend(run["outcomes"])
+    by_method = {
+        method: multiclass_macro_f1(
+            [item["expected_class"] for item in outcomes],
+            [item["predicted_class"] for item in outcomes],
+        )
+        for method, outcomes in sorted(by_method_outcomes.items())
+    }
+    return {
+        "experiment": "B2",
+        "enters_EICPI_core": False,
+        "interpretation": (
+            "Five-class macro-F1 uses only the 26 scoring-eligible controlled objects and "
+            "scores new root causes plus disposition changes relative to the same method's B0."
+        ),
+        "designed_records": len(injection_manifest),
+        "eligible_records": sum(item.get("scoring_eligible") == "true" for item in injection_manifest),
+        "excluded_preexisting_problem": sum(item.get("scoring_eligible") != "true" for item in injection_manifest),
+        "five_class_macro_f1_by_method": by_method,
+        "runs": runs,
+    }
 
 
 def c_report(rows: list[dict[str, Any]], scores: dict[str, dict[str, Any]]) -> dict[str, Any]:
@@ -924,6 +1235,14 @@ def d_report(rows: list[dict[str, Any]], scores: dict[str, dict[str, Any]]) -> d
                 score["D"]["score"] - reference["D"]["score"]
                 if reference and score["D"]["score"] is not None and reference["D"]["score"] is not None else None
             ),
+            "delta_regular": (
+                score["D"].get("D_regular") - reference["D"].get("D_regular")
+                if reference and score["D"].get("D_regular") is not None and reference["D"].get("D_regular") is not None else None
+            ),
+            "delta_exception": (
+                score["D"].get("D_exception") - reference["D"].get("D_exception")
+                if reference and score["D"].get("D_exception") is not None and reference["D"].get("D_exception") is not None else None
+            ),
             "delta_N_vs_full": (
                 score["N"]["score"] - reference["N"]["score"]
                 if reference and score["N"]["score"] is not None and reference["N"]["score"] is not None else None
@@ -942,7 +1261,9 @@ def d_report(rows: list[dict[str, Any]], scores: dict[str, dict[str, Any]]) -> d
 def write_run_csv(path: Path, rows: list[dict[str, Any]]) -> None:
     fields = (
         "experiment", "run_id", "method", "target", "input_variant", "scale_percent", "repetition",
-        "D", "D_passed", "D_applicable", "D_NA", "N", "N_passed", "N_applicable", "N_NA",
+        "D", "D_regular", "D_exception",
+        "D_exception_detection_f1", "D_root_cause_macro_jaccard", "D_exception_disposition_accuracy",
+        "D_passed", "D_applicable", "D_NA", "N", "N_passed", "N_applicable", "N_NA",
         "E", "EICPI_core_0_100", "record_count", "seconds_per_record",
         "method_boundary_status", "method_boundary_failures", "method_boundary_warnings",
     )
@@ -951,9 +1272,17 @@ def write_run_csv(path: Path, rows: list[dict[str, Any]]) -> None:
         writer.writeheader()
         for row in rows:
             boundary = row.get("method_boundary") or {}
+            d_raw = row["D"].get("raw_counts", row["D"])
+            d_diagnostics = row["D"].get("diagnostics", {})
             writer.writerow({
                 **{name: row.get(name) for name in ("experiment", "run_id", "method", "target", "input_variant", "scale_percent", "repetition", "E", "EICPI_core_0_100", "record_count", "seconds_per_record")},
-                "D": row["D"]["score"], "D_passed": row["D"]["passed"], "D_applicable": row["D"]["applicable"], "D_NA": row["D"]["not_applicable"],
+                "D": row["D"]["score"],
+                "D_regular": row["D"].get("D_regular"),
+                "D_exception": row["D"].get("D_exception"),
+                "D_exception_detection_f1": d_diagnostics.get("detection_f1"),
+                "D_root_cause_macro_jaccard": d_diagnostics.get("root_cause_macro_jaccard"),
+                "D_exception_disposition_accuracy": d_diagnostics.get("exception_disposition_accuracy"),
+                "D_passed": d_raw.get("passed"), "D_applicable": d_raw.get("applicable"), "D_NA": d_raw.get("not_applicable"),
                 "N": row["N"]["score"], "N_passed": row["N"]["passed"], "N_applicable": row["N"]["applicable"], "N_NA": row["N"]["not_applicable"],
                 "method_boundary_status": boundary.get("status", "not_available"),
                 "method_boundary_failures": json.dumps(
@@ -1003,8 +1332,15 @@ def main() -> None:
         score["method_boundary"] = boundary_status
         sealed_rows.append(row)
         scores[row["run_id"]] = score
-        if row["experiment"] == "B" and row["input_variant"] == "B2":
-            contexts[row["run_id"]] = context
+        if row["experiment"] == "B" and row["input_variant"] in {"B0", "B2"}:
+            retained = {"actual", "actual_exception_groups"}
+            if row["input_variant"] == "B2":
+                retained.update({
+                    "expected", "expected_sources", "expected_exception_groups", "selected",
+                })
+            contexts[row["run_id"]] = {
+                name: value for name, value in context.items() if name in retained
+            }
 
     primary_rows, independent_rows = partition_experiments(sealed_rows)
     anchors = {}
@@ -1038,7 +1374,7 @@ def main() -> None:
             target: by_method_target[f"{method}|{target}"]
             for target in ("INDUSTRIAL", "POWER") if f"{method}|{target}" in by_method_target
         }
-        by_method[method] = aggregate_targets(target_rows)
+        by_method[method] = aggregate_a_targets(target_rows)
 
     b1 = b1_report(independent_rows["B1"], scores)
     b2 = b2_report(independent_rows["B2"], scores, contexts, reference, independent_rows["B1"])
@@ -1048,7 +1384,10 @@ def main() -> None:
         matrix["rows"], scores,
     )
     summary = {
-        "evaluation_version": "2.0.0",
+        "evaluation_version": "2.1.0",
+        "supersedes_evaluation_version": "2.0.0",
+        "revision_type": "post-experiment_protocol_revision",
+        "formal_runs_reexecuted_for_revision": False,
         "metric_spec": str(METRIC_SPEC.relative_to(ROOT)),
         "metric_spec_sha256": sha256(METRIC_SPEC),
         "matrix_version": matrix.get("matrix_version"),
@@ -1063,19 +1402,19 @@ def main() -> None:
             "by_method_macro_and_micro": by_method,
         },
         "independent_reports": {
-            "B1": "experiment_B1_v2.json", "B2": "experiment_B2_v2.json",
-            "C": "experiment_C_v2.json", "D": "experiment_D_v2.json",
+            "B1": "experiment_B1_v2_1.json", "B2": "experiment_B2_v2_1.json",
+            "C": "experiment_C_v2_1.json", "D": "experiment_D_v2_1.json",
         },
         "independent_diagnostics": {
             "method_boundary": method_boundary_diagnostics,
         },
     }
-    write_run_csv(output_dir / "run_scores_v2.csv", [scores[row["run_id"]] for row in sealed_rows])
+    write_run_csv(output_dir / "run_scores_v2_1.csv", [scores[row["run_id"]] for row in sealed_rows])
     for name, payload in (("B1", b1), ("B2", b2), ("C", c), ("D", d)):
-        (output_dir / f"experiment_{name}_v2.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    (output_dir / "aggregate_summary_v2.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
+        (output_dir / f"experiment_{name}_v2_1.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    (output_dir / "aggregate_summary_v2_1.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps({
-        "evaluation_version": "2.0.0", "sealed_runs_evaluated": len(sealed_rows),
+        "evaluation_version": "2.1.0", "sealed_runs_evaluated": len(sealed_rows),
         "pending_runs": len(matrix["rows"]) - len(sealed_rows), "output_dir": str(output_dir),
     }, ensure_ascii=False))
 

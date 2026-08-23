@@ -101,6 +101,124 @@ def summarize_atoms(atoms: Iterable[Atom]) -> dict[str, Any]:
     }
 
 
+def summarize_domain_decisions(
+    atoms: Iterable[Atom],
+    expected_exception_groups: set[tuple[str, str]],
+    actual_exception_groups: set[tuple[str, str]],
+    exception_disposition_by_source: dict[str, bool | None],
+    exception_terminal_atom_ids: set[str],
+) -> dict[str, Any]:
+    """Summarize routine decisions and exception handling as equal components.
+
+    Routine atoms and exception sources have deliberately separate
+    denominators.  This prevents a large number of routine calculations from
+    hiding a method's inability to detect or correctly handle a small number
+    of exceptional sources.  ``exception_terminal_atom_ids`` contains exact
+    terminal atom IDs whose outcome is already represented by the source-level
+    exception disposition and therefore must not be counted twice.
+    """
+
+    materialized = list(atoms)
+    legacy = summarize_atoms(materialized)
+    exception_terminal_ids = {str(atom_id) for atom_id in exception_terminal_atom_ids}
+    regular_atoms = [
+        atom for atom in materialized
+        if atom.kind != "exception_root_cause" and atom.atom_id not in exception_terminal_ids
+    ]
+    regular = summarize_atoms(regular_atoms)
+
+    expected_by_source: dict[str, set[str]] = defaultdict(set)
+    actual_by_source: dict[str, set[str]] = defaultdict(set)
+    for source_id, root_cause in expected_exception_groups:
+        expected_by_source[str(source_id)].add(str(root_cause))
+    for source_id, root_cause in actual_exception_groups:
+        actual_by_source[str(source_id)].add(str(root_cause))
+
+    expected_sources = set(expected_by_source)
+    actual_sources = set(actual_by_source)
+    exception_sources = sorted(expected_sources | actual_sources)
+    exception_passed = 0
+    failed_source_examples: list[dict[str, Any]] = []
+    for source_id in exception_sources:
+        expected_roots = expected_by_source.get(source_id, set())
+        actual_roots = actual_by_source.get(source_id, set())
+        roots_exact = expected_roots == actual_roots
+        disposition_required = source_id in expected_sources
+        disposition_pass = exception_disposition_by_source.get(source_id) is True
+        passed = roots_exact and (disposition_pass if disposition_required else False)
+        exception_passed += int(passed)
+        if not passed and len(failed_source_examples) < 30:
+            failed_source_examples.append({
+                "source_id": source_id,
+                "expected_root_causes": sorted(expected_roots),
+                "actual_root_causes": sorted(actual_roots),
+                "disposition_passed": disposition_pass if disposition_required else None,
+            })
+
+    exception_score = exception_passed / len(exception_sources) if exception_sources else None
+    components = [value for value in (regular["score"], exception_score) if value is not None]
+    combined_score = statistics.mean(components) if components else None
+
+    intersection = expected_sources & actual_sources
+    if not expected_sources and not actual_sources:
+        detection_precision = detection_recall = detection_f1 = None
+    else:
+        detection_precision = len(intersection) / len(actual_sources) if actual_sources else None
+        detection_recall = len(intersection) / len(expected_sources) if expected_sources else None
+        if detection_precision is None or detection_recall is None:
+            detection_f1 = 0.0
+        elif detection_precision + detection_recall == 0:
+            detection_f1 = 0.0
+        else:
+            detection_f1 = 2 * detection_precision * detection_recall / (detection_precision + detection_recall)
+
+    jaccards: list[float] = []
+    for source_id in sorted(intersection):
+        expected_roots = expected_by_source[source_id]
+        actual_roots = actual_by_source[source_id]
+        union = expected_roots | actual_roots
+        jaccards.append(len(expected_roots & actual_roots) / len(union) if union else 1.0)
+    root_macro_jaccard = statistics.mean(jaccards) if jaccards else None
+    disposition_accuracy = (
+        sum(exception_disposition_by_source.get(source_id) is True for source_id in expected_sources)
+        / len(expected_sources)
+        if expected_sources else None
+    )
+
+    return {
+        "score": combined_score,
+        "D_regular": regular["score"],
+        "D_exception": exception_score,
+        "regular": regular,
+        "exception": {
+            "passed": exception_passed,
+            "applicable": len(exception_sources),
+            "not_applicable": 0,
+            "score": exception_score,
+            "failed_source_count": len(exception_sources) - exception_passed,
+            "failed_source_examples": failed_source_examples,
+        },
+        "legacy_atom_micro_score": legacy["score"],
+        "passed": legacy["passed"],
+        "applicable": legacy["applicable"],
+        "not_applicable": legacy["not_applicable"],
+        "by_kind": legacy["by_kind"],
+        "raw_counts": {
+            "passed": legacy["passed"],
+            "applicable": legacy["applicable"],
+            "not_applicable": legacy["not_applicable"],
+            "total": len(materialized),
+        },
+        "diagnostics": {
+            "detection_precision": detection_precision,
+            "detection_recall": detection_recall,
+            "detection_f1": detection_f1,
+            "root_cause_macro_jaccard": root_macro_jaccard,
+            "exception_disposition_accuracy": disposition_accuracy,
+        },
+    }
+
+
 def _actual_target(value: Any) -> str | None:
     if isinstance(value, dict):
         value = value.get("target") or value.get("actual_target") or value.get("disposition") or ""

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify the frozen raw-input/DNE-v2 environment without changing it."""
+"""Verify frozen raw-input runs and the active post-experiment DNE-v2.1 evaluator."""
 
 from __future__ import annotations
 
@@ -34,12 +34,14 @@ def load_json(path: Path) -> dict[str, Any]:
 
 def contract_errors(manifest: dict[str, Any]) -> list[str]:
     errors = []
-    if manifest.get("manifest_version") != "2.0.0":
-        errors.append("reproduction manifest is not version 2.0.0")
+    if manifest.get("manifest_version") != "2.1.0":
+        errors.append("reproduction manifest is not version 2.1.0")
     if manifest.get("input_contract") != "raw_base_tables_v2":
         errors.append("input contract is not raw_base_tables_v2")
-    if manifest.get("evaluation_contract") != "DNE_v2":
-        errors.append("evaluation contract is not DNE_v2")
+    if manifest.get("evaluation_contract") != "DNE_v2.1":
+        errors.append("evaluation contract is not DNE_v2.1")
+    if manifest.get("formal_setup_evaluation_contract") != "DNE_v2":
+        errors.append("formal setup evaluation contract is not preserved as DNE_v2")
     paths = {str(item.get("path") or "") for item in manifest.get("files", [])}
     for retired, description in RETIRED_DEPENDENCIES.items():
         if retired in paths:
@@ -47,7 +49,9 @@ def contract_errors(manifest: dict[str, Any]) -> list[str]:
     if "inputs/prepared/raw_input_manifest.json" not in paths:
         errors.append("raw input manifest is not frozen")
     if "evaluation/aggregate_experiment_results_v2.py" not in paths:
-        errors.append("DNE v2 aggregate evaluator is not frozen")
+        errors.append("DNE v2.1 aggregate evaluator is not frozen")
+    if "evaluation/metric_spec_v2_1.json" not in paths:
+        errors.append("DNE v2.1 metric specification is not frozen")
     return errors
 
 
@@ -60,7 +64,8 @@ def inspect_environment(root: Path) -> dict[str, Any]:
         "reproduction manifest": root / "reproduction" / "reproduction_manifest.json",
         "raw input manifest": root / "inputs" / "prepared" / "raw_input_manifest.json",
         "source identity index": root / "inputs" / "prepared" / "source_identity_index.json",
-        "DNE metric specification": root / "evaluation" / "metric_spec_v2.json",
+        "formal DNE v2 metric specification": root / "evaluation" / "metric_spec_v2.json",
+        "active DNE v2.1 metric specification": root / "evaluation" / "metric_spec_v2_1.json",
         "reference v2 lock": root / "reference" / "frozen" / "v2.0.0" / "package_lock.json",
         "human v2 index": root / "human_baseline" / "normalized_v2" / "normalization_index.json",
     }
@@ -152,9 +157,14 @@ def inspect_environment(root: Path) -> dict[str, Any]:
         if not path.is_file() or sha256(path) != expected:
             errors.append(f"preserved human original mismatch: {relative}")
 
-    metric = load_json(required["DNE metric specification"])
-    if metric.get("version") != "2.0.0" or metric.get("independent_quality_gate") is not False:
-        errors.append("DNE metric specification is not the approved v2 no-gate contract")
+    metric = load_json(required["active DNE v2.1 metric specification"])
+    if (
+        metric.get("version") != "2.1.0"
+        or metric.get("supersedes") != "2.0.0"
+        or metric.get("revision_type") != "post-experiment_protocol_revision"
+        or metric.get("independent_quality_gate") is not False
+    ):
+        errors.append("active DNE metric specification is not the approved post-experiment v2.1 no-gate contract")
 
     reference_dir = root / "reference" / "frozen" / "v2.0.0"
     reference_lock = load_json(required["reference v2 lock"])
@@ -218,7 +228,8 @@ def inspect_environment(root: Path) -> dict[str, Any]:
         "model": method.get("model"),
         "reasoning_effort": method.get("reasoning_effort"),
         "input_contract": "raw_base_tables_v2",
-        "evaluation_contract": "DNE_v2",
+        "evaluation_contract": "DNE_v2.1",
+        "formal_setup_evaluation_contract": "DNE_v2",
         "reference_package": "reference/frozen/v2.0.0",
         "machine_matrix_rows": len(machine),
         "human_runs": len(human),

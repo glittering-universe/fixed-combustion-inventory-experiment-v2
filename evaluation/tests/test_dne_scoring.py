@@ -58,6 +58,129 @@ class DneScoringTests(unittest.TestCase):
         self.assertEqual(summary["not_applicable"], 1)
         self.assertAlmostEqual(summary["score"], 0.5)
 
+    def test_domain_summary_does_not_let_many_regular_atoms_hide_one_missed_exception(self) -> None:
+        atoms = [
+            MODULE.Atom(f"regular:{index}", "calculation_basis", True)
+            for index in range(100_000)
+        ]
+        atoms.append(MODULE.Atom("exception:SRC-E:missing-factor", "exception_root_cause", False))
+
+        summary = MODULE.summarize_domain_decisions(
+            atoms,
+            expected_exception_groups={("SRC-E", "missing-factor")},
+            actual_exception_groups=set(),
+            exception_disposition_by_source={"SRC-E": False},
+            exception_terminal_atom_ids=set(),
+        )
+
+        self.assertEqual(summary["D_regular"], 1.0)
+        self.assertEqual(summary["D_exception"], 0.0)
+        self.assertEqual(summary["score"], 0.5)
+        self.assertAlmostEqual(summary["legacy_atom_micro_score"], 100_000 / 100_001)
+        self.assertEqual(summary["diagnostics"]["detection_recall"], 0.0)
+
+    def test_domain_summary_scores_wrong_root_cause_even_when_detection_is_correct(self) -> None:
+        summary = MODULE.summarize_domain_decisions(
+            [],
+            expected_exception_groups={("SRC-E", "missing-factor")},
+            actual_exception_groups={("SRC-E", "ambiguous-technology")},
+            exception_disposition_by_source={"SRC-E": True},
+            exception_terminal_atom_ids=set(),
+        )
+
+        self.assertEqual(summary["D_exception"], 0.0)
+        self.assertEqual(summary["score"], 0.0)
+        self.assertEqual(summary["diagnostics"]["detection_precision"], 1.0)
+        self.assertEqual(summary["diagnostics"]["detection_recall"], 1.0)
+        self.assertEqual(summary["diagnostics"]["detection_f1"], 1.0)
+        self.assertEqual(summary["diagnostics"]["root_cause_macro_jaccard"], 0.0)
+
+    def test_domain_summary_counts_actual_only_exception_as_false_positive(self) -> None:
+        summary = MODULE.summarize_domain_decisions(
+            [],
+            expected_exception_groups=set(),
+            actual_exception_groups={("SRC-FP", "invented-conflict")},
+            exception_disposition_by_source={},
+            exception_terminal_atom_ids=set(),
+        )
+
+        self.assertEqual(summary["D_exception"], 0.0)
+        self.assertEqual(summary["exception"]["applicable"], 1)
+        self.assertEqual(summary["diagnostics"]["detection_precision"], 0.0)
+        self.assertIsNone(summary["diagnostics"]["detection_recall"])
+        self.assertEqual(summary["diagnostics"]["detection_f1"], 0.0)
+
+    def test_domain_summary_requires_correct_terminal_disposition_for_expected_exception(self) -> None:
+        summary = MODULE.summarize_domain_decisions(
+            [],
+            expected_exception_groups={("SRC-E", "missing-factor")},
+            actual_exception_groups={("SRC-E", "missing-factor")},
+            exception_disposition_by_source={"SRC-E": False},
+            exception_terminal_atom_ids=set(),
+        )
+
+        self.assertEqual(summary["D_exception"], 0.0)
+        self.assertEqual(summary["diagnostics"]["root_cause_macro_jaccard"], 1.0)
+        self.assertEqual(summary["diagnostics"]["exception_disposition_accuracy"], 0.0)
+
+    def test_domain_summary_marks_exception_component_na_when_neither_side_has_exceptions(self) -> None:
+        summary = MODULE.summarize_domain_decisions(
+            [MODULE.Atom("regular:1", "calculation_basis", True)],
+            expected_exception_groups=set(),
+            actual_exception_groups=set(),
+            exception_disposition_by_source={},
+            exception_terminal_atom_ids=set(),
+        )
+
+        self.assertIsNone(summary["D_exception"])
+        self.assertEqual(summary["D_regular"], 1.0)
+        self.assertEqual(summary["score"], 1.0)
+        self.assertIsNone(summary["diagnostics"]["detection_precision"])
+        self.assertIsNone(summary["diagnostics"]["detection_recall"])
+        self.assertIsNone(summary["diagnostics"]["detection_f1"])
+
+    def test_exception_terminal_atom_is_scored_once_at_source_level(self) -> None:
+        atoms = [
+            MODULE.Atom("regular:1", "calculation_basis", True),
+            MODULE.Atom("terminal:SRC-E::NOx", "terminal_disposition", False),
+            MODULE.Atom("exception:SRC-E:missing-factor", "exception_root_cause", True),
+        ]
+        summary = MODULE.summarize_domain_decisions(
+            atoms,
+            expected_exception_groups={("SRC-E", "missing-factor")},
+            actual_exception_groups={("SRC-E", "missing-factor")},
+            exception_disposition_by_source={"SRC-E": False},
+            exception_terminal_atom_ids={"terminal:SRC-E::NOx"},
+        )
+
+        self.assertEqual(summary["D_regular"], 1.0)
+        self.assertEqual(summary["regular"]["applicable"], 1)
+        self.assertEqual(summary["D_exception"], 0.0)
+        self.assertEqual(summary["exception"]["applicable"], 1)
+        self.assertEqual(summary["score"], 0.5)
+        self.assertEqual(summary["raw_counts"], {
+            "passed": 2, "applicable": 3, "not_applicable": 0, "total": 3,
+        })
+        self.assertEqual(summary["passed"], 2)
+        self.assertEqual(summary["applicable"], 3)
+        self.assertEqual(summary["not_applicable"], 0)
+        self.assertIn("terminal_disposition", summary["by_kind"])
+
+    def test_domain_summary_caps_failed_exception_examples(self) -> None:
+        expected = {(f"SRC-{index:03d}", "expected-root") for index in range(40)}
+        actual = {(f"SRC-{index:03d}", "wrong-root") for index in range(40)}
+        summary = MODULE.summarize_domain_decisions(
+            [],
+            expected_exception_groups=expected,
+            actual_exception_groups=actual,
+            exception_disposition_by_source={source_id: True for source_id, _ in expected},
+            exception_terminal_atom_ids=set(),
+        )
+
+        self.assertEqual(summary["exception"]["failed_source_count"], 40)
+        self.assertEqual(len(summary["exception"]["failed_source_examples"]), 30)
+        self.assertNotIn("by_source", summary["exception"])
+
     def test_missing_calculated_result_fails_completeness_but_not_unobservable_atoms(self) -> None:
         expected = {
             "SRC-1::NOx": {

@@ -1,0 +1,2492 @@
+{
+  "experiment": "D",
+  "enters_EICPI_core": false,
+  "total_EICPI_core": "not_calculated_by_design",
+  "interpretation": "one frozen run per variant; component contribution diagnostic, not causal effect estimate",
+  "entries": [
+    {
+      "run_id": "D-IND-W_O_COMPLETE_TRACE",
+      "method": "w_o_complete_trace",
+      "target": "INDUSTRIAL",
+      "D": {
+        "score": 1.0,
+        "D_regular": 1.0,
+        "D_exception": 1.0,
+        "regular": {
+          "passed": 106990,
+          "applicable": 106990,
+          "not_applicable": 3775,
+          "score": 1.0,
+          "by_kind": {
+            "calculation_basis": {
+              "passed": 35120,
+              "applicable": 35120,
+              "not_applicable": 0,
+              "score": 1.0
+            },
+            "control_application": {
+              "passed": 31345,
+              "applicable": 31345,
+              "not_applicable": 3775,
+              "score": 1.0
+            },
+            "source_destination": {
+              "passed": 5922,
+              "applicable": 5922,
+              "not_applicable": 0,
+              "score": 1.0
+            },
+            "terminal_disposition": {
+              "passed": 34603,
+              "applicable": 34603,
+              "not_applicable": 0,
+              "score": 1.0
+            }
+          }
+        },
+        "exception": {
+          "passed": 257,
+          "applicable": 257,
+          "not_applicable": 0,
+          "score": 1.0,
+          "failed_source_count": 0,
+          "failed_source_examples": []
+        },
+        "legacy_atom_micro_score": 1.0,
+        "passed": 109067,
+        "applicable": 109067,
+        "not_applicable": 3775,
+        "by_kind": {
+          "calculation_basis": {
+            "passed": 35120,
+            "applicable": 35120,
+            "not_applicable": 0,
+            "score": 1.0
+          },
+          "control_application": {
+            "passed": 31345,
+            "applicable": 31345,
+            "not_applicable": 3775,
+            "score": 1.0
+          },
+          "exception_root_cause": {
+            "passed": 266,
+            "applicable": 266,
+            "not_applicable": 0,
+            "score": 1.0
+          },
+          "source_destination": {
+            "passed": 5922,
+            "applicable": 5922,
+            "not_applicable": 0,
+            "score": 1.0
+          },
+          "terminal_disposition": {
+            "passed": 36414,
+            "applicable": 36414,
+            "not_applicable": 0,
+            "score": 1.0
+          }
+        },
+        "raw_counts": {
+          "passed": 109067,
+          "applicable": 109067,
+          "not_applicable": 3775,
+          "total": 112842
+        },
+        "diagnostics": {
+          "detection_precision": 1.0,
+          "detection_recall": 1.0,
+          "detection_f1": 1.0,
+          "root_cause_macro_jaccard": 1.0,
+          "exception_disposition_accuracy": 1.0
+        }
+      },
+      "N": {
+        "passed": 110573,
+        "applicable": 110573,
+        "not_applicable": 2588,
+        "score": 1.0,
+        "by_kind": {
+          "internal_recalculation": {
+            "passed": 39039,
+            "applicable": 39039,
+            "not_applicable": 1294,
+            "score": 1.0
+          },
+          "reference_value": {
+            "passed": 35120,
+            "applicable": 35120,
+            "not_applicable": 1294,
+            "score": 1.0
+          },
+          "result_completeness": {
+            "passed": 36414,
+            "applicable": 36414,
+            "not_applicable": 0,
+            "score": 1.0
+          }
+        }
+      },
+      "delta_D_vs_full": 0.0,
+      "delta_regular": 0.0,
+      "delta_exception": 0.0,
+      "delta_N_vs_full": 0.0,
+      "seconds_per_record": 0.029076759525957077,
+      "process_record_coverage": 0.0
+    },
+    {
+      "run_id": "D-IND-AGENT_MANAGED_ADMISSION",
+      "method": "agent_managed_admission",
+      "target": "INDUSTRIAL",
+      "D": {
+        "score": 0.7076293845886799,
+        "D_regular": 0.9974016263202169,
+        "D_exception": 0.41785714285714287,
+        "regular": {
+          "passed": 106712,
+          "applicable": 106990,
+          "not_applicable": 3775,
+          "score": 0.9974016263202169,
+          "by_kind": {
+            "calculation_basis": {
+              "passed": 35104,
+              "applicable": 35120,
+              "not_applicable": 0,
+              "score": 0.9995444191343964
+            },
+            "control_application": {
+              "passed": 31345,
+              "applicable": 31345,
+              "not_applicable": 3775,
+              "score": 1.0
+            },
+            "source_destination": {
+              "passed": 5922,
+              "applicable": 5922,
+              "not_applicable": 0,
+              "score": 1.0
+            },
+            "terminal_disposition": {
+              "passed": 34341,
+              "applicable": 34603,
+              "not_applicable": 0,
+              "score": 0.9924284021616623
+            }
+          }
+        },
+        "exception": {
+          "passed": 117,
+          "applicable": 280,
+          "not_applicable": 0,
+          "score": 0.41785714285714287,
+          "failed_source_count": 163,
+          "failed_source_examples": [
+            {
+              "source_id": "SRC-RAW-016884A74403910FC27F",
+              "expected_root_causes": [
+                "other_fuel_tce_unresolved"
+              ],
+              "actual_root_causes": [
+                "factor_input_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-01C7E3F947D794BE948E",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0446E22AB6D9960E7D50",
+              "expected_root_causes": [],
+              "actual_root_causes": [
+                "factor_input_unresolved"
+              ],
+              "disposition_passed": null
+            },
+            {
+              "source_id": "SRC-RAW-047C6273DD06796C5C23",
+              "expected_root_causes": [],
+              "actual_root_causes": [
+                "factor_input_unresolved"
+              ],
+              "disposition_passed": null
+            },
+            {
+              "source_id": "SRC-RAW-0B1D2647DB40F49FEC15",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0B3A552A799ABE9315B1",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0BAB7158094C39A40FA6",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0CD50FAFD598F78B9A62",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0E136B6ED278D2B88251",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0E5D25C698FC766F5E54",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-10DBDEEDC62C021AC9CD",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-11261CB1D223C6D26809",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-129F135EBADEDAB59D1A",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-12EC93D336D3CEE3F8C8",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-14A06513A8F387C57BA4",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-158963CA46A327265B5D",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-1712D4E3603143978196",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-19069B202F99771716D1",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-1B9F906F002B3B0C9461",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-1D666A7A0EF5E954503E",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-1F858322FD974B84907E",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-2176187F1A41EC1F36DD",
+              "expected_root_causes": [],
+              "actual_root_causes": [
+                "factor_input_unresolved"
+              ],
+              "disposition_passed": null
+            },
+            {
+              "source_id": "SRC-RAW-23518C38DFA3AA598D7C",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-258AE3A549E690AEC3AD",
+              "expected_root_causes": [
+                "other_fuel_tce_unresolved"
+              ],
+              "actual_root_causes": [
+                "factor_input_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-25D6B2DE5539F63F9016",
+              "expected_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-27530327156B9D8050B1",
+              "expected_root_causes": [
+                "ammonia_slip_process_allocation_unresolved"
+              ],
+              "actual_root_causes": [
+                "ammonia_slip_process_allocation_unresolved",
+                "control_relation_ambiguous"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-27DDBE46F0CAD828F876",
+              "expected_root_causes": [
+                "other_fuel_tce_unresolved"
+              ],
+              "actual_root_causes": [
+                "factor_input_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-28F83065C75A8FF87FA8",
+              "expected_root_causes": [
+                "other_fuel_tce_unresolved"
+              ],
+              "actual_root_causes": [
+                "factor_input_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-2B77F0373D62781CFC89",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "coordinate_plausibility_review"
+              ],
+              "actual_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-2BA048FA58280879EE4C",
+              "expected_root_causes": [],
+              "actual_root_causes": [
+                "factor_input_unresolved"
+              ],
+              "disposition_passed": null
+            }
+          ]
+        },
+        "legacy_atom_micro_score": 0.9886374049299002,
+        "passed": 107890,
+        "applicable": 109130,
+        "not_applicable": 3775,
+        "by_kind": {
+          "calculation_basis": {
+            "passed": 35104,
+            "applicable": 35120,
+            "not_applicable": 0,
+            "score": 0.9995444191343964
+          },
+          "control_application": {
+            "passed": 31345,
+            "applicable": 31345,
+            "not_applicable": 3775,
+            "score": 1.0
+          },
+          "exception_root_cause": {
+            "passed": 231,
+            "applicable": 329,
+            "not_applicable": 0,
+            "score": 0.7021276595744681
+          },
+          "source_destination": {
+            "passed": 5922,
+            "applicable": 5922,
+            "not_applicable": 0,
+            "score": 1.0
+          },
+          "terminal_disposition": {
+            "passed": 35288,
+            "applicable": 36414,
+            "not_applicable": 0,
+            "score": 0.9690778272093151
+          }
+        },
+        "raw_counts": {
+          "passed": 107890,
+          "applicable": 109130,
+          "not_applicable": 3775,
+          "total": 112905
+        },
+        "diagnostics": {
+          "detection_precision": 0.9178571428571428,
+          "detection_recall": 1.0,
+          "detection_f1": 0.957169459962756,
+          "root_cause_macro_jaccard": 0.8540856031128404,
+          "exception_disposition_accuracy": 0.6147859922178989
+        }
+      },
+      "N": {
+        "passed": 107534,
+        "applicable": 108510,
+        "not_applicable": 4540,
+        "score": 0.991005437286886,
+        "by_kind": {
+          "internal_recalculation": {
+            "passed": 37952,
+            "applicable": 37952,
+            "not_applicable": 2270,
+            "score": 1.0
+          },
+          "reference_value": {
+            "passed": 34144,
+            "applicable": 34144,
+            "not_applicable": 2270,
+            "score": 1.0
+          },
+          "result_completeness": {
+            "passed": 35438,
+            "applicable": 36414,
+            "not_applicable": 0,
+            "score": 0.9731971219860494
+          }
+        }
+      },
+      "delta_D_vs_full": -0.29237061541132014,
+      "delta_regular": -0.002598373679783106,
+      "delta_exception": -0.5821428571428571,
+      "delta_N_vs_full": -0.008994562713114052,
+      "seconds_per_record": 0.04680939494760282,
+      "process_record_coverage": 1.0
+    },
+    {
+      "run_id": "D-IND-W_O_EXECUTABLE_RULE_GATE",
+      "method": "w_o_executable_rule_gate",
+      "target": "INDUSTRIAL",
+      "D": {
+        "score": 0.5678944232598306,
+        "D_regular": 0.6039536405271521,
+        "D_exception": 0.5318352059925093,
+        "regular": {
+          "passed": 64617,
+          "applicable": 106990,
+          "not_applicable": 3775,
+          "score": 0.6039536405271521,
+          "by_kind": {
+            "calculation_basis": {
+              "passed": 0,
+              "applicable": 35120,
+              "not_applicable": 0,
+              "score": 0.0
+            },
+            "control_application": {
+              "passed": 24252,
+              "applicable": 31345,
+              "not_applicable": 3775,
+              "score": 0.7737119157760408
+            },
+            "source_destination": {
+              "passed": 5922,
+              "applicable": 5922,
+              "not_applicable": 0,
+              "score": 1.0
+            },
+            "terminal_disposition": {
+              "passed": 34443,
+              "applicable": 34603,
+              "not_applicable": 0,
+              "score": 0.9953761234575037
+            }
+          }
+        },
+        "exception": {
+          "passed": 142,
+          "applicable": 267,
+          "not_applicable": 0,
+          "score": 0.5318352059925093,
+          "failed_source_count": 125,
+          "failed_source_examples": [
+            {
+              "source_id": "SRC-RAW-016884A74403910FC27F",
+              "expected_root_causes": [
+                "other_fuel_tce_unresolved"
+              ],
+              "actual_root_causes": [
+                "activity_or_unit_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-025DC4469A5FDDA07CF8",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0364C1615A4478B5D6AF",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-047B5DC7001BE36DF321",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-047C6273DD06796C5C23",
+              "expected_root_causes": [],
+              "actual_root_causes": [
+                "activity_or_unit_unresolved"
+              ],
+              "disposition_passed": null
+            },
+            {
+              "source_id": "SRC-RAW-05A3F69CD0063E32B769",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0BAE74BA2397CF47D951",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0C7656189CF468228BE7",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0D37E4DC70046446405D",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0FF9EAE742E1CA475E9D",
+              "expected_root_causes": [
+                "control_information_conflict"
+              ],
+              "actual_root_causes": [
+                "ammonia_slip_activity_missing"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-112558671E36FAB5E1CF",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-1453EF7D6625C7EBD5A3",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-1EC1B3A7BDEBCBDC0B18",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-2176187F1A41EC1F36DD",
+              "expected_root_causes": [],
+              "actual_root_causes": [
+                "activity_or_unit_unresolved"
+              ],
+              "disposition_passed": null
+            },
+            {
+              "source_id": "SRC-RAW-22B9C07EB5936FB95372",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-23268D17C4F4CCCCF256",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-258AE3A549E690AEC3AD",
+              "expected_root_causes": [
+                "other_fuel_tce_unresolved"
+              ],
+              "actual_root_causes": [
+                "activity_or_unit_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-26627AAB543832F08842",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-27530327156B9D8050B1",
+              "expected_root_causes": [
+                "ammonia_slip_process_allocation_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-27DDBE46F0CAD828F876",
+              "expected_root_causes": [
+                "other_fuel_tce_unresolved"
+              ],
+              "actual_root_causes": [
+                "activity_or_unit_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-28F83065C75A8FF87FA8",
+              "expected_root_causes": [
+                "other_fuel_tce_unresolved"
+              ],
+              "actual_root_causes": [
+                "activity_or_unit_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-294BD0892645B59CFE1F",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-2DABEFC5089720627DB1",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-3042C63E9849155B0925",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-3130847D4368455A730B",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-31F6076EAB35AFB04D4C",
+              "expected_root_causes": [
+                "factor_applicability_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-3408D337780EBB5868B5",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-36BD396B6242DE29D5A6",
+              "expected_root_causes": [
+                "other_fuel_tce_unresolved"
+              ],
+              "actual_root_causes": [
+                "activity_or_unit_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-37AAEA0EAF9F332B9EBD",
+              "expected_root_causes": [
+                "other_fuel_tce_unresolved"
+              ],
+              "actual_root_causes": [
+                "activity_or_unit_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-3800BC369678EA2296B8",
+              "expected_root_causes": [
+                "combustion_technology_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            }
+          ]
+        },
+        "legacy_atom_micro_score": 0.6049872614967283,
+        "passed": 66015,
+        "applicable": 109118,
+        "not_applicable": 3775,
+        "by_kind": {
+          "calculation_basis": {
+            "passed": 0,
+            "applicable": 35120,
+            "not_applicable": 0,
+            "score": 0.0
+          },
+          "control_application": {
+            "passed": 24252,
+            "applicable": 31345,
+            "not_applicable": 3775,
+            "score": 0.7737119157760408
+          },
+          "exception_root_cause": {
+            "passed": 153,
+            "applicable": 317,
+            "not_applicable": 0,
+            "score": 0.48264984227129337
+          },
+          "source_destination": {
+            "passed": 5922,
+            "applicable": 5922,
+            "not_applicable": 0,
+            "score": 1.0
+          },
+          "terminal_disposition": {
+            "passed": 35688,
+            "applicable": 36414,
+            "not_applicable": 0,
+            "score": 0.9800626132806064
+          }
+        },
+        "raw_counts": {
+          "passed": 66015,
+          "applicable": 109118,
+          "not_applicable": 3775,
+          "total": 112893
+        },
+        "diagnostics": {
+          "detection_precision": 0.9484536082474226,
+          "detection_recall": 0.7159533073929961,
+          "detection_f1": 0.8159645232815965,
+          "root_cause_macro_jaccard": 0.7889492753623188,
+          "exception_disposition_accuracy": 0.6848249027237354
+        }
+      },
+      "N": {
+        "passed": 47269,
+        "applicable": 110613,
+        "not_applicable": 2620,
+        "score": 0.4273367506531782,
+        "by_kind": {
+          "internal_recalculation": {
+            "passed": 7766,
+            "applicable": 39095,
+            "not_applicable": 1310,
+            "score": 0.19864432791917125
+          },
+          "reference_value": {
+            "passed": 3710,
+            "applicable": 35104,
+            "not_applicable": 1310,
+            "score": 0.10568596171376482
+          },
+          "result_completeness": {
+            "passed": 35793,
+            "applicable": 36414,
+            "not_applicable": 0,
+            "score": 0.9829461196243203
+          }
+        }
+      },
+      "delta_D_vs_full": -0.43210557674016936,
+      "delta_regular": -0.39604635947284794,
+      "delta_exception": -0.46816479400749067,
+      "delta_N_vs_full": -0.5726632493468218,
+      "seconds_per_record": 0.09465210988210815,
+      "process_record_coverage": 1.0
+    },
+    {
+      "run_id": "D-IND-FULL",
+      "method": "full",
+      "target": "INDUSTRIAL",
+      "D": {
+        "score": 1.0,
+        "D_regular": 1.0,
+        "D_exception": 1.0,
+        "regular": {
+          "passed": 106990,
+          "applicable": 106990,
+          "not_applicable": 3775,
+          "score": 1.0,
+          "by_kind": {
+            "calculation_basis": {
+              "passed": 35120,
+              "applicable": 35120,
+              "not_applicable": 0,
+              "score": 1.0
+            },
+            "control_application": {
+              "passed": 31345,
+              "applicable": 31345,
+              "not_applicable": 3775,
+              "score": 1.0
+            },
+            "source_destination": {
+              "passed": 5922,
+              "applicable": 5922,
+              "not_applicable": 0,
+              "score": 1.0
+            },
+            "terminal_disposition": {
+              "passed": 34603,
+              "applicable": 34603,
+              "not_applicable": 0,
+              "score": 1.0
+            }
+          }
+        },
+        "exception": {
+          "passed": 257,
+          "applicable": 257,
+          "not_applicable": 0,
+          "score": 1.0,
+          "failed_source_count": 0,
+          "failed_source_examples": []
+        },
+        "legacy_atom_micro_score": 1.0,
+        "passed": 109067,
+        "applicable": 109067,
+        "not_applicable": 3775,
+        "by_kind": {
+          "calculation_basis": {
+            "passed": 35120,
+            "applicable": 35120,
+            "not_applicable": 0,
+            "score": 1.0
+          },
+          "control_application": {
+            "passed": 31345,
+            "applicable": 31345,
+            "not_applicable": 3775,
+            "score": 1.0
+          },
+          "exception_root_cause": {
+            "passed": 266,
+            "applicable": 266,
+            "not_applicable": 0,
+            "score": 1.0
+          },
+          "source_destination": {
+            "passed": 5922,
+            "applicable": 5922,
+            "not_applicable": 0,
+            "score": 1.0
+          },
+          "terminal_disposition": {
+            "passed": 36414,
+            "applicable": 36414,
+            "not_applicable": 0,
+            "score": 1.0
+          }
+        },
+        "raw_counts": {
+          "passed": 109067,
+          "applicable": 109067,
+          "not_applicable": 3775,
+          "total": 112842
+        },
+        "diagnostics": {
+          "detection_precision": 1.0,
+          "detection_recall": 1.0,
+          "detection_f1": 1.0,
+          "root_cause_macro_jaccard": 1.0,
+          "exception_disposition_accuracy": 1.0
+        }
+      },
+      "N": {
+        "passed": 110573,
+        "applicable": 110573,
+        "not_applicable": 2588,
+        "score": 1.0,
+        "by_kind": {
+          "internal_recalculation": {
+            "passed": 39039,
+            "applicable": 39039,
+            "not_applicable": 1294,
+            "score": 1.0
+          },
+          "reference_value": {
+            "passed": 35120,
+            "applicable": 35120,
+            "not_applicable": 1294,
+            "score": 1.0
+          },
+          "result_completeness": {
+            "passed": 36414,
+            "applicable": 36414,
+            "not_applicable": 0,
+            "score": 1.0
+          }
+        }
+      },
+      "delta_D_vs_full": 0.0,
+      "delta_regular": 0.0,
+      "delta_exception": 0.0,
+      "delta_N_vs_full": 0.0,
+      "seconds_per_record": 0.0234309236488079,
+      "process_record_coverage": 1.0
+    },
+    {
+      "run_id": "D-IND-W_O_CALCULATION_ITEM_STRUCTURE",
+      "method": "w_o_calculation_item_structure",
+      "target": "INDUSTRIAL",
+      "D": {
+        "score": 0.835797738106365,
+        "D_regular": 0.6715954762127302,
+        "D_exception": 1.0,
+        "regular": {
+          "passed": 71854,
+          "applicable": 106990,
+          "not_applicable": 3775,
+          "score": 0.6715954762127302,
+          "by_kind": {
+            "calculation_basis": {
+              "passed": 0,
+              "applicable": 35120,
+              "not_applicable": 0,
+              "score": 0.0
+            },
+            "control_application": {
+              "passed": 31345,
+              "applicable": 31345,
+              "not_applicable": 3775,
+              "score": 1.0
+            },
+            "source_destination": {
+              "passed": 5922,
+              "applicable": 5922,
+              "not_applicable": 0,
+              "score": 1.0
+            },
+            "terminal_disposition": {
+              "passed": 34587,
+              "applicable": 34603,
+              "not_applicable": 0,
+              "score": 0.9995376123457503
+            }
+          }
+        },
+        "exception": {
+          "passed": 257,
+          "applicable": 257,
+          "not_applicable": 0,
+          "score": 1.0,
+          "failed_source_count": 0,
+          "failed_source_examples": []
+        },
+        "legacy_atom_micro_score": 0.6778493953258089,
+        "passed": 73931,
+        "applicable": 109067,
+        "not_applicable": 3775,
+        "by_kind": {
+          "calculation_basis": {
+            "passed": 0,
+            "applicable": 35120,
+            "not_applicable": 0,
+            "score": 0.0
+          },
+          "control_application": {
+            "passed": 31345,
+            "applicable": 31345,
+            "not_applicable": 3775,
+            "score": 1.0
+          },
+          "exception_root_cause": {
+            "passed": 266,
+            "applicable": 266,
+            "not_applicable": 0,
+            "score": 1.0
+          },
+          "source_destination": {
+            "passed": 5922,
+            "applicable": 5922,
+            "not_applicable": 0,
+            "score": 1.0
+          },
+          "terminal_disposition": {
+            "passed": 36398,
+            "applicable": 36414,
+            "not_applicable": 0,
+            "score": 0.9995606085571483
+          }
+        },
+        "raw_counts": {
+          "passed": 73931,
+          "applicable": 109067,
+          "not_applicable": 3775,
+          "total": 112842
+        },
+        "diagnostics": {
+          "detection_precision": 1.0,
+          "detection_recall": 1.0,
+          "detection_f1": 1.0,
+          "root_cause_macro_jaccard": 1.0,
+          "exception_disposition_accuracy": 1.0
+        }
+      },
+      "N": {
+        "passed": 75021,
+        "applicable": 110539,
+        "not_applicable": 2620,
+        "score": 0.6786835415554691,
+        "by_kind": {
+          "internal_recalculation": {
+            "passed": 3760,
+            "applicable": 39021,
+            "not_applicable": 1310,
+            "score": 0.09635837113349222
+          },
+          "reference_value": {
+            "passed": 34863,
+            "applicable": 35104,
+            "not_applicable": 1310,
+            "score": 0.9931346855059252
+          },
+          "result_completeness": {
+            "passed": 36398,
+            "applicable": 36414,
+            "not_applicable": 0,
+            "score": 0.9995606085571483
+          }
+        }
+      },
+      "delta_D_vs_full": -0.16420226189363496,
+      "delta_regular": -0.3284045237872698,
+      "delta_exception": 0.0,
+      "delta_N_vs_full": -0.32131645844453094,
+      "seconds_per_record": 0.02475319130006543,
+      "process_record_coverage": 1.0
+    },
+    {
+      "run_id": "D-POW-W_O_EXECUTABLE_RULE_GATE",
+      "method": "w_o_executable_rule_gate",
+      "target": "POWER",
+      "D": {
+        "score": 0.4189840922119358,
+        "D_regular": 0.6851442641580908,
+        "D_exception": 0.15282392026578073,
+        "regular": {
+          "passed": 10852,
+          "applicable": 15839,
+          "not_applicable": 464,
+          "score": 0.6851442641580908,
+          "by_kind": {
+            "calculation_basis": {
+              "passed": 0,
+              "applicable": 3320,
+              "not_applicable": 0,
+              "score": 0.0
+            },
+            "control_application": {
+              "passed": 1637,
+              "applicable": 2856,
+              "not_applicable": 464,
+              "score": 0.5731792717086834
+            },
+            "source_destination": {
+              "passed": 5922,
+              "applicable": 5922,
+              "not_applicable": 0,
+              "score": 1.0
+            },
+            "terminal_disposition": {
+              "passed": 3293,
+              "applicable": 3741,
+              "not_applicable": 0,
+              "score": 0.880245923549853
+            }
+          }
+        },
+        "exception": {
+          "passed": 46,
+          "applicable": 301,
+          "not_applicable": 0,
+          "score": 0.15282392026578073,
+          "failed_source_count": 255,
+          "failed_source_examples": [
+            {
+              "source_id": "SRC-RAW-008874CA96532DE69412",
+              "expected_root_causes": [],
+              "actual_root_causes": [
+                "activity_or_unit_unresolved"
+              ],
+              "disposition_passed": null
+            },
+            {
+              "source_id": "SRC-RAW-0249A5BFBA1950F087DA",
+              "expected_root_causes": [
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-02F1AE3DC01E0E3EA7CE",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "coordinate_plausibility_review",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "ammonia_slip_activity_missing",
+                "coordinate_plausibility_review"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-052001AE00EAE9CB3DBA",
+              "expected_root_causes": [],
+              "actual_root_causes": [
+                "activity_or_unit_unresolved"
+              ],
+              "disposition_passed": null
+            },
+            {
+              "source_id": "SRC-RAW-054673ABE84F2132BAFA",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "ammonia_slip_activity_missing"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0741B2CBDE286E52D2D7",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "ammonia_slip_activity_missing"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-07703F4FDC2BBC59EB13",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "ammonia_slip_activity_missing"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-07BDEFC16D760A9208C5",
+              "expected_root_causes": [
+                "ammonia_slip_process_allocation_unresolved",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "ammonia_slip_activity_missing"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-08B2C44FC36AD162FE1C",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "ammonia_slip_activity_missing"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0A8630DDA10E683839D8",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "ammonia_slip_activity_missing"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0AABDC67D57CBEAD439E",
+              "expected_root_causes": [
+                "ammonia_slip_process_allocation_unresolved"
+              ],
+              "actual_root_causes": [
+                "activity_or_unit_unresolved",
+                "ammonia_slip_activity_missing"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-0AF6331A11D3D11BD4D1",
+              "expected_root_causes": [
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0BE9435BF40121D62373",
+              "expected_root_causes": [
+                "other_fuel_tce_unresolved"
+              ],
+              "actual_root_causes": [
+                "activity_or_unit_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-0D262D8A4A3A8915D725",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "ammonia_slip_activity_missing"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0DFDA30AD817180A387D",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "ammonia_slip_activity_missing"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0EF47272983579D66EA4",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "ammonia_slip_activity_missing"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0F78070620303CB1FC66",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "ammonia_slip_activity_missing"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0FB380EDC0CB23D20FB6",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "ammonia_slip_activity_missing"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-0FD603FE496911B6B2BD",
+              "expected_root_causes": [
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-10245DCA80053978E850",
+              "expected_root_causes": [],
+              "actual_root_causes": [
+                "activity_or_unit_unresolved"
+              ],
+              "disposition_passed": null
+            },
+            {
+              "source_id": "SRC-RAW-10D0195568BAD16A31F9",
+              "expected_root_causes": [
+                "other_fuel_tce_unresolved"
+              ],
+              "actual_root_causes": [
+                "activity_or_unit_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-1119D64A2A06965F0B17",
+              "expected_root_causes": [
+                "ammonia_slip_process_allocation_unresolved",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "ammonia_slip_activity_missing"
+              ],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-13B7FAA548A4568DB8AA",
+              "expected_root_causes": [
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-151442F52F3793299450",
+              "expected_root_causes": [
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-15606025516ABDF51A22",
+              "expected_root_causes": [
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-1681A08DA31856CE6747",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing"
+              ],
+              "actual_root_causes": [
+                "activity_or_unit_unresolved",
+                "ammonia_slip_activity_missing"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-170A0850DD192CD5A9D1",
+              "expected_root_causes": [],
+              "actual_root_causes": [
+                "activity_or_unit_unresolved"
+              ],
+              "disposition_passed": null
+            },
+            {
+              "source_id": "SRC-RAW-17F4109476657E8B4986",
+              "expected_root_causes": [
+                "other_fuel_tce_unresolved"
+              ],
+              "actual_root_causes": [
+                "activity_or_unit_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-1880A1585754FDEEF821",
+              "expected_root_causes": [
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-19243970285876D8A16A",
+              "expected_root_causes": [
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            }
+          ]
+        },
+        "legacy_atom_micro_score": 0.6303482587064677,
+        "passed": 11403,
+        "applicable": 18090,
+        "not_applicable": 464,
+        "by_kind": {
+          "calculation_basis": {
+            "passed": 0,
+            "applicable": 3320,
+            "not_applicable": 0,
+            "score": 0.0
+          },
+          "control_application": {
+            "passed": 1637,
+            "applicable": 2856,
+            "not_applicable": 464,
+            "score": 0.5731792717086834
+          },
+          "exception_root_cause": {
+            "passed": 109,
+            "applicable": 457,
+            "not_applicable": 0,
+            "score": 0.23851203501094093
+          },
+          "source_destination": {
+            "passed": 5922,
+            "applicable": 5922,
+            "not_applicable": 0,
+            "score": 1.0
+          },
+          "terminal_disposition": {
+            "passed": 3735,
+            "applicable": 5535,
+            "not_applicable": 0,
+            "score": 0.6747967479674797
+          }
+        },
+        "raw_counts": {
+          "passed": 11403,
+          "applicable": 18090,
+          "not_applicable": 464,
+          "total": 18554
+        },
+        "diagnostics": {
+          "detection_precision": 0.7952380952380952,
+          "detection_recall": 0.6472868217054264,
+          "detection_f1": 0.7136752136752136,
+          "root_cause_macro_jaccard": 0.4620758483033932,
+          "exception_disposition_accuracy": 0.3449612403100775
+        }
+      },
+      "N": {
+        "passed": 8200,
+        "applicable": 12702,
+        "not_applicable": 4430,
+        "score": 0.6455676271453314,
+        "by_kind": {
+          "internal_recalculation": {
+            "passed": 3490,
+            "applicable": 3847,
+            "not_applicable": 2215,
+            "score": 0.9072004159085001
+          },
+          "reference_value": {
+            "passed": 535,
+            "applicable": 3320,
+            "not_applicable": 2215,
+            "score": 0.16114457831325302
+          },
+          "result_completeness": {
+            "passed": 4175,
+            "applicable": 5535,
+            "not_applicable": 0,
+            "score": 0.7542908762420958
+          }
+        }
+      },
+      "delta_D_vs_full": -0.5810159077880642,
+      "delta_regular": -0.3148557358419092,
+      "delta_exception": -0.8471760797342193,
+      "delta_N_vs_full": -0.35443237285466855,
+      "seconds_per_record": 0.43243856212839754,
+      "process_record_coverage": 1.0
+    },
+    {
+      "run_id": "D-POW-W_O_COMPLETE_TRACE",
+      "method": "w_o_complete_trace",
+      "target": "POWER",
+      "D": {
+        "score": 1.0,
+        "D_regular": 1.0,
+        "D_exception": 1.0,
+        "regular": {
+          "passed": 15839,
+          "applicable": 15839,
+          "not_applicable": 464,
+          "score": 1.0,
+          "by_kind": {
+            "calculation_basis": {
+              "passed": 3320,
+              "applicable": 3320,
+              "not_applicable": 0,
+              "score": 1.0
+            },
+            "control_application": {
+              "passed": 2856,
+              "applicable": 2856,
+              "not_applicable": 464,
+              "score": 1.0
+            },
+            "source_destination": {
+              "passed": 5922,
+              "applicable": 5922,
+              "not_applicable": 0,
+              "score": 1.0
+            },
+            "terminal_disposition": {
+              "passed": 3741,
+              "applicable": 3741,
+              "not_applicable": 0,
+              "score": 1.0
+            }
+          }
+        },
+        "exception": {
+          "passed": 258,
+          "applicable": 258,
+          "not_applicable": 0,
+          "score": 1.0,
+          "failed_source_count": 0,
+          "failed_source_examples": []
+        },
+        "legacy_atom_micro_score": 1.0,
+        "passed": 17974,
+        "applicable": 17974,
+        "not_applicable": 464,
+        "by_kind": {
+          "calculation_basis": {
+            "passed": 3320,
+            "applicable": 3320,
+            "not_applicable": 0,
+            "score": 1.0
+          },
+          "control_application": {
+            "passed": 2856,
+            "applicable": 2856,
+            "not_applicable": 464,
+            "score": 1.0
+          },
+          "exception_root_cause": {
+            "passed": 341,
+            "applicable": 341,
+            "not_applicable": 0,
+            "score": 1.0
+          },
+          "source_destination": {
+            "passed": 5922,
+            "applicable": 5922,
+            "not_applicable": 0,
+            "score": 1.0
+          },
+          "terminal_disposition": {
+            "passed": 5535,
+            "applicable": 5535,
+            "not_applicable": 0,
+            "score": 1.0
+          }
+        },
+        "raw_counts": {
+          "passed": 17974,
+          "applicable": 17974,
+          "not_applicable": 464,
+          "total": 18438
+        },
+        "diagnostics": {
+          "detection_precision": 1.0,
+          "detection_recall": 1.0,
+          "detection_f1": 1.0,
+          "root_cause_macro_jaccard": 1.0,
+          "exception_disposition_accuracy": 1.0
+        }
+      },
+      "N": {
+        "passed": 12532,
+        "applicable": 12532,
+        "not_applicable": 4430,
+        "score": 1.0,
+        "by_kind": {
+          "internal_recalculation": {
+            "passed": 3677,
+            "applicable": 3677,
+            "not_applicable": 2215,
+            "score": 1.0
+          },
+          "reference_value": {
+            "passed": 3320,
+            "applicable": 3320,
+            "not_applicable": 2215,
+            "score": 1.0
+          },
+          "result_completeness": {
+            "passed": 5535,
+            "applicable": 5535,
+            "not_applicable": 0,
+            "score": 1.0
+          }
+        }
+      },
+      "delta_D_vs_full": 0.0,
+      "delta_regular": 0.0,
+      "delta_exception": 0.0,
+      "delta_N_vs_full": 0.0,
+      "seconds_per_record": 0.1456973117887898,
+      "process_record_coverage": 0.0
+    },
+    {
+      "run_id": "D-POW-W_O_CALCULATION_ITEM_STRUCTURE",
+      "method": "w_o_calculation_item_structure",
+      "target": "POWER",
+      "D": {
+        "score": 0.8893814502618647,
+        "D_regular": 0.7903908075004735,
+        "D_exception": 0.9883720930232558,
+        "regular": {
+          "passed": 12519,
+          "applicable": 15839,
+          "not_applicable": 464,
+          "score": 0.7903908075004735,
+          "by_kind": {
+            "calculation_basis": {
+              "passed": 0,
+              "applicable": 3320,
+              "not_applicable": 0,
+              "score": 0.0
+            },
+            "control_application": {
+              "passed": 2856,
+              "applicable": 2856,
+              "not_applicable": 464,
+              "score": 1.0
+            },
+            "source_destination": {
+              "passed": 5922,
+              "applicable": 5922,
+              "not_applicable": 0,
+              "score": 1.0
+            },
+            "terminal_disposition": {
+              "passed": 3741,
+              "applicable": 3741,
+              "not_applicable": 0,
+              "score": 1.0
+            }
+          }
+        },
+        "exception": {
+          "passed": 255,
+          "applicable": 258,
+          "not_applicable": 0,
+          "score": 0.9883720930232558,
+          "failed_source_count": 3,
+          "failed_source_examples": [
+            {
+              "source_id": "SRC-RAW-8D7FAEF88CE3AA1B4335",
+              "expected_root_causes": [
+                "fuel_mapping_unresolved",
+                "other_fuel_tce_unresolved"
+              ],
+              "actual_root_causes": [
+                "other_fuel_tce_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-B87685FA95BF46796F7A",
+              "expected_root_causes": [
+                "other_fuel_tce_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": false
+            },
+            {
+              "source_id": "SRC-RAW-C44D32C341BABDC4E2A5",
+              "expected_root_causes": [
+                "fuel_mapping_unresolved",
+                "other_fuel_tce_unresolved"
+              ],
+              "actual_root_causes": [
+                "other_fuel_tce_unresolved"
+              ],
+              "disposition_passed": true
+            }
+          ]
+        },
+        "legacy_atom_micro_score": 0.8146767553132302,
+        "passed": 14643,
+        "applicable": 17974,
+        "not_applicable": 464,
+        "by_kind": {
+          "calculation_basis": {
+            "passed": 0,
+            "applicable": 3320,
+            "not_applicable": 0,
+            "score": 0.0
+          },
+          "control_application": {
+            "passed": 2856,
+            "applicable": 2856,
+            "not_applicable": 464,
+            "score": 1.0
+          },
+          "exception_root_cause": {
+            "passed": 338,
+            "applicable": 341,
+            "not_applicable": 0,
+            "score": 0.9912023460410557
+          },
+          "source_destination": {
+            "passed": 5922,
+            "applicable": 5922,
+            "not_applicable": 0,
+            "score": 1.0
+          },
+          "terminal_disposition": {
+            "passed": 5527,
+            "applicable": 5535,
+            "not_applicable": 0,
+            "score": 0.9985546522131888
+          }
+        },
+        "raw_counts": {
+          "passed": 14643,
+          "applicable": 17974,
+          "not_applicable": 464,
+          "total": 18438
+        },
+        "diagnostics": {
+          "detection_precision": 1.0,
+          "detection_recall": 0.9961240310077519,
+          "detection_f1": 0.9980582524271845,
+          "root_cause_macro_jaccard": 0.9961089494163424,
+          "exception_disposition_accuracy": 0.9961240310077519
+        }
+      },
+      "N": {
+        "passed": 8974,
+        "applicable": 12532,
+        "not_applicable": 4430,
+        "score": 0.7160868177465688,
+        "by_kind": {
+          "internal_recalculation": {
+            "passed": 262,
+            "applicable": 3677,
+            "not_applicable": 2215,
+            "score": 0.07125373946151754
+          },
+          "reference_value": {
+            "passed": 3177,
+            "applicable": 3320,
+            "not_applicable": 2215,
+            "score": 0.9569277108433735
+          },
+          "result_completeness": {
+            "passed": 5535,
+            "applicable": 5535,
+            "not_applicable": 0,
+            "score": 1.0
+          }
+        }
+      },
+      "delta_D_vs_full": -0.11061854973813534,
+      "delta_regular": -0.20960919249952648,
+      "delta_exception": -0.011627906976744207,
+      "delta_N_vs_full": -0.2839131822534312,
+      "seconds_per_record": 0.13118205365849794,
+      "process_record_coverage": 1.0
+    },
+    {
+      "run_id": "D-POW-AGENT_MANAGED_ADMISSION",
+      "method": "agent_managed_admission",
+      "target": "POWER",
+      "D": {
+        "score": 0.5026671685724394,
+        "D_regular": 0.8166550918618599,
+        "D_exception": 0.18867924528301888,
+        "regular": {
+          "passed": 12935,
+          "applicable": 15839,
+          "not_applicable": 464,
+          "score": 0.8166550918618599,
+          "by_kind": {
+            "calculation_basis": {
+              "passed": 3320,
+              "applicable": 3320,
+              "not_applicable": 0,
+              "score": 1.0
+            },
+            "control_application": {
+              "passed": 2856,
+              "applicable": 2856,
+              "not_applicable": 464,
+              "score": 1.0
+            },
+            "source_destination": {
+              "passed": 5922,
+              "applicable": 5922,
+              "not_applicable": 0,
+              "score": 1.0
+            },
+            "terminal_disposition": {
+              "passed": 837,
+              "applicable": 3741,
+              "not_applicable": 0,
+              "score": 0.22373696872493987
+            }
+          }
+        },
+        "exception": {
+          "passed": 50,
+          "applicable": 265,
+          "not_applicable": 0,
+          "score": 0.18867924528301888,
+          "failed_source_count": 215,
+          "failed_source_examples": [
+            {
+              "source_id": "SRC-RAW-00C256E474D31C7B6CE7",
+              "expected_root_causes": [],
+              "actual_root_causes": [
+                "control_relation_ambiguous"
+              ],
+              "disposition_passed": null
+            },
+            {
+              "source_id": "SRC-RAW-0249A5BFBA1950F087DA",
+              "expected_root_causes": [
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-02F1AE3DC01E0E3EA7CE",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "coordinate_plausibility_review",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "ammonia_slip_activity_missing",
+                "coordinate_plausibility_review",
+                "factor_applicability_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-0543F60FDC1976D763BF",
+              "expected_root_causes": [],
+              "actual_root_causes": [
+                "control_relation_ambiguous"
+              ],
+              "disposition_passed": null
+            },
+            {
+              "source_id": "SRC-RAW-054673ABE84F2132BAFA",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "ammonia_slip_activity_missing",
+                "factor_applicability_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-061DB3E543B16331E37B",
+              "expected_root_causes": [],
+              "actual_root_causes": [
+                "control_relation_ambiguous"
+              ],
+              "disposition_passed": null
+            },
+            {
+              "source_id": "SRC-RAW-0741B2CBDE286E52D2D7",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "ammonia_slip_activity_missing",
+                "factor_applicability_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-07703F4FDC2BBC59EB13",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "ammonia_slip_activity_missing",
+                "factor_applicability_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-07BDEFC16D760A9208C5",
+              "expected_root_causes": [
+                "ammonia_slip_process_allocation_unresolved",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "ammonia_slip_process_allocation_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-08B2C44FC36AD162FE1C",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "ammonia_slip_activity_missing",
+                "factor_applicability_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-0A8630DDA10E683839D8",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "ammonia_slip_activity_missing",
+                "factor_applicability_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-0AF6331A11D3D11BD4D1",
+              "expected_root_causes": [
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-0BE9435BF40121D62373",
+              "expected_root_causes": [
+                "other_fuel_tce_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-0BF4CB61A653A4369038",
+              "expected_root_causes": [
+                "source_relationship_missing"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-0D262D8A4A3A8915D725",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "ammonia_slip_activity_missing",
+                "factor_applicability_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-0DFDA30AD817180A387D",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "ammonia_slip_activity_missing",
+                "factor_applicability_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-0EF47272983579D66EA4",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "ammonia_slip_activity_missing",
+                "factor_applicability_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-0F78070620303CB1FC66",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "ammonia_slip_activity_missing",
+                "factor_applicability_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-0FB380EDC0CB23D20FB6",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "ammonia_slip_activity_missing",
+                "factor_applicability_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-0FD603FE496911B6B2BD",
+              "expected_root_causes": [
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-10D0195568BAD16A31F9",
+              "expected_root_causes": [
+                "other_fuel_tce_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-1119D64A2A06965F0B17",
+              "expected_root_causes": [
+                "ammonia_slip_process_allocation_unresolved",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "ammonia_slip_process_allocation_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-13B7FAA548A4568DB8AA",
+              "expected_root_causes": [
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-151442F52F3793299450",
+              "expected_root_causes": [
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-15606025516ABDF51A22",
+              "expected_root_causes": [
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-1681A08DA31856CE6747",
+              "expected_root_causes": [
+                "ammonia_slip_activity_missing"
+              ],
+              "actual_root_causes": [
+                "ammonia_slip_activity_missing",
+                "factor_input_unresolved"
+              ],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-17F4109476657E8B4986",
+              "expected_root_causes": [
+                "other_fuel_tce_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-1880A1585754FDEEF821",
+              "expected_root_causes": [
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-19243970285876D8A16A",
+              "expected_root_causes": [
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [],
+              "disposition_passed": true
+            },
+            {
+              "source_id": "SRC-RAW-19B02173B9BDBDA24043",
+              "expected_root_causes": [
+                "coordinate_plausibility_review",
+                "fuel_mapping_unresolved"
+              ],
+              "actual_root_causes": [
+                "coordinate_plausibility_review"
+              ],
+              "disposition_passed": false
+            }
+          ]
+        },
+        "legacy_atom_micro_score": 0.8219375589197582,
+        "passed": 14822,
+        "applicable": 18033,
+        "not_applicable": 464,
+        "by_kind": {
+          "calculation_basis": {
+            "passed": 3320,
+            "applicable": 3320,
+            "not_applicable": 0,
+            "score": 1.0
+          },
+          "control_application": {
+            "passed": 2856,
+            "applicable": 2856,
+            "not_applicable": 464,
+            "score": 1.0
+          },
+          "exception_root_cause": {
+            "passed": 140,
+            "applicable": 400,
+            "not_applicable": 0,
+            "score": 0.35
+          },
+          "source_destination": {
+            "passed": 5922,
+            "applicable": 5922,
+            "not_applicable": 0,
+            "score": 1.0
+          },
+          "terminal_disposition": {
+            "passed": 2584,
+            "applicable": 5535,
+            "not_applicable": 0,
+            "score": 0.4668473351400181
+          }
+        },
+        "raw_counts": {
+          "passed": 14822,
+          "applicable": 18033,
+          "not_applicable": 464,
+          "total": 18497
+        },
+        "diagnostics": {
+          "detection_precision": 0.952054794520548,
+          "detection_recall": 0.5387596899224806,
+          "detection_f1": 0.6881188118811881,
+          "root_cause_macro_jaccard": 0.6414868105515588,
+          "exception_disposition_accuracy": 0.9728682170542635
+        }
+      },
+      "N": {
+        "passed": 4756,
+        "applicable": 7259,
+        "not_applicable": 9436,
+        "score": 0.6551866648298664,
+        "by_kind": {
+          "internal_recalculation": {
+            "passed": 907,
+            "applicable": 907,
+            "not_applicable": 4718,
+            "score": 1.0
+          },
+          "reference_value": {
+            "passed": 817,
+            "applicable": 817,
+            "not_applicable": 4718,
+            "score": 1.0
+          },
+          "result_completeness": {
+            "passed": 3032,
+            "applicable": 5535,
+            "not_applicable": 0,
+            "score": 0.5477868112014453
+          }
+        }
+      },
+      "delta_D_vs_full": -0.4973328314275606,
+      "delta_regular": -0.18334490813814008,
+      "delta_exception": -0.8113207547169812,
+      "delta_N_vs_full": -0.3448133351701336,
+      "seconds_per_record": 0.22824199396920034,
+      "process_record_coverage": 1.0
+    },
+    {
+      "run_id": "D-POW-FULL",
+      "method": "full",
+      "target": "POWER",
+      "D": {
+        "score": 1.0,
+        "D_regular": 1.0,
+        "D_exception": 1.0,
+        "regular": {
+          "passed": 15839,
+          "applicable": 15839,
+          "not_applicable": 464,
+          "score": 1.0,
+          "by_kind": {
+            "calculation_basis": {
+              "passed": 3320,
+              "applicable": 3320,
+              "not_applicable": 0,
+              "score": 1.0
+            },
+            "control_application": {
+              "passed": 2856,
+              "applicable": 2856,
+              "not_applicable": 464,
+              "score": 1.0
+            },
+            "source_destination": {
+              "passed": 5922,
+              "applicable": 5922,
+              "not_applicable": 0,
+              "score": 1.0
+            },
+            "terminal_disposition": {
+              "passed": 3741,
+              "applicable": 3741,
+              "not_applicable": 0,
+              "score": 1.0
+            }
+          }
+        },
+        "exception": {
+          "passed": 258,
+          "applicable": 258,
+          "not_applicable": 0,
+          "score": 1.0,
+          "failed_source_count": 0,
+          "failed_source_examples": []
+        },
+        "legacy_atom_micro_score": 1.0,
+        "passed": 17974,
+        "applicable": 17974,
+        "not_applicable": 464,
+        "by_kind": {
+          "calculation_basis": {
+            "passed": 3320,
+            "applicable": 3320,
+            "not_applicable": 0,
+            "score": 1.0
+          },
+          "control_application": {
+            "passed": 2856,
+            "applicable": 2856,
+            "not_applicable": 464,
+            "score": 1.0
+          },
+          "exception_root_cause": {
+            "passed": 341,
+            "applicable": 341,
+            "not_applicable": 0,
+            "score": 1.0
+          },
+          "source_destination": {
+            "passed": 5922,
+            "applicable": 5922,
+            "not_applicable": 0,
+            "score": 1.0
+          },
+          "terminal_disposition": {
+            "passed": 5535,
+            "applicable": 5535,
+            "not_applicable": 0,
+            "score": 1.0
+          }
+        },
+        "raw_counts": {
+          "passed": 17974,
+          "applicable": 17974,
+          "not_applicable": 464,
+          "total": 18438
+        },
+        "diagnostics": {
+          "detection_precision": 1.0,
+          "detection_recall": 1.0,
+          "detection_f1": 1.0,
+          "root_cause_macro_jaccard": 1.0,
+          "exception_disposition_accuracy": 1.0
+        }
+      },
+      "N": {
+        "passed": 12532,
+        "applicable": 12532,
+        "not_applicable": 4430,
+        "score": 1.0,
+        "by_kind": {
+          "internal_recalculation": {
+            "passed": 3677,
+            "applicable": 3677,
+            "not_applicable": 2215,
+            "score": 1.0
+          },
+          "reference_value": {
+            "passed": 3320,
+            "applicable": 3320,
+            "not_applicable": 2215,
+            "score": 1.0
+          },
+          "result_completeness": {
+            "passed": 5535,
+            "applicable": 5535,
+            "not_applicable": 0,
+            "score": 1.0
+          }
+        }
+      },
+      "delta_D_vs_full": 0.0,
+      "delta_regular": 0.0,
+      "delta_exception": 0.0,
+      "delta_N_vs_full": 0.0,
+      "seconds_per_record": 0.10495313211378256,
+      "process_record_coverage": 1.0
+    }
+  ]
+}

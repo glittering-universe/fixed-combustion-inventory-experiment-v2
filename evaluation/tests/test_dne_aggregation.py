@@ -9,6 +9,7 @@ import json
 import sys
 import tempfile
 import unittest
+from collections import namedtuple
 from pathlib import Path
 
 
@@ -22,28 +23,104 @@ SPEC.loader.exec_module(MODULE)
 
 
 class DneAggregationTests(unittest.TestCase):
-    def test_metric_spec_freezes_three_dimensions_without_quality_gate(self) -> None:
-        spec = json.loads((ROOT / "evaluation" / "metric_spec_v2.json").read_text(encoding="utf-8"))
-        self.assertEqual(spec["version"], "2.0.0")
+    def test_metric_spec_v2_1_freezes_hierarchical_D_without_quality_gate(self) -> None:
+        spec = json.loads((ROOT / "evaluation" / "metric_spec_v2_1.json").read_text(encoding="utf-8"))
+        self.assertEqual(spec["version"], "2.1.0")
+        self.assertEqual(spec["supersedes"], "2.0.0")
         self.assertEqual(spec["core_weights"], {"D": 0.35, "N": 0.35, "E": 0.30})
         self.assertFalse(spec["independent_quality_gate"])
+        self.assertEqual(
+            spec["dimensions"]["D"]["formula"],
+            "mean_available(D_regular,D_exception)",
+        )
+        self.assertEqual(spec["dimensions"]["D"]["component_weights"], {
+            "D_regular": 0.5,
+            "D_exception": 0.5,
+        })
 
-    def test_a_summary_uses_medians_and_keeps_atom_denominators(self) -> None:
+    def test_a_summary_uses_component_medians_and_rebuilds_hierarchical_D(self) -> None:
         run_scores = [
-            {"D": {"score": 0.8, "passed": 8, "applicable": 10},
+            {"D": {
+                 "score": 0.6, "D_regular": 1.0, "D_exception": 0.2,
+                 "regular": {"passed": 10, "applicable": 10, "not_applicable": 0},
+                 "exception": {"passed": 1, "applicable": 5, "not_applicable": 0},
+                 "raw_counts": {"passed": 1001, "applicable": 1005, "not_applicable": 0, "total": 1005},
+                 "legacy_atom_micro_score": 1001 / 1005,
+                 "diagnostics": {"detection_f1": 0.2, "root_cause_macro_jaccard": 0.4, "exception_disposition_accuracy": 0.6},
+             },
              "N": {"score": 0.6, "passed": 6, "applicable": 10}, "E": 0.5, "record_count": 10},
-            {"D": {"score": 1.0, "passed": 10, "applicable": 10},
+            {"D": {
+                 "score": 0.8, "D_regular": 1.0, "D_exception": 0.6,
+                 "regular": {"passed": 10, "applicable": 10, "not_applicable": 0},
+                 "exception": {"passed": 3, "applicable": 5, "not_applicable": 0},
+                 "raw_counts": {"passed": 1003, "applicable": 1005, "not_applicable": 0, "total": 1005},
+                 "legacy_atom_micro_score": 1003 / 1005,
+                 "diagnostics": {"detection_f1": 0.6, "root_cause_macro_jaccard": 0.8, "exception_disposition_accuracy": 1.0},
+             },
              "N": {"score": 0.8, "passed": 8, "applicable": 10}, "E": 0.7, "record_count": 10},
-            {"D": {"score": 0.9, "passed": 9, "applicable": 10},
+            {"D": {
+                 "score": 0.7, "D_regular": 0.8, "D_exception": 0.6,
+                 "regular": {"passed": 8, "applicable": 10, "not_applicable": 0},
+                 "exception": {"passed": 3, "applicable": 5, "not_applicable": 0},
+                 "raw_counts": {"passed": 803, "applicable": 1005, "not_applicable": 0, "total": 1005},
+                 "legacy_atom_micro_score": 803 / 1005,
+                 "diagnostics": {"detection_f1": 0.6, "root_cause_macro_jaccard": 0.6, "exception_disposition_accuracy": 0.8},
+             },
              "N": {"score": 0.7, "passed": 7, "applicable": 10}, "E": 0.6, "record_count": 10},
         ]
         summary = MODULE.summarize_a_repetitions(run_scores)
-        self.assertAlmostEqual(summary["D"]["score"], 0.9)
-        self.assertEqual(summary["D"]["passed"], 27)
-        self.assertEqual(summary["D"]["applicable"], 30)
+        self.assertAlmostEqual(summary["D"]["D_regular"], 1.0)
+        self.assertAlmostEqual(summary["D"]["D_exception"], 0.6)
+        self.assertAlmostEqual(summary["D"]["score"], 0.8)
+        self.assertEqual(summary["D"]["regular"]["passed"], 28)
+        self.assertEqual(summary["D"]["exception"]["applicable"], 15)
+        self.assertAlmostEqual(summary["D"]["diagnostics"]["detection_f1"], 0.6)
         self.assertAlmostEqual(summary["N"]["score"], 0.7)
         self.assertAlmostEqual(summary["E"], 0.6)
-        self.assertAlmostEqual(summary["EICPI_core_0_100"], 74.0)
+        self.assertAlmostEqual(summary["EICPI_core_0_100"], 70.5)
+
+    def test_target_aggregation_never_pools_raw_D_atoms(self) -> None:
+        target_rows = {
+            "INDUSTRIAL": {
+                "D": {"score": 0.5, "D_regular": 1.0, "D_exception": 0.0},
+                "N": {"score": 0.8, "passed": 8000, "applicable": 10000},
+                "E": 0.6, "record_count": 4025,
+            },
+            "POWER": {
+                "D": {"score": 1.0, "D_regular": 1.0, "D_exception": 1.0},
+                "N": {"score": 1.0, "passed": 1000, "applicable": 1000},
+                "E": 1.0, "record_count": 367,
+            },
+        }
+        result = MODULE.aggregate_a_targets(target_rows)
+        self.assertAlmostEqual(result["macro"]["D_regular"], 1.0)
+        self.assertAlmostEqual(result["macro"]["D_exception"], 0.5)
+        self.assertAlmostEqual(result["macro"]["D"], 0.75)
+        self.assertEqual(result["micro"]["D"], result["macro"]["D"])
+        self.assertEqual(result["micro"]["D_aggregation"], "hierarchical_component_macro")
+
+    def test_only_reviewed_exception_terminals_are_conjoined_and_removed_from_regular_D(self) -> None:
+        Atom = namedtuple("Atom", "atom_id kind passed detail", defaults=[""])
+        selected = {"exceptions": [
+            {
+                "source_id": "SRC-E", "requires_user_judgment": "true",
+                "affected_pollutants": '["SO2","NOx"]',
+            },
+            {
+                "source_id": "SRC-NOTICE", "requires_user_judgment": "false",
+                "affected_pollutants": '["PM10"]',
+            },
+        ]}
+        dispositions, terminal_ids = MODULE.reviewed_exception_dispositions(selected, [
+            Atom("terminal:SRC-E::SO2", "terminal_disposition", True),
+            Atom("terminal:SRC-E::NOx", "terminal_disposition", False),
+            Atom("terminal:SRC-NOTICE::PM10", "terminal_disposition", False),
+        ])
+        self.assertEqual(dispositions, {"SRC-E": False})
+        self.assertEqual(terminal_ids, {
+            "terminal:SRC-E::SO2",
+            "terminal:SRC-E::NOx",
+        })
 
     def test_only_experiment_a_enters_core_ranking(self) -> None:
         rows = [
@@ -368,7 +445,16 @@ class DneAggregationTests(unittest.TestCase):
             "experiment": "A", "run_id": "A-IND-FULL-R1", "method": "full",
             "target": "INDUSTRIAL", "input_variant": "B0", "scale_percent": 100,
             "repetition": 1,
-            "D": {"score": 1.0, "passed": 10, "applicable": 10, "not_applicable": 0},
+            "D": {
+                "score": 0.75, "D_regular": 1.0, "D_exception": 0.5,
+                "raw_counts": {"passed": 10, "applicable": 10, "not_applicable": 0},
+                "legacy_atom_micro_score": 1.0,
+                "diagnostics": {
+                    "detection_f1": 0.5,
+                    "root_cause_macro_jaccard": 0.25,
+                    "exception_disposition_accuracy": 0.75,
+                },
+            },
             "N": {"score": 1.0, "passed": 10, "applicable": 10, "not_applicable": 0},
             "E": 0.8, "EICPI_core_0_100": 94.0, "record_count": 10,
             "seconds_per_record": 0.1,
@@ -391,6 +477,171 @@ class DneAggregationTests(unittest.TestCase):
             json.loads(exported["method_boundary_warnings"]),
             ["EXPLORATION_OVERHEAD_OBSERVED"],
         )
+        self.assertEqual(float(exported["D_regular"]), 1.0)
+        self.assertEqual(float(exported["D_exception"]), 0.5)
+        self.assertEqual(float(exported["D_exception_detection_f1"]), 0.5)
+        self.assertEqual(float(exported["D_root_cause_macro_jaccard"]), 0.25)
+        self.assertEqual(float(exported["D_exception_disposition_accuracy"]), 0.75)
+
+    def test_five_class_macro_f1_penalizes_missed_and_misclassified_anomalies(self) -> None:
+        classes = [
+            "ACTIVITY_MISSING",
+            "POLLUTANT_PARAMETER_MISSING",
+            "SOURCE_RELATION_MISSING",
+            "HARD_CONSTRAINT_CONFLICT",
+            "NO_ANOMALY",
+        ]
+        expected = classes
+        predicted = [
+            "ACTIVITY_MISSING",
+            "ACTIVITY_MISSING",
+            "SOURCE_RELATION_MISSING",
+            "UNRESOLVED_OR_MISCLASSIFIED",
+            "NO_ANOMALY",
+        ]
+        result = MODULE.multiclass_macro_f1(expected, predicted, classes)
+        self.assertAlmostEqual(result["by_class"]["ACTIVITY_MISSING"]["f1"], 2 / 3)
+        self.assertEqual(result["by_class"]["POLLUTANT_PARAMETER_MISSING"]["f1"], 0.0)
+        self.assertEqual(result["by_class"]["SOURCE_RELATION_MISSING"]["f1"], 1.0)
+        self.assertEqual(result["by_class"]["HARD_CONSTRAINT_CONFLICT"]["f1"], 0.0)
+        self.assertEqual(result["by_class"]["NO_ANOMALY"]["f1"], 1.0)
+        self.assertAlmostEqual(result["macro_f1"], (2 / 3 + 0 + 1 + 0 + 1) / 5)
+
+    def test_b2_uses_only_new_roots_and_joint_disposition_on_eligible_objects(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            reference = root / "reference"
+            reference.mkdir()
+            fields = [
+                "plan_class", "target", "root_cause", "source_id",
+                "expected_affected_pollutants", "baseline_statuses", "b2_statuses",
+                "scoring_eligible",
+            ]
+            designed = [
+                ["positive_injection", "INDUSTRIAL", "ACTIVITY_MISSING", "SRC-A", '["SO2"]', '{"SO2":"calculated"}', '{"SO2":"information_insufficient"}', "true"],
+                ["positive_injection", "INDUSTRIAL", "POLLUTANT_PARAMETER_MISSING", "SRC-P", '["SO2"]', '{"SO2":"calculated"}', '{"SO2":"information_insufficient"}', "true"],
+                ["negative_control", "INDUSTRIAL", "NO_INJECTION_CONTROL", "SRC-N", "[]", "{}", "{}", "true"],
+                ["preexisting_problem", "INDUSTRIAL", "PREEXISTING_INPUT_PROBLEM", "SRC-X", "[]", "{}", "{}", "false"],
+            ]
+            with (reference / "expected_injection_outcomes.csv").open("w", encoding="utf-8-sig", newline="") as handle:
+                writer = csv.writer(handle); writer.writerow(fields); writer.writerows(designed)
+
+            normalized_fields = ["source_id", "pollutant", *MODULE.SEMANTIC_FIELDS]
+            b0_path, b2_path = root / "b0.csv", root / "b2.csv"
+            b0_rows, b2_rows = [], []
+            for source_id in ("SRC-A", "SRC-P", "SRC-N", "SRC-X"):
+                for pollutant in MODULE.POLLUTANTS:
+                    base = {
+                        "source_id": source_id, "pollutant": pollutant,
+                        "status": "calculated", "method_category": "[]",
+                        "activity_record": "[]", "parameter_record": "[]", "control_record": "[]",
+                        "generation_t": "1", "emission_t": "1",
+                        "standard_reference": "R", "reason_codes": "[]",
+                    }
+                    b0_rows.append(dict(base))
+                    injected = dict(base)
+                    if source_id == "SRC-A" and pollutant == "SO2":
+                        injected.update(status="information_insufficient", generation_t="", emission_t="")
+                    # SRC-P intentionally keeps the old terminal disposition.
+                    b2_rows.append(injected)
+            for path, data in ((b0_path, b0_rows), (b2_path, b2_rows)):
+                with path.open("w", encoding="utf-8-sig", newline="") as handle:
+                    writer = csv.DictWriter(handle, fieldnames=normalized_fields)
+                    writer.writeheader(); writer.writerows(data)
+
+            def semantic_totals(data: list[dict[str, str]], expected: bool) -> dict[str, dict[str, object]]:
+                result = {}
+                for item in data:
+                    key = f"{item['source_id']}::{item['pollutant']}"
+                    if expected:
+                        result[key] = {
+                            "source_id": item["source_id"], "pollutant": item["pollutant"],
+                            "expected_status": item["status"],
+                            "expected_generation_t": item["generation_t"],
+                            "expected_emission_t": item["emission_t"],
+                            "control_signatures": [],
+                        }
+                    else:
+                        result[key] = {
+                            "source_id": item["source_id"], "pollutant": item["pollutant"],
+                            "status": item["status"], "generation_t": item["generation_t"],
+                            "emission_t": item["emission_t"], "control_signatures": [],
+                        }
+                return result
+
+            selected_exceptions = [
+                {"source_id": "SRC-A", "canonical_root_cause": "activity_level_missing", "injection_root_cause": "ACTIVITY_MISSING", "requires_user_judgment": "true"},
+                {"source_id": "SRC-P", "canonical_root_cause": "coal_parameter_missing", "injection_root_cause": "POLLUTANT_PARAMETER_MISSING", "requires_user_judgment": "true"},
+            ]
+            b0_context = {
+                "actual": semantic_totals(b0_rows, False),
+                "actual_exception_groups": {("SRC-A", "natural_existing_issue")},
+            }
+            b2_context = {
+                "expected": semantic_totals(b2_rows, True),
+                "actual": semantic_totals(b2_rows, False),
+                "expected_sources": {source_id: {} for source_id in ("SRC-A", "SRC-P", "SRC-N", "SRC-X")},
+                "expected_exception_groups": set(),
+                "actual_exception_groups": {
+                    ("SRC-A", "natural_existing_issue"),
+                    ("SRC-A", "activity_level_missing"),
+                    ("SRC-P", "coal_parameter_missing"),
+                    ("SRC-N", "source_relationship_missing"),
+                },
+                "selected": {"exceptions": selected_exceptions},
+            }
+            rows = [{
+                "run_id": "B2", "method": "full", "target": "INDUSTRIAL",
+                "sequence": 2, "input_variant": "B2",
+            }]
+            b0_rows_matrix = [{
+                "run_id": "B0", "method": "full", "target": "INDUSTRIAL",
+                "sequence": 1, "input_variant": "B0",
+            }]
+            scores = {
+                "B0": {"normalized_output": str(b0_path)},
+                "B2": {
+                    "normalized_output": str(b2_path),
+                    "D": {"score": 0.5}, "N": {"score": 0.5},
+                },
+            }
+            report = MODULE.b2_report(
+                rows, scores, {"B0": b0_context, "B2": b2_context}, reference, b0_rows_matrix,
+            )
+
+        self.assertEqual(report["eligible_records"], 3)
+        self.assertEqual(report["excluded_preexisting_problem"], 1)
+        run = report["runs"][0]
+        outcomes = {item["source_id"]: item for item in run["outcomes"]}
+        self.assertEqual(outcomes["SRC-A"]["new_actual_root_causes_vs_B0"], ["activity_level_missing"])
+        self.assertEqual(outcomes["SRC-A"]["predicted_class"], "ACTIVITY_MISSING")
+        self.assertEqual(outcomes["SRC-P"]["predicted_class"], "UNRESOLVED_OR_MISCLASSIFIED")
+        self.assertNotEqual(outcomes["SRC-N"]["predicted_class"], "NO_ANOMALY")
+        self.assertEqual(run["five_class_classification"]["eligible_records"], 3)
+        self.assertIn("overall_reference_D_diagnostic", run)
+        self.assertNotIn("D", run)
+        self.assertNotIn("root_cause", run)
+        self.assertNotIn("targeted_detection", run)
+
+    def test_ablation_report_separates_regular_and_exception_deltas(self) -> None:
+        rows = [
+            {"run_id": "FULL", "method": "full", "target": "INDUSTRIAL", "sequence": 1},
+            {"run_id": "ABL", "method": "without_rule_gate", "target": "INDUSTRIAL", "sequence": 2},
+        ]
+        scores = {
+            "FULL": {
+                "D": {"score": 0.9, "D_regular": 1.0, "D_exception": 0.8},
+                "N": {"score": 1.0}, "seconds_per_record": 1.0,
+            },
+            "ABL": {
+                "D": {"score": 0.5, "D_regular": 0.8, "D_exception": 0.2},
+                "N": {"score": 0.7}, "seconds_per_record": 1.2,
+            },
+        }
+        report = MODULE.d_report(rows, scores)
+        ablation = next(item for item in report["entries"] if item["run_id"] == "ABL")
+        self.assertAlmostEqual(ablation["delta_regular"], -0.2)
+        self.assertAlmostEqual(ablation["delta_exception"], -0.6)
 
 
 if __name__ == "__main__":

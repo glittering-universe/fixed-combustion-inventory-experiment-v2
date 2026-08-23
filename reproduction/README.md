@@ -1,4 +1,4 @@
-# 固定燃烧源清单实验复现入口 v2
+# 固定燃烧源清单实验复现入口 v2.1
 
 本目录是原始基表输入版 A—D 实验的唯一复现入口。依赖版本冻结在 `requirements.lock.txt`；`bootstrap_environment.sh` 使用本机 Python 创建仓库内 `.venv`，后续命令统一使用 `.venv/bin/python`。
 
@@ -9,7 +9,7 @@
 - 扰动：`inputs/experiment_b/S1`—`S4` 与 `B2`，每个版本都包含 6 个工作簿、中性 ID 索引和版本清单；
 - 人工基线：`human_baseline/original_packages/` 只读保存原始工作簿，`human_baseline/normalized_v2/` 提供规范化副本。复现脚本只把规范化 CSV/JSON 复制到物理结果路径，不覆盖原始包；
 - 参照包：`reference/frozen/v2.0.0`；
-- 评价：`evaluation/aggregate_experiment_results_v2.py`，按 D/N/E 与 `EICPI_core` 汇总，不使用旧 S/A/Q/T/R/E、独立质量门槛或绝对 L/U 时间阈值。
+- 评价：`evaluation/aggregate_experiment_results_v2.py`，按 D/N/E v2.1 与 `EICPI_core` 汇总。实验前 `metric_spec_v2.json` 保留在正式设置锁中；实验后活动协议为 `metric_spec_v2_1.json`。
 - 归档索引：`reproduction/build_formal_archive_index.py`，仅在 150 个运行全部封存且汇总完成后生成运行哈希与 94 个 Hermes 会话的轻量索引。
 
 ## 运行前检查
@@ -27,7 +27,7 @@ bootstrap 只在 `.venv` 不存在时创建环境并按锁文件安装依赖。�
 ./reproduction/run_all_machine_experiments.sh --resume
 ```
 
-脚本先将 14 个人工 v2 包放到物理结果路径；已完整存在时跳过，部分存在时停止，不覆盖。然后按 A、B、C、D 执行 136 次机器运行，最后调用 D/N/E v2 汇总。
+脚本先将 14 个人工 v2 包放到物理结果路径；已完整存在时跳过，部分存在时停止，不覆盖。然后按 A、B、C、D 执行 136 次机器运行，最后调用 D/N/E v2.1 汇总。
 
 ## 在新目录完整复现
 
@@ -52,7 +52,7 @@ bootstrap 只在 `.venv` 不存在时创建环境并按锁文件安装依赖。�
 ./reproduction/aggregate_results.sh [实验根目录]
 ```
 
-汇总器只读封存运行和人工 v2 包，生成 `run_scores_v2.csv`、`aggregate_summary_v2.json` 及 B1/B2/C/D 独立诊断报告；不会补跑或回填。
+汇总器只读封存运行和人工 v2 包，生成 `run_scores_v2_1.csv`、`aggregate_summary_v2_1.json` 及 B1/B2/C/D v2.1 独立诊断报告；不会补跑或回填。
 
 ## 完整性清单
 

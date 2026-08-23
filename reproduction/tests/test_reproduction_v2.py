@@ -26,7 +26,7 @@ SEAL = load_module("repro_seal_v2", "experiment_control/seal_formal_setup.py")
 
 
 class ReproductionManifestV2Tests(unittest.TestCase):
-    def test_dependency_inventory_uses_raw_dne_v2_and_bootstrapped_repository_venv(self) -> None:
+    def test_dependency_inventory_preserves_formal_v2_and_uses_active_dne_v2_1(self) -> None:
         files = set(BUILD.FILES)
         for required in (
             "requirements.lock.txt",
@@ -34,6 +34,7 @@ class ReproductionManifestV2Tests(unittest.TestCase):
             "inputs/prepared/raw_input_manifest.json",
             "inputs/prepared/source_identity_index.json",
             "evaluation/metric_spec_v2.json",
+            "evaluation/metric_spec_v2_1.json",
             "evaluation/score_dne.py",
             "evaluation/aggregate_experiment_results_v2.py",
             "reference/frozen/v2.0.0/package_lock.json",
@@ -49,9 +50,10 @@ class ReproductionManifestV2Tests(unittest.TestCase):
         ):
             self.assertNotIn(retired, files)
         payload = BUILD.build_payload(ROOT, allow_missing=True)
-        self.assertEqual("2.0.0", payload["manifest_version"])
+        self.assertEqual("2.1.0", payload["manifest_version"])
         self.assertEqual("raw_base_tables_v2", payload["input_contract"])
-        self.assertEqual("DNE_v2", payload["evaluation_contract"])
+        self.assertEqual("DNE_v2.1", payload["evaluation_contract"])
+        self.assertEqual("DNE_v2", payload["formal_setup_evaluation_contract"])
         self.assertTrue(payload["runtime"]["python"].endswith("/.venv/bin/python"))
         self.assertNotIn(".venv/pyvenv.cfg", files)
 
@@ -104,9 +106,10 @@ class HumanCopyV2Tests(unittest.TestCase):
 class EnvironmentContractV2Tests(unittest.TestCase):
     def test_contract_scan_rejects_retired_scope_and_threshold_dependencies(self) -> None:
         errors = CHECK.contract_errors({
-            "manifest_version": "2.0.0",
+            "manifest_version": "2.1.0",
             "input_contract": "raw_base_tables_v2",
-            "evaluation_contract": "DNE_v2",
+            "evaluation_contract": "DNE_v2.1",
+            "formal_setup_evaluation_contract": "DNE_v2",
             "files": [
                 {"path": "inputs/prepared/scope_catalog.json"},
                 {"path": "evaluation/final_time_thresholds.json"},
@@ -115,14 +118,16 @@ class EnvironmentContractV2Tests(unittest.TestCase):
         self.assertTrue(any("scope" in error for error in errors))
         self.assertTrue(any("threshold" in error for error in errors))
 
-    def test_contract_scan_accepts_v2_core(self) -> None:
+    def test_contract_scan_accepts_v2_1_evaluation_over_v2_formal_setup(self) -> None:
         self.assertEqual([], CHECK.contract_errors({
-            "manifest_version": "2.0.0",
+            "manifest_version": "2.1.0",
             "input_contract": "raw_base_tables_v2",
-            "evaluation_contract": "DNE_v2",
+            "evaluation_contract": "DNE_v2.1",
+            "formal_setup_evaluation_contract": "DNE_v2",
             "files": [
                 {"path": "inputs/prepared/raw_input_manifest.json"},
                 {"path": "evaluation/aggregate_experiment_results_v2.py"},
+                {"path": "evaluation/metric_spec_v2_1.json"},
             ],
         }))
 

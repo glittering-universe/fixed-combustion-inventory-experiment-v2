@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Hash every dependency of the raw-input/DNE-v2 reproduction entrypoints."""
+"""Hash every dependency of the raw-input/DNE-v2.1 reproduction entrypoints."""
 
 from __future__ import annotations
 
@@ -31,6 +31,7 @@ FILES = [
     "reproduction/run_all_machine_experiments.sh",
     "reproduction/run_one_machine_experiment.sh",
     "reproduction/aggregate_results.sh",
+    "reproduction/build_evaluation_revision_index.py",
     "reproduction/build_formal_archive_index.py",
     "reproduction/build_reproduction_manifest.py",
     "reproduction/tests/test_reproduction_v2.py",
@@ -60,9 +61,12 @@ FILES = [
     "human_baseline/normalize_human_v2.py",
     "human_baseline/normalized_v2/normalization_index.json",
     "evaluation/metric_spec_v2.json",
+    "evaluation/metric_spec_v2_1.json",
     "evaluation/score_dne.py",
     "evaluation/aggregate_experiment_results_v2.py",
+    "evaluation/README.md",
     "evaluation/README_DNE_V2.md",
+    "evaluation/README_DNE_V2_1.md",
     "evaluation/evaluate_sealed_run.py",
     "evaluation/normalize_run_output.py",
     "evaluation/compare_normalized_runs.py",
@@ -122,10 +126,11 @@ def build_payload(root: Path, *, allow_missing: bool = False) -> dict[str, Any]:
     if missing and not allow_missing:
         raise FileNotFoundError(f"reproduction dependency is missing: {missing[0]}")
     return {
-        "manifest_version": "2.0.0",
-        "purpose": "fixed-combustion raw-input A-D reproduction entrypoints",
+        "manifest_version": "2.1.0",
+        "purpose": "fixed-combustion raw-input A-D runs with post-experiment DNE-v2.1 evaluation",
         "input_contract": "raw_base_tables_v2",
-        "evaluation_contract": "DNE_v2",
+        "evaluation_contract": "DNE_v2.1",
+        "formal_setup_evaluation_contract": "DNE_v2",
         "reference_package": "reference/frozen/v2.0.0",
         "runtime": {
             "python": "./.venv/bin/python",
