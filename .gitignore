@@ -11,8 +11,7 @@ profiles/*/.env
 profiles/*/state.db*
 profiles/*/logs/
 
-# Per-run machine packages are large physical artifacts.  They are covered by
-# SHA-256 artifact manifests committed under archives/ and 实验结果/00_....
+# Per-run machine packages are stored in the experiment Release archives.
 实验结果/02_实验A_端到端清单编制/
 实验结果/03_实验B_输入不变性与异常处置/
 实验结果/04_实验C_规模与资源表现/
@@ -22,7 +21,7 @@ matrix/execution_state.jsonl
 matrix/run_console/
 matrix/controller_logs/
 
-# Curated physical delivery is uploaded as verified GitHub Release assets.
+# Curated physical delivery is uploaded as GitHub Release assets.
 正式实验结果/
 human_baseline/normalized_v2_1/
 expert_workflow/

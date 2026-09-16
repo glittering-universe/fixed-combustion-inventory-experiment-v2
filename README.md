@@ -4,11 +4,11 @@
 
 ## 整理后的结果入口
 
-本地统一入口为[正式实验结果](正式实验结果/README.md)，按A—D保存最终输出，并提供当前评价、原人工工作簿、读取复核、规则参照、共享输入和复现代码。大文件通过[私有GitHub Release](https://github.com/glittering-universe/fixed-combustion-inventory-experiment-v2/releases/tag/results-v2.2.0-human-reading-v2.1.0)发布；Git仓库保留代码、当前轻量评价与文件校验索引。
+本地统一入口为[正式实验结果](正式实验结果/README.md)，按A—D保存最终输出，并提供当前评价、原人工工作簿、读取复核、规则参照、共享输入和复现代码。大文件通过[私有GitHub Release](https://github.com/glittering-universe/fixed-combustion-inventory-experiment-v2/releases/tag/results-v2.2.0-human-reading-v2.1.0-r2)发布；Git仓库保存代码、当前评价与使用文档。
 
-完整运行目录、会话、计算轨迹及数据库压缩保存于`正式实验结果/08_完整封存/`。本地清理后，若需再次重评，先执行`python3 reproduction/curate_results.py restore`还原运行目录，再使用当前评价命令。还原只复制原封存文件，不启动新实验；已存在且内容不同的文件不会被覆盖。
+完整运行目录、会话、计算过程及数据库保存在`正式实验结果/08_完整封存/`。重新评价时，先执行`python3 reproduction/curate_results.py restore .`解压实验材料，再执行当前评价命令。`python3 reproduction/curate_results.py pack`负责打包当前结果目录。
 
-旧规范化、旧评价、预览和未纳入正式统计的数据只保存在历史发布资产中。原人工输入保留在`human_baseline/original_packages/`，原始环境统计数据、论文文稿和Hermes Desktop实时记录不在此次清理范围内。
+历史结果和过程材料保存在历史发布附件中。原人工输入位于`human_baseline/original_packages/`；原始环境统计数据、论文文稿和Hermes Desktop实时记录保留在现有位置。
 
 ## 活动实验边界
 
