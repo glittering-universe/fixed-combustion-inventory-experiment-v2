@@ -1,39 +1,5 @@
-.DS_Store
-__pycache__/
-*.py[cod]
-.venv*/
-node_modules
-tmp/
-plugin/fixed-combustion-inventory/tests/smoke_run*/
-
-# Hermes/runtime state and local secrets are never versioned.
-profiles/*/.env
-profiles/*/state.db*
-profiles/*/logs/
-
-# Per-run machine packages are stored in the experiment Release archives.
-实验结果/02_实验A_端到端清单编制/
-实验结果/03_实验B_输入不变性与异常处置/
-实验结果/04_实验C_规模与资源表现/
-实验结果/05_实验D_方法组成贡献/
-实验结果/90_试运行与开发验证/
-matrix/execution_state.jsonl
-matrix/run_console/
-matrix/controller_logs/
-
-# Curated physical delivery is uploaded as GitHub Release assets.
-正式实验结果/
-human_baseline/normalized_v2_1/
-expert_workflow/
-
-# Generated render/preview files are reproducible QA intermediates.
-documentation/rendered*/
-documentation/font_probe*/
-documentation/qa_manual_system_*/
-documentation/screenshots/
-documentation/tutorial_screenshots/
-archives/pre_anomaly_audit_fix_v1/affected_runs/
-archives/nonformal_pilot_runs/
-archives/retry_history/
-archives/superseded_deterministic_full_engine_v1.3.0/实验结果/
-archives/superseded_deterministic_full_engine_v1.3.0/matrix/run_console/
+*
+!.gitignore
+!README.md
+!论文写作材料/
+!论文写作材料/**

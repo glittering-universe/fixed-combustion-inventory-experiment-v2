@@ -1,0 +1,119 @@
+rules:
+- rule_id: r_method_coefficient_only
+  rule_type: method
+  source:
+    source_type: DATA_SCOPE_DECISION
+    document: 固定燃烧源清单实验实施协议
+    section: 实施协议-1
+    physical_pdf_pages:
+    - 1
+  scope:
+    experiment: 2022固定燃烧源清单重算
+  conditions:
+    verified_monitoring_dataset: false
+    reported_base102_role: comparison_only
+  action:
+    type: select_method
+    method: production_emission_coefficient_and_coal_mass_balance
+  on_missing: withhold
+- rule_id: r_method_industrial_boiler
+  rule_type: method
+  source:
+    source_type: T_CSES
+    document: T/CSES 144—2024
+    section: 8.3.1
+    physical_pdf_pages:
+    - 14
+  scope:
+    source_sector: 工业源化石燃料固定燃烧
+  conditions:
+    activity: 燃料消耗量
+    default_factor_table: E.7
+  action:
+    type: select_method
+    method: coefficient_or_coal_mass_balance
+  on_missing: withhold
+- rule_id: r_method_power_heat
+  rule_type: method
+  source:
+    source_type: T_CSES
+    document: T/CSES 144—2024
+    section: '7.2'
+    physical_pdf_pages:
+    - 9
+    - 10
+  scope:
+    source_sector: 电力热力源
+  conditions:
+    activity: 燃料消耗量
+    default_factor_table: D.1
+  action:
+    type: select_method
+    method: coefficient_or_coal_mass_balance
+  on_missing: withhold
+- rule_id: r_method_ef_acquisition
+  rule_type: method
+  source:
+    source_type: T_CSES
+    document: T/CSES 144—2024
+    section: 6.3.1、7.2.1.2、8.3.1
+    physical_pdf_pages:
+    - 8
+    - 9
+    - 14
+  scope:
+    parameter: 产生系数
+  conditions:
+    experiment_available_sources:
+    - 燃煤物料衡算
+    - D.1
+    - E.7
+  action:
+    type: select_method
+    priority:
+    - coal_mass_balance_when_applicable
+    - appendix_factor
+  on_missing: withhold
+- rule_id: r_method_coal_mass_balance
+  rule_type: method
+  source:
+    source_type: T_CSES
+    document: T/CSES 144—2024
+    section: 7.2.1.2、7.2.2、8.3.1
+    physical_pdf_pages:
+    - 9
+    - 10
+    - 14
+  scope:
+    fuel: 煤炭
+    pollutants:
+    - SO2
+    - PM10
+    - PM25
+    - BC
+    - OC
+  conditions:
+    required:
+    - sulfur_or_ash
+    - coal_parameter
+    - combustion_technology
+  action:
+    type: select_method
+    method: coal_mass_balance
+  on_missing: withhold
+- rule_id: r_method_eta_actual
+  rule_type: method
+  source:
+    source_type: T_CSES
+    document: T/CSES 144—2024
+    section: 7.2.1.2
+    physical_pdf_pages:
+    - 9
+  scope:
+    parameter: 污染物实际去除效率
+  conditions:
+    standard_formula: eta_actual = eta_average * operation_rate
+  action:
+    type: select_method
+    method: eta_average_times_operation_rate
+  on_missing: withhold

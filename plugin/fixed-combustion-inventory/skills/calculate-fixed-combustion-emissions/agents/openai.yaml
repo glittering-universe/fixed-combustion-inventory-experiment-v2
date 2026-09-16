@@ -1,4 +1,0 @@
-interface:
-  display_name: "固定燃烧排放量计算"
-  short_description: "批量执行活动水平换算排放因子物料衡算及治理效率修正"
-  default_prompt: "批量计算当前范围的固定燃烧污染物排放量。"

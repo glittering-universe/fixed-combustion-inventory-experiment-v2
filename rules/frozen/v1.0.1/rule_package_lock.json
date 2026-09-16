@@ -1,9 +1,0 @@
-{
-  "candidate_is_immutable": true,
-  "candidate_path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/rules/stage_r/candidate",
-  "package_hash": "0d10aa862c8df810889c8cc47d64ea7273a8dc93d1321eb5ffbf69a03c97c6d9",
-  "package_id": "tcses-144-2024-fixed-combustion-reviewed",
-  "professional_review_status": "passed",
-  "status": "frozen",
-  "version": "1.0.1"
-}

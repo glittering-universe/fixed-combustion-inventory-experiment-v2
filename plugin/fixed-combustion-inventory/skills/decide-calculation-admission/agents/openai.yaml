@@ -1,4 +1,0 @@
-interface:
-  display_name: "污染物核算准入"
-  short_description: "批量形成污染物排放核算项的准入决定并限制异常影响范围"
-  default_prompt: "对当前污染物排放核算项批量执行核算准入。"
