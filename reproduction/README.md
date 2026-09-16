@@ -1,5 +1,11 @@
 # 固定燃烧源清单实验复现入口 v2.1
 
+> 本文保留原实验执行设置。当前评价已升级为D/N/E v2.2.0并使用人工表头读取v2.1.0，当前入口见仓库README和“正式实验结果”。清理后的完整运行目录保存在压缩包中，先运行`python3 reproduction/curate_results.py restore`恢复，再执行：
+>
+> `.venv/bin/python -B evaluation/aggregate_experiment_results_v2.py --reference-package reference/frozen/v2.0.0 --human-normalization-root human_baseline/normalized_v2_1`
+>
+> 历史v2.1协议、设置锁和下述旧入口保留用于追溯，不代表当前评价版本。
+
 本目录是原始基表输入版 A—D 实验的唯一复现入口。依赖版本冻结在 `requirements.lock.txt`；`bootstrap_environment.sh` 使用本机 Python 创建仓库内 `.venv`，后续命令统一使用 `.venv/bin/python`。
 
 ## 冻结边界

@@ -11,7 +11,7 @@
 - `support-current.tar.zst`：原人工交付、修正后的规范化结果、审计材料及冻结输入/规则/参照。
 - 本次评价修正与整理代码提交到同一仓库，完整Git历史保留。
 - `historical-intermediates.tar.zst`：旧评价、旧规范化、预览和未纳入正式统计的数据，仅作历史保存。
-- `N评分修正与专家流程说明.txt`：历史专家流程数据的来源说明。
+- `human-workflow-provenance.txt`：历史专家流程数据的来源说明，原文件名为`N评分修正与专家流程说明.txt`，内容未改动。
 - `delivery_manifest.json`、`current-results-view-manifest.json`及`SHA256SUMS`：来源与完整性索引。
 
 原始核算方法、冻结规则与参照未因归档改变；已有领域审计事项仍需单独处理。本仓库保持私有，未新增数据开放许可。恢复方法见下载内容中的README。

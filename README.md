@@ -2,6 +2,14 @@
 
 本仓库是重新设计后的唯一活动实验版本。所有机器方法从同一组答案隔离的原始结构环境统计基表开始，对基102中的5,922条设备候选自主完成源类判定、排放核算、异常处置和结果输出。
 
+## 整理后的结果入口
+
+本地统一入口为[正式实验结果](正式实验结果/README.md)，按A—D保存最终输出，并提供当前评价、原人工工作簿、读取复核、规则参照、共享输入和复现代码。大文件通过[私有GitHub Release](https://github.com/glittering-universe/fixed-combustion-inventory-experiment-v2/releases/tag/results-v2.2.0-human-reading-v2.1.0)发布；Git仓库保留代码、当前轻量评价与文件校验索引。
+
+完整运行目录、会话、计算轨迹及数据库压缩保存于`正式实验结果/08_完整封存/`。本地清理后，若需再次重评，先执行`python3 reproduction/curate_results.py restore`还原运行目录，再使用当前评价命令。还原只复制原封存文件，不启动新实验；已存在且内容不同的文件不会被覆盖。
+
+旧规范化、旧评价、预览和未纳入正式统计的数据只保存在历史发布资产中。原人工输入保留在`human_baseline/original_packages/`，原始环境统计数据、论文文稿和Hermes Desktop实时记录不在此次清理范围内。
+
 ## 活动实验边界
 
 - 原始候选：基102设备明细5,922条。
@@ -40,7 +48,7 @@
 - 独立参照：`reference/frozen/v2.0.0/`
 - D/N/E评价：`evaluation/aggregate_experiment_results_v2.py`（活动指标定义见 `evaluation/metric_spec_v2_2.json`）
 
-当前汇总采用`*_v2_2_human_v2_1.*`，读取修正、逐单元复核及人工得分变化见[人工结果读取与评价修正报告](human_baseline/reading_audit_v2_1/人工结果读取与评价修正报告.md)。原人工工作簿、旧导出、原封存和全部机器运行均保留。
+当前汇总采用`*_v2_2_human_v2_1.*`，读取修正、逐单元复核及人工得分变化见[人工结果读取与评价修正报告](human_baseline/reading_audit_v2_1/人工结果读取与评价修正报告.md)。原人工工作簿保留原样，旧导出和完整原封存可由发布资产恢复。
 - 一键复现：`reproduction/run_all_machine_experiments.sh`
 
 旧实验的完整Git历史、LFS对象、正式运行包、Hermes会话数据库和历史归档已保存到私有GitHub Release `legacy-pre-raw-input-20260821`，不再保留于本地活动仓库。

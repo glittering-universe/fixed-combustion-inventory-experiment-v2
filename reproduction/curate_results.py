@@ -196,7 +196,7 @@ def build():
     archives.append({**packed, "historical_only": True})
     # The existing provenance note must travel with the nonformal historical data.
     note = ROOT.parent / "N评分修正与专家流程说明.txt"
-    shutil.copy2(note, STAGE / note.name)
+    shutil.copy2(note, STAGE / "human-workflow-provenance.txt")
     cleanup_paths.extend(["expert_workflow", "human_baseline/normalized_v2", "human_baseline/normalized_v2_1", "matrix/run_console"])
     cleanup_paths.extend(str(p.relative_to(ROOT)) for p in (ROOT / "documentation").iterdir()
                          if p.is_dir() and (p.name.startswith(("rendered", "font_probe", "qa_manual_system")) or p.name in ("screenshots", "tutorial_screenshots")))
