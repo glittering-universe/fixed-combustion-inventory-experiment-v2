@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import importlib.util
+import itertools
 import math
 import unittest
 from pathlib import Path
@@ -181,7 +182,34 @@ class DneScoringTests(unittest.TestCase):
         self.assertEqual(len(summary["exception"]["failed_source_examples"]), 30)
         self.assertNotIn("by_source", summary["exception"])
 
-    def test_missing_calculated_result_fails_completeness_but_not_unobservable_atoms(self) -> None:
+    def test_deleting_wrong_required_result_keeps_denominator_and_reduces_score(self) -> None:
+        expected = {
+            f"SRC-{i}::CO": {
+                "source_id": f"SRC-{i}", "pollutant": "CO", "expected_status": "calculated",
+                "expected_generation_t": 10.0, "expected_emission_t": 8.0,
+            }
+            for i in (1, 2)
+        }
+        actual = {
+            "SRC-1::CO": {
+                "source_id": "SRC-1", "pollutant": "CO", "status": "calculated",
+                "generation_t": 10.0, "emission_t": 8.0, "recalculation_pass": True,
+            },
+            "SRC-2::CO": {
+                "source_id": "SRC-2", "pollutant": "CO", "status": "calculated",
+                "generation_t": 20.0, "emission_t": 18.0, "recalculation_pass": False,
+            },
+        }
+        complete = MODULE.summarize_atoms(MODULE.score_numeric_atoms(expected, actual, method="full"))
+        missing = MODULE.summarize_atoms(MODULE.score_numeric_atoms(
+            expected, {"SRC-1::CO": actual["SRC-1::CO"]}, method="full",
+        ))
+        self.assertEqual((complete["passed"], complete["applicable"]), (4, 6))
+        self.assertEqual((missing["passed"], missing["applicable"]), (3, 6))
+        self.assertEqual(missing["score"], 0.5)
+        self.assertLess(missing["score"], complete["score"])
+
+    def test_missing_calculated_result_fails_required_numeric_atoms(self) -> None:
         expected = {
             "SRC-1::NOx": {
                 "source_id": "SRC-1", "pollutant": "NOx", "expected_status": "calculated",
@@ -191,8 +219,8 @@ class DneScoringTests(unittest.TestCase):
         result = MODULE.score_numeric_atoms(expected, {}, method="generic_tool_agent")
         by_kind = {item.kind: item for item in result}
         self.assertFalse(by_kind["result_completeness"].passed)
-        self.assertIsNone(by_kind["reference_value"].passed)
-        self.assertIsNone(by_kind["internal_recalculation"].passed)
+        self.assertFalse(by_kind["reference_value"].passed)
+        self.assertFalse(by_kind["internal_recalculation"].passed)
 
     def test_noncalculated_result_with_number_fails_numeric_completeness(self) -> None:
         expected = {
@@ -209,6 +237,71 @@ class DneScoringTests(unittest.TestCase):
         }
         atoms = MODULE.score_numeric_atoms(expected, actual, method="generic_tool_agent")
         self.assertFalse(next(item for item in atoms if item.kind == "result_completeness").passed)
+
+    def test_missing_required_pm_partner_does_not_remove_particle_order_check(self) -> None:
+        expected = {
+            "SRC-1::PM10": {
+                "source_id": "SRC-1", "pollutant": "PM10", "expected_status": "calculated",
+                "expected_generation_t": 10.0, "expected_emission_t": 8.0,
+            },
+            "SRC-1::PM2.5": {
+                "source_id": "SRC-1", "pollutant": "PM2.5", "expected_status": "calculated",
+                "expected_generation_t": 5.0, "expected_emission_t": 4.0,
+            },
+        }
+        actual = {
+            "SRC-1::PM10": {
+                "source_id": "SRC-1", "pollutant": "PM10", "status": "calculated",
+                "generation_t": 10.0, "emission_t": 8.0, "recalculation_pass": True,
+            },
+        }
+        atoms = MODULE.score_numeric_atoms(expected, actual, method="full")
+        summary = MODULE.summarize_atoms(atoms)
+        self.assertEqual((summary["passed"], summary["applicable"]), (3, 7))
+        self.assertFalse(next(atom for atom in atoms if atom.atom_id == "pm-order:SRC-1").passed)
+
+    def test_every_expected_row_omission_preserves_required_population(self) -> None:
+        expected = {
+            "SRC-1::CO": {"expected_status": "calculated", "expected_generation_t": 10, "expected_emission_t": 8},
+            "SRC-2::CO": {"expected_status": "calculated", "expected_generation_t": 10, "expected_emission_t": 8},
+            "SRC-3::PM10": {"expected_status": "calculated", "expected_generation_t": 10, "expected_emission_t": 8},
+            "SRC-3::PM2.5": {"expected_status": "calculated", "expected_generation_t": 5, "expected_emission_t": 4},
+        }
+        actual = {
+            "SRC-1::CO": {"status": "calculated", "generation_t": 10, "emission_t": 8, "recalculation_pass": True},
+            "SRC-2::CO": {"status": "calculated", "generation_t": 20, "emission_t": 18, "recalculation_pass": False},
+            "SRC-3::PM10": {"status": "calculated", "generation_t": 10, "emission_t": 8, "recalculation_pass": True},
+            "SRC-3::PM2.5": {"status": "calculated", "generation_t": 15, "emission_t": 12, "recalculation_pass": False},
+        }
+        for method, denominator in (("full", 13), ("expert_led", 9)):
+            all_results = MODULE.summarize_atoms(MODULE.score_numeric_atoms(expected, actual, method=method))
+            for count in range(5):
+                for keys in itertools.combinations(actual, count):
+                    with self.subTest(method=method, present=keys):
+                        subset = {key: actual[key] for key in keys}
+                        summary = MODULE.summarize_atoms(MODULE.score_numeric_atoms(expected, subset, method=method))
+                        self.assertEqual(summary["applicable"], denominator)
+                        self.assertLessEqual(summary["score"], all_results["score"])
+
+    def test_missing_or_nonfinite_required_value_never_becomes_na(self) -> None:
+        expected = {"SRC-1::CO": {"expected_status": "calculated", "expected_generation_t": 0, "expected_emission_t": 0}}
+        for value in (None, "", "not-a-number", float("nan"), float("inf")):
+            with self.subTest(value=value):
+                actual = {"SRC-1::CO": {"status": "calculated", "generation_t": 0, "emission_t": value, "recalculation_pass": True}}
+                summary = MODULE.summarize_atoms(MODULE.score_numeric_atoms(expected, actual, method="full"))
+                self.assertEqual((summary["passed"], summary["applicable"]), (0, 3))
+        actual = {"SRC-1::CO": {"status": "calculated", "generation_t": 0, "emission_t": 0, "recalculation_pass": True}}
+        summary = MODULE.summarize_atoms(MODULE.score_numeric_atoms(expected, actual, method="full"))
+        self.assertEqual((summary["passed"], summary["applicable"]), (3, 3))
+
+    def test_noncalculated_reference_does_not_create_a_numeric_or_pm_requirement(self) -> None:
+        expected = {
+            "SRC-1::PM10": {"expected_status": "information_insufficient"},
+            "SRC-1::PM2.5": {"expected_status": "not_involved"},
+        }
+        actual = {key: {"status": row["expected_status"], "generation_t": "", "emission_t": ""} for key, row in expected.items()}
+        summary = MODULE.summarize_atoms(MODULE.score_numeric_atoms(expected, actual, method="full"))
+        self.assertEqual((summary["passed"], summary["applicable"], summary["not_applicable"]), (2, 2, 4))
 
     def test_unexpected_blank_result_row_still_fails_output_completeness(self) -> None:
         actual = {

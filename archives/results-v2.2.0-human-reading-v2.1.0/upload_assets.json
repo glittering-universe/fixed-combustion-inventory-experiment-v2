@@ -1,0 +1,57 @@
+[
+  {
+    "path": "N评分修正与专家流程说明.txt",
+    "sha256": "6398ec52c14bde028a9423f1265ec5290a1e5e868884df844809428e09781a3f",
+    "bytes": 6436
+  },
+  {
+    "path": "README.md",
+    "sha256": "755d3bf88010b3d6c04c9e4699a3bf2edc097cbf018969311c4184b0a6586db2",
+    "bytes": 2789
+  },
+  {
+    "path": "current-results-view-manifest.json",
+    "sha256": "8614d5364ca847bf6ab3043aa01f900660ba8520f95224af125f751ae460ec2e",
+    "bytes": 439669
+  },
+  {
+    "path": "current-results-view.tar.zst",
+    "sha256": "682b956a7b1d641ddd28ab7d0fde824bef6271020771be3a3e33c704495656e7",
+    "bytes": 390009133
+  },
+  {
+    "path": "delivery_manifest.json",
+    "sha256": "b62ab58d7d12c492b181367d111027001bcc1c24f7fc691d7502bce80ef79f4f",
+    "bytes": 2104292
+  },
+  {
+    "path": "historical-intermediates.tar.zst",
+    "sha256": "7a34cc5372999ff2f3b2ee34a6ea5cd8d170f76a7459a06235475016167e9b71",
+    "bytes": 101942041
+  },
+  {
+    "path": "sealed-runs-A.tar.zst",
+    "sha256": "1ca03f20d2badf6060b677ce01a1a01926c3925d52feaec8fe4658be570c51e1",
+    "bytes": 379153258
+  },
+  {
+    "path": "sealed-runs-B.tar.zst",
+    "sha256": "e85924664f0e53b540922958115a1281cc9a59f9e1b59527c3ebe13ab6d203c1",
+    "bytes": 753419237
+  },
+  {
+    "path": "sealed-runs-C.tar.zst",
+    "sha256": "ce8ecb747cb3fccb7bb05964e82bfa897f394719a3f14fbcb6264c6a792340b5",
+    "bytes": 677578506
+  },
+  {
+    "path": "sealed-runs-D.tar.zst",
+    "sha256": "fae8743c7f448042b9dd189a4dc9d308851d12e81f5b44628bd07a97c58ad306",
+    "bytes": 255016282
+  },
+  {
+    "path": "support-current.tar.zst",
+    "sha256": "b93dd45946974102a99fff93cdd57a86a64b79abd71ce1fe0ae0450eea3f8b04",
+    "bytes": 160264051
+  }
+]

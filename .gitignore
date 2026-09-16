@@ -22,6 +22,11 @@ matrix/execution_state.jsonl
 matrix/run_console/
 matrix/controller_logs/
 
+# Curated physical delivery is uploaded as verified GitHub Release assets.
+正式实验结果/
+human_baseline/normalized_v2_1/
+expert_workflow/
+
 # Generated render/preview files are reproducible QA intermediates.
 documentation/rendered*/
 documentation/font_probe*/

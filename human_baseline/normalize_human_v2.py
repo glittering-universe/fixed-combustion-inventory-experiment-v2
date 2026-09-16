@@ -14,15 +14,18 @@ import csv
 import hashlib
 import json
 import math
+import re
 import shutil
 import sys
+import unicodedata
 from collections import defaultdict, deque
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
 
 from openpyxl import load_workbook
+from openpyxl.utils import get_column_letter
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
@@ -36,7 +39,8 @@ from experiment_control.source_identity import (
 
 WORKSPACE = ROOT.parent
 DEFAULT_ORIGINAL_ROOT = ROOT / "human_baseline" / "original_packages"
-DEFAULT_OUTPUT_ROOT = ROOT / "human_baseline" / "normalized_v2"
+DEFAULT_OUTPUT_ROOT = ROOT / "human_baseline" / "normalized_v2_1"
+NORMALIZATION_CONTRACT = "human-baseline-normalization-v2.1.0"
 DEFAULT_RAW_102 = (
     WORKSPACE
     / "01 环境统计数据"
@@ -54,7 +58,7 @@ DEFAULT_RAW_101_CONTROL = (
 )
 
 TARGET_COUNTS = {"INDUSTRIAL": 4160, "POWER": 426}
-POLLUTANTS = ("SO2", "NOx", "CO", "VOC", "PM10", "PM2.5", "BC", "OC", "NH3")
+POLLUTANTS = ("SO2", "NOx", "CO", "PM10", "PM2.5", "BC", "OC", "VOC", "NH3")
 SECONDS_PER_RECORD = 11.52
 NA = "NA"
 
@@ -94,6 +98,15 @@ CALCULATION_FIELDS = (
     "standard_reference",
     "intermediate_calculation",
     "reason_code",
+    "human_sheet",
+    "generation_cell",
+    "generation_header",
+    "generation_value_kind",
+    "generation_original_value",
+    "emission_cell",
+    "emission_header",
+    "emission_value_kind",
+    "emission_original_value",
 )
 EXCEPTION_FIELDS = (
     "exception_id",
@@ -153,6 +166,9 @@ class WorkbookMapping:
     rows: tuple[MappedHumanRow, ...]
     scope_source_ids: tuple[str, ...]
     mapping_exceptions: tuple[dict[str, Any], ...]
+    headers: tuple[str, ...] = ()
+    sheet_name: str = ""
+    result_columns: Mapping[str, Mapping[str, int]] = field(default_factory=dict)
 
 
 def _sha256(path: Path) -> str:
@@ -328,10 +344,11 @@ def _fallback_candidate(
     return ranked[0][2], f"ranked_fallback:{best_score}"
 
 
-def _read_rows(path: Path) -> tuple[list[str], list[tuple[int, tuple[Any, ...]]]]:
+def _read_rows(path: Path) -> tuple[str, list[str], list[tuple[int, tuple[Any, ...]]]]:
     workbook = load_workbook(path, read_only=True, data_only=True)
     try:
         sheet = workbook.worksheets[0]
+        sheet.reset_dimensions()
         iterator = sheet.iter_rows(values_only=True)
         headers = [_scalar(value) for value in next(iterator)]
         rows = []
@@ -340,7 +357,7 @@ def _read_rows(path: Path) -> tuple[list[str], list[tuple[int, tuple[Any, ...]]]
             if padded[0] in (None, "") or padded[3] in (None, ""):
                 continue
             rows.append((excel_row, padded))
-        return headers, rows
+        return sheet.title, headers, rows
     finally:
         workbook.close()
 
@@ -352,6 +369,7 @@ def _load_entity_table(path: Path) -> tuple[int, frozenset[str], dict[str, int]]
     row_count = 0
     try:
         sheet = workbook.worksheets[0]
+        sheet.reset_dimensions()
         iterator = sheet.iter_rows(values_only=True)
         next(iterator)
         for values in iterator:
@@ -381,6 +399,7 @@ def load_raw_context(
     candidates: list[RawCandidate] = []
     try:
         sheet = workbook.worksheets[0]
+        sheet.reset_dimensions()
         iterator = sheet.iter_rows(values_only=True)
         headers = [_scalar(value) for value in next(iterator)]
         for excel_row, values in enumerate(iterator, start=2):
@@ -431,7 +450,8 @@ def map_human_workbook(
     """
     if target not in TARGET_COUNTS:
         raise ValueError(f"unsupported target: {target}")
-    _, human_rows = _read_rows(workbook_path)
+    sheet_name, headers, human_rows = _read_rows(workbook_path)
+    result_columns = resolve_result_columns(headers)
     expected_scope = TARGET_COUNTS[target]
     by_source = context.by_source_id
     exceptions: list[dict[str, Any]] = []
@@ -538,6 +558,9 @@ def map_human_workbook(
         rows=tuple(mapped),
         scope_source_ids=scope_source_ids,
         mapping_exceptions=tuple(exceptions),
+        headers=tuple(headers),
+        sheet_name=sheet_name,
+        result_columns=result_columns,
     )
 
 
@@ -574,15 +597,58 @@ def _decision_rows(mapping: WorkbookMapping, context: RawContext) -> list[dict[s
     return output
 
 
-def _result_offsets(target: str) -> tuple[int, int]:
-    # 0-based offsets in the preserved expert result workbooks.
-    return (75, 91) if target == "INDUSTRIAL" else (78, 94)
+def _pollutant_header(value: object) -> str | None:
+    text = re.sub(r"\s+", "", unicodedata.normalize("NFKC", _scalar(value))).upper()
+    matched = re.fullmatch(r"(SO2|NOX|CO|PM10|PM2\.5|PM25|BC|OC|VOCS?|NH3)\((?:T|吨)\)", text)
+    if not matched:
+        return None
+    token = matched.group(1)
+    return {"NOX": "NOx", "PM25": "PM2.5", "VOCS": "VOC"}.get(token, token)
+
+
+def resolve_result_columns(headers: Sequence[object]) -> dict[str, dict[str, int]]:
+    """Resolve the two total blocks around named control fields, by pollutant label.
+
+    Fuel-specific blocks may repeat the same labels. The generation total is the
+    last complete pollutant block before the control fields; final emission is
+    the sole complete block after those fields. No column offset or pollutant
+    ordering is used to assign values.
+    """
+    labels = [_pollutant_header(value) for value in headers]
+    groups: list[list[int]] = []
+    current: list[int] = []
+    for index, label in enumerate([*labels, None]):
+        if label is not None:
+            current.append(index)
+        elif current:
+            if len(current) == len(POLLUTANTS) and {labels[i] for i in current} == set(POLLUTANTS):
+                groups.append(current)
+            current = []
+    controls = []
+    for index, header in enumerate(headers):
+        value = unicodedata.normalize("NFKC", _scalar(header))
+        if "去除效率" in value or ("工艺" in value and any(name in value for name in ("脱硫", "脱硝", "除尘"))):
+            controls.append(index)
+    if not controls:
+        raise ValueError("cannot identify total blocks: named control headers are missing")
+    generation = [group for group in groups if group[-1] < min(controls)]
+    emission = [group for group in groups if group[0] > max(controls)]
+    if not generation or len(emission) != 1:
+        raise ValueError("cannot uniquely identify complete nine-pollutant generation and final-emission blocks")
+    chosen = {"generation": max(generation, key=lambda group: group[-1]), "emission": emission[0]}
+    return {role: {str(labels[i]): i for i in group} for role, group in chosen.items()}
+
+
+def _value_kind(value: object) -> str:
+    if value in (None, ""):
+        return "blank"
+    return "number" if _finite(value) is not None else "non_numeric"
 
 
 def _calculation_and_exceptions(
     mapping: WorkbookMapping,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
-    generation_start, emission_start = _result_offsets(mapping.target)
+    columns = mapping.result_columns or resolve_result_columns(mapping.headers)
     calculations: list[dict[str, Any]] = []
     exceptions: list[dict[str, Any]] = [dict(item) for item in mapping.mapping_exceptions]
     exception_number = len(exceptions)
@@ -595,9 +661,13 @@ def _calculation_and_exceptions(
             else f"{base_observation}::HUMAN-EXTRA-{row.human_excel_row:06d}"
         )
         values = _pad(row.row_values)
-        for offset, pollutant in enumerate(POLLUTANTS):
-            generation = _finite(values[generation_start + offset])
-            emission = _finite(values[emission_start + offset])
+        for pollutant in POLLUTANTS:
+            generation_column = columns["generation"][pollutant]
+            emission_column = columns["emission"][pollutant]
+            raw_generation = values[generation_column]
+            raw_emission = values[emission_column]
+            generation = _finite(raw_generation)
+            emission = _finite(raw_emission)
             reported = generation is not None and emission is not None
             reason = "" if reported else "HUMAN_TOTAL_NOT_REPORTED"
             calculations.append({
@@ -621,6 +691,15 @@ def _calculation_and_exceptions(
                 "standard_reference": NA,
                 "intermediate_calculation": NA,
                 "reason_code": reason,
+                "human_sheet": mapping.sheet_name,
+                "generation_cell": f"{get_column_letter(generation_column + 1)}{row.human_excel_row}",
+                "generation_header": mapping.headers[generation_column],
+                "generation_value_kind": _value_kind(raw_generation),
+                "generation_original_value": _scalar(raw_generation),
+                "emission_cell": f"{get_column_letter(emission_column + 1)}{row.human_excel_row}",
+                "emission_header": mapping.headers[emission_column],
+                "emission_value_kind": _value_kind(raw_emission),
+                "emission_original_value": _scalar(raw_emission),
             })
             if not reported:
                 exception_number += 1
@@ -723,11 +802,20 @@ def normalize_all(
         included = sum(row["human_scope_decision"] == "include" for row in decisions)
         reported = sum(row["status"] == "reported_total" for row in calculations)
         notes = {
-            "schema_version": "human-baseline-normalization-v2.0.0",
+            "schema_version": NORMALIZATION_CONTRACT,
             "method": "既有专家主导型清单编制流程",
             "target": target,
             "source_workbook": str(workbook.relative_to(original_root)),
             "source_workbook_sha256": before_hashes[str(workbook.relative_to(original_root))],
+            "source_sheet": mapping.sheet_name,
+            "result_column_mapping": {
+                role: {pollutant: {
+                    "excel_column": get_column_letter(index + 1),
+                    "header": mapping.headers[index],
+                } for pollutant, index in values.items()}
+                for role, values in mapping.result_columns.items()
+            },
+            "adapter_trace_origin": "Cell locations and value-kind fields are generated by this reading adapter, not retrospective human process records.",
             "raw_inputs": raw_inputs,
             "candidate_source_count": len(context.candidates),
             "human_scope_include_count": included,
@@ -751,6 +839,9 @@ def normalize_all(
                 "candidate_record_count": len(context.candidates),
                 "total_seconds": SECONDS_PER_RECORD * len(context.candidates),
                 "basis": "extrapolated_from_user_supplied_per_candidate_rate",
+                "original_user_rate_statement": "11.52秒/条",
+                "measurement_scope_evidence": "Original timed task, sample count and stage coverage are not documented in the supplied packages.",
+                "candidate_denominator_is_extrapolation_assumption": True,
             },
         }
         notes_path = destination / "normalization_notes.json"
@@ -764,17 +855,23 @@ def normalize_all(
             "calculation_rows": len(calculations),
             "not_observable_rows": notes["not_observable_total_row_count"],
             "exceptions": len(exceptions),
+            "derived_files": {
+                name: {"sha256": _sha256(destination / name), "bytes": (destination / name).stat().st_size}
+                for name in ("source_decisions.csv", "calculation_totals.csv", "exceptions.csv", "normalization_notes.json")
+            },
         })
 
     after_hashes = {str(path.relative_to(original_root)): _sha256(path) for path in workbooks}
     if after_hashes != before_hashes:
         raise RuntimeError("preserved human workbook bytes changed during normalization")
     summary = {
-        "schema_version": "human-baseline-normalization-v2.0.0",
+        "schema_version": NORMALIZATION_CONTRACT,
         "status": "ok",
         "package_count": len(package_summaries),
         "raw_candidate_count": len(context.candidates),
         "preserved_originals_unchanged": True,
+        "preserved_original_root": str(original_root),
+        "normalizer_sha256": _sha256(Path(__file__).resolve()),
         "original_workbook_hashes": before_hashes,
         "packages": package_summaries,
     }

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Aggregate the formal experiment with the D/N/E v2.1 metric.
+"""Aggregate the formal experiment with the D/N/E v2.2 metric.
 
 Experiment A alone supplies the primary EICPI_core comparison.  B1, B2, C,
 and D are emitted as independent diagnostic reports and never enter the core
@@ -47,7 +47,8 @@ from result_layout import result_leaf, summary_dir  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 MATRIX = ROOT / "matrix" / "frozen_experiment_matrix.json"
-METRIC_SPEC = ROOT / "evaluation" / "metric_spec_v2_1.json"
+METRIC_SPEC = ROOT / "evaluation" / "metric_spec_v2_2.json"
+OUTPUT_SUFFIX = "v2_2"
 POLLUTANTS = ("SO2", "NOx", "CO", "VOC", "PM10", "PM2.5", "BC", "OC", "NH3")
 B2_CLASSES = (
     "ACTIVITY_MISSING",
@@ -144,15 +145,47 @@ def parameter_signature(role: str, method: Any, value: Any, unit: Any) -> str:
     )
 
 
-def normalize_path(run_dir: Path) -> Path:
+def load_human_normalization(root: Path) -> dict[str, dict[str, Any]]:
+    """Verify re-read observations without changing the original sealed packages."""
+    index = load_json(root / "normalization_index.json")
+    if index.get("schema_version") != "human-baseline-normalization-v2.1.0":
+        raise ValueError("unsupported human normalization contract")
+    if index.get("preserved_originals_unchanged") is not True:
+        raise ValueError("human originals must remain unchanged")
+    originals = Path(index["preserved_original_root"])
+    packages = {}
+    required_files = {"source_decisions.csv", "calculation_totals.csv", "exceptions.csv", "normalization_notes.json"}
+    for package in index["packages"]:
+        relative = package["output"]
+        if relative in packages:
+            raise ValueError(f"duplicate human package: {relative}")
+        directory = root / relative
+        original = originals / package["workbook"]
+        expected_hash = index["original_workbook_hashes"][package["workbook"]]
+        if sha256(original) != expected_hash:
+            raise ValueError(f"original workbook hash mismatch: {original}")
+        files = package.get("derived_files", {})
+        if not required_files.issubset(files):
+            raise ValueError(f"incomplete human export hashes: {directory}")
+        for name, metadata in files.items():
+            if sha256(directory / name) != metadata["sha256"]:
+                raise ValueError(f"human export hash mismatch: {directory / name}")
+        packages[relative] = {**package, "directory": directory, "original_sha256": expected_hash}
+    return packages
+
+
+def normalize_path(
+    run_dir: Path, *, manifest: dict[str, Any] | None = None, refresh: bool = False,
+) -> Path:
     destination = run_dir / "evaluation" / "normalized_items.csv"
-    if destination.is_file():
+    if destination.is_file() and not refresh:
         return destination
     human_totals = next(
         (path for path in (run_dir / "calculation_totals.csv", run_dir / "outputs" / "calculation_totals.csv") if path.is_file()),
         None,
     )
     if human_totals is not None:
+        manifest = manifest if manifest is not None else load_json(run_dir / "run_manifest.json")
         rows = []
         for row in read_csv(human_totals):
             status = "calculated" if row.get("status") == "reported_total" else "information_insufficient"
@@ -164,7 +197,7 @@ def normalize_path(run_dir: Path) -> Path:
                 "emission_t": row.get("emission_t", ""), "standard_reference": "",
                 "reason_codes": row.get("reason_code", ""),
                 "minimum_recalculation_complete": "NA", "complete_process_record": "NA",
-                "run_id": load_json(run_dir / "run_manifest.json").get("run_id", ""), "method": "expert_led",
+                "run_id": manifest.get("run_id", ""), "method": "expert_led",
             })
         destination.parent.mkdir(parents=True, exist_ok=True)
         fields = (
@@ -290,9 +323,11 @@ def expected_semantics(selected: dict[str, list[dict[str, str]]]) -> dict[str, d
     return result
 
 
-def actual_destinations(run_dir: Path, normalized_rows: list[dict[str, str]]) -> dict[str, Any]:
+def actual_destinations(
+    run_dir: Path, normalized_rows: list[dict[str, str]], *, manifest: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     result: dict[str, Any] = {}
-    manifest = load_json(run_dir / "run_manifest.json")
+    manifest = manifest if manifest is not None else load_json(run_dir / "run_manifest.json")
     for human_decisions in (run_dir / "source_decisions.csv", run_dir / "outputs" / "source_decisions.csv"):
         for row in read_csv(human_decisions):
             source_id = row.get("source_id", "")
@@ -620,16 +655,22 @@ def evaluate_one(
     run_dir: Path,
     reference: Path,
     helper: Any,
+    human_observation_dir: Path | None = None,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     manifest = load_json(run_dir / "run_manifest.json")
-    normalized = normalize_path(run_dir)
+    if human_observation_dir is not None and row["method"] != "expert_led":
+        raise ValueError("human observation override cannot be applied to machine runs")
+    observation_dir = human_observation_dir if human_observation_dir is not None else run_dir
+    normalized = normalize_path(
+        observation_dir, manifest=manifest, refresh=human_observation_dir is not None,
+    )
     normalized_rows = read_csv(normalized)
     selected = reference_rows(reference, manifest)
     expected = expected_semantics(selected)
     actual = actual_semantics(normalized_rows)
     expected_sources = {item["source_id"]: item for item in selected["sources"]}
-    destinations = actual_destinations(run_dir, normalized_rows)
-    expected_exceptions, actual_exceptions = exception_groups(run_dir, reference, selected, helper)
+    destinations = actual_destinations(observation_dir, normalized_rows, manifest=manifest)
+    expected_exceptions, actual_exceptions = exception_groups(observation_dir, reference, selected, helper)
     d_atoms = score_decision_atoms(
         expected, actual,
         expected_sources=expected_sources,
@@ -669,6 +710,8 @@ def evaluate_one(
         "seconds_per_record": run_seconds_per_record(run_dir, record_count),
         "process_record_coverage": process_record_coverage,
         "normalized_output": str(normalized),
+        "sealed_run_directory": str(run_dir),
+        "human_observation_revision": "header-mapped-v2.1.0" if human_observation_dir is not None else None,
     }
     context = {
         "expected": expected, "actual": actual, "expected_sources": expected_sources,
@@ -1298,12 +1341,24 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--reference-package", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, default=summary_dir(ROOT))
+    parser.add_argument("--human-normalization-root", type=Path, help="Corrected human reading overlay; sealed results and timing remain unchanged.")
     parser.add_argument("--allow-partial", action="store_true", help="Development only: aggregate sealed subset.")
     args = parser.parse_args()
     reference = args.reference_package.resolve()
     output_dir = args.output_dir.resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
     matrix = load_json(MATRIX)
+    metric_spec = load_json(METRIC_SPEC)
+    human_root = args.human_normalization_root.resolve() if args.human_normalization_root else None
+    human_packages = load_human_normalization(human_root) if human_root else {}
+    output_suffix = f"{OUTPUT_SUFFIX}_human_v2_1" if human_root else OUTPUT_SUFFIX
+    if human_root:
+        required_human_paths = {
+            str(result_leaf(ROOT, row).relative_to(ROOT))
+            for row in matrix["rows"] if row["method"] == "expert_led"
+        }
+        if set(human_packages) != required_human_paths:
+            raise ValueError("human reading overlay must match the matrix human packages exactly")
     missing_seals = [
         row["run_id"] for row in matrix["rows"]
         if not (result_leaf(ROOT, row) / "experiment_seal.json").is_file()
@@ -1328,10 +1383,18 @@ def main() -> None:
         boundary_status = verify_seal_and_collect_boundary_diagnostic(
             row, run_dir, manifest, seal_helper,
         )
-        score, context = evaluate_one(row, run_dir, reference, helper)
+        human_observation_dir = None
+        if human_root and row["method"] == "expert_led":
+            package = human_packages[str(run_dir.relative_to(ROOT))]
+            if package["target"] != row["target"] or package["original_sha256"] != manifest.get("preserved_original_workbook_sha256"):
+                raise ValueError(f"human overlay does not match sealed original: {row['run_id']}")
+            human_observation_dir = package["directory"]
+        score, context = evaluate_one(row, run_dir, reference, helper, human_observation_dir)
         score["method_boundary"] = boundary_status
         sealed_rows.append(row)
         scores[row["run_id"]] = score
+        if len(sealed_rows) % 10 == 0:
+            print(json.dumps({"evaluated_runs": len(sealed_rows), "last_run_id": row["run_id"]}), flush=True)
         if row["experiment"] == "B" and row["input_variant"] in {"B0", "B2"}:
             retained = {"actual", "actual_exception_groups"}
             if row["input_variant"] == "B2":
@@ -1384,17 +1447,26 @@ def main() -> None:
         matrix["rows"], scores,
     )
     summary = {
-        "evaluation_version": "2.1.0",
-        "supersedes_evaluation_version": "2.0.0",
-        "revision_type": "post-experiment_protocol_revision",
+        "evaluation_version": metric_spec["version"],
+        "supersedes_evaluation_version": metric_spec["supersedes"],
+        "revision_type": metric_spec["revision_type"],
+        "revision_reason": metric_spec["revision_reason"],
         "formal_runs_reexecuted_for_revision": False,
+        "human_observation_revision": {
+            "contract": "human-baseline-normalization-v2.1.0",
+            "root": str(human_root),
+            "index_sha256": sha256(human_root / "normalization_index.json"),
+            "reason": "Read generation/emission blocks by original pollutant headers; preserve original workbooks, decisions, seals and timing.",
+            "experiment_A_comparability": "historical_workflow_control_pending_original_input_and_task_evidence",
+            "new_raw_v2_B1_B2_human_trials_available": False,
+        } if human_root else None,
         "metric_spec": str(METRIC_SPEC.relative_to(ROOT)),
         "metric_spec_sha256": sha256(METRIC_SPEC),
         "matrix_version": matrix.get("matrix_version"),
         "sealed_runs_evaluated": len(sealed_rows),
         "pending_runs": len(matrix["rows"]) - len(sealed_rows),
         "independent_quality_gate": False,
-        "reference_interpretation": load_json(METRIC_SPEC)["reference_interpretation"],
+        "reference_interpretation": metric_spec["reference_interpretation"],
         "reference_package_version": load_json(reference / "manifest.json").get("version"),
         "experiment_A_EICPI_core": {
             "anchors": anchors,
@@ -1402,19 +1474,18 @@ def main() -> None:
             "by_method_macro_and_micro": by_method,
         },
         "independent_reports": {
-            "B1": "experiment_B1_v2_1.json", "B2": "experiment_B2_v2_1.json",
-            "C": "experiment_C_v2_1.json", "D": "experiment_D_v2_1.json",
+            name: f"experiment_{name}_{output_suffix}.json" for name in ("B1", "B2", "C", "D")
         },
         "independent_diagnostics": {
             "method_boundary": method_boundary_diagnostics,
         },
     }
-    write_run_csv(output_dir / "run_scores_v2_1.csv", [scores[row["run_id"]] for row in sealed_rows])
+    write_run_csv(output_dir / f"run_scores_{output_suffix}.csv", [scores[row["run_id"]] for row in sealed_rows])
     for name, payload in (("B1", b1), ("B2", b2), ("C", c), ("D", d)):
-        (output_dir / f"experiment_{name}_v2_1.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    (output_dir / "aggregate_summary_v2_1.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
+        (output_dir / f"experiment_{name}_{output_suffix}.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    (output_dir / f"aggregate_summary_{output_suffix}.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps({
-        "evaluation_version": "2.1.0", "sealed_runs_evaluated": len(sealed_rows),
+        "evaluation_version": metric_spec["version"], "sealed_runs_evaluated": len(sealed_rows),
         "pending_runs": len(matrix["rows"]) - len(sealed_rows), "output_dir": str(output_dir),
     }, ensure_ascii=False))
 

@@ -1,0 +1,14 @@
+{
+  "normalization_contract": "human-baseline-normalization-v2.1.0",
+  "workbook_count": 14,
+  "column_checks": 252,
+  "source_cell_checks": 578106,
+  "mismatched_cells": 0,
+  "all_column_sums_equal": true,
+  "all_source_rows_covered_once": true,
+  "all_original_workbook_hashes_unchanged": true,
+  "all_scope_decisions_unchanged": true,
+  "changed_generation_or_emission_values": 214670,
+  "verification_basis": "Independent original-header column addresses and workbook cached values; no emissions recalculated; adapter-generated cell trace distinguished from historical human process records.",
+  "status": "pass"
+}

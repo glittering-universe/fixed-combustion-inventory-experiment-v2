@@ -1,0 +1,582 @@
+{
+  "experiment": "C",
+  "enters_EICPI_core": false,
+  "entries": [
+    {
+      "method": "deterministic_program",
+      "target": "INDUSTRIAL",
+      "scale_percent": 25,
+      "run_count": 3,
+      "seconds_per_record": {
+        "count": 3,
+        "median": 0.001014026955685797,
+        "min": 0.0009993178421733404,
+        "max": 0.0010230692386621687
+      },
+      "wall_seconds": {
+        "count": 3,
+        "median": 1.028223333065398,
+        "min": 1.0133082919637673,
+        "max": 1.037392208003439
+      },
+      "peak_rss_bytes": {
+        "count": 3,
+        "median": 64880640.0,
+        "min": 60768256.0,
+        "max": 65273856.0
+      }
+    },
+    {
+      "method": "deterministic_program",
+      "target": "INDUSTRIAL",
+      "scale_percent": 50,
+      "run_count": 3,
+      "seconds_per_record": {
+        "count": 3,
+        "median": 0.0009048385981737883,
+        "min": 0.0009021785745233102,
+        "max": 0.0009093370760017813
+      },
+      "wall_seconds": {
+        "count": 3,
+        "median": 1.8332029999000952,
+        "min": 1.8278137919842266,
+        "max": 1.842316915979609
+      },
+      "peak_rss_bytes": {
+        "count": 3,
+        "median": 95764480.0,
+        "min": 95764480.0,
+        "max": 95944704.0
+      }
+    },
+    {
+      "method": "deterministic_program",
+      "target": "INDUSTRIAL",
+      "scale_percent": 75,
+      "run_count": 3,
+      "seconds_per_record": {
+        "count": 3,
+        "median": 0.0008619290551642676,
+        "min": 0.0008178280340261489,
+        "max": 0.0008792826230660805
+      },
+      "wall_seconds": {
+        "count": 3,
+        "median": 2.609059249982238,
+        "min": 2.4755654589971527,
+        "max": 2.6615885000210255
+      },
+      "peak_rss_bytes": {
+        "count": 3,
+        "median": 124665856.0,
+        "min": 124551168.0,
+        "max": 124911616.0
+      }
+    },
+    {
+      "method": "deterministic_program",
+      "target": "INDUSTRIAL",
+      "scale_percent": 100,
+      "run_count": 3,
+      "seconds_per_record": {
+        "count": 3,
+        "median": 0.0021242766104723975,
+        "min": 0.0021191385422545074,
+        "max": 0.0021610661146580414
+      },
+      "wall_seconds": {
+        "count": 3,
+        "median": 8.59482316597132,
+        "min": 8.574034541961737,
+        "max": 8.743673499906436
+      },
+      "peak_rss_bytes": {
+        "count": 3,
+        "median": 167641088.0,
+        "min": 167493632.0,
+        "max": 167723008.0
+      }
+    },
+    {
+      "method": "deterministic_program",
+      "target": "POWER",
+      "scale_percent": 25,
+      "run_count": 3,
+      "seconds_per_record": {
+        "count": 3,
+        "median": 0.0062908270139375635,
+        "min": 0.00617232557249673,
+        "max": 0.006304888792560789
+      },
+      "wall_seconds": {
+        "count": 3,
+        "median": 0.9121699170209467,
+        "min": 0.8949872080120258,
+        "max": 0.9142088749213144
+      },
+      "peak_rss_bytes": {
+        "count": 3,
+        "median": 50462720.0,
+        "min": 47104000.0,
+        "max": 50774016.0
+      }
+    },
+    {
+      "method": "deterministic_program",
+      "target": "POWER",
+      "scale_percent": 50,
+      "run_count": 3,
+      "seconds_per_record": {
+        "count": 3,
+        "median": 0.0048627571689264315,
+        "min": 0.004804826162410779,
+        "max": 0.005245729707870874
+      },
+      "wall_seconds": {
+        "count": 3,
+        "median": 1.497729208029341,
+        "min": 1.47988645802252,
+        "max": 1.6156847500242293
+      },
+      "peak_rss_bytes": {
+        "count": 3,
+        "median": 64569344.0,
+        "min": 64094208.0,
+        "max": 64978944.0
+      }
+    },
+    {
+      "method": "deterministic_program",
+      "target": "POWER",
+      "scale_percent": 75,
+      "run_count": 3,
+      "seconds_per_record": {
+        "count": 3,
+        "median": 0.004326801506574563,
+        "min": 0.0043222537233266346,
+        "max": 0.005320940512737775
+      },
+      "wall_seconds": {
+        "count": 3,
+        "median": 2.0335967080900446,
+        "min": 2.0314592499635182,
+        "max": 2.500842040986754
+      },
+      "peak_rss_bytes": {
+        "count": 3,
+        "median": 76038144.0,
+        "min": 69468160.0,
+        "max": 76087296.0
+      }
+    },
+    {
+      "method": "deterministic_program",
+      "target": "POWER",
+      "scale_percent": 100,
+      "run_count": 3,
+      "seconds_per_record": {
+        "count": 3,
+        "median": 0.01299827411871146,
+        "min": 0.012745125066655559,
+        "max": 0.013267790582182446
+      },
+      "wall_seconds": {
+        "count": 3,
+        "median": 7.993938583007548,
+        "min": 7.838251915993169,
+        "max": 8.159691208042204
+      },
+      "peak_rss_bytes": {
+        "count": 3,
+        "median": 154877952.0,
+        "min": 154714112.0,
+        "max": 154894336.0
+      }
+    },
+    {
+      "method": "full",
+      "target": "INDUSTRIAL",
+      "scale_percent": 25,
+      "run_count": 3,
+      "seconds_per_record": {
+        "count": 3,
+        "median": 0.05937508308677475,
+        "min": 0.05778533822286937,
+        "max": 0.06935505777415112
+      },
+      "wall_seconds": {
+        "count": 3,
+        "median": 60.206334249989595,
+        "min": 58.594332957989536,
+        "max": 70.32602858298924
+      },
+      "peak_rss_bytes": {
+        "count": 3,
+        "median": 334921728.0,
+        "min": 334512128.0,
+        "max": 351059968.0
+      }
+    },
+    {
+      "method": "full",
+      "target": "INDUSTRIAL",
+      "scale_percent": 50,
+      "run_count": 3,
+      "seconds_per_record": {
+        "count": 3,
+        "median": 0.037171734307991686,
+        "min": 0.03097958833068611,
+        "max": 0.03739868922749542
+      },
+      "wall_seconds": {
+        "count": 3,
+        "median": 75.30993370799115,
+        "min": 62.76464595797006,
+        "max": 75.76974437490571
+      },
+      "peak_rss_bytes": {
+        "count": 3,
+        "median": 481476608.0,
+        "min": 469811200.0,
+        "max": 487342080.0
+      }
+    },
+    {
+      "method": "full",
+      "target": "INDUSTRIAL",
+      "scale_percent": 75,
+      "run_count": 3,
+      "seconds_per_record": {
+        "count": 3,
+        "median": 0.025974054330329805,
+        "min": 0.025152501348866967,
+        "max": 0.02883422346119555
+      },
+      "wall_seconds": {
+        "count": 3,
+        "median": 78.62346245790832,
+        "min": 76.13662158302031,
+        "max": 87.28119441703893
+      },
+      "peak_rss_bytes": {
+        "count": 3,
+        "median": 608616448.0,
+        "min": 584466432.0,
+        "max": 610467840.0
+      }
+    },
+    {
+      "method": "full",
+      "target": "INDUSTRIAL",
+      "scale_percent": 100,
+      "run_count": 3,
+      "seconds_per_record": {
+        "count": 3,
+        "median": 0.025143181187092883,
+        "min": 0.022750444904342547,
+        "max": 0.02609318009566988
+      },
+      "wall_seconds": {
+        "count": 3,
+        "median": 101.7293110829778,
+        "min": 92.04830008296994,
+        "max": 105.57300666708034
+      },
+      "peak_rss_bytes": {
+        "count": 3,
+        "median": 745226240.0,
+        "min": 735412224.0,
+        "max": 763740160.0
+      }
+    },
+    {
+      "method": "full",
+      "target": "POWER",
+      "scale_percent": 25,
+      "run_count": 3,
+      "seconds_per_record": {
+        "count": 3,
+        "median": 0.4155156520139105,
+        "min": 0.4059514451169826,
+        "max": 0.4259268497108835
+      },
+      "wall_seconds": {
+        "count": 3,
+        "median": 60.24976954201702,
+        "min": 58.86295954196248,
+        "max": 61.75939320807811
+      },
+      "peak_rss_bytes": {
+        "count": 3,
+        "median": 224641024.0,
+        "min": 224346112.0,
+        "max": 240435200.0
+      }
+    },
+    {
+      "method": "full",
+      "target": "POWER",
+      "scale_percent": 50,
+      "run_count": 3,
+      "seconds_per_record": {
+        "count": 3,
+        "median": 0.18730223769161022,
+        "min": 0.17926586810053424,
+        "max": 0.22261071225625234
+      },
+      "wall_seconds": {
+        "count": 3,
+        "median": 57.68908920901595,
+        "min": 55.21388737496454,
+        "max": 68.56409937492572
+      },
+      "peak_rss_bytes": {
+        "count": 3,
+        "median": 253263872.0,
+        "min": 252608512.0,
+        "max": 270319616.0
+      }
+    },
+    {
+      "method": "full",
+      "target": "POWER",
+      "scale_percent": 75,
+      "run_count": 3,
+      "seconds_per_record": {
+        "count": 3,
+        "median": 0.13463294175540177,
+        "min": 0.1305961562957159,
+        "max": 0.13531526648934852
+      },
+      "wall_seconds": {
+        "count": 3,
+        "median": 63.27748262503883,
+        "min": 61.38019345898647,
+        "max": 63.5981752499938
+      },
+      "peak_rss_bytes": {
+        "count": 3,
+        "median": 281493504.0,
+        "min": 225558528.0,
+        "max": 295976960.0
+      }
+    },
+    {
+      "method": "full",
+      "target": "POWER",
+      "scale_percent": 100,
+      "run_count": 3,
+      "seconds_per_record": {
+        "count": 3,
+        "median": 0.12667666206011413,
+        "min": 0.0959635260846178,
+        "max": 0.13691221632847062
+      },
+      "wall_seconds": {
+        "count": 3,
+        "median": 77.90614716697019,
+        "min": 59.01756854203995,
+        "max": 84.20101304200944
+      },
+      "peak_rss_bytes": {
+        "count": 3,
+        "median": 308215808.0,
+        "min": 269615104.0,
+        "max": 312459264.0
+      }
+    },
+    {
+      "method": "generic_tool_agent",
+      "target": "INDUSTRIAL",
+      "scale_percent": 25,
+      "run_count": 3,
+      "seconds_per_record": {
+        "count": 3,
+        "median": 1.1739286656805572,
+        "min": 0.9106744299388442,
+        "max": 1.3226159164615787
+      },
+      "wall_seconds": {
+        "count": 3,
+        "median": 1190.3636670000851,
+        "min": 923.423871957988,
+        "max": 1341.1325392920407
+      },
+      "peak_rss_bytes": {
+        "count": 3,
+        "median": 651001856.0,
+        "min": 515358720.0,
+        "max": 777404416.0
+      }
+    },
+    {
+      "method": "generic_tool_agent",
+      "target": "INDUSTRIAL",
+      "scale_percent": 50,
+      "run_count": 3,
+      "seconds_per_record": {
+        "count": 3,
+        "median": 0.577984468184567,
+        "min": 0.5285520504481828,
+        "max": 0.5856761545123454
+      },
+      "wall_seconds": {
+        "count": 3,
+        "median": 1170.9965325419325,
+        "min": 1070.8464542080183,
+        "max": 1186.579889042012
+      },
+      "peak_rss_bytes": {
+        "count": 3,
+        "median": 727826432.0,
+        "min": 637042688.0,
+        "max": 775864320.0
+      }
+    },
+    {
+      "method": "generic_tool_agent",
+      "target": "INDUSTRIAL",
+      "scale_percent": 75,
+      "run_count": 3,
+      "seconds_per_record": {
+        "count": 3,
+        "median": 0.4749234701988838,
+        "min": 0.37618144553188626,
+        "max": 0.9134092658160049
+      },
+      "wall_seconds": {
+        "count": 3,
+        "median": 1437.5933442920214,
+        "min": 1138.7012356250198,
+        "max": 2764.889847625047
+      },
+      "peak_rss_bytes": {
+        "count": 3,
+        "median": 777863168.0,
+        "min": 575373312.0,
+        "max": 887111680.0
+      }
+    },
+    {
+      "method": "generic_tool_agent",
+      "target": "INDUSTRIAL",
+      "scale_percent": 100,
+      "run_count": 3,
+      "seconds_per_record": {
+        "count": 3,
+        "median": 0.28216062670958747,
+        "min": 0.2518925464861588,
+        "max": 0.3583682344187013
+      },
+      "wall_seconds": {
+        "count": 3,
+        "median": 1141.621895666991,
+        "min": 1019.1572430829983,
+        "max": 1449.9578764580656
+      },
+      "peak_rss_bytes": {
+        "count": 3,
+        "median": 775946240.0,
+        "min": 762003456.0,
+        "max": 811302912.0
+      }
+    },
+    {
+      "method": "generic_tool_agent",
+      "target": "POWER",
+      "scale_percent": 25,
+      "run_count": 3,
+      "seconds_per_record": {
+        "count": 3,
+        "median": 8.005956987358614,
+        "min": 6.478143514082607,
+        "max": 8.124091529882321
+      },
+      "wall_seconds": {
+        "count": 3,
+        "median": 1160.863763166999,
+        "min": 939.3308095419779,
+        "max": 1177.9932718329364
+      },
+      "peak_rss_bytes": {
+        "count": 3,
+        "median": 644366336.0,
+        "min": 580829184.0,
+        "max": 645611520.0
+      }
+    },
+    {
+      "method": "generic_tool_agent",
+      "target": "POWER",
+      "scale_percent": 50,
+      "run_count": 3,
+      "seconds_per_record": {
+        "count": 3,
+        "median": 3.881932924243443,
+        "min": 3.7697238664773245,
+        "max": 4.18111064028586
+      },
+      "wall_seconds": {
+        "count": 3,
+        "median": 1195.6353406669805,
+        "min": 1161.074950875016,
+        "max": 1287.782077208045
+      },
+      "peak_rss_bytes": {
+        "count": 3,
+        "median": 622182400.0,
+        "min": 616595456.0,
+        "max": 774684672.0
+      }
+    },
+    {
+      "method": "generic_tool_agent",
+      "target": "POWER",
+      "scale_percent": 75,
+      "run_count": 3,
+      "seconds_per_record": {
+        "count": 3,
+        "median": 2.430110282004325,
+        "min": 2.2918169250000924,
+        "max": 2.7523146593083747
+      },
+      "wall_seconds": {
+        "count": 3,
+        "median": 1142.151832542033,
+        "min": 1077.1539547500433,
+        "max": 1293.587889874936
+      },
+      "peak_rss_bytes": {
+        "count": 3,
+        "median": 639942656.0,
+        "min": 542801920.0,
+        "max": 720470016.0
+      }
+    },
+    {
+      "method": "generic_tool_agent",
+      "target": "POWER",
+      "scale_percent": 100,
+      "run_count": 3,
+      "seconds_per_record": {
+        "count": 3,
+        "median": 2.304340374186953,
+        "min": 1.7894174572489248,
+        "max": 2.557852600000011
+      },
+      "wall_seconds": {
+        "count": 3,
+        "median": 1417.169330124976,
+        "min": 1100.4917362080887,
+        "max": 1573.079349000007
+      },
+      "peak_rss_bytes": {
+        "count": 3,
+        "median": 741769216.0,
+        "min": 724303872.0,
+        "max": 803176448.0
+      }
+    }
+  ]
+}

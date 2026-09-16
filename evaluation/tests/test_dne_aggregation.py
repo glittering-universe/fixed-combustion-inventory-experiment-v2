@@ -23,6 +23,17 @@ SPEC.loader.exec_module(MODULE)
 
 
 class DneAggregationTests(unittest.TestCase):
+    def test_active_spec_v2_2_fixes_N_and_preserves_D_E(self) -> None:
+        spec = json.loads(MODULE.METRIC_SPEC.read_text(encoding="utf-8"))
+        prior = json.loads((ROOT / "evaluation" / "metric_spec_v2_1.json").read_text(encoding="utf-8"))
+        self.assertEqual(spec["version"], "2.2.0")
+        self.assertEqual(spec["supersedes"], "2.1.0")
+        self.assertEqual(MODULE.OUTPUT_SUFFIX, "v2_2")
+        self.assertEqual(spec["dimensions"]["D"], prior["dimensions"]["D"])
+        self.assertEqual(spec["dimensions"]["E"], prior["dimensions"]["E"])
+        self.assertEqual(spec["core_weights"], prior["core_weights"])
+        self.assertEqual(spec["dimensions"]["N"]["required_population"], "reference_defined_per_method")
+
     def test_metric_spec_v2_1_freezes_hierarchical_D_without_quality_gate(self) -> None:
         spec = json.loads((ROOT / "evaluation" / "metric_spec_v2_1.json").read_text(encoding="utf-8"))
         self.assertEqual(spec["version"], "2.1.0")
@@ -227,6 +238,66 @@ class DneAggregationTests(unittest.TestCase):
         self.assertEqual(rows[0]["status"], "calculated")
         self.assertTrue(destinations["SRC-I"]["selected_for_target"])
         self.assertFalse(destinations["SRC-P"]["selected_for_target"])
+
+    def test_human_observation_overlay_uses_corrected_values_and_preserves_old_cache(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            original = Path(tmp) / "sealed"
+            corrected = Path(tmp) / "corrected"
+            (original / "evaluation").mkdir(parents=True)
+            (corrected / "evaluation").mkdir(parents=True)
+            old_cache = original / "evaluation" / "normalized_items.csv"
+            old_cache.write_text("old sealed observation", encoding="utf-8")
+            (corrected / "evaluation" / "normalized_items.csv").write_text("stale cache", encoding="utf-8")
+            (corrected / "calculation_totals.csv").write_text(
+                "source_id,target,pollutant,status,generation_t,emission_t,reason_code\n"
+                "SRC-I,INDUSTRIAL,VOC,reported_total,0.002544,0.002544,\n",
+                encoding="utf-8",
+            )
+            (corrected / "source_decisions.csv").write_text(
+                "source_id,target,human_scope_decision\nSRC-I,INDUSTRIAL,include\n", encoding="utf-8",
+            )
+            manifest = {"run_id": "A-IND-HUM", "target": "INDUSTRIAL"}
+            path = MODULE.normalize_path(corrected, manifest=manifest, refresh=True)
+            rows = MODULE.read_csv(path)
+            destinations = MODULE.actual_destinations(corrected, rows, manifest=manifest)
+            self.assertEqual(rows[0]["emission_t"], "0.002544")
+            self.assertEqual(rows[0]["run_id"], "A-IND-HUM")
+            self.assertEqual(rows[0]["complete_process_record"], "NA")
+            self.assertEqual(destinations["SRC-I"]["run_target"], "INDUSTRIAL")
+            self.assertEqual(old_cache.read_text(encoding="utf-8"), "old sealed observation")
+            self.assertFalse((corrected / "run_manifest.json").exists())
+
+    def test_human_overlay_rejects_changed_original_or_export(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            originals = root / "originals"
+            originals.mkdir()
+            source = originals / "human.xlsx"
+            source.write_bytes(b"original workbook")
+            package = root / "run"
+            package.mkdir()
+            derived = {}
+            for name in ("source_decisions.csv", "calculation_totals.csv", "exceptions.csv", "normalization_notes.json"):
+                path = package / name
+                path.write_bytes(b"checked export")
+                derived[name] = {"sha256": MODULE.sha256(path), "bytes": path.stat().st_size}
+            index = {
+                "schema_version": "human-baseline-normalization-v2.1.0",
+                "preserved_originals_unchanged": True,
+                "preserved_original_root": str(originals),
+                "original_workbook_hashes": {"human.xlsx": MODULE.sha256(source)},
+                "packages": [{"output": "run", "workbook": "human.xlsx", "target": "INDUSTRIAL", "derived_files": derived}],
+            }
+            (root / "normalization_index.json").write_text(json.dumps(index), encoding="utf-8")
+            packages = MODULE.load_human_normalization(root)
+            self.assertEqual(packages["run"]["directory"], package)
+            (package / "calculation_totals.csv").write_bytes(b"changed export")
+            with self.assertRaisesRegex(ValueError, "export hash"):
+                MODULE.load_human_normalization(root)
+            (package / "calculation_totals.csv").write_bytes(b"checked export")
+            source.write_bytes(b"changed original")
+            with self.assertRaisesRegex(ValueError, "original workbook hash"):
+                MODULE.load_human_normalization(root)
 
     def test_boundary_failure_is_recorded_for_agent_without_rejecting_valid_seal(self) -> None:
         class SealHelper:

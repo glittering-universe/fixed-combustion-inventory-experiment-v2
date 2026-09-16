@@ -1,0 +1,63 @@
+[
+  {
+    "target": "INDUSTRIAL",
+    "inventory_years": [
+      "2022"
+    ],
+    "submitted_source_count": 4160,
+    "current_evaluation_candidate_count": 5922,
+    "original_registered_scope_count": 4025,
+    "source_mapping_methods": {
+      "exact_semantic_signature_order": 4160
+    },
+    "original_manifest_path": "human_baseline/original_packages/实验结果/02_实验A_端到端清单编制/01_工业锅炉/04_既有专家主导型/结果/run_manifest.json",
+    "original_manifest_inputs": [
+      {
+        "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/02_实验A_端到端清单编制/01_工业锅炉/04_既有专家主导型/结果/固定燃烧源-工业锅炉_调整.xlsx",
+        "sha256": "623dc9104b32577d9bbd2b72570bbb62089e6c689788c72f8d9d5dd15aab2b4f"
+      }
+    ],
+    "adapter_raw_hashes_match_current_machine_source_files": true,
+    "conclusion": "Year and recoverable record lineage are consistent; original human input bundle and technical-task requirements are unverified. Preserve as a historical workflow control pending task evidence.",
+    "timing": {
+      "seconds_per_candidate_record": 11.52,
+      "candidate_record_count": 5922,
+      "total_seconds": 68221.44,
+      "basis": "extrapolated_from_user_supplied_per_candidate_rate",
+      "original_user_rate_statement": "11.52秒/条",
+      "measurement_scope_evidence": "Original timed task, sample count and stage coverage are not documented in the supplied packages.",
+      "candidate_denominator_is_extrapolation_assumption": true
+    }
+  },
+  {
+    "target": "POWER",
+    "inventory_years": [
+      "2022"
+    ],
+    "submitted_source_count": 426,
+    "current_evaluation_candidate_count": 5922,
+    "original_registered_scope_count": 367,
+    "source_mapping_methods": {
+      "exact_semantic_signature_order": 422,
+      "ranked_fallback:27": 4
+    },
+    "original_manifest_path": "human_baseline/original_packages/实验结果/02_实验A_端到端清单编制/02_火电热力/04_既有专家主导型/结果/run_manifest.json",
+    "original_manifest_inputs": [
+      {
+        "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/02_实验A_端到端清单编制/02_火电热力/04_既有专家主导型/结果/固定燃烧源-火电、热力生产与供应_调整.xlsx",
+        "sha256": "ba902bb2026d7ea1ecd43426916c268aa8779afffbed0070e8641efab3343fb4"
+      }
+    ],
+    "adapter_raw_hashes_match_current_machine_source_files": true,
+    "conclusion": "Year and recoverable record lineage are consistent; original human input bundle and technical-task requirements are unverified. Preserve as a historical workflow control pending task evidence.",
+    "timing": {
+      "seconds_per_candidate_record": 11.52,
+      "candidate_record_count": 5922,
+      "total_seconds": 68221.44,
+      "basis": "extrapolated_from_user_supplied_per_candidate_rate",
+      "original_user_rate_statement": "11.52秒/条",
+      "measurement_scope_evidence": "Original timed task, sample count and stage coverage are not documented in the supplied packages.",
+      "candidate_denominator_is_extrapolation_assumption": true
+    }
+  }
+]

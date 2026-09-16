@@ -317,7 +317,12 @@ def score_numeric_atoms(
     *,
     method: str,
 ) -> list[Atom]:
-    """Score numeric completeness, reference agreement, and internal arithmetic."""
+    """Score required numeric outputs against a reference-defined population.
+
+    Missing required values fail the applicable checks. Only a non-calculated
+    reference item, or the predeclared human-process exception, makes a numeric
+    check inapplicable; an observed omission cannot remove it from the denominator.
+    """
 
     atoms: list[Atom] = []
     for total_id, expected in sorted(expected_totals.items()):
@@ -340,7 +345,7 @@ def score_numeric_atoms(
             )
         atoms.append(Atom(f"complete:{total_id}", "result_completeness", complete))
 
-        if expected_status != CALCULATED or actual_generation is None or actual_emission is None:
+        if expected_status != CALCULATED:
             atoms.append(Atom(f"value:{total_id}", "reference_value", None))
             atoms.append(Atom(f"recalc:{total_id}", "internal_recalculation", None))
             continue
@@ -348,7 +353,9 @@ def score_numeric_atoms(
         expected_generation = finite_number(expected.get("expected_generation_t"))
         expected_emission = finite_number(expected.get("expected_emission_t"))
         value_pass = bool(
-            expected_generation is not None
+            actual_generation is not None
+            and actual_emission is not None
+            and expected_generation is not None
             and expected_emission is not None
             and close_enough(actual_generation, expected_generation)
             and close_enough(actual_emission, expected_emission)
@@ -360,8 +367,14 @@ def score_numeric_atoms(
         else:
             recorded = (actual or {}).get("recalculation_pass")
             recalc_pass = bool(recorded) if recorded is not None else False
-            recalc_pass = recalc_pass and actual_generation >= 0 and actual_emission >= 0
-            recalc_pass = recalc_pass and actual_emission <= actual_generation + max(1e-6, abs(actual_generation) * 1e-6)
+            recalc_pass = bool(
+                recalc_pass
+                and actual_generation is not None
+                and actual_emission is not None
+                and actual_generation >= 0
+                and actual_emission >= 0
+                and actual_emission <= actual_generation + max(1e-6, abs(actual_generation) * 1e-6)
+            )
         atoms.append(Atom(f"recalc:{total_id}", "internal_recalculation", recalc_pass))
 
     for total_id, actual in sorted(actual_totals.items()):
@@ -373,25 +386,28 @@ def score_numeric_atoms(
             "unexpected_numeric_row" if numeric else "unexpected_blank_row",
         ))
 
-    by_source: dict[str, dict[str, dict[str, Any]]] = defaultdict(dict)
-    for total_id, actual in actual_totals.items():
-        source_id = str(actual.get("source_id") or total_id.split("::", 1)[0])
-        pollutant = str(actual.get("pollutant") or total_id.rsplit("::", 1)[-1])
-        by_source[source_id][pollutant] = actual
-    for source_id, rows in sorted(by_source.items()):
-        pm10, pm25 = rows.get("PM10"), rows.get("PM2.5")
-        if not pm10 or not pm25:
+    expected_pm_pairs: dict[str, dict[str, str]] = defaultdict(dict)
+    for total_id, expected in expected_totals.items():
+        if str(expected.get("expected_status") or "") != CALCULATED:
             continue
+        source_id = str(expected.get("source_id") or total_id.split("::", 1)[0])
+        pollutant = str(expected.get("pollutant") or total_id.rsplit("::", 1)[-1])
+        if pollutant in {"PM10", "PM2.5"}:
+            expected_pm_pairs[source_id][pollutant] = total_id
+    for source_id, pair in sorted(expected_pm_pairs.items()):
+        if "PM10" not in pair or "PM2.5" not in pair:
+            continue
+        pm10 = actual_totals.get(pair["PM10"]) or {}
+        pm25 = actual_totals.get(pair["PM2.5"]) or {}
         ten_generation = finite_number(pm10.get("generation_t"))
         fine_generation = finite_number(pm25.get("generation_t"))
         ten_emission = finite_number(pm10.get("emission_t"))
         fine_emission = finite_number(pm25.get("emission_t"))
-        if None in (ten_generation, fine_generation, ten_emission, fine_emission):
-            continue
         atoms.append(Atom(
             f"pm-order:{source_id}", "internal_recalculation",
             bool(
-                fine_generation <= ten_generation + max(1e-6, abs(ten_generation) * 1e-6)
+                None not in (ten_generation, fine_generation, ten_emission, fine_emission)
+                and fine_generation <= ten_generation + max(1e-6, abs(ten_generation) * 1e-6)
                 and fine_emission <= ten_emission + max(1e-6, abs(ten_emission) * 1e-6)
             ),
         ))

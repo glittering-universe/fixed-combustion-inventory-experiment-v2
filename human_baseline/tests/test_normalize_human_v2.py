@@ -5,6 +5,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from human_baseline import normalize_human_v2 as adapter
+
 from human_baseline.normalize_human_v2 import (
     load_raw_context,
     map_human_workbook,
@@ -47,6 +49,56 @@ POWER_A = (
 )
 
 
+class HumanResultHeaderTests(unittest.TestCase):
+    def test_pollutant_blocks_are_resolved_by_header_not_pollutant_position(self) -> None:
+        generation = ["SO₂（t）", "NOx（t）", "CO（t）", "PM₁₀（t）", "PM₂.₅（t）", "BC（t）", "OC（t）", "VOCs（t）", "NH₃（t）"]
+        emission = ["NH3(t)", "VOC(t)", "OC(t)", "BC(t)", "PM2.5(t)", "PM10(t)", "CO(t)", "NOx(t)", "SO2(t)"]
+        headers = ["企业", *generation, "备注", *generation, "脱硫处理工艺名称", "脱硝去除效率（%）", "PM2.5去除效率（%）", *emission]
+        columns = adapter.resolve_result_columns(headers)
+        self.assertEqual(columns["generation"]["VOC"], 18)
+        self.assertEqual(columns["generation"]["PM10"], 14)
+        self.assertEqual(columns["generation"]["PM2.5"], 15)
+        self.assertEqual(columns["generation"]["BC"], 16)
+        self.assertEqual(columns["generation"]["OC"], 17)
+        self.assertEqual(columns["emission"]["VOC"], 24)
+        self.assertEqual(columns["emission"]["PM10"], 28)
+        self.assertEqual(columns["emission"]["SO2"], 31)
+
+    def test_header_resolved_values_preserve_blank_zero_and_cell_trace(self) -> None:
+        headers = ["SO2(t)", "NOx(t)", "CO(t)", "PM10(t)", "PM2.5(t)", "BC(t)", "OC(t)", "VOC(t)", "NH3(t)",
+                   "脱硫处理工艺名称", "PM2.5去除效率（%）",
+                   "VOC(t)", "NH3(t)", "SO2(t)", "NOx(t)", "CO(t)", "PM10(t)", "PM2.5(t)", "BC(t)", "OC(t)"]
+        values = (1, 2, 3, 4, None, 0, 7, 8, 9, "", 0, 0.8, 0.9, 0.1, 0.2, 0.3, 0.4, 0.5, 0, 0.7)
+        mapping = adapter.WorkbookMapping(
+            workbook=Path("fixture.xlsx"), target="INDUSTRIAL",
+            rows=(adapter.MappedHumanRow(12, "SRC-1", 29, "fixture", True, values),),
+            scope_source_ids=("SRC-1",), mapping_exceptions=(),
+            headers=tuple(headers), sheet_name="原表", result_columns=adapter.resolve_result_columns(headers),
+        )
+        records, exceptions = adapter._calculation_and_exceptions(mapping)
+        by_pollutant = {row["pollutant"]: row for row in records}
+        self.assertEqual(len(records), 9)
+        self.assertEqual((by_pollutant["VOC"]["generation_t"], by_pollutant["VOC"]["emission_t"]), (8, 0.8))
+        self.assertEqual((by_pollutant["PM10"]["generation_t"], by_pollutant["PM10"]["emission_t"]), (4, 0.4))
+        self.assertEqual(by_pollutant["PM2.5"]["generation_t"], "")
+        self.assertEqual(by_pollutant["PM2.5"]["emission_t"], 0.5)
+        self.assertEqual(by_pollutant["PM2.5"]["generation_value_kind"], "blank")
+        self.assertEqual(by_pollutant["BC"]["generation_t"], 0)
+        self.assertEqual(by_pollutant["BC"]["generation_value_kind"], "number")
+        self.assertEqual(by_pollutant["VOC"]["generation_cell"], "H12")
+        self.assertEqual(by_pollutant["VOC"]["emission_cell"], "L12")
+        self.assertEqual(by_pollutant["VOC"]["human_workbook_row"], 12)
+        self.assertEqual(by_pollutant["VOC"]["activity_value"], "NA")
+        self.assertEqual(len(exceptions), 1)
+
+    def test_incomplete_or_ambiguous_blocks_are_not_guessed(self) -> None:
+        block = [f"{p}(t)" for p in ("SO2", "NOx", "CO", "PM10", "PM2.5", "BC", "OC", "VOC", "NH3")]
+        with self.assertRaises(ValueError):
+            adapter.resolve_result_columns([*block, "脱硫处理工艺名称", *block[:-1]])
+        with self.assertRaises(ValueError):
+            adapter.resolve_result_columns([*block, "脱硫处理工艺名称", *block, "备注", *block])
+
+
 @unittest.skipUnless(
     all(path.exists() for path in (RAW_102, RAW_101_ENTERPRISE, RAW_101_CONTROL, INDUSTRIAL_A, POWER_A)),
     "workspace regression data are not available",
@@ -81,6 +133,21 @@ class HumanMappingRegressionTests(unittest.TestCase):
         self.assertEqual(38, power.rows[0].raw_excel_row)
         self.assertEqual("SRC-RAW-90E067EFFFEEA507E10F", industrial.rows[0].source_id)
         self.assertEqual("SRC-RAW-3E66D36FC4F7A71C87FB", power.rows[0].source_id)
+
+        for mapping, voc, pm, gen_cell, emission_cell in (
+            (industrial, 0.002544, 0.000636, "CE2", "CU2"),
+            (power, 0.0191092, 0.0286638, "CH2", "CX2"),
+        ):
+            rows, _ = adapter._calculation_and_exceptions(mapping)
+            first = {row["pollutant"]: row for row in rows if row["human_workbook_row"] == 2}
+            for field in ("generation_t", "emission_t"):
+                self.assertAlmostEqual(first["VOC"][field], voc)
+                self.assertAlmostEqual(first["PM10"][field], pm)
+                self.assertAlmostEqual(first["PM2.5"][field], pm)
+                self.assertEqual(first["BC"][field], 0)
+                self.assertEqual(first["OC"][field], 0)
+            self.assertEqual(first["VOC"]["generation_cell"], gen_cell)
+            self.assertEqual(first["VOC"]["emission_cell"], emission_cell)
 
     def test_batch_normalization_writes_four_declared_artifacts_per_package(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
