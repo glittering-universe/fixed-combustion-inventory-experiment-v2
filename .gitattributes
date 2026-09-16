@@ -6,3 +6,5 @@
 reference/frozen/**/*.csv filter=lfs diff=lfs merge=lfs -text
 archives/**/*.jsonl filter=lfs diff=lfs merge=lfs -text
 
+# Preserve audited CSV bytes, including their original CRLF line endings.
+human_baseline/reading_audit_v2_1/*.csv whitespace=cr-at-eol
