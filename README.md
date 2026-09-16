@@ -8,7 +8,7 @@
 
 完整运行目录、会话、计算过程及数据库保存在`正式实验结果/08_完整封存/`。重新评价时，先执行`python3 reproduction/curate_results.py restore .`解压实验材料，再执行当前评价命令。`python3 reproduction/curate_results.py pack`负责打包当前结果目录。
 
-历史结果和过程材料保存在历史发布附件中。原人工输入位于`human_baseline/original_packages/`；原始环境统计数据、论文文稿和Hermes Desktop实时记录保留在现有位置。
+原人工输入位于`human_baseline/original_packages/`；原始环境统计数据、论文文稿和Hermes Desktop实时记录保留在现有位置。
 
 ## 活动实验边界
 
@@ -48,7 +48,5 @@
 - 独立参照：`reference/frozen/v2.0.0/`
 - D/N/E评价：`evaluation/aggregate_experiment_results_v2.py`（活动指标定义见 `evaluation/metric_spec_v2_2.json`）
 
-当前汇总采用`*_v2_2_human_v2_1.*`，读取修正、逐单元复核及人工得分变化见[人工结果读取与评价修正报告](human_baseline/reading_audit_v2_1/人工结果读取与评价修正报告.md)。原人工工作簿保留原样，旧导出和完整原封存可由发布资产恢复。
+当前汇总采用`*_v2_2_human_v2_1.*`，读取修正、逐单元复核及人工得分变化见[人工结果读取与评价修正报告](human_baseline/reading_audit_v2_1/人工结果读取与评价修正报告.md)。原人工工作簿保留原样，当前实验的完整运行材料可由发布附件恢复。
 - 一键复现：`reproduction/run_all_machine_experiments.sh`
-
-旧实验的完整Git历史、LFS对象、正式运行包、Hermes会话数据库和历史归档已保存到私有GitHub Release `legacy-pre-raw-input-20260821`，不再保留于本地活动仓库。
