@@ -1,0 +1,5 @@
+﻿源ID,基102行号,源类,工业设备,电站设备,工业燃烧方式,电站燃烧方式,燃料一,既有待核原因,本次改动字段
+SRC-RAW-047B5DC7001BE36DF321,5024,INDUSTRIAL,其他锅炉,,,,煤制品,"[""combustion_technology_unresolved""]",[]
+SRC-RAW-DFA7F16BC490271E3139,2226,INDUSTRIAL,其他锅炉,,,,液化石油气,[],[]
+SRC-RAW-A5FDC89121714361A757,2245,POWER,,燃气轮机,,,天然气,[],[]
+SRC-RAW-6E050DFAE5706F68F59C,1628,POWER,,燃气轮机,,,天然气,"[""ammonia_slip_activity_missing""]",[]
