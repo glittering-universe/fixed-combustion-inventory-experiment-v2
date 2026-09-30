@@ -1,0 +1,33 @@
+﻿方法,比较基准,源类,扰动,一致项数,比较项数,语义保持率,差异字段分布
+确定性脚本,同方法未扰动输入,工业锅炉,S1,0,36414,0.0,"{""row_presence"": 36414}"
+确定性脚本,同方法未扰动输入,工业锅炉,S2,0,36414,0.0,"{""row_presence"": 36414}"
+确定性脚本,同方法未扰动输入,工业锅炉,S3,36414,36414,1.0,{}
+确定性脚本,同方法未扰动输入,工业锅炉,S4,0,36414,0.0,"{""row_presence"": 36414}"
+确定性脚本,同方法未扰动输入,火电热力,S1,0,5535,0.0,"{""row_presence"": 5535}"
+确定性脚本,同方法未扰动输入,火电热力,S2,0,5535,0.0,"{""row_presence"": 5535}"
+确定性脚本,同方法未扰动输入,火电热力,S3,5535,5535,1.0,{}
+确定性脚本,同方法未扰动输入,火电热力,S4,0,5535,0.0,"{""row_presence"": 5535}"
+Full,同方法未扰动输入,工业锅炉,S1,36414,36414,1.0,{}
+Full,同方法未扰动输入,工业锅炉,S2,36414,36414,1.0,{}
+Full,同方法未扰动输入,工业锅炉,S3,36414,36414,1.0,{}
+Full,同方法未扰动输入,工业锅炉,S4,36414,36414,1.0,{}
+Full,同方法未扰动输入,火电热力,S1,5535,5535,1.0,{}
+Full,同方法未扰动输入,火电热力,S2,5535,5535,1.0,{}
+Full,同方法未扰动输入,火电热力,S3,5535,5535,1.0,{}
+Full,同方法未扰动输入,火电热力,S4,5535,5535,1.0,{}
+通用Agent,同方法未扰动输入,工业锅炉,S1,0,53298,0.0,"{""method"": 46665, ""parameter"": 14689, ""standard_reference"": 46665, ""reason_codes"": 46512, ""status"": 5504, ""activity"": 5168, ""control"": 12710, ""emission_t"": 2842, ""generation_t"": 651, ""row_presence"": 6633}"
+通用Agent,同方法未扰动输入,工业锅炉,S2,0,53298,0.0,"{""method"": 46665, ""standard_reference"": 46665, ""reason_codes"": 46665, ""status"": 6218, ""parameter"": 7275, ""generation_t"": 7035, ""emission_t"": 7463, ""control"": 4375, ""row_presence"": 6633, ""activity"": 792}"
+通用Agent,同方法未扰动输入,工业锅炉,S3,0,47979,0.0,"{""method"": 45873, ""parameter"": 15456, ""standard_reference"": 45873, ""reason_codes"": 9209, ""status"": 5164, ""control"": 7730, ""emission_t"": 4280, ""generation_t"": 1109, ""row_presence"": 2106, ""activity"": 72}"
+通用Agent,同方法未扰动输入,工业锅炉,S4,0,53298,0.0,"{""method"": 46512, ""activity"": 14853, ""parameter"": 15909, ""control"": 16278, ""standard_reference"": 46665, ""reason_codes"": 46665, ""status"": 5964, ""generation_t"": 1688, ""emission_t"": 2232, ""row_presence"": 6633}"
+通用Agent,同方法未扰动输入,火电热力,S1,0,53298,0.0,"{""row_presence"": 46665, ""method"": 6633, ""standard_reference"": 6605, ""reason_codes"": 6633, ""status"": 997, ""parameter"": 1005, ""control"": 3537, ""emission_t"": 1174, ""generation_t"": 897, ""activity"": 81}"
+通用Agent,同方法未扰动输入,火电热力,S2,0,53298,0.0,"{""row_presence"": 46665, ""method"": 6633, ""activity"": 4162, ""parameter"": 4691, ""control"": 4433, ""standard_reference"": 4663, ""reason_codes"": 6490, ""status"": 3221, ""generation_t"": 1351, ""emission_t"": 1425}"
+通用Agent,同方法未扰动输入,火电热力,S3,0,7344,0.0,"{""status"": 1110, ""method"": 6633, ""parameter"": 1498, ""control"": 4010, ""standard_reference"": 6633, ""reason_codes"": 6633, ""generation_t"": 1856, ""emission_t"": 2092, ""row_presence"": 711}"
+通用Agent,同方法未扰动输入,火电热力,S4,0,53298,0.0,"{""row_presence"": 46665, ""status"": 2322, ""method"": 6633, ""parameter"": 2618, ""control"": 4382, ""standard_reference"": 5799, ""reason_codes"": 6633, ""generation_t"": 1603, ""emission_t"": 1655, ""activity"": 1827}"
+专家流程补充,历史人工结果,工业锅炉,S1,0,37791,0.0,"{""status"": 7175, ""method"": 36198, ""activity"": 32520, ""parameter"": 31697, ""standard_reference"": 36198, ""reason_codes"": 36198, ""emission_t"": 10964, ""control"": 24100, ""generation_t"": 8376, ""row_presence"": 1593}"
+专家流程补充,历史人工结果,火电热力,S1,0,6705,0.0,"{""status"": 2298, ""method"": 2664, ""activity"": 2664, ""parameter"": 2664, ""control"": 1322, ""standard_reference"": 2664, ""reason_codes"": 2664, ""emission_t"": 2320, ""generation_t"": 1319, ""row_presence"": 4041}"
+专家流程补充,历史人工结果,工业锅炉,S2,0,46773,0.0,"{""row_presence"": 10233, ""method"": 36540, ""activity"": 32803, ""parameter"": 32803, ""control"": 26241, ""standard_reference"": 36540, ""reason_codes"": 36540, ""emission_t"": 11348, ""status"": 7135, ""generation_t"": 8690}"
+专家流程补充,历史人工结果,火电热力,S2,0,6705,0.0,"{""status"": 2176, ""method"": 2664, ""activity"": 2664, ""parameter"": 2368, ""control"": 1690, ""standard_reference"": 2664, ""reason_codes"": 2664, ""emission_t"": 2254, ""generation_t"": 1495, ""row_presence"": 4041}"
+专家流程补充,历史人工结果,工业锅炉,S3,0,48006,0.0,"{""row_presence"": 11799, ""status"": 8541, ""method"": 36207, ""activity"": 32184, ""parameter"": 31604, ""standard_reference"": 36207, ""reason_codes"": 4922, ""emission_t"": 8713, ""control"": 31285, ""generation_t"": 4726}"
+专家流程补充,历史人工结果,火电热力,S3,0,6705,0.0,"{""status"": 2143, ""method"": 2664, ""activity"": 2368, ""parameter"": 2664, ""control"": 1854, ""standard_reference"": 2664, ""reason_codes"": 2664, ""emission_t"": 2208, ""generation_t"": 1500, ""row_presence"": 4041}"
+专家流程补充,历史人工结果,工业锅炉,S4,0,47844,0.0,"{""row_presence"": 12375, ""method"": 35469, ""activity"": 35469, ""parameter"": 35469, ""control"": 29181, ""standard_reference"": 35469, ""status"": 7670, ""reason_codes"": 7670, ""generation_t"": 8254, ""emission_t"": 11321}"
+专家流程补充,历史人工结果,火电热力,S4,0,6705,0.0,"{""status"": 2307, ""method"": 2664, ""activity"": 2664, ""parameter"": 2345, ""control"": 1206, ""standard_reference"": 2664, ""reason_codes"": 2664, ""emission_t"": 2328, ""generation_t"": 1523, ""row_presence"": 4041}"
