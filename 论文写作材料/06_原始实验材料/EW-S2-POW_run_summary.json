@@ -1,0 +1,87 @@
+{
+  "requested_target": "POWER",
+  "inputs": [
+    "T_CSES_144-2024.pdf",
+    "source_identity_index.json",
+    "基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+    "基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+    "基101-2001_原始结构脱敏输入_分片03-of04.xlsx",
+    "基101-2001_原始结构脱敏输入_分片04-of04.xlsx",
+    "基101-2002_原始结构脱敏输入.xlsx",
+    "基102-2002_原始结构脱敏输入.xlsx"
+  ],
+  "candidate_count": 5922,
+  "decided_target_counts": {
+    "INDUSTRIAL": 5243,
+    "POWER": 615,
+    "EXCLUDE": 64
+  },
+  "included_source_count": 615,
+  "result_count": 5535,
+  "status_counts": {
+    "calculated": 747,
+    "not_involved": 615,
+    "information_insufficient": 4173
+  },
+  "pollutant_status_counts": {
+    "SO2": {
+      "calculated": 75,
+      "information_insufficient": 540
+    },
+    "NOx": {
+      "calculated": 33,
+      "information_insufficient": 582
+    },
+    "CO": {
+      "calculated": 215,
+      "information_insufficient": 400
+    },
+    "VOC": {
+      "calculated": 113,
+      "information_insufficient": 502
+    },
+    "PM10": {
+      "calculated": 22,
+      "information_insufficient": 593
+    },
+    "PM2.5": {
+      "calculated": 22,
+      "information_insufficient": 593
+    },
+    "BC": {
+      "calculated": 66,
+      "information_insufficient": 549
+    },
+    "OC": {
+      "calculated": 201,
+      "information_insufficient": 414
+    },
+    "NH3": {
+      "not_involved": 615
+    }
+  },
+  "exception_count": 6710,
+  "method": "第7.2节产排污系数法；煤硫和颗粒物依C.1—C.3物料衡算；D.1产生系数按部门、燃料及设备技术选择。输入不具备在线监测有效性证据。",
+  "resolved_interpretations": [
+    "表D.1注c使所列气体燃料单位g/m3优先于表题g/kg",
+    "表A.1颗粒物第二列为PM2.5-10，不将其直接当成PM10去除效率",
+    "热电联产按电力生产行，热力生产和供应按4430部门行",
+    "C.1/C.2中电力生产及热力生产流化床参数0.44/0.07/0.29，不取工业源0.40/0.07/0.20",
+    "D.1注b：装机容量由万千瓦转换为MW，边界100与300均按脚注",
+    "NH3不在第7章核算列表内，not_involved不等于测得零排放"
+  ],
+  "unresolved_items": {
+    "FACTOR_APPLICABILITY_UNRESOLVED": 1592,
+    "SOURCE_RELATION_MISSING": 2361,
+    "FACTOR_NOT_AVAILABLE": 2064,
+    "POLLUTANT_PARAMETER_MISSING": 693
+  },
+  "limitations": [
+    "无治理设施投运小时，不把已报治理平均效率当作全年实际效率",
+    "类别排口DZGL/GYGL在多设备时不支持唯一设备关联",
+    "D.1未提供燃气轮机、生物质及垃圾焚烧适用组合，相关项保留未决",
+    "吨标准煤活动不直接等同物理吨；缺可据指南完成的换算依据时保留未决",
+    "各燃料组件保留可算产生量，组件缺口不会伪装成完整源总量"
+  ],
+  "evaluation": "未进行外部评分"
+}

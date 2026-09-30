@@ -1,0 +1,99 @@
+{
+  "requested_target": "INDUSTRIAL",
+  "inputs": [
+    "T_CSES_144-2024.pdf",
+    "source_identity_index.json",
+    "基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+    "基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+    "基101-2001_原始结构脱敏输入_分片03-of04.xlsx",
+    "基101-2001_原始结构脱敏输入_分片04-of04.xlsx",
+    "基101-2002_原始结构脱敏输入.xlsx",
+    "基102-2002_原始结构脱敏输入.xlsx"
+  ],
+  "candidate_count": 5922,
+  "decision_counts": {
+    "INDUSTRIAL": 5097,
+    "POWER": 816,
+    "EXCLUDE": 9
+  },
+  "result_count": 45873,
+  "status_counts": {
+    "calculated": 29405,
+    "not_involved": 3737,
+    "information_insufficient": 12723,
+    "source_data_invalid": 8
+  },
+  "pollutant_status_counts": {
+    "SO2": {
+      "calculated": 3660,
+      "information_insufficient": 1437
+    },
+    "NOx": {
+      "calculated": 3666,
+      "information_insufficient": 1431
+    },
+    "CO": {
+      "calculated": 3868,
+      "information_insufficient": 1229
+    },
+    "VOC": {
+      "calculated": 3868,
+      "information_insufficient": 1229
+    },
+    "PM10": {
+      "calculated": 3524,
+      "information_insufficient": 1571,
+      "source_data_invalid": 2
+    },
+    "PM2.5": {
+      "calculated": 3524,
+      "information_insufficient": 1571,
+      "source_data_invalid": 2
+    },
+    "BC": {
+      "calculated": 3589,
+      "information_insufficient": 1506,
+      "source_data_invalid": 2
+    },
+    "OC": {
+      "calculated": 3640,
+      "information_insufficient": 1455,
+      "source_data_invalid": 2
+    },
+    "NH3": {
+      "not_involved": 3737,
+      "information_insufficient": 1294,
+      "calculated": 66
+    }
+  },
+  "exception_count": 20145,
+  "root_cause_counts": {
+    "FACTOR_NOT_APPLICABLE": 10860,
+    "POLLUTANT_PARAMETER_MISSING": 7774,
+    "SOURCE_RELATION_MISSING": 1377,
+    "ACTIVITY_MISSING": 126,
+    "HARD_CONSTRAINT_CONFLICT": 8
+  },
+  "methods": [
+    "按表头语义与别名取值，重复低氮燃烧字段按电站/工业设备区分",
+    "源身份按索引原始行关联；行业与设备共同判定，自备电站归POWER",
+    "E.7产生系数法；燃煤SO2/PM/BC/OC物料衡算；E.1烟气脱硝NH3",
+    "煤硫分缺炉型但C.1各工业煤炉相同0.15可计算；层燃炉未细分不强定自动炉排",
+    "明确零消耗输出零；缺失和负消耗分别记活动缺失与硬约束冲突",
+    "E.7气体因子按E.2注b及D.1注c的体积单位解释，万m³乘10000；质量基g/kg乘吨燃料再乘0.001",
+    "治理设施按年份、主体、排口关联。未申报控制按该输入清单无末端设施处理，有孤立关系则留未决",
+    "VOCs燃烧烟气控制效率按8.2.1.2(5)为0。低氮燃烧本体采用A.1的22%；末端设施缺年度投运率时保留产生量，排放量未决",
+    "治理表GYGL是排口类别；同企业仅一个工业锅炉排口可唯一关联，有多个排口则记SOURCE_RELATION_MISSING",
+    "燃气生产与供应D45采用E.2，煤油BC因子按该行业0.12g/kg，不使用E.7的0.01",
+    "已知袋式、湿式、旋风、脱硫和SCR/SNCR等技术可从A.1取得平均去除效率，缺失平均值不一概视为参数不可得"
+  ],
+  "unresolved": [
+    "生物燃料、未分种其他燃料等缺工业锅炉适用因子，不借用开放燃烧或居民炉灶因子",
+    "有末端设施但无投运率，不能假定全年投运；PM10控制需按A.1细粗粒径分别处理",
+    "NH3煤基脱硝因子不直接用于天然气等燃料；无已申报SCR/SNCR设施仅在本次清单范围判为不涉及",
+    "燃料单位不匹配需密度/标准煤转换依据；不使用未经指南给定的常数",
+    "本次计算依据原始设施清单；缺报但并未留下关联证据的设施不能从表内识别",
+    "NH3判为不涉及限于可辨识化石燃料且无已申报氨法脱硝证据；生物燃料等保留氨燃烧因子未决。"
+  ],
+  "evaluation": "未自行评分，未运行外部评价或B0，指标由外部评价产生"
+}

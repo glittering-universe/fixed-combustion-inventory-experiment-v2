@@ -1,0 +1,44 @@
+{
+  "target": "INDUSTRIAL",
+  "inputs": [
+    "T_CSES_144-2024.pdf",
+    "source_identity_index.json",
+    "基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+    "基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+    "基101-2001_原始结构脱敏输入_分片03-of04.xlsx",
+    "基101-2001_原始结构脱敏输入_分片04-of04.xlsx",
+    "基101-2002_原始结构脱敏输入.xlsx",
+    "基102-2002_原始结构脱敏输入.xlsx"
+  ],
+  "candidate_count": 5922,
+  "decisions": {
+    "INDUSTRIAL": 5097,
+    "POWER": 615,
+    "UNRESOLVED": 104,
+    "EXCLUDE": 106
+  },
+  "source_pollutant_count": 45873,
+  "status_counts": {
+    "calculated": 28317,
+    "not_involved": 4488,
+    "information_insufficient": 13068
+  },
+  "method_counts": {
+    "emission_factor": 40776,
+    "scope_assessment": 5097
+  },
+  "exception_counts": {
+    "FACTOR_NOT_APPLICABLE": 8504,
+    "POLLUTANT_PARAMETER_MISSING": 1956,
+    "SOURCE_RELATION_MISSING": 3231
+  },
+  "unit": "t",
+  "unresolved_issues": [
+    "生物质、垃圾和其他未列燃料保持工业设备身份，E.7适用性不足单列。",
+    "层燃炉未明确自动或手动时保留技术未决。",
+    "治理设施投运率未提供，相关排放量保留未决，已可算产生量保留。",
+    "气体单位按同指南D.1脚注c与E.7相同燃料行解释为g/m3；非气态液化气质量基准保持g/kg。",
+    "结果由外部独立评价，未生成指标分数。"
+  ],
+  "scope_basis": "行业§8.1结合工业/电站锅炉设备身份；§7.1行业归POWER；燃气轮机不属工业锅炉；工业锅炉燃料适用性逐污染物判定。"
+}

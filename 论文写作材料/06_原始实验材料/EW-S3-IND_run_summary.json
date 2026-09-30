@@ -1,0 +1,47 @@
+{
+  "inputs": [
+    "T_CSES_144-2024.pdf",
+    "source_identity_index.json",
+    "基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+    "基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+    "基101-2001_原始结构脱敏输入_分片03-of04.xlsx",
+    "基101-2001_原始结构脱敏输入_分片04-of04.xlsx",
+    "基101-2002_原始结构脱敏输入.xlsx",
+    "基102-2002_原始结构脱敏输入.xlsx"
+  ],
+  "candidate_count": 5922,
+  "decided_targets": {
+    "INDUSTRIAL": 5197,
+    "POWER": 670,
+    "EXCLUDE": 51,
+    "UNRESOLVED": 4
+  },
+  "result_count": 46773,
+  "status_counts": {
+    "calculated": 28155,
+    "not_involved": 4549,
+    "information_insufficient": 14069
+  },
+  "exception_count": 14188,
+  "root_cause_counts": {
+    "FACTOR_NOT_APPLICABLE": 8752,
+    "SOURCE_RELATION_MISSING": 5022,
+    "ACTIVITY_MISSING": 112,
+    "POLLUTANT_PARAMETER_MISSING": 302
+  },
+  "methods": [
+    "E.7燃料系数法",
+    "燃煤SO2及颗粒物物料衡算",
+    "E.1煤基脱硝NH3"
+  ],
+  "unresolved": [
+    "E.7未覆盖生物燃料及废物燃料；保留工业设备身份与未决结果",
+    "液化气质量因子遇体积输入，指南未给密度，保留未决",
+    "层燃炉未细分自动/手动，参数不唯一",
+    "治理设施串并联和排口对应缺口按污染物保留",
+    "设施清单无某污染物治理记录时按未记录治理计算；实际投运率未单独提供",
+    "使用设施输入去除效率时其代表该设施实际效率；推荐值计算仅覆盖已明确技术"
+  ],
+  "resolved_guide_difference": "E.7气体燃料脚注a仅解释NOx，E.2同燃料同数值列及脚注b、D.1脚注c明确g/m3；气体体积以此统一。PM10采用细粗粒质量加权A.1效率。",
+  "quality_scores": "由外部评价产生，本次未运行评价或自行报分"
+}

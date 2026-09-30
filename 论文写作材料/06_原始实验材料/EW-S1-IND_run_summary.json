@@ -1,0 +1,50 @@
+{
+  "requested_target": "INDUSTRIAL",
+  "inputs": [
+    "T_CSES_144-2024.pdf",
+    "source_identity_index.json",
+    "基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+    "基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+    "基101-2001_原始结构脱敏输入_分片03-of04.xlsx",
+    "基101-2001_原始结构脱敏输入_分片04-of04.xlsx",
+    "基101-2002_原始结构脱敏输入.xlsx",
+    "基102-2002_原始结构脱敏输入.xlsx"
+  ],
+  "counts": {
+    "candidates": 5922,
+    "decisions": {
+      "INDUSTRIAL": 4061,
+      "EXCLUDE": 1242,
+      "POWER": 615,
+      "UNRESOLVED": 4
+    },
+    "pollutant_rows": 36549,
+    "statuses": {
+      "calculated": 29023,
+      "not_involved": 3587,
+      "information_insufficient": 3939
+    },
+    "exceptions": 5404,
+    "root_causes": {
+      "POLLUTANT_PARAMETER_MISSING": 2235,
+      "factor_not_applicable": 381,
+      "SOURCE_RELATION_MISSING": 2180,
+      "activity_unit_unresolved": 472,
+      "ACTIVITY_MISSING": 136
+    }
+  },
+  "methods": [
+    "8.3化石燃料工业锅炉；45行业按E.2",
+    "E.7固定燃烧系数；煤SO2/PM/BC/OC按公式3—6与C.1—C.3",
+    "E.1烟气脱硝NH3，单位g/kg煤",
+    "气体E.7脚注a误配NOx解释，依据同指南D.1注c、E.2注b，体积气体采用g/m3",
+    "原始年度活动水平零值与空白分别处理；全部组件有效才汇总，治理缺口保留可确定产生量"
+  ],
+  "scope": "行业、电站/工业设备身份、燃料共同判定；纯生物质及废物不属于8.3化石固定燃烧；燃气轮机不当工业锅炉",
+  "unresolved": [
+    "多台工业锅炉与类别治理设施的关系",
+    "治理设施年度投运率缺失及颗粒物分粒径效率",
+    "部分燃料、单位及炉型不足以匹配系数",
+    "非煤脱硝缺同指南适用氨系数"
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "group": "EW-S3-POW",
+  "requested_target": "POWER",
+  "inputs": [
+    "基102-2002_原始结构脱敏输入.xlsx",
+    "基101-2002_原始结构脱敏输入.xlsx",
+    "基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+    "source_identity_index.json",
+    "基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+    "基101-2001_原始结构脱敏输入_分片04-of04.xlsx",
+    "T_CSES_144-2024.pdf",
+    "基101-2001_原始结构脱敏输入_分片03-of04.xlsx"
+  ],
+  "candidate_count": 5922,
+  "decision_counts": {
+    "INDUSTRIAL": 4976,
+    "POWER": 615,
+    "EXCLUDE": 331
+  },
+  "result_count": 5535,
+  "status_counts": {
+    "calculated": 844,
+    "information_insufficient": 4076,
+    "not_involved": 615
+  },
+  "status_by_pollutant": {
+    "SO2": {
+      "calculated": 67,
+      "information_insufficient": 548
+    },
+    "NOx": {
+      "calculated": 91,
+      "information_insufficient": 524
+    },
+    "CO": {
+      "calculated": 215,
+      "information_insufficient": 400
+    },
+    "VOC": {
+      "calculated": 216,
+      "information_insufficient": 399
+    },
+    "PM10": {
+      "information_insufficient": 615
+    },
+    "PM2.5": {
+      "information_insufficient": 615
+    },
+    "BC": {
+      "calculated": 56,
+      "information_insufficient": 559
+    },
+    "OC": {
+      "calculated": 199,
+      "information_insufficient": 416
+    },
+    "NH3": {
+      "not_involved": 615
+    }
+  },
+  "exception_count": 8518,
+  "exception_root_counts": {
+    "SOURCE_RELATION_MISSING": 3006,
+    "FACTOR_NOT_APPLICABLE": 3608,
+    "POLLUTANT_PARAMETER_MISSING": 1880,
+    "ACTIVITY_MISSING": 24
+  },
+  "method": "按原始表头语义读取；同名重复列保留全部值，仅单一非空值可用。行业7.1决定POWER范围，设备决定D.1因子适用性；吨和万立方米按D.1脚注换算；煤硫、灰分按质量百分数代入式(3)-(6)。",
+  "guide_resolutions": [
+    "D.1气体脚注c只标记气体行；液化天然气/液化石油气未标c，按g/kg，不把体积作为质量。",
+    "PM10不是PM2.5-10；表A.1粗细粒级效率不能以一个总尘效率直接代替。",
+    "D.1电力煤NOx容量以MW分档；输入万千瓦乘10为MW。",
+    "C.1-C.3选择电力生产/热力生产和供应行；不使用电力供应或工业行。",
+    "第7章、D.1无NH3核算项，标记not_involved。",
+    "G.2民用生物质及J.1废物处理不能作为电力热力燃料缺口的替代因子。"
+  ],
+  "unresolved": [
+    "D.1未覆盖的燃料、燃气轮机或混燃技术，需要适用实测因子。",
+    "类别排口DZGL/GYGL不等于逐设备排口关系。",
+    "治理运行小时及投运率未提供，保留已能计算的产生量，排放量未决。",
+    "实物量、煤质或炉型缺口按污染物分别处理。"
+  ],
+  "quality_metrics": "未执行外部评价，未自报分数",
+  "limitations": [
+    "部分源的产生量可算而排放量因治理关系或投运率缺失未决。",
+    "源表无符合连续监测完整性要求的时序数据，未采用在线监测法。"
+  ]
+}

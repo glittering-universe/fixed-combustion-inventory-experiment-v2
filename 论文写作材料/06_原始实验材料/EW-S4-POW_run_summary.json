@@ -1,0 +1,56 @@
+{
+  "requested_target": "POWER",
+  "input_files": [
+    "T_CSES_144-2024.pdf",
+    "source_identity_index.json",
+    "基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+    "基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+    "基101-2001_原始结构脱敏输入_分片03-of04.xlsx",
+    "基101-2001_原始结构脱敏输入_分片04-of04.xlsx",
+    "基101-2002_原始结构脱敏输入.xlsx",
+    "基102-2002_原始结构脱敏输入.xlsx"
+  ],
+  "candidate_count": 5922,
+  "decision_counts": {
+    "INDUSTRIAL": 5243,
+    "POWER": 615,
+    "EXCLUDE": 64
+  },
+  "result_count": 5535,
+  "status_counts": {
+    "calculated": 564,
+    "information_insufficient": 4971
+  },
+  "method_counts": {
+    "emission_factor": 4045,
+    "denitrification_process_factor": 615,
+    "material_balance_and_factor": 875
+  },
+  "exception_counts": {
+    "SOURCE_RELATION_MISSING": 4540,
+    "POLLUTANT_PARAMETER_MISSING": 653,
+    "FACTOR_NOT_APPLICABLE": 3002,
+    "ACTIVITY_UNIT_UNRESOLVED": 774,
+    "ACTIVITY_MISSING": 36
+  },
+  "available_generation_count": 1924,
+  "available_emission_count": 564,
+  "scope_basis": "指南7.1四行业与锅炉/燃气轮机设备身份联合判定。工业企业自备设备按8.1归工业；4419不属于7.1列举行业。",
+  "header_handling": "清理空白、字面换行和括号差异，按含义识别S4别名；重复发电/供热字段保留燃料一、二顺序。",
+  "units": "质量活动吨×g/kg÷1000得吨；体积活动万立方米×g/m3÷100得吨。煤质百分数先除100；容量万千瓦×10得MW。",
+  "resolved_standard_details": [
+    "D.1脚注c确认气体系数g/m3；液化天然气按表内无c标记使用g/kg。",
+    "C.1-C.3电力生产和热力生产供应分别给出灰分、粒径和BC/OC比例；OC比例0保留为明确0。",
+    "表A.1的PM2.5-10是粗粒段，不能直接充当PM10总量去除率。",
+    "E.1烟气脱硝NH3单位为g/kg煤，不能套用燃气体积或生物质质量。"
+  ],
+  "unresolved_items": [
+    "治理表为排口类别而非逐设备排口编号，多设备归属及串并联关系缺失。",
+    "治理设施运行时间缺失，平均效率不能直接替代实际去除效率。",
+    "燃气轮机、余热锅炉、垃圾和生物燃料未有D.1匹配系数；不借用民用或开放燃烧参数。",
+    "吨标准煤与实物燃料量转换在允许材料中缺乏完整依据。",
+    "热电联产分项缺口、炉型或煤质缺口按污染物保留。"
+  ],
+  "execution_status": "completed_with_unresolved_source_information",
+  "evaluation_status": "not_performed"
+}

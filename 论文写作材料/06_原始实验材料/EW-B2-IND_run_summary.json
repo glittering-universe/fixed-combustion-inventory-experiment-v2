@@ -1,0 +1,41 @@
+{
+  "inputs": [
+    "基102-2002_原始结构脱敏输入.xlsx",
+    "基101-2002_原始结构脱敏输入.xlsx",
+    "基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+    "source_identity_index.json",
+    "基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+    "基101-2001_原始结构脱敏输入_分片04-of04.xlsx",
+    "T_CSES_144-2024.pdf",
+    "基101-2001_原始结构脱敏输入_分片03-of04.xlsx"
+  ],
+  "candidate_count": 300,
+  "decisions": {
+    "INDUSTRIAL": 146,
+    "POWER": 154
+  },
+  "result_count": 1314,
+  "statuses": {
+    "information_insufficient": 470,
+    "not_involved": 146,
+    "source_data_invalid": 240,
+    "calculated": 458
+  },
+  "methods": {
+    "coefficient": 1018,
+    "scope": 146,
+    "material_balance": 150
+  },
+  "exception_count": 845,
+  "unresolved_items": [
+    "缺消耗总量保留未决，负消耗量保留非法，分项不覆盖总量",
+    "煤硫分和灰分缺口按污染物传播",
+    "GYGL类别不能在多锅炉企业中唯一建立治理对应关系",
+    "总颗粒物实际效率不直接替代分粒径效率",
+    "E.7无NH3燃烧系数，本任务标为not_involved"
+  ],
+  "unit_resolution": "E.7天然气等气体单位结合D.1同参数行及注c、G.1注a解释为g/m3；不借用其他行业系数数值",
+  "scope_basis": "指南7.1及8.3联合行业与设备；制造业实际发电机组归POWER",
+  "source_relation_basis": "统一社会信用代码缺失时使用原始组织机构代码唯一匹配企业；排放口缺失保留未决",
+  "performance_metrics": "由外部评价产生，未运行评价"
+}
