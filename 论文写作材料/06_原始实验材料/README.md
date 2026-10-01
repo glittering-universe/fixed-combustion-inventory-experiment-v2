@@ -5,10 +5,9 @@
 | 文件 | 内容 |
 |---|---|
 | `experiment-A.zip` | 端到端清单编制的原始结果和Agent会话 |
-| `experiment-B.zip` | 输入扰动、缺失与冲突处置的原始结果和Agent会话 |
+| `experiment-B.zip` | B1输入扰动与300对象B2异常处置的原始结果、Agent会话及当前B2评价 |
 | `experiment-C.zip` | 各规模任务的原始结果和Agent会话 |
 | `experiment-D.zip` | Full与模块消融的原始结果和Agent会话 |
-| `experiment-B2-supplement.zip` | 300个源对象的14次运行结果、12份Agent会话及逐对象评价 |
 
 解压后按运行编号查看。`运行索引.csv`对应运行编号、方法、源类和Hermes会话；`逐次评分.csv`对应仓库中的实验评价。
 
