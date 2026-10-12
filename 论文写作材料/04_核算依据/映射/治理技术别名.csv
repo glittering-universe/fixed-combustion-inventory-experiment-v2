@@ -86,7 +86,9 @@
 除尘处理工艺名称,旋风除尘法+袋式除尘法,袋式除尘法,1,mapped,1,reviewed_operational_mapping,按原词或编码语义映射
 除尘处理工艺名称,旋风除尘法+袋式除尘法,机械式除尘法,2,mapped,1,reviewed_operational_mapping,按原词或编码语义映射
 除尘处理工艺名称,机械+湿法除尘法,机械式除尘法,1,mapped,11,reviewed_operational_mapping,按原词或编码语义映射
+除尘处理工艺名称,机械+湿法除尘法,湿式除尘法,2,mapped,11,reviewed_operational_mapping,按原词或编码语义映射
 除尘处理工艺名称,机械+湿法除尘脱硫,机械式除尘法,1,mapped,4,reviewed_operational_mapping,按原词或编码语义映射
+除尘处理工艺名称,机械+湿法除尘脱硫,湿式除尘法,2,mapped,4,reviewed_operational_mapping,按原词或编码语义映射
 除尘处理工艺名称,湿式电除尘,高效静电除尘法,1,mapped,4,reviewed_operational_mapping,按原词或编码语义映射
 除尘处理工艺名称,电袋复合除尘器+湿式电除尘器,高效静电除尘法,1,mapped,2,reviewed_operational_mapping,按原词或编码语义映射
 除尘处理工艺名称,电袋复合除尘器+湿式电除尘器,电袋复合除尘法,2,mapped,2,reviewed_operational_mapping,按原词或编码语义映射
