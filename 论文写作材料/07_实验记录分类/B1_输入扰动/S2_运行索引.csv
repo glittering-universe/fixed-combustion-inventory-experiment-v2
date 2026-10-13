@@ -1,9 +1,0 @@
-实验,运行编号,方法,源类,结果目录,Hermes会话,消息数,工具调用数,聊天记录,材料类型
-B,B-S2-IND-FULL,Full完整方法,工业锅炉,B-S2-IND-FULL/结果,20260821_100630_bef5fb,49,24,B-S2-IND-FULL/聊天记录/聊天记录.md,机器运行输出
-B,B-S2-IND-DET,简单确定性脚本,工业锅炉,B-S2-IND-DET/结果,,,,,机器运行输出
-B,B-S2-IND-GEN,通用工具Agent,工业锅炉,B-S2-IND-GEN/结果,20260821_094159_021d09,185,92,B-S2-IND-GEN/聊天记录/聊天记录.md,机器运行输出
-B1,EW-S2-IND,专家流程补充,工业锅炉,EW-S2-IND_source_pollutant_results.csv,,,,,CSV结果
-B,B-S2-POW-FULL,Full完整方法,火电热力,B-S2-POW-FULL/结果,20260821_103058_854c92,48,23,B-S2-POW-FULL/聊天记录/聊天记录.md,机器运行输出
-B,B-S2-POW-DET,简单确定性脚本,火电热力,B-S2-POW-DET/结果,,,,,机器运行输出
-B,B-S2-POW-GEN,通用工具Agent,火电热力,B-S2-POW-GEN/结果,20260821_100819_312ebf,186,93,B-S2-POW-GEN/聊天记录/聊天记录.md,机器运行输出
-B1,EW-S2-POW,专家流程补充,火电热力,EW-S2-POW_source_pollutant_results.csv,,,,,CSV结果

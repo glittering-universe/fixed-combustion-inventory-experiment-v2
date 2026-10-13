@@ -1,9 +1,0 @@
-分组,实验,运行编号,方法,源类,结果目录,Hermes会话,消息数,工具调用数,聊天记录,材料类型
-基准/主实验,B,B-B0-IND-DET,简单确定性脚本,工业锅炉,B-B0-IND-DET/结果,,,,,机器运行输出
-基准/主实验,B,B-B0-IND-FULL,Full完整方法,工业锅炉,B-B0-IND-FULL/结果,20260821_082935_148956,42,24,B-B0-IND-FULL/聊天记录/聊天记录.md,机器运行输出
-基准/主实验,B,B-B0-IND-GEN,通用工具Agent,工业锅炉,B-B0-IND-GEN/结果,20260821_080904_afc70a,184,91,B-B0-IND-GEN/聊天记录/聊天记录.md,机器运行输出
-基准/主实验,B,B-B0-POW-DET,简单确定性脚本,火电热力,B-B0-POW-DET/结果,,,,,机器运行输出
-基准/主实验,B,B-B0-POW-FULL,Full完整方法,火电热力,B-B0-POW-FULL/结果,20260821_083137_68428b,55,33,B-B0-POW-FULL/聊天记录/聊天记录.md,机器运行输出
-基准/主实验,B,B-B0-POW-GEN,通用工具Agent,火电热力,B-B0-POW-GEN/结果,20260821_083302_0d04d0,189,96,B-B0-POW-GEN/聊天记录/聊天记录.md,机器运行输出
-基准/主实验,B0,EW-B0-IND,专家流程补充,工业锅炉,EW-B0-IND_source_pollutant_results.csv,,,,,CSV结果
-基准/主实验,B0,EW-B0-POW,专家流程补充,火电热力,EW-B0-POW_source_pollutant_results.csv,,,,,CSV结果
