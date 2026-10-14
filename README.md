@@ -13,4 +13,4 @@
 
 [总运行记录](总运行记录.csv) · [效率计算基准](效率计算基准.csv) · [参照答案](核算依据/参照答案.csv) · [核算依据](核算依据)
 
-[Release材料目录](Release原始材料) · [Release下载](https://github.com/glittering-universe/fixed-combustion-inventory-experiment-v2/releases/tag/raw-experiment-materials)
+[Release下载](https://github.com/glittering-universe/fixed-combustion-inventory-experiment-v2/releases/tag/raw-experiment-materials)
