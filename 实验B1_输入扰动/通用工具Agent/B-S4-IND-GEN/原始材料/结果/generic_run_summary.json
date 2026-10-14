@@ -1,0 +1,92 @@
+{
+  "run_id": "B-S4-IND-GEN",
+  "scenario": "generic_tool_agent",
+  "target": "INDUSTRIAL",
+  "input_files": {
+    "device_fuel_base": "inputs/基102-2002_原始结构脱敏输入.xlsx",
+    "enterprise_master": [
+      "inputs/基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+      "inputs/基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+      "inputs/基101-2001_原始结构脱敏输入_分片03-of04.xlsx",
+      "inputs/基101-2001_原始结构脱敏输入_分片04-of04.xlsx"
+    ],
+    "control_facility_base": "inputs/基101-2002_原始结构脱敏输入.xlsx",
+    "source_identity_index": "inputs/source_identity_index.json",
+    "standard": "inputs/T_CSES_144-2024.pdf"
+  },
+  "processed_source_count": 5922,
+  "target_decision_counts": {
+    "INDUSTRIAL": 5098,
+    "POWER_HEAT": 815,
+    "OUT_OF_SCOPE": 9
+  },
+  "inventory_item_count": 53298,
+  "status_counts": {
+    "calculated": 31707,
+    "not_involved": 12514,
+    "information_insufficient": 9077,
+    "source_data_invalid": 0
+  },
+  "status_counts_by_pollutant": {
+    "SO2": {
+      "calculated": 3963,
+      "information_insufficient": 1135,
+      "not_involved": 824
+    },
+    "NOx": {
+      "calculated": 3964,
+      "information_insufficient": 1134,
+      "not_involved": 824
+    },
+    "CO": {
+      "calculated": 3964,
+      "information_insufficient": 1134,
+      "not_involved": 824
+    },
+    "VOC": {
+      "calculated": 3964,
+      "information_insufficient": 1134,
+      "not_involved": 824
+    },
+    "PM25": {
+      "calculated": 3963,
+      "information_insufficient": 1135,
+      "not_involved": 824
+    },
+    "PM10": {
+      "calculated": 3963,
+      "information_insufficient": 1135,
+      "not_involved": 824
+    },
+    "BC": {
+      "calculated": 3963,
+      "information_insufficient": 1135,
+      "not_involved": 824
+    },
+    "OC": {
+      "calculated": 3963,
+      "information_insufficient": 1135,
+      "not_involved": 824
+    },
+    "NH3": {
+      "not_involved": 5922
+    }
+  },
+  "exception_group_count": 5,
+  "output_paths": {
+    "source_decisions": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/04_S4组合扰动/01_工业锅炉/03_通用工具调用型Agent/R1/outputs/source_decisions.csv",
+    "generic_inventory_items": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/04_S4组合扰动/01_工业锅炉/03_通用工具调用型Agent/R1/outputs/generic_inventory_items.csv",
+    "generic_source_disposition": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/04_S4组合扰动/01_工业锅炉/03_通用工具调用型Agent/R1/outputs/generic_source_disposition.csv",
+    "generic_exception_list": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/04_S4组合扰动/01_工业锅炉/03_通用工具调用型Agent/R1/outputs/generic_exception_list.csv",
+    "generic_run_summary": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/04_S4组合扰动/01_工业锅炉/03_通用工具调用型Agent/R1/outputs/generic_run_summary.json"
+  },
+  "rules_and_scripts": [
+    "scripts/build_inventory.py",
+    "T/CSES 144-2024 第7/8章、公式(2)-(6)、附录A表A.1、附录C表C.1-C.3、附录E表E.7"
+  ],
+  "unfinished_items": [
+    "燃生物质锅炉等无标准产生系数的燃料组分未核算（信息不足，见例外清单）",
+    "治理设施投运率数据缺失，去除效率按表A.1平均效率×100%投运处理",
+    "填报治理效率存在>100%或缺失等异常，仅按表A.1映射或有效填报值使用"
+  ]
+}

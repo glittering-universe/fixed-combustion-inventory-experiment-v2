@@ -1,0 +1,30 @@
+{
+  "run_id": "B2-300-POW-GEN-R3",
+  "input_files": [
+    "基102-2002_原始结构脱敏输入.xlsx",
+    "基101-2001_原始结构脱敏输入_分片01~04.xlsx",
+    "基101-2002_原始结构脱敏输入.xlsx",
+    "T_CSES_144-2024.pdf",
+    "source_identity_index.json"
+  ],
+  "total_sources": 300,
+  "power_sources": 139,
+  "industrial_boiler_sources": 161,
+  "out_of_scope_sources": 0,
+  "total_inventory_items": 2700,
+  "status_counts": {
+    "not_involved": 1449,
+    "calculated": 698,
+    "information_insufficient": 301,
+    "source_data_invalid": 252
+  },
+  "output_paths": {
+    "source_decisions": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-POW-GEN-R3/outputs/source_decisions.csv",
+    "generic_inventory_items": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-POW-GEN-R3/outputs/generic_inventory_items.csv",
+    "generic_source_disposition": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-POW-GEN-R3/outputs/generic_source_disposition.csv",
+    "generic_exception_list": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-POW-GEN-R3/outputs/generic_exception_list.csv",
+    "generic_run_summary": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-POW-GEN-R3/outputs/generic_run_summary.json"
+  },
+  "unresolved_items": [],
+  "script_path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-POW-GEN-R3/outputs/process_inventory.py"
+}

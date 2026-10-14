@@ -1,0 +1,45 @@
+任务完成。全部输出已生成并通过校验。
+
+运行包：/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/02_实验A_端到端清单编制/02_火电热力/03_通用工具调用型Agent/R1
+
+输出文件（outputs/，UTF-8）：
+  source_decisions.csv              5922 行（全部候选源判定）
+  generic_inventory_items.csv       53298 行（5922 源 × 9 污染物）
+  generic_source_disposition.csv    5922 行
+  generic_exception_list.csv        8 行（根因组）
+  generic_run_summary.json          运行汇总
+
+采用规则/脚本：
+  scripts/compute_inventory.py            核算脚本（规则全部内置并注释出处）
+  scripts/qa_checks.py                    校验脚本（列名/唯一性/非负性/JSON对齐）
+  scripts/t_cses_144_extracted_text.txt   标准 PDF 全文提取（溯源用）
+
+一、源判定（依据 T/CSES 144-2024 §7.1，电力热力源=D4411/D4412/D4417/D4430 企业生产设施）
+  POWER（火电热力）       615 源：行业∈{4411,4412,4417,4430}（含电站锅炉与这些企业的工业锅炉）
+  INDUSTRIAL_BOILER      5106 源：工业锅炉且行业不在D44
+  OUT_OF_SCOPE            201 源：电站锅炉/燃气轮机但行业不在D44（工业企业自备电站，非电力热力源）
+  每源按 source_identity_index 的 source_id 稳定标识，不按ID格式推断。
+
+二、核算（公式(2) E=A×EF×(1-η)；燃煤 SO2/PM2.5/PM10/BC/OC 用公式(3)~(6)+表C.1~C.3 物料衡算；
+  其余污染物用表D.1；NOx 电力生产按装机容量取 8.96/8.19/7.21；η 用基101-2002 填报去除效率优先、
+  表A.1 兜底、多设施相乘、低氮燃烧 22% 计入 NOx 链；PM10 按细/粗组分分别扣减效率）
+  状态统计：calculated 2662 项，information_insufficient 2873 项，not_involved 47763 项，
+  source_data_invalid 0 项。已核算排放量合计（吨）：SO2 771810.5、NOx 523747.6、CO 328882.4、
+  VOC 62233.2、PM2.5 470599.4、PM10 1803614.5、BC 942.5、OC 8.3（NH3 无系数未计入）。
+  数值经手工复算验证（如 4411 煤粉炉 S=0.51%、Aar=13.98%：EF_SO2=8.67 g/kg、产生 5718.6 t、
+  排放 101.8 t；多燃料 F1/F2 组件在三个 record_json 数组按 component_id 一一对齐）。
+
+三、未完成事项（information_insufficient 根因，均在 generic_exception_list.csv 列出）
+  1) NH3：标准未提供电力热力源 NH3 产生系数，615 源全部未量化；
+  2) 4417 生物质能发电（264 源）及生物燃料/城市生活垃圾/工业废料/其他燃料：表D.1 无对应行业/燃料条目；
+  3) 煤矸石（2 源燃料二）：表C.1~C.3 无物料衡算参数；
+  4) 电力供应(4412)/煤粉炉（20 源）BC/OC：表C.3 无 fBC/fOC 条目；
+  5) 燃烧方式 RM06"其他"（4412 1 源）无法对应表D.1 技术；
+  6) 处理工艺与去除效率均为空的治理设施按 η=0 处理；
+  7) 设施投运率无运行时间数据，按 1 假设。
+
+四、校验结果（scripts/qa_checks.py，全部 PASS）
+  列名与要求的 12/5/4/5 字段一致；source_id 与 (source_id,pollutant) 唯一；
+  数值无负值、calculated 行有值、其余为空；全部 record_json 合法 JSON 且数组长度/顺序/component_id 对齐；
+  PM10 行 fine/coarse 效率均给出，其余污染物 efficiency 均给出（无治理明确写 0）；
+  范围覆盖：5922 候选源在三个 CSV 中各有一行，9 污染物各 5922 行。

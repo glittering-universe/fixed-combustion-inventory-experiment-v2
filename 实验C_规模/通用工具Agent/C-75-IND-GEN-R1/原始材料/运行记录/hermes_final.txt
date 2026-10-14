@@ -1,0 +1,43 @@
+受本轮工具调用次数上限限制,无法再继续调用工具。以下是当前实际执行状态与结果汇总(所有内容均基于真实工具运行输出,无虚构)。
+
+一、已完成的主体工作
+1. 解析运行包输入
+   - run_manifest.json: 冻结候选 4442 个 source_id(全部 B102 基102 行),target=INDUSTRIAL,scale=75%。
+   - source_identity_index.json: 确认 source_id ↔ 基102 Excel 行(表头第1行,pandas 索引 = source_row−2),4442 条一一对应且无冲突;未按 ID 格式推断去向。
+   - T_CSES_144-2024 标准提取为文本(86页),采用其第7/8章方法、公式(2)(3)-(6)、附录A 表A.1(控制效率)、附录C 表C.1/C.2/C.3(燃煤硫灰入底灰比例、粒径分布、BC/OC占比)、附录E 表E.7(工业化石燃料固定燃烧产生系数)。
+   - 基102/基101-2001/基101-2002 三表交叉核对: 治理设施表(基101-2002)中排放口代码 GYGL=“工业锅炉排放口”(1552条)按企业挂接至该企业全部工业锅炉;DZGL 对应电站锅炉(本运行不核算);QT=其他排放口不适用。
+
+2. 分类判断(全部 4442 行,无边界歧义:0行两设备字段同时为空或同时非空)
+   - 工业锅炉编号非空 3881 行 → decided_target=INDUSTRIAL,in_scope
+   - 电站锅炉/燃气轮机编号非空 561 行 → decided_target=ELECTRIC_THERMAL,not_involved(含61个电力行业代码下的工业锅炉行按设备判断为工业锅炉;152个非电力行业企业的电站锅炉行按设备判断为火电热力)
+
+3. 核算(工业锅炉行,产排污系数法 E=A×EF×(1−η),9污染物:SO2/NOx/CO/VOC/PM2.5/BC/OC/NH3/PM10)
+   - 燃煤 SO2/PM2.5/PM10/BC/OC 按公式(3)-(6)物料衡算(公式内硫分灰分以千分率计,数据列为%所以×10,与产排污系数手册量级一致);CO/NOx/VOC 用表E.7;天然气/油/气按表E.7;VOC燃烧烟气治理η=0;NH3在表E.7无该列取0。
+   - 多燃料组分不合并: 燃料一(F1)、燃料二(F2)、其他燃料消耗总量(F3,吨标准煤,判信息不足)作为独立组分,三个 JSON 数组按 component_id 对齐。
+   - PM10 按 PM2.5 与 PM2.5–10 组分分别扣减后再相加计算排放量;control_record 中 fine/coarse 分别记录 PM2.5 与 PM2.5–10 去除效率。
+   - 治理效率: 优先基101-2002填报去除效率(>100%视为异常回退附录A,按工艺名称映射);缺失时按表A.1映射;多设施按串联 1−Π(1−η) 组合;设施存在但无工艺且无效率 → 该企业对应污染物效率未知,判信息不足并写入异常清单。
+
+二、实际输出(已生成,UTF-8)
+目录: /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/01_工业锅炉/03_通用工具调用型Agent/R1/outputs
+- source_decisions.csv(4442行)
+- generic_inventory_items.csv(39978行 = 4442×9)
+- generic_source_disposition.csv(4442行)
+- generic_exception_list.csv(12个根因组)
+- generic_run_summary.json
+脚本: .../R1/scripts/build_inventory.py(主流水线)、validate_outputs.py、deepcheck.py、spotcheck.py、extract_pdf.py
+
+三、验证结果(真实校验输出)
+- 四CSV列名、行数、source_id唯一性、候选4442全覆盖: 全部通过
+- 三个 *_record_json 全部为合法JSON数组;数组长度/顺序/component_id 完全对齐(misalign=0,初版发现的7470条已修复)
+- 数值非负性: 0条违例;calculated行无空值(empty_calculated=0)
+- 状态计数: calculated 26962 / information_insufficient 7967 / not_involved 5049(561×9)
+- 聚合结果(仅INDUSTRIAL calculated行,吨): SO2 gen 11296.4 emi 2352.7;NOx 14309.2/7931.9;CO 15545.2/15545.2;VOC 7456.3/7456.3;PM2.5 8735.4/1115.2;BC 129.6/23.5;OC 21.2/8.6;NH3 0/0;PM10 24762.1/2913.5
+- 手工抽查与记录完全吻合(如天然气锅炉 NOx=56.946万m³×2.09g/m³÷1e6=1.190t;燃煤锅炉 NOx=4.0t×(1−0.92)=0.312t,与基101-2002脱硝设施填90%+低氮22%组合一致)
+
+四、未完成/遗留事项(如实说明)
+1. 7行(共检查23993行)存在四舍五入级不一致: emission_t 由全精度η计算,而 control_record.efficiency 保留6位小数,导致 emission≠generation×(1−存储η),差值约1e-6绝对量级;数据本身正确,仅自洽性瑕疵,建议将 emission 改由存储效率回算后重出文件(本轮未完成)。
+2. 煤矸石(用于燃料)2行/18项: 表E.7工业行无煤矸石列,当前判 information_insufficient(no_E7_row_for_煤矸石(用于燃料));是否套用“其他煤类”近似系数尚待裁量,本轮未定。
+3. 12个异常根因组已登记(需用户补充: 非化石燃料产生系数与物理量、缺失燃料类型、缺失硫/灰分、缺失燃烧方式、治理效率未知等),详见 generic_exception_list.csv;其中“生物燃料(吨标准煤)等非化石燃料”占信息不足主体(7245项)。
+4. 表A.1的低氮+SNCR/SCR组合行PM协同列为0与其单行SNCR/SCR的PM协同去除(57/75/57/57)存在标准内部不一致;本运行按字面采用(单行含协同、组合行不含),已在 run_summary 的 assumptions 中说明。
+
+如需继续,建议下一步: 修复上述第1项自洽性问题并重新生成四个CSV,同时裁决煤矸石归属后重跑 build_inventory.py。

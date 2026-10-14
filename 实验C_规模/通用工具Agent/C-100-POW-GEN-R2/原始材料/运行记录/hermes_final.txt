@@ -1,0 +1,46 @@
+本运行已达工具调用次数上限，先如实汇报已完成的执行结果与剩余未决检查项。所有下述文件已由真实脚本运行写入磁盘，统计数字来自脚本实际输出。
+
+一、已完成
+
+1. 输入解析
+   - 基102-2002（5922行设备/燃料表）、基101-2002（43902行治理设施表）、基101-2001（企业主表）、source_identity_index.json 与 run_manifest.json 已读取并核对；source_id→行号映射已用"序号"字段全量校验（5922条一致）。
+   - PDF 标准 T/CSES 144-2024（86页）已全文提取并解析出参数表：表D.1 电力热力源产生系数（70行）、表E.7 化石燃料固定燃烧系数（24行）、附录A 控制措施平均去除效率（50行）、附录C 燃煤硫分/灰分/粒径/BC-OC比例（C.1/C.2/C.3），固化于 _work/standard_parameters.json。
+
+2. 判定规则（对全部5922个候选逐一判定）
+   - 有"电站锅炉/燃气轮机编号"→POWER（737行）；
+   - 有"工业锅炉编号"且行业为D44（4411/4412/4417/4419/4420/4430）→POWER（79行）；
+   - 其余工业锅炉→范围外 BOILER（5106行）。
+   - 汇总按 run_manifest 的 POWER 目标执行。
+
+3. 核算规则（仅依据 PDF 与未留空字段）
+   - 产排污系数法（标准公式2）：E=A×EF×(1−η)，按燃料分别应用 D.1 系数（电力生产/电力供应/热力生产和供应按行业选表）；气体燃料按 g/m3、固体/液体按 g/kg 基准换算；燃煤 SO2/PM/BC/OC 用物料衡算公式(3)-(6)及附录C参数；NOx 装机容量分档（≤100MW取8.96，(100,300)取8.19，≥300取7.21）；治理效率取基101-2002按"统一社会信用代码+排放口类别"匹配的去除效率，无设施明确记0；低氮燃烧按附录A取22%；NH3 因标准未提供电力热力燃烧系数记 not_involved。
+   - "生物燃料/城市生活垃圾/工业废料/其他燃料"、燃气轮机、无法映射的燃煤燃烧方式、去除效率缺失或歧义等，一律记 information_insufficient 并给出 reason_code，不编造系数。
+
+4. 输出文件（均位于运行包 outputs/，UTF-8）
+   - source_decisions.csv：5922行，source_id 唯一
+   - generic_source_disposition.csv：5922行，source_id 唯一
+   - generic_inventory_items.csv：53298行（5922源×9污染物，每源9行）
+   - generic_exception_list.csv：9个根因组
+   - generic_run_summary.json：含输入文件、处理源数、核算项数、各状态数、输出路径、未完成事项、规则/脚本路径
+
+5. 已执行的真实校验（verify1.py 实跑通过）
+   - 四个CSV列名齐全、source_id/pollutant 组合唯一；
+   - 53298行三个 *_record_json 全部为合法JSON数组，且 activity/parameter/control 数组长度与 component_id 顺序一一对应，无错位；
+   - calculated 行 generation/emission 非负、emission≤generation；PM10行均含 fine_efficiency 与 coarse_efficiency；
+   - 状态计数：calculated 2532、not_involved 46770、information_insufficient 3996、source_data_invalid 0；
+   - 各类排放量合计（吨）：SO2 176556、NOx 1121753、CO 342640、PM2.5 105982、PM10 398710、BC 291、OC 21.7（VOC未列出说明在被截断前的输出中已核对，NH3为not_involved）。
+
+二、尚未完成（须在后续轮次完成的剩余检查，未伪造结论）
+1. 核查370行 reason_code 含 POLLUTANT_PARAMETER_MISSING 的来源构成——该标记本意是"某组分某污染物特定参数缺失"的兜底，需确认其全部落于合理根因（如燃煤PM物料衡算参数缺失、燃气轮机等已列原因之外的情形），并将未覆盖的根因组补充进 exception_list。
+2. 核查 calculated 中470行 generation_t=0 的合法性——预期为低/零系数燃料（如天然气SO2=0、炼厂干气全零系数），需抽样确认并确保记录为正常零值而非错误。
+3. 抽样手工复算2-3条（如单燃料天然气锅炉SO2=0、燃煤煤粉炉SO2物料衡算）交叉验证脚本数值。
+4. 复核 generic_run_summary.json 中的"未完成事项"文本与最终 exception_list 一致。
+
+三、关键脚本路径（记录于运行包内，属本次实验工作产物）
+- /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/02_火电热力/03_通用工具调用型Agent/R2/_work/compute_inventory.py
+- 同目录 _work/build_params.py（PDF参数解析）
+
+输出目录：
+/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/02_火电热力/03_通用工具调用型Agent/R2/outputs/
+
+请允许在下一轮继续完成上述3项剩余校验后再进行最终交付确认。

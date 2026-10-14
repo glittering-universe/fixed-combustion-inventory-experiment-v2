@@ -1,0 +1,26 @@
+运行 D-POW-W_O_EXECUTABLE_RULE_GATE 全部阶段执行完毕，报告如下。
+
+阶段状态（w_o_executable_rule_gate）
+- 1a adapt_environmental_workbooks: complete（revision 9353f55a…，5922 候选，4 分片输入哈希一致）
+- 1b build_device_emission_sources: complete（revision ec147dae…，POWER 纳入 615 源）
+- 2 generate_pollutant_calculation_items: complete（revision 23e66af6…，6231 核算项：8 污染物×702 + NH3 615）
+- 3 select-calculation-rules-with-agent（Agent 接管）: complete（revision b8221849…）
+  - 仅使用 summarize_agent_rule_options 的原始组合（829 组，无冻结规则值），自拟紧凑策略：17 条 factor_rules（吨级燃煤硫平衡/排放因子 + 万立方米燃气备用 + NH3 逃逸），control_efficiency_by_pollutant（SO2/NOX 按脱硫脱硝技术）、pm_efficiencies（PM10/PM25/BC/OC 按除尘技术）、nh3（SCR/SNCR/SCR+SNCR 逃逸因子）
+  - 决策覆盖率：6231/6231 = 1.0（complete_decision_count 6231，recorded_count 6231）
+  - 未调用 execute_tcses_calculation_rules
+- 4 decide-calculation-admission（恢复原工具）: complete（revision 545f92aa…，allow_calculation 5360 / not_applicable 20 / withhold 851）
+- 5 calculate-fixed-combustion-emissions（恢复原工具）: complete（revision 1f3997dc…，calculated 5360 / NA-zero 20 / withheld 851，无公式失败）
+- 6 review-and-export-inventory（恢复原工具）: complete（revision bfd2c431…，error_count 0，warning_count 0）
+- 7 archive-calculation-process（恢复原工具）: complete（revision dfaeb349…）
+
+输出路径（run package: …/05_实验D_方法组成贡献/02_去掉可执行规则门控/02_火电热力/R1）
+- outputs/固定燃烧源-火电、热力生产与供应_实验结果.xlsx（POWER：615 源 / 6231 项 / 31791 公式 / 0 公式错误，sha256 f078e0d3…）
+- outputs/固定燃烧源-工业锅炉_实验结果.xlsx（INDUSTRIAL：0 源 0 项，符合 POWER 目标范围）
+- outputs/calculation_items.csv、outputs/source_decisions.csv、outputs/source_pollutant_totals.csv
+- outputs/最终异常清单.csv（sha256 aeb7d3e4…）、outputs/exceptions.csv
+- outputs/machine_qa_power.json、outputs/machine_qa_industrial.json
+- trace/complete_calculation_process.jsonl（6231 条完整过程记录，sha256 fd3b86b1…）
+
+异常数量：error_count 0，warning_count 0，exception_group_count 225（对应 stage 4 的 851 项 withhold + 20 项 not_applicable 及经验控制缺失标志等本地化异常，与第 5 阶段 withheld/NA 计数闭合）。
+
+运行包封存：已封存（sealed = true）。

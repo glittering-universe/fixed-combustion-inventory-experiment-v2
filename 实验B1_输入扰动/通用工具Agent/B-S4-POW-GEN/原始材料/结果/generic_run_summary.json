@@ -1,0 +1,93 @@
+{
+  "run_id": "B-S4-POW-GEN",
+  "scenario": "generic_tool_agent",
+  "target": "POWER",
+  "standard": "T/CSES 144-2024 城市大气污染源排放清单编制技术指南",
+  "input_files": [
+    "inputs/基102-2002_原始结构脱敏输入.xlsx (device_fuel_base, 5922 rows)",
+    "inputs/基101-2002_原始结构脱敏输入.xlsx (control_facility_base, 43902 rows)",
+    "inputs/基101-2001_原始结构脱敏输入_分片01-04of04.xlsx (enterprise_master, 18734 rows)",
+    "inputs/source_identity_index.json (5922 candidate source_ids)",
+    "inputs/T_CSES_144-2024.pdf (标准)"
+  ],
+  "processed_source_count": 5922,
+  "classification": {
+    "BOILER": 5243,
+    "POWER": 615,
+    "OUT_OF_SCOPE": 64
+  },
+  "inventory_item_count": 53298,
+  "status_counts": {
+    "not_involved": 47763,
+    "calculated": 2875,
+    "information_insufficient": 2660
+  },
+  "calculated_pollutant_totals_t": {
+    "SO2": {
+      "generation_t": 161727.045652,
+      "emission_t": 84663.891475
+    },
+    "NOx": {
+      "generation_t": 1151588.671342,
+      "emission_t": 570362.700127
+    },
+    "CO": {
+      "generation_t": 323651.409418,
+      "emission_t": 323651.409418
+    },
+    "VOC": {
+      "generation_t": 11990.214078,
+      "emission_t": 11990.214078
+    },
+    "PM2.5": {
+      "generation_t": 97433.842985,
+      "emission_t": 51552.429417
+    },
+    "PM10": {
+      "generation_t": 374289.862787,
+      "emission_t": 197191.409611
+    },
+    "BC": {
+      "generation_t": 200.795462,
+      "emission_t": 102.250383
+    },
+    "OC": {
+      "generation_t": 2.016355,
+      "emission_t": 0.088345
+    },
+    "NH3": {
+      "generation_t": null,
+      "emission_t": null
+    }
+  },
+  "totals_note": "污染物合计仅统计 status=calculated 的核算项；information_insufficient 源（如生物燃料/垃圾/其他燃料等无标准系数的源）未计入；NH3 无燃烧源产生系数，totals 为 null 而非 0。",
+  "output_files": {
+    "source_decisions.csv": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/04_S4组合扰动/02_火电热力/03_通用工具调用型Agent/R1/outputs/source_decisions.csv",
+    "generic_inventory_items.csv": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/04_S4组合扰动/02_火电热力/03_通用工具调用型Agent/R1/outputs/generic_inventory_items.csv",
+    "generic_source_disposition.csv": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/04_S4组合扰动/02_火电热力/03_通用工具调用型Agent/R1/outputs/generic_source_disposition.csv",
+    "generic_exception_list.csv": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/04_S4组合扰动/02_火电热力/03_通用工具调用型Agent/R1/outputs/generic_exception_list.csv",
+    "generic_run_summary.json": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/04_S4组合扰动/02_火电热力/03_通用工具调用型Agent/R1/outputs/generic_run_summary.json"
+  },
+  "method_notes": [
+    "E=A×EF×(1−η)（标准公式2）；燃煤SO2/PM2.5/PM10/BC/OC采用物料衡算公式(3)-(6)，参数取表C.1-C.3",
+    "产生系数：电力生产/热力生产和供应取表D.1；电力生产燃煤NOx按装机容量分档(≤100MW:8.96,100-300MW:8.19,≥300MW:7.21 g/kg)",
+    "去除效率：优先用基101-2002填报治理效率(0<η≤100%)，缺失时按治理工艺匹配附录A表A.1推荐值；同一(设施名称,工艺)多设施按并联取最大效率（防误串），不同措施间按串联组合η=1−∏(1−ηi)；低氮燃烧按基102标志(是→22%)叠加，脱硝设施工艺已含低氮时不再重复叠加",
+    "设施投运率：治理设施年运行小时未提供，无法按标准7.2.1.2计算，η按填报效率/附录A直接使用（隐含满投运），列为未完成事项",
+    "燃烧烟气VOCs不设末端治理(η=0)，依据标准8.2.1.2第5)款；CO、NH3无对应去除措施(η=0)",
+    "活动水平：气体燃料万立方米×1e4→m3（EF单位g/m3）；固体/液体燃料吨×1e3→kg（EF单位g/kg）；吨标准煤按7000/NCV换算实际质量",
+    "分类依据：行业代码4411/4412/4417/4430→POWER（标准7.1）；其余燃烧设备按8.3归BOILER；无燃烧证据或4419等其他电力生产、农业/水务等行业锅炉→OUT_OF_SCOPE；14条制造业锅炉表记录无任何设备/燃料/运行时间字段（S4扰动留空），按BOILER类记录处理（不参与本目标）",
+    "NH3：标准表D.1/E.7无燃烧源NH3产生系数，全部按information_insufficient处理，不编造系数",
+    "企业主表(基101-2001)用于企业正常生产小时/行业属性核验（QA），未参与活动水平核算（活动水平取设备表基102）"
+  ],
+  "unfinished_items": [
+    "治理设施投运率无法计算（缺设施年运行小时），η未乘投运率",
+    "生物燃料/城市生活垃圾/其他燃料/工业废料在表D.1无产生系数，相关源待补充系数后重算（见例外表EXC）",
+    "NH3无燃烧源产生系数，未核算",
+    "电力生产燃煤机组缺装机容量、煤质参数缺失或燃烧技术未知的源，对应污染物未核算（见例外表）"
+  ],
+  "rules_scripts": [
+    "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/04_S4组合扰动/02_火电热力/03_通用工具调用型Agent/R1/work/build_inventory.py",
+    "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/04_S4组合扰动/02_火电热力/03_通用工具调用型Agent/R1/work/explore_*.py",
+    "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/04_S4组合扰动/02_火电热力/03_通用工具调用型Agent/R1/work/extract_pdf.py"
+  ]
+}

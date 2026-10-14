@@ -1,0 +1,44 @@
+{
+  "run_id": "B2-300-IND-GEN-R1",
+  "input_files": {
+    "B102-2002": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-IND-GEN-R1/inputs/基102-2002_原始结构脱敏输入.xlsx",
+    "B101-2001_shards": [
+      "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-IND-GEN-R1/inputs/基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+      "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-IND-GEN-R1/inputs/基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+      "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-IND-GEN-R1/inputs/基101-2001_原始结构脱敏输入_分片03-of04.xlsx",
+      "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-IND-GEN-R1/inputs/基101-2001_原始结构脱敏输入_分片04-of04.xlsx"
+    ],
+    "B101-2002": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-IND-GEN-R1/inputs/基101-2002_原始结构脱敏输入.xlsx",
+    "source_identity_index": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-IND-GEN-R1/inputs/source_identity_index.json",
+    "standard_pdf": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-IND-GEN-R1/inputs/T_CSES_144-2024.pdf"
+  },
+  "total_sources": 300,
+  "total_inventory_items": 2700,
+  "item_status_counts": {
+    "calculated": 864,
+    "not_involved": 1251,
+    "information_insufficient": 297,
+    "source_data_invalid": 288
+  },
+  "target_classification": {
+    "INDUSTRIAL_BOILER": 161,
+    "THERMAL_POWER": 139,
+    "OUT_OF_SCOPE": 0
+  },
+  "output_paths": {
+    "source_decisions": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-IND-GEN-R1/outputs/source_decisions.csv",
+    "generic_inventory_items": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-IND-GEN-R1/outputs/generic_inventory_items.csv",
+    "generic_source_disposition": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-IND-GEN-R1/outputs/generic_source_disposition.csv",
+    "generic_exception_list": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-IND-GEN-R1/outputs/generic_exception_list.csv",
+    "generic_run_summary": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-IND-GEN-R1/outputs/generic_run_summary.json"
+  },
+  "exceptions": 65,
+  "script_path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-IND-GEN-R1/process.py",
+  "method": "T/CSES 144-2024 Table E.7 emission factors with material balance (Appendix C) for coal, control efficiencies from Table A.1",
+  "classification_rule": "工业锅炉编号 non-null → INDUSTRIAL_BOILER; 电站锅炉/燃气轮机编号 non-null → THERMAL_POWER",
+  "unresolved": [
+    "Negative fuel consumption values treated as source_data_invalid (need manual verification)",
+    "NaN fuel consumption treated as information_insufficient",
+    "Coal SO2/PM2.5/PM10/BC/OC use material balance; missing sulfur/ash data produces zero generation"
+  ]
+}

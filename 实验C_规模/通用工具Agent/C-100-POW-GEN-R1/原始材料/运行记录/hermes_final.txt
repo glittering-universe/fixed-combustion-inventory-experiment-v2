@@ -1,0 +1,52 @@
+任务已完成。所有输出文件已生成并通过逐项校验。
+
+实际执行结果
+============
+
+运行包根目录
+/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/02_火电热力/03_通用工具调用型Agent/R1
+
+输出文件（outputs 目录，均为 UTF-8）
+------------------------------------
+1. outputs/source_decisions.csv            — 5922 行：source_id,requested_target,decided_target,disposition,reason_code
+2. outputs/generic_inventory_items.csv     — 5535 行（615 个 POWER 源 × 9 污染物）
+3. outputs/generic_source_disposition.csv  — 5922 行
+4. outputs/generic_exception_list.csv      — 7 个根因组
+5. outputs/generic_run_summary.json        — 输入、源数、核算项数、状态数、输出路径、规则脚本、未完成事项
+
+实际使用的规则脚本（work/ 目录）
+--------------------------------
+- work/build_inventory.py   — 主计算脚本（含 T/CSES 144-2024 方法库）
+- work/run_final.py         — 生成 5 个输出文件
+- work/verify_outputs.py    — 全量 QC 校验（最后输出 "ALL QC CHECKS PASSED"）
+
+方法要点（全部源自运行包内 inputs/T_CSES_144-2024.pdf，未使用任何专用工具/规则包）
+---------------------------------------------------------------------------------
+- 分类：行业类别 ∈ {4411,4412,4417,4430} → POWER（615 个）；∈ 采矿业 06-12 / 制造业 13-43 / 燃气生产供应业 45 → INDUSTRIAL（5243 个）；其余含 4419、46/51/53 前缀（64 个）→ OUT_OF_SCOPE。
+- 核算：E = A×EF×(1−η)（公式2）；燃煤 SO2/PM2.5/PM10/BC/OC 用物料衡算公式(3)~(6)+表C.1~C.3；非燃煤取表 D.1（电力生产 vs 热力供应两套系数）；电力生产燃煤 NOx 按装机容量取 8.96/8.19/7.21；多燃料按组件分开记录。
+- 治理：按企业关联基101-2002 表，去除效率非空直接采用实际值；为空时按工艺名称匹配附录A 表A.1 缺省值（PM10 细/粗组分分别记录 PM2.5 与 PM2.5-10 两列效率，均必填）；多种措施取最大；低氮燃烧按基102低氮标识取 22%。
+- 信息不足（无系数/无燃烧技术/治理效率未知）一律置 information_insufficient，产生量/排放量留空，不编造数值。
+
+状态统计（5535 核算项）
+-----------------------
+- calculated:                  2742
+- information_insufficient:    2178（NO_EF_MSW 1328、NO_EF_BIOMASS 448、NO_EF_OTHER_FUEL 224、CONTROL_EFFICIENCY_UNKNOWN 138、NO_EF_INDUSTRIAL_WASTE 8、COMBUSTION_TECH_UNKNOWN 8、组合 16+8）
+- not_involved:                 615（NH3，标准第7章未覆盖电力热力源 NH3）
+- source_data_invalid:            0
+
+QC 校验全部通过（verify_outputs.py 输出）
+----------------------------------------
+- 4 个 CSV 列名精确匹配；source_id 唯一性；status 仅限 4 个允许值；source_id×pollutant 无重复
+- 数值非负；所有计算行 emission ≤ generation；空值行必有 status + reason_code
+- 三个 *_record_json 字段均为合法 JSON 数组（已用 json.dumps 修正序列化避免单引号问题）；activity/control 数组长度与 component_id 逐元素对齐；parameter 组件 ID 均在 activity 组件内
+- PM10 每行同时给出 fine_efficiency 与 coarse_efficiency；非 PM10 给出 efficiency
+- 独立抽查：用原始硫分/灰分手算 3 条 SO2 产生量，与输出一致
+
+未完成事项（均已列入 exceptions 与 summary）
+--------------------------------------------
+- 生物燃料/城市生活垃圾/工业废料/其他燃料：标准表 D.1 无系数，产生量未计算（EXC-001~004），其中 MSW 属废弃物处理源核算范畴
+- 1 个燃煤设备燃烧方式为"其他"无法映射技术参数（EXC-005）
+- 部分企业治理设施去除效率与工艺全空，排放量不编造（EXC-006）
+- 电力热力源 NH3 不在标准核算范围（EXC-007）
+
+如需进一步动作，仅建议人工补充上述缺失系数/工艺后重跑 work/run_final.py。

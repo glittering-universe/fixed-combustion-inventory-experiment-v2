@@ -1,0 +1,160 @@
+{
+  "inputs": [
+    "T_CSES_144-2024.pdf",
+    "source_identity_index.json",
+    "基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+    "基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+    "基101-2001_原始结构脱敏输入_分片03-of04.xlsx",
+    "基101-2001_原始结构脱敏输入_分片04-of04.xlsx",
+    "基101-2002_原始结构脱敏输入.xlsx",
+    "基102-2002_原始结构脱敏输入.xlsx"
+  ],
+  "candidate_count": 300,
+  "scope_counts": {
+    "INDUSTRIAL": 150,
+    "POWER": 150
+  },
+  "result_count": 1350,
+  "status_counts": {
+    "calculated": 323,
+    "information_insufficient": 637,
+    "not_involved": 150,
+    "source_data_invalid": 240
+  },
+  "method": "指南第7章、表D.1及注a-c，煤质物料衡算式(3)-(6)和表C.1-C.3；活动量缺失仅由完整同单位分项恢复",
+  "resolved_activity": [
+    {
+      "source_id": "SRC-RAW-4BAF29D777E9EDB3D5F5",
+      "field": "燃料一消耗量",
+      "value": 848442.671
+    },
+    {
+      "source_id": "SRC-RAW-3ADABD147A15EE50A339",
+      "field": "燃料一消耗量",
+      "value": 97.18
+    },
+    {
+      "source_id": "SRC-RAW-E9553B256B7E6AEFE791",
+      "field": "燃料一消耗量",
+      "value": 934729.24
+    },
+    {
+      "source_id": "SRC-RAW-031B3589BCDCF633B0EA",
+      "field": "燃料一消耗量",
+      "value": 688652.0
+    },
+    {
+      "source_id": "SRC-RAW-7F76A3AC469336B1002A",
+      "field": "燃料一消耗量",
+      "value": 121879.293
+    },
+    {
+      "source_id": "SRC-RAW-B9D25D90184C1D6081DC",
+      "field": "燃料一消耗量",
+      "value": 650475.62
+    },
+    {
+      "source_id": "SRC-RAW-D16EA3E11682DFFC3340",
+      "field": "燃料一消耗量",
+      "value": 8778.068
+    },
+    {
+      "source_id": "SRC-RAW-EA575374F3359E937FB7",
+      "field": "燃料一消耗量",
+      "value": 35421.64
+    },
+    {
+      "source_id": "SRC-RAW-034EA11B7545A4E80FF5",
+      "field": "燃料一消耗量",
+      "value": 1492517.0
+    },
+    {
+      "source_id": "SRC-RAW-730A96C0F1BB19F1D46E",
+      "field": "燃料一消耗量",
+      "value": 120782.29
+    },
+    {
+      "source_id": "SRC-RAW-08ED845850C20B09F0BA",
+      "field": "燃料一消耗量",
+      "value": 566604.0
+    },
+    {
+      "source_id": "SRC-RAW-3D68C3391F8E405ACFFC",
+      "field": "燃料一消耗量",
+      "value": 98820.0
+    },
+    {
+      "source_id": "SRC-RAW-0EA1C3FA4810EDBD34F9",
+      "field": "燃料一消耗量",
+      "value": 1034975.0
+    },
+    {
+      "source_id": "SRC-RAW-E2673803482D4F76F5EC",
+      "field": "燃料一消耗量",
+      "value": 503700.0
+    },
+    {
+      "source_id": "SRC-RAW-C31AC3A1AA390A1FBEB2",
+      "field": "燃料一消耗量",
+      "value": 446900.0
+    },
+    {
+      "source_id": "SRC-RAW-1BCCD905C534AF5E1304",
+      "field": "燃料一消耗量",
+      "value": 1717136.0
+    },
+    {
+      "source_id": "SRC-RAW-8454B9202B0628E9CEC4",
+      "field": "燃料一消耗量",
+      "value": 1033312.0
+    },
+    {
+      "source_id": "SRC-RAW-B56086824F04D846DBFA",
+      "field": "燃料一消耗量",
+      "value": 908613.0
+    },
+    {
+      "source_id": "SRC-RAW-6A3D9F0940947CB1906F",
+      "field": "燃料一消耗量",
+      "value": 1280046.0
+    },
+    {
+      "source_id": "SRC-RAW-F2AC45A6F890FFE96ABF",
+      "field": "燃料一消耗量",
+      "value": 2595547.4
+    },
+    {
+      "source_id": "SRC-RAW-D754FE900ADCABAF2D31",
+      "field": "燃料一消耗量",
+      "value": 1942183.0
+    },
+    {
+      "source_id": "SRC-RAW-D4CA402F1C186726C968",
+      "field": "燃料一消耗量",
+      "value": 846066.0
+    },
+    {
+      "source_id": "SRC-RAW-8E880A58EC31520571BD",
+      "field": "燃料一消耗量",
+      "value": 72387.0
+    },
+    {
+      "source_id": "SRC-RAW-46E9F3F37A52CE5698EF",
+      "field": "燃料一消耗量",
+      "value": 678592.81
+    },
+    {
+      "source_id": "SRC-RAW-4C2DE7BEF32D7CAEC468",
+      "field": "燃料一消耗量",
+      "value": 305196.0
+    }
+  ],
+  "unresolved": [
+    "燃气轮机与余热锅炉没有表D.1适用技术条目",
+    "液化天然气/液化石油气输入体积与表D.1质量基准差异需要密度",
+    "治理投运率未在原始表提供，产生量可计算而排放量未决",
+    "煤硫分/灰分缺失按污染物局部处理",
+    "第7章未列NH3，not_involved仅指本指南该章节核算范围"
+  ],
+  "exception_count": 1175
+}

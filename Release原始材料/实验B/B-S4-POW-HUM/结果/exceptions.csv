@@ -1,0 +1,2 @@
+﻿exception_id,source_id,observation_id,target,human_workbook_row,pollutant,category,description
+HUMAN-V2-POWER-000001,SRC-RAW-AFC8439695D444001224,SRC-RAW-AFC8439695D444001224,POWER,40,NH3,HUMAN_TOTAL_NOT_REPORTED,generation or final emission total is not numerically observable in the supplied workbook

@@ -1,0 +1,28 @@
+Experiment D 运行完成，`agent_managed_admission` 场景，run_id `D-POW-AGENT_MANAGED_ADMISSION`（POWER / 100% / B0）。
+
+阶段状态（全部 complete，顺序执行）
+1. prepare-device-emission-sources: adapt_environmental_workbooks 提交（5922 候选，3 个基102输入分片+基101/基102台账哈希通过），随后 build_device_emission_sources 提交（POWER 纳入 615，INDUSTRIAL 4046，EXCLUDE 1261）。
+2. create-pollutant-calculation-items: generate_pollutant_calculation_items 提交，6231 核算项（SO2/NOX/CO/VOCS/PM10/PM25/BC/OC 各 702 + NH3 615）。
+3. apply-tcses-calculation-rules: execute_tcses_calculation_rules 提交，规则匹配 3528 项，22 类标志（如 CONTROL_INFO_MISSING_DUST 3832、CONTROL_MISSING_ZERO 2253、FACTOR_UNMATCHED 1344）。
+4. Agent 接管核算准入（消融点）: summarize_agent_admission_options 只读汇总后，按 T/CSES 144—2024 核算逻辑独立制定 agent_policy 并 record_agent_admission_decisions 提交；未调用 control_calculation_admission。
+5. calculate-fixed-combustion-emissions 提交。
+6. review-and-export-inventory 提交，error_count 0。
+7. archive-calculation-process 提交并封存。
+
+决策覆盖率（6231 项，无缺失/非法动作）
+- allow_calculation 1017（16.3%）
+- withhold 5194（83.4%）
+- not_applicable 20（0.3%，NH3 无SCR/SNCR）
+- 计算阶段复核：calculated 1017、withheld 5194、not_applicable_zero 20，与准入一致。
+
+策略要点：withhold 覆盖 17 类标志（燃料/因子未匹配或超出标准范围、因子输入缺失、燃烧技术歧义、脱硫/脱硝/除尘控制信息缺失、缺失置零与控制未映射置零、控制关系歧义、控制技术未映射候选、NH3 因子缺煤耗、NH3 多工艺分配未决、源关系缺失、其他燃料TCE未决）；NH3_NOT_APPLICABLE_NO_SCR_SNCR 判为不适用；默认 allow_calculation。未将任何缺失的活动水平、燃料、硫分、灰分、容量或产生因子当作 0。
+
+输出路径
+- 火电热力工作簿: .../R1/outputs/固定燃烧源-火电、热力生产与供应_实验结果.xlsx（6231 项 / 615 源，18029 公式，0 公式错误，sha256 ebfd7a87...）
+- 工业锅炉工作簿（本运行目标外，0 源）: .../R1/outputs/固定燃烧源-工业锅炉_实验结果.xlsx
+- 机器表: outputs/calculation_items.csv、source_decisions.csv、source_pollutant_totals.csv
+- 异常清单: outputs/最终异常清单.csv（sha256 bbd01eae...）及 outputs/exceptions.csv
+
+异常数量：error_count 0、warning_count 0、异常组 1031（最终异常清单 1031 组，均为业务信息不足类，未修复上游数据）。
+
+运行包封存：sealed true；完整过程归档 trace/complete_calculation_process.jsonl，6231 条记录，sha256 6d29d1ee...；最终 revision 2c8e884b...。

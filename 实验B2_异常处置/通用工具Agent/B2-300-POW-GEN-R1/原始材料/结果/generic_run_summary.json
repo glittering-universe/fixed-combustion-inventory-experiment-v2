@@ -1,0 +1,40 @@
+{
+  "run_id": "B2-300-POW-GEN-R1",
+  "input_files": [
+    "inputs/基102-2002_原始结构脱敏输入.xlsx",
+    "inputs/基101-2001_原始结构脱敏输入_分片01~04-of04.xlsx",
+    "inputs/基101-2002_原始结构脱敏输入.xlsx",
+    "inputs/T_CSES_144-2024.pdf",
+    "inputs/source_identity_index.json"
+  ],
+  "total_sources_processed": 300,
+  "power_sources": 139,
+  "industrial_boiler_sources": 161,
+  "inventory_items": 2700,
+  "status_counts": {
+    "calculated": 912,
+    "not_involved": 1588,
+    "info_insuff": 225,
+    "data_invalid": 0,
+    "information_insufficient_root_groups": 25
+  },
+  "exceptions": 25,
+  "output_paths": {
+    "source_decisions": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-POW-GEN-R1/outputs/source_decisions.csv",
+    "generic_inventory_items": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-POW-GEN-R1/outputs/generic_inventory_items.csv",
+    "generic_source_disposition": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-POW-GEN-R1/outputs/generic_source_disposition.csv",
+    "generic_exception_list": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-POW-GEN-R1/outputs/generic_exception_list.csv",
+    "generic_run_summary": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-POW-GEN-R1/outputs/generic_run_summary.json"
+  },
+  "script_path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-POW-GEN-R1/scripts/build_inventory.py",
+  "standard_reference": "T/CSES 144-2024",
+  "method": "产排污系数法（表D.1）+ 物料衡算法（燃煤SO2和PM, 附录C）",
+  "unresolved_items": [
+    "25 POWER sources have no fuel consumption data → all pollutants insufficient",
+    "Some coal sources have both sulfur and ash null with no enterprise fallback → SO2/PM insufficient",
+    "PM10 emission simplified: uses PM2.5 control efficiency for total PM10",
+    "Sulfur unit mg/m3 to % conversion is approximate",
+    "Non-power-industry enterprises with power boilers mapped to 电力供应 department",
+    "Control measures matched by enterprise only (not individual boiler ID)"
+  ]
+}

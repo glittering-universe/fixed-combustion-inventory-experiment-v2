@@ -1,0 +1,28 @@
+工具调用迭代已达上限,在此给出截至目前的完整执行结果与状态说明。
+
+一、已生成并校验的输出文件(均在运行包 outputs/ 下,UTF-8)
+  1. /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/050%规模/02_火电热力/03_通用工具调用型Agent/R3/outputs/source_decisions.csv
+     2961 行,列:source_id,requested_target,decided_target,disposition,reason_code
+  2. .../outputs/generic_inventory_items.csv
+     3393 行(377 个 POWER 源 x 9 污染物),列:source_id,target,pollutant,status,method,activity_record_json,parameter_record_json,control_record_json,generation_t,emission_t,standard_reference,reason_code
+  3. .../outputs/generic_source_disposition.csv(2961 行)
+  4. .../outputs/generic_exception_list.csv(EXC-001~EXC-008,每个根因组一行)
+  5. .../outputs/generic_run_summary.json
+
+二、核算方法与判定结果
+  - 判定规则:基102 行含"电站锅炉/燃气轮机编号"→POWER(377 个);含"工业锅炉编号"→BOILER(2584 个);两者皆无→范围外(0 个)。全部 2961 条候选均已判定,汇总仅含 POWER。
+  - 方法:T/CSES 144-2024 第7章及附录 A/C/D。式(2) E=A*EF*(1-η);燃煤 SO2 用式(3)(2*S*(1-sr),sr 取表C.1),燃煤 PM2.5/PM10/BC/OC 用式(4)-(6)(Aar*(1-ar)*f,表C.1/C.2/C.3);其余取表D.1 产生系数(天然气等气体燃料 g/m3)。4430 用"热力生产和供应"系数,其余(含 4411/4412/4417/4419 及他行业自备电站)用"电力生产"系数,燃煤 NOx 按装机容量分档(<=100MW:8.96;(100,300):8.19;>=300:7.21)。
+  - 治理:按企业(组织机构代码)匹配基101-2002 排放口类别 DZGL 的脱硫/脱硝/除尘设施,设施上报去除效率优先,缺失取表A.1 默认;低氮燃烧 22%;投运率无数据按 1.0(见 EXC-005)。
+  - 结果:核算项 3393 条,其中 calculated 1143 条(127 个源全部9污染物可算),information_insufficient 2250 条(250 个源,因设备类型/燃料不在表D.1 覆盖(燃生物质锅炉、燃气轮机、余热、垃圾/生物质燃料等)或燃料二技术不匹配、缺硫分/灰分/装机容量)。信息不足的源在 generation_t/emission_t 留空,未编造因子或效率。
+  - 计算污染物总量(仅 calculated,吨):SO2 产生69361.03/排放26140.84;NOx 493118.09/223953.27;CO 135898.93;VOC 3144.90;PM2.5 46396.15/22559.01;PM10 180594.30/63608.89;BC 92.75/45.23;OC 0.56;NH3 0(表D.1 无 NH3 列,按0,EXC-006)。
+
+三、已完成的自动校验(全部通过)
+  - 四个 CSV 列名与任务契约完全一致;source_id 唯一;items 每个 源x污染物 唯一;status 值域合法。
+  - 数值非负;emission<=generation;去除效率均在 [0,100]。
+  - 3393 行三个 *_record_json 均合法 JSON 数组,数组长度、顺序、component_id 在 activity/parameter/control 三列一一对应(含多燃料 2 组件行,已用 684 个多组件行抽样及全量校验)。
+  - 每个 POWER 源均有且仅有 9 条污染物记录,与 source_decisions.csv 的 POWER 集合完全一致。
+
+四、未完成事项(需向用户明示)
+  1. 脚本 scripts/compile_inventory.py 在最后两次未重跑的小改进:①活动水平为 0 的燃料二组件改为不阻塞核算(影响约 4 行的状态);②异常清单代表性 source_id 改为按根因定向挑选(现 EXC-001~007 的代表源都落到同一个生物质源 ID 上)。磁盘上 outputs/ 为这两处修改前的运行结果,重跑 python3 scripts/compile_inventory.py 即可刷新。
+  2. 需要用户处理的根因组见 generic_exception_list.csv:EXC-001 表D.1 未覆盖设备类型(209 个源)、EXC-002 垃圾/生物质/废料燃料无系数、EXC-003 燃料二技术不匹配、EXC-004 179 条 DZGL 设施缺工艺与效率(按默认 40/20/10-70% 处理)、EXC-005 投运率按 1.0 假设、EXC-006 NH3 按0、EXC-007 3 个源设备类型为空、EXC-008 其他燃料(吨标准煤)>0 无系数。
+  3. 基101-2001 仅作背景,未参与设备级核算(避免重复计)。

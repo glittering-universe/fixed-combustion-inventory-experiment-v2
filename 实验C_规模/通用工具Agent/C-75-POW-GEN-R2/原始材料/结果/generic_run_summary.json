@@ -1,0 +1,71 @@
+{
+  "run_id": "C-75-POW-GEN-R2",
+  "target": "POWER",
+  "input_files": {
+    "b102_device_fuel_base": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/02_火电热力/03_通用工具调用型Agent/R2/inputs/基102-2002_原始结构脱敏输入.xlsx",
+    "b101_2001_enterprise_shards": [
+      "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/02_火电热力/03_通用工具调用型Agent/R2/inputs/基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+      "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/02_火电热力/03_通用工具调用型Agent/R2/inputs/基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+      "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/02_火电热力/03_通用工具调用型Agent/R2/inputs/基101-2001_原始结构脱敏输入_分片03-of04.xlsx",
+      "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/02_火电热力/03_通用工具调用型Agent/R2/inputs/基101-2001_原始结构脱敏输入_分片04-of04.xlsx"
+    ],
+    "b101_2002_control_facility_base": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/02_火电热力/03_通用工具调用型Agent/R2/inputs/基101-2002_原始结构脱敏输入.xlsx",
+    "source_identity_index": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/02_火电热力/03_通用工具调用型Agent/R2/inputs/source_identity_index.json",
+    "method_standard_pdf": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/02_火电热力/03_通用工具调用型Agent/R2/inputs/T_CSES_144-2024.pdf"
+  },
+  "processed_source_count": 4442,
+  "item_count_total": 39978,
+  "status_counts": {
+    "not_involved": 35554,
+    "information_insufficient": 1952,
+    "calculated": 2472
+  },
+  "target_counts": {
+    "BOILER": 34812,
+    "POWER": 4977,
+    "OUT_OF_SCOPE": 189
+  },
+  "decision_counts": {
+    "BOILER": 3868,
+    "POWER": 553,
+    "OUT_OF_SCOPE": 21
+  },
+  "power_emission_aggregate_t": {
+    "BC": 775.0291,
+    "CO": 258120.8267,
+    "NOx": 380622.7639,
+    "OC": 15.2198,
+    "PM10": 1188368.12,
+    "PM2.5": 317757.5098,
+    "SO2": 483824.7941,
+    "VOC": 56557.0696
+  },
+  "output_files": {
+    "source_decisions.csv": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/02_火电热力/03_通用工具调用型Agent/R2/outputs/source_decisions.csv",
+    "generic_inventory_items.csv": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/02_火电热力/03_通用工具调用型Agent/R2/outputs/generic_inventory_items.csv",
+    "generic_source_disposition.csv": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/02_火电热力/03_通用工具调用型Agent/R2/outputs/generic_source_disposition.csv",
+    "generic_exception_list.csv": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/02_火电热力/03_通用工具调用型Agent/R2/outputs/generic_exception_list.csv",
+    "generic_run_summary.json": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/02_火电热力/03_通用工具调用型Agent/R2/outputs/generic_run_summary.json"
+  },
+  "rules_and_scripts": {
+    "method_reference": "T/CSES 144-2024 第7章 公式(2)~(6), 附录A 表A.1, 附录C 表C.1~C.3, 附录D 表D.1",
+    "decision_rule": "基102行字段: 电站锅炉/燃气轮机编号非空=POWER; 工业锅炉编号非空=BOILER; 设备类型=余热利用锅炉=OUT_OF_SCOPE",
+    "sector_rule": "行业类别4411/4412/4417/4419=电力生产; 4430=热力生产和供应; 其余(自备电厂/制造企业)=电力供应(与表E.7一致)",
+    "formula_unit_note": "公式(3)~(6)中S与Aar以g/kg燃料代入(即%×10), 得g/kg; 气体燃料系数按表D.1注c为g/m3; 燃烧方式'其他'(仅1条煤制品)按自动炉排层燃炉默认",
+    "control_efficiency_rule": "基101-2002去除效率(%)优先(设施主污染物), 缺省用表A.1; 相同措施取最大, 不同措施串联合并1-(1-a)(1-b); 低氮燃烧22%; 治理设施投运率无运行时间数据按1.0",
+    "build_script": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/02_火电热力/03_通用工具调用型Agent/R2/build_inventory.py",
+    "pdf_parse_scripts": [
+      "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/02_火电热力/03_通用工具调用型Agent/R2/scratch_parse_tables2.py",
+      "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/02_火电热力/03_通用工具调用型Agent/R2/scratch_parse_a1.py"
+    ]
+  },
+  "unresolved_items": [
+    "城市生活垃圾/生物燃料/其他燃料/工业废料燃料无表D.1系数 -> 相应源污染物项 information_insufficient (见 generic_exception_list.csv EX-01~EX-03)",
+    "余热利用锅炉判定范围外 (EX-04)",
+    "表D.1 VOCs=33 疑似异常, 按原文使用 (EX-05)",
+    "电力热力源NH3无标准系数 -> not_involved (EX-06)",
+    "治理设施投运率按1.0假设、缺工艺/效率按表A.1缺省 (EX-07)",
+    "燃气轮机采用燃气锅炉系数 (EX-08)",
+    "自备电厂采用'电力供应'部门系数 (EX-09)"
+  ]
+}

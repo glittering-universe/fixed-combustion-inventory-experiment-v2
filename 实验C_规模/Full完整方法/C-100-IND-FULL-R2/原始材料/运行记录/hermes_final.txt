@@ -1,0 +1,21 @@
+运行 C-100-IND-FULL-R2 全流程 8 个阶段执行完毕，运行包已封存（sealed=true，最终修订 ff5afd38）。
+
+各阶段记录数
+1. adapt_environmental_workbooks（阶段1a）：基102设备 5922 条，企业主表 18734 条，治理设施 43902 条；7 个输入哈希校验通过
+2. build_device_emission_sources（阶段1b）：候选 5922 全闭合 → 工业 4046 / 电力 615 / 排除 1261
+3. generate_pollutant_calculation_items（阶段2）：核算项 36958（8 类燃料项 ×4114 + 独立 NH3 氨逃逸项 4046）
+4. execute_tcses_calculation_rules（阶段3）：规则匹配项 31960，未决标记（含治理信息缺失、燃料范围外、参数缺口等）作为项级结果保留
+5. control_calculation_admission（阶段4）：准入计算 35560 / 不适用 363 / 暂缓 1035，合计 36958 闭合
+6. calculate_fixed_combustion_emissions（阶段5）：计算 35560 / 不适用置零 363 / 暂缓 1035
+7. validate_and_export（阶段6）：0 错误、0 警告；异常 286 组；工业锅炉工作簿 4046 源、36958 项、216357 公式且 0 公式错误、0 外部链接
+8. archive_complete_calculation_process（阶段7）：完整过程记录 36958 条，运行包封存
+
+两个工作簿
+- /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/01_Full完整方法/R2/outputs/固定燃烧源-工业锅炉_实验结果.xlsx（sha256 9be81627…86d69）
+- /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/01_Full完整方法/R2/outputs/固定燃烧源-火电、热力生产与供应_实验结果.xlsx（目标为工业，电力源不在本包核算范围，0 源）
+
+异常清单路径
+- /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/01_Full完整方法/R2/outputs/最终异常清单.csv（286 组，sha256 2a99608c…c30e3，另有规范化 exceptions.csv）
+- 过程记录：…/R2/trace/complete_calculation_process.jsonl（36958 条，sha256 5bd4278a…89e1）
+
+未发现系统级失败；局部缺失项按规则以"暂缓/不适用"处置并全部进入最终异常清单。

@@ -1,0 +1,39 @@
+工具迭代已达上限，无法继续诊断。如实汇报当前执行状态与实际产出。
+
+## 已完成（基于真实工具输出）
+
+### 运行包与输入核对
+- run_manifest.json: 2961 个候选源（无重复），target=POWER，输入 B102-2002（2961行设备/燃料基表）、B101-2001 四片、B101-2002 治理设施表（6189行）、source_identity_index.json（2961条 source_id↔基102行 映射，与候选完全一致）、T_CSES_144-2024.pdf（86页，全文提取至 work/pdf_text.txt）。
+
+### 方法依据（完全取自 PDF）
+- 源分类：§5.2.1/§7.1 电力热力源 = D4411/D4412/D4417/D4430 企业生产设施；§8.1/§8.3 工业源 = 采矿业(B06-12)/制造业(C13-43)/燃气生产和供应业(D45)的工业锅炉。
+- 核算：§7.2 产排污系数法公式(2) E=A·EF·(1−η)；燃煤 SO2 公式(3)、PM/BC/OC 公式(4)-(6)；系数取附录D表D.1、附录C表C.1-C.3、附录A表A.1（全部手工转录进 work/factor_tables.py，与 PDF 数值逐一核对）。
+- 治理：按统一社会信用代码归并治理设施；处理工艺名映射表A.1；设施填报去除效率(0<η≤100)覆盖其类别主控污染物（脱硫→SO2、脱硝→NOx、除尘→PM），多设施串联 1−∏(1−η)；低氮燃烧字段=是时叠加 NOx 22%；VOCs 燃烧烟气按 §8.2.1.2(5) η=0。
+
+### 实际写入 outputs/ 的 5 个文件（UTF-8）
+路径：/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/050%规模/02_火电热力/03_通用工具调用型Agent/R2/outputs/
+1. source_decisions.csv — 2961行，列含 source_id,requested_target,decided_target,disposition,reason_code；决策分布：POWER 308 / INDUSTRIAL_BOILER 2544 / OUT_OF_SCOPE 109。
+2. generic_inventory_items.csv — 26649行（2961×9污染物），列与契约一致；三个 _record_json 均为合法 JSON 数组，activity/control 与 parameter 按 component_id 一一对应（校验 bad_json=0、bad_align=0）；status 分布：calculated 1392、information_insufficient 1072、not_involved 24185（无 source_data_invalid，属正常）；所有数值非负；calculated 行均带 generation_t/emission_t，非 calculated 行为空。
+3. generic_source_disposition.csv — 2961行。
+4. generic_exception_list.csv — 10 个根因组（EXC-SCOPE-01/02/03、EXC-POWER-01/02/03、EXC-CTRL-01/02、EXC-DATA-01、EXC-VOC-01）。
+5. generic_run_summary.json — 输入清单、源数、状态计数、分污染物已核算总量（如 SO2 产生 795715.8t/排放 348791.5t、NOx 564127.1/227462.2t、PM2.5 515824.2/220206.0t 等）、输出路径、规则与脚本路径、未完成事项。
+
+### 独立复算抽查（全部通过）
+- 煤粉炉燃褐煤源：SO2/PM2.5/PM10/NOx/VOC/CO 六个产生量手工重算与输出一致（含燃料二柴油分量）。
+- 燃气轮机天然气源：8 污染物与 D.1 燃气锅炉系数手算一致。
+- 4430 链条炉燃煤：SO2/PM/NOx/CO/VOC 一致。
+- 4417 垃圾燃料源：正确判为 information_insufficient。
+- 控制路径：脱硫设施填报 98.5% 正确作用于 SO2（此前修复过一个 bug：脱硫设施效率曾误应用到 PM 上，已改为按设施类别主控污染物）。
+
+## 未完成 / 需继续处理的事项（诚实声明）
+1. **D1_ROW_MISSING 边界未定位**：最新一次构建的信息不足项含 56 个 F一:D1_ROW_MISSING（约 7 个 POWER 源 ×8 污染物），即燃料一已在映射表内但 (燃料,燃烧技术) 在附录D表D.1 中无对应行、且无"不分技术"回退。我做了燃料名普查（POWER 行无未映射燃料名），说明问题出在 D.1 行键组合（疑为个别煤/油类燃料二或特殊燃烧方式组合），但尚未逐源确认根因。这些行当前被正确记为 information_insufficient（未编造数值），然在最终报告中必须先把这 7 个源逐条列出并核对。
+2. **燃气轮机系数近似**：68 条燃气轮机按同燃料燃气锅炉 D.1 系数核算并在 reason_code 加注 GAS_TURBINE_USES_D1_BOILER_FACTOR_APPROX（已在最新构建生效），作为例外列入 EXC-POWER-02。
+3. **生物质/垃圾/废料/其他燃料（吨标准煤）** 无 D.1 系数 → 134 个 POWER 源 8 污染物记 information_insufficient（原因 FUEL_FACTOR_MISSING），列 EXC-POWER-01。
+4. **NH3**：指南及 D.1 无 NH3 产生系数，全部 POWER 源 NH3 记 not_involved（EXC-POWER-03）。
+5. 治理设施与排放口无法通过"排放口编号-代码"对应（两表无交集），按企业归并处理，且无投运率数据（η 直接用填报值/表A.1 值），已列 EXC-CTRL-01/02。
+6. 最终校验脚本（work/validate.py）在最近一次加入燃气轮机备注文本的构建后未再重跑全量 ISSUES 检查——结构上该改动仅影响 reason_code 文本，但按要求应在收尾前重跑一次 validate 与一次分类边界人工复核。
+
+## 生成物与规则文件位置
+- 脚本：scripts/build_inventory.py；系数表：work/factor_tables.py；PDF 全文：work/pdf_text.txt；校验：work/validate.py；抽查：work/spotcheck.py（均在运行包内，未越界浏览其他目录，未使用专用工具/Skills/冻结规则包）。
+
+结论：5 个交付文件已实际生成、结构契约校验通过、核心计算经独立复算验证；剩余一项"7 个 D1_ROW_MISSING 源逐条定位"与收尾重跑校验未完成——这两点请允许在下一轮迭代中完成，或将我当前状态视为"候选交付 + 明确未完成清单"。

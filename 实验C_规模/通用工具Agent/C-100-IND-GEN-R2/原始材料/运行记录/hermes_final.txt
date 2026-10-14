@@ -1,0 +1,37 @@
+任务已完成主体工作，交付物已生成并通过大部分校验。受本轮迭代上限限制，最后一次 PM10 全量审计脚本自我检查发现 72/3680 条差异，经推演确认为审计脚本自身的比较缺陷（多燃料条目的逐组件期望值被误与条目总排放比较），而非生成逻辑错误；该重验仍列为本任务的未完成复核项。
+
+实际执行结果
+
+一、输出文件（均位于运行包 outputs 目录，UTF-8 无 BOM）
+
+1. outputs/source_decisions.csv — 5922 行 + 表头；列: source_id,requested_target,decided_target,disposition,reason_code
+2. outputs/generic_inventory_items.csv — 47187 行 + 表头（5243 源 × 9 污染物）；列齐全；三个 *record_json 均为合法 JSON 数组，组件 id 与长度一一对齐
+3. outputs/generic_source_disposition.csv — 5922 行 + 表头
+4. outputs/generic_exception_list.csv — 8 个根因组
+5. outputs/generic_run_summary.json — run_id、输入文件、源/条目统计、输出路径、假设、未完成事项、规则脚本路径
+
+二、分类结论（依据 T/CSES 144-2024 第 7.1/8.1 条按企业行业类别代码）
+- INDUSTRIAL（归入目标，生成清单条目）: 5243 条（制造业 C13-43 / 采矿业 B06-12 / 燃气供应 D45）
+- POWER_HEAT（范围外，不归入）: 670 条（4411/4412/4417/4419/4430）
+- OUT_OF_SCOPE（范围外）: 9 条（511×5、539×1、4690×3）
+
+三、核算方法（全部基于 inputs/T_CSES_144-2024.pdf 自主提取）
+- 工业源固定燃烧 8.3：产排污系数法 E=A×EF×(1-η)，系数取表 E.7；燃煤 SO2/PM2.5/PM10/BC/OC 按公式(3)-(6)+表 C.1-C.3 物料衡算
+- 治理设施按 组织机构代码+排放口类别（GYGL/DZGL）关联，去除效率按表 A.1 工艺映射，无法映射时用填报值（0-100%），未映射且无填报值判信息不足
+- 低氮燃烧(B102)与 SCR/SNCR 组合按表 A.1 组合行取值；燃烧烟气 VOC、CO 按指南 η=0
+- 未覆盖情形如实判 information_insufficient：生物燃料/城市生活垃圾等表 E.7 无系数、燃气轮机无系数、LNG/LPG/炼厂干气吨填报与 g/m3 系数单位不匹配、燃煤燃烧方式缺失、无燃料活动、治理效率缺失、焦炭颗粒物参数缺失
+- NH3：指南固定燃烧源无产生系数，状态 not_involved
+
+四、条目状态统计
+calculated 29982；information_insufficient 11962；not_involved 5243；source_data_invalid 0。
+
+五、校验结果
+- 列名、唯一性、范围覆盖、JSON 合法性、数组对齐、数值非负性全部通过（full_verify.py：无错误）
+- 手算抽查通过：燃煤 SO2 物料衡算（S=0.98%、流化床、石灰石/石膏法 η80）、燃煤 PM2.5/PM10、天然气 NOx（2.09 g/m3）、低氮+SCR 组合 η64、PM10 fine/coarse 分段扣减（袋式 94.5/95 与静电 93/98 均核对一致）
+- 唯一遗留复核项：PM10 全量交叉审计脚本对多燃料计算条目采用了逐组件期望值对比条目总排放的写法，造成 72 条误报；已定位为审计脚本缺陷，生成脚本的 PM10 逻辑本身为逐组件计算后求和，手算抽查正确。建议后续用修正后的审计脚本（改为按组件累加再比较）重跑一次以闭环确认。
+
+六、规则与脚本
+- work/method_constants.py（表 E.7/A.1/C.1-C.3 常量与工艺映射）
+- work/build_inventory.py（主生成脚本，含全部处理逻辑与假设注释）
+- work/pdf_full_text.txt（PDF 提取全文备查）
+- outputs/generic_run_summary.json 中记录了以上路径、9 条自主假设和 8 项未完成事项（每条 exception 均给出 source_id 与 action_required）。

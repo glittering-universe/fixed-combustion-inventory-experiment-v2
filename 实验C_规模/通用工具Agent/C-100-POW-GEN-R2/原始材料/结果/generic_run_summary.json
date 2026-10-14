@@ -1,0 +1,37 @@
+{
+ "run_id": "C-100-POW-GEN-R2",
+ "target": "POWER",
+ "input_files": [
+  "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/02_火电热力/03_通用工具调用型Agent/R2/inputs/基102-2002_原始结构脱敏输入.xlsx",
+  "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/02_火电热力/03_通用工具调用型Agent/R2/inputs/基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+  "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/02_火电热力/03_通用工具调用型Agent/R2/inputs/基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+  "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/02_火电热力/03_通用工具调用型Agent/R2/inputs/基101-2001_原始结构脱敏输入_分片03-of04.xlsx",
+  "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/02_火电热力/03_通用工具调用型Agent/R2/inputs/基101-2001_原始结构脱敏输入_分片04-of04.xlsx",
+  "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/02_火电热力/03_通用工具调用型Agent/R2/inputs/基101-2002_原始结构脱敏输入.xlsx",
+  "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/02_火电热力/03_通用工具调用型Agent/R2/inputs/source_identity_index.json"
+ ],
+ "source_count": 5922,
+ "in_scope_power_count": 816,
+ "out_of_scope_boiler_count": 5106,
+ "item_count": 53298,
+ "status_counts": {
+  "calculated": 2532,
+  "not_involved": 46770,
+  "information_insufficient": 3996,
+  "source_data_invalid": 0
+ },
+ "exception_group_count": 9,
+ "output_paths": {
+  "source_decisions": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/02_火电热力/03_通用工具调用型Agent/R2/outputs/source_decisions.csv",
+  "generic_inventory_items": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/02_火电热力/03_通用工具调用型Agent/R2/outputs/generic_inventory_items.csv",
+  "generic_source_disposition": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/02_火电热力/03_通用工具调用型Agent/R2/outputs/generic_source_disposition.csv",
+  "generic_exception_list": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/02_火电热力/03_通用工具调用型Agent/R2/outputs/generic_exception_list.csv",
+  "generic_run_summary": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/02_火电热力/03_通用工具调用型Agent/R2/outputs/generic_run_summary.json"
+ },
+ "unfinished_items": "见 generic_exception_list.csv；主要未决事项：生物燃料/城市生活垃圾/工业废料/其他燃料无产生系数、燃气轮机无系数、燃煤燃烧方式无法映射、治理设施去除效率缺失或歧义",
+ "rule_scripts": [
+  "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/02_火电热力/03_通用工具调用型Agent/R2/_work/compute_inventory.py",
+  "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/02_火电热力/03_通用工具调用型Agent/R2/_work/build_params.py"
+ ],
+ "method_reference": "T/CSES 144-2024《城市大气污染源排放清单编制技术指南》第7章(电力热力源)、公式(2)-(6)、附录A/C/D"
+}

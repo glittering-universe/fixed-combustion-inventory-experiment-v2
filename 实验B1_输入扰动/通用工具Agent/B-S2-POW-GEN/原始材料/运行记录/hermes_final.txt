@@ -1,0 +1,44 @@
+任务已完成并全部通过QA检查。以下是最终执行报告。
+
+一、处理范围与方法依据
+- 全部基102候选 5922 条全部判定去向，仅汇总 run_manifest.json 指定的 POWER（火电热力）目标。
+- 方法完全自主建立，仅使用运行包内输入：
+  · T_CSES_144-2024.pdf：公式(2) E=A×EF×(1−η)、燃煤SO2/PM/BC/OC物料衡算(公式3~6)、附录A表A.1去除效率、附录C表C.1~C.3燃煤参数、附录D表D.1电力热力源产生系数。
+  · 基102-2002（5922行设备-燃料基表，污染物列全部留空，未解释为零）、基101-2002（治理设施）、基101-2001×4片（企业交叉核对）、source_identity_index.json（source_id↔行映射）。
+- 未使用任何专用工具、专用Skills或冻结规则包，也未浏览运行包外目录。
+
+二、源判定结果（source_decisions.csv / generic_source_disposition.csv）
+- POWER（范围内）：473 条，D44行业（4411/4412/4417/4419/4430），reason_code=CLASS_POWER_D44
+- INDUSTRIAL（范围外）：5243 条（采矿业B/制造业C/燃气供应D45）
+- OUT_OF_SCOPE（范围外）：206 条，其中 197 条为燃料"城市生活垃圾/工业废料"的焚烧设施，按标准第13章归入废弃物处理源（WASTE_INCINERATION_CH13），其余9条为非工业非电力行业
+- 交叉核对：基101-2001与基102对210家电力企业行业代码一致，无冲突。
+
+三、核算结果（generic_inventory_items.csv，5922×9=53298行）
+- calculated 3052、not_involved 49041、information_insufficient 1205、source_data_invalid 0
+- 范围内计算排放总量（吨，已扣治理）：SO2 排放3400.32（产生97844.05）、NOx 排放328940.59、CO 323703.16、VOC 16730.88、PM2.5 226854.49、PM10 867211.99、BC 455.68、OC 8.33、NH3 0（标准无NH3产生系数，记录原因码NH3_EF_ZERO_STANDARD）
+- 三个 *_record_json 均为合法JSON数组，逐燃料组件对齐（多燃料如"原煤+天然气"按F1/F2分别记录EF与活动水平，未预汇总）；PM10的fine_efficiency/coarse_efficiency分别记录PM2.5组分与PM2.5–10组分去除效率，不为0时均给出；无治理明确写0。
+- 治理效率：优先采用基101-2002填报值（经排放口DZGL/GYGL+企业信用代码挂接），工艺缺失时按治理工艺匹配附录A表A.1，低氮燃烧(NOx 22%)与脱硝设施串联相乘。
+
+四、未完成事项（generic_exception_list.csv，9个根因组；汇总在generic_run_summary.json的unfinished_items）
+- EXC-01（59源）：生物燃料无表D.1系数，全部信息不足
+- EXC-02（49源）："其他燃料"无法映射，信息不足
+- EXC-03（197源）：垃圾/废料焚烧划入废弃物处理源，需用户确认归属
+- EXC-04（148源）：燃气轮机采用同燃料"燃气锅炉"行系数近似，需确认
+- EXC-05（1源）：燃煤燃烧技术"其他"无法映射，信息不足
+- EXC-06（72源）：治理设施存在但效率与工艺均未填报，对应污染物标记信息不足（未编造效率）
+- EXC-07（146源）：非电力行业自备电站锅炉归入工业源，不在本次POWER
+- EXC-08（2源）：煤矸石物料衡算参数近似
+- EXC-09（4源）：天然气+生活垃圾掺烧，全污染物信息不足
+
+五、产出文件（UTF-8）
+- /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/02_S2等价别名扰动/02_火电热力/03_通用工具调用型Agent/R1/outputs/source_decisions.csv
+- …/outputs/generic_inventory_items.csv
+- …/outputs/generic_source_disposition.csv
+- …/outputs/generic_exception_list.csv
+- …/outputs/generic_run_summary.json
+实际采用的规则/脚本：…/R1/scripts/compile_inventory.py（核算）、…/R1/scripts/build_outputs.py（异常清单+汇总+QA）。
+
+六、QA核验（已通过，无错误）
+4个CSV列名与必填列一致；source_id唯一且覆盖全部5922候选；items按source_id+pollutant唯一；3个JSON数组字段全部合法且组件ID对齐；所有数值非负；数值为空的行均有status与reason_code；status仅使用四种允许枚举。逐源手工复算验证（如44 11原煤煤粉炉：SO2 571.86 t = 2×0.51×0.85×659590t/1000，PM10 15906.4 t = 10×13.98%×0.75×0.23 等）与脚本输出完全一致。
+
+需说明：信息不足时未编造任何燃料量、因子、治理效率或排放量，全部以 information_insufficient + reason_code 呈现，并列入异常清单等待用户补充数据。

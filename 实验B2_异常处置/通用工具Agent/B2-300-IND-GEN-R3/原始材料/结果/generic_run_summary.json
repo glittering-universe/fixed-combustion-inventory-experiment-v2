@@ -1,0 +1,47 @@
+{
+  "run_id": "B2-300-IND-GEN-R3",
+  "target": "INDUSTRIAL",
+  "standard": "T/CSES 144-2024",
+  "input_files": [
+    "基102-2002_原始结构脱敏输入.xlsx",
+    "基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+    "基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+    "基101-2001_原始结构脱敏输入_分片03-of04.xlsx",
+    "基101-2001_原始结构脱敏输入_分片04-of04.xlsx",
+    "基101-2002_原始结构脱敏输入.xlsx",
+    "source_identity_index.json",
+    "T_CSES_144-2024.pdf"
+  ],
+  "total_candidates": 300,
+  "industrial_target_sources": 161,
+  "power_heat_sources": 139,
+  "statistics": {
+    "calculated": 790,
+    "not_involved": 0,
+    "information_insufficient": 371,
+    "source_data_invalid": 288,
+    "total_inventory_items": 1449,
+    "negative_fuel": 32,
+    "nan_fuel": 33,
+    "missing_sulfur": 14,
+    "missing_ash": 15,
+    "no_controls": 59,
+    "unknown_fuel": 0
+  },
+  "output_paths": {
+    "source_decisions": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-IND-GEN-R3/outputs/source_decisions.csv",
+    "generic_inventory_items": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-IND-GEN-R3/outputs/generic_inventory_items.csv",
+    "generic_source_disposition": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-IND-GEN-R3/outputs/generic_source_disposition.csv",
+    "generic_exception_list": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-IND-GEN-R3/outputs/generic_exception_list.csv",
+    "generic_run_summary": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-IND-GEN-R3/outputs/generic_run_summary.json"
+  },
+  "unresolved_items": [
+    "Negative fuel consumption: 32 sources",
+    "Missing fuel consumption: 33 sources",
+    "Missing sulfur for coal: 14 coal records",
+    "Missing ash for coal: 15 coal records",
+    "Unmatched control technologies: 0 exceptions"
+  ],
+  "script_path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-IND-GEN-R3/scripts/generic_inventory_processor.py",
+  "processing_time": "2026-09-29T14:15:23.499042"
+}

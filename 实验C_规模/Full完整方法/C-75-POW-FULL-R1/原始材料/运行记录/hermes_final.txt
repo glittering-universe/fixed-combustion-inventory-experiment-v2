@@ -1,0 +1,26 @@
+运行已封存，全 8 个工具按 Skill 链逐段执行完毕，无系统级失败。
+
+运行: C-75-POW-FULL-R1 | scenario=full | target=POWER | 规模75% | method_bundle_hash=c42349a9...
+
+各阶段记录数:
+ 1a adapt_environmental_workbooks    complete  rev 56b4773e  B102设备4442 / 企业主表3022 / 治理设施8067
+ 1b build_device_emission_sources    complete  rev a55412be  候选4442 → POWER 470 / INDUSTRIAL 3027 / EXCLUDE 945
+ 2  generate_pollutant_calculation_items  complete  rev 6178e839  核算项4766 (8类×537 + NH3氨逃逸470)
+ 3  execute_tcses_calculation_rules  complete  rev be2d5ebd  规则匹配项2712，未匹配/缺失项以标志保留(未在自然语言中修补)
+ 4  control_calculation_admission    complete  rev 4b81fb94  allow_calculation 3071 / not_applicable 375 / withhold 1320
+ 5  calculate_fixed_combustion_emissions complete rev f7f27769  calculated 3071 / not_applicable_zero 375 / withheld 1320
+ 6  validate_and_export_fixed_combustion_inventory complete rev ce134a5a  硬检查0错误0警告；异常分组298
+ 7  archive_complete_calculation_process complete rev 90f22c79  sealed=true；过程轨迹4766条
+
+两个工作簿(均在运行包 outputs/ 下):
+ - 固定燃烧源-火电、热力生产与供应_实验结果.xlsx  (470源 / 4766核算项 / 21648公式，0公式错误0外部链接; sha256 d6fb28b2...)
+ - 固定燃烧源-工业锅炉_实验结果.xlsx  (本运行target=POWER，工业锅炉0源/0项，符合预期; sha256 15988c3f...)
+
+异常清单路径:
+ - outputs/最终异常清单.csv (sha256 f89b31e6..., 298个异常分组)
+ - outputs/exceptions.csv (规范化异常清单, sha256 584aab46...)
+ - outputs/machine_qa_power.json / machine_qa_industrial.json (质量摘要)
+
+过程轨迹: trace/complete_calculation_process.jsonl (4766条, sha256 bc399eed...)
+
+封存状态: sealed=true，运行包 R1 已封印，未改动任何冻结规则包，未使用CEMS，未用基102报告量反推。

@@ -1,0 +1,66 @@
+﻿异常编号,源编号,污染物,异常原因,处理建议
+EXC-0001,SRC-RAW-35208EA8F9C5B0CA67BD,ALL,No valid fuel data for calculation (NaN or zero),Verify fuel consumption data
+EXC-0002,SRC-RAW-D72961D02D38D2C405BB,ALL,No valid fuel data for calculation (NaN or zero),Verify fuel consumption data
+EXC-0003,SRC-RAW-7E2B91F4BB3B2C1B3958,ALL,Negative fuel consumption value,Verify and correct fuel consumption data
+EXC-0004,SRC-RAW-97675F7EB454C52FE916,ALL,No valid fuel data for calculation (NaN or zero),Verify fuel consumption data
+EXC-0005,SRC-RAW-E7AD12EAC6533209A11F,ALL,Negative fuel consumption value,Verify and correct fuel consumption data
+EXC-0006,SRC-RAW-0D9DD3060792EFD6DCC9,ALL,No valid fuel data for calculation (NaN or zero),Verify fuel consumption data
+EXC-0007,SRC-RAW-82A69BFE33CB1705DF62,ALL,No valid fuel data for calculation (NaN or zero),Verify fuel consumption data
+EXC-0008,SRC-RAW-4F420B79A47B053BE6A6,ALL,Negative fuel consumption value,Verify and correct fuel consumption data
+EXC-0009,SRC-RAW-CCE518507FE244F9AEB5,ALL,No valid fuel data for calculation (NaN or zero),Verify fuel consumption data
+EXC-0010,SRC-RAW-63F031CD40C62D3287CF,ALL,No valid fuel data for calculation (NaN or zero),Verify fuel consumption data
+EXC-0011,SRC-RAW-B152217274B981D7682E,ALL,Negative fuel consumption value,Verify and correct fuel consumption data
+EXC-0012,SRC-RAW-4880CD5B2EA2B603D99E,ALL,No valid fuel data for calculation (NaN or zero),Verify fuel consumption data
+EXC-0013,SRC-RAW-4ABBE497E6EBE2A6F389,ALL,Negative fuel consumption value,Verify and correct fuel consumption data
+EXC-0014,SRC-RAW-9B0578EC7CE3DAB0320B,ALL,No valid fuel data for calculation (NaN or zero),Verify fuel consumption data
+EXC-0015,SRC-RAW-4248A114C7924AE1380B,ALL,No valid fuel data for calculation (NaN or zero),Verify fuel consumption data
+EXC-0016,SRC-RAW-3ADABD147A15EE50A339,ALL,No valid fuel data for calculation (NaN or zero),Verify fuel consumption data
+EXC-0017,SRC-RAW-E7FA2F2E4EE3BB4ACA6F,ALL,No valid fuel data for calculation (NaN or zero),Verify fuel consumption data
+EXC-0018,SRC-RAW-A18EB4EE4009D36F1387,ALL,Negative fuel consumption value,Verify and correct fuel consumption data
+EXC-0019,SRC-RAW-CD15108C8EA51EEDE9C5,ALL,No valid fuel data for calculation (NaN or zero),Verify fuel consumption data
+EXC-0020,SRC-RAW-06A0D517678266881D8A,ALL,Negative fuel consumption value,Verify and correct fuel consumption data
+EXC-0021,SRC-RAW-DD5BF76F8B881D1D2AB7,ALL,Negative fuel consumption value,Verify and correct fuel consumption data
+EXC-0022,SRC-RAW-1D5A2A9997909A9AC9A5,ALL,No valid fuel data for calculation (NaN or zero),Verify fuel consumption data
+EXC-0023,SRC-RAW-2D406E5AB95E077719F3,ALL,No valid fuel data for calculation (NaN or zero),Verify fuel consumption data
+EXC-0024,SRC-RAW-92442C59C2F1C80173E1,ALL,Negative fuel consumption value,Verify and correct fuel consumption data
+EXC-0025,SRC-RAW-C4AEFE686257B0C11D20,ALL,No valid fuel data for calculation (NaN or zero),Verify fuel consumption data
+EXC-0026,SRC-RAW-82834F0C3BCA38A437C5,ALL,Negative fuel consumption value,Verify and correct fuel consumption data
+EXC-0027,SRC-RAW-5DE8C0C6F54C098F0500,ALL,No valid fuel data for calculation (NaN or zero),Verify fuel consumption data
+EXC-0028,SRC-RAW-FF2CA474B2EBF11D59B5,ALL,No valid fuel data for calculation (NaN or zero),Verify fuel consumption data
+EXC-0029,SRC-RAW-6147EA62C936E92F312B,ALL,No valid fuel data for calculation (NaN or zero),Verify fuel consumption data
+EXC-0030,SRC-RAW-3C66CE171DD7B9908EA4,ALL,No valid fuel data for calculation (NaN or zero),Verify fuel consumption data
+EXC-0031,SRC-RAW-1B39BD9ABE4A6CC6FCE8,ALL,Negative fuel consumption value,Verify and correct fuel consumption data
+EXC-0032,SRC-RAW-E24365638847DEF91189,ALL,Negative fuel consumption value,Verify and correct fuel consumption data
+EXC-0033,SRC-RAW-171B4F8B4253BBABBACF,ALL,No valid fuel data for calculation (NaN or zero),Verify fuel consumption data
+EXC-0034,SRC-RAW-FB0B53424CA4277ACE07,ALL,Negative fuel consumption value,Verify and correct fuel consumption data
+EXC-0035,SRC-RAW-31C60B4B843403B97C6A,ALL,No valid fuel data for calculation (NaN or zero),Verify fuel consumption data
+EXC-0036,SRC-RAW-73AFD237AF021A9DBA1A,ALL,Negative fuel consumption value,Verify and correct fuel consumption data
+EXC-0037,SRC-RAW-B7015BF8E4E8C57DF23D,ALL,No valid fuel data for calculation (NaN or zero),Verify fuel consumption data
+EXC-0038,SRC-RAW-656E666C8C582E479170,ALL,Negative fuel consumption value,Verify and correct fuel consumption data
+EXC-0039,SRC-RAW-7F81904F368FD1C2F9F1,ALL,No valid fuel data for calculation (NaN or zero),Verify fuel consumption data
+EXC-0040,SRC-RAW-F4651AD603FDCB921B58,ALL,No valid fuel data for calculation (NaN or zero),Verify fuel consumption data
+EXC-0041,SRC-RAW-C885B9F0BBEA30995969,ALL,No valid fuel data for calculation (NaN or zero),Verify fuel consumption data
+EXC-0042,SRC-RAW-B470895EC043FDFFA8CD,ALL,Negative fuel consumption value,Verify and correct fuel consumption data
+EXC-0043,SRC-RAW-0316307F0CE6EA792698,ALL,Negative fuel consumption value,Verify and correct fuel consumption data
+EXC-0044,SRC-RAW-53939DA90DE9795ACF87,ALL,Negative fuel consumption value,Verify and correct fuel consumption data
+EXC-0045,SRC-RAW-9D2D3CCEFBE2883FB563,ALL,Negative fuel consumption value,Verify and correct fuel consumption data
+EXC-0046,SRC-RAW-54FCEBC1A0E7EFF2B073,ALL,Negative fuel consumption value,Verify and correct fuel consumption data
+EXC-0047,SRC-RAW-AF828E9FE765DD8EDEB2,ALL,No valid fuel data for calculation (NaN or zero),Verify fuel consumption data
+EXC-0048,SRC-RAW-0490BAAC3E02B5F1FC22,ALL,Negative fuel consumption value,Verify and correct fuel consumption data
+EXC-0049,SRC-RAW-CEBAE2307CD4E4D7099A,ALL,Negative fuel consumption value,Verify and correct fuel consumption data
+EXC-0050,SRC-RAW-D4FA466B4DE818950489,ALL,No valid fuel data for calculation (NaN or zero),Verify fuel consumption data
+EXC-0051,SRC-RAW-2C29C9AFF9161F262262,ALL,Negative fuel consumption value,Verify and correct fuel consumption data
+EXC-0052,SRC-RAW-C22CC8C49ECC35F50D9B,ALL,Negative fuel consumption value,Verify and correct fuel consumption data
+EXC-0053,SRC-RAW-E906ED14C8B1A69F8B60,ALL,No valid fuel data for calculation (NaN or zero),Verify fuel consumption data
+EXC-0054,SRC-RAW-AE278289897B14D872AE,ALL,Negative fuel consumption value,Verify and correct fuel consumption data
+EXC-0055,SRC-RAW-B2BEA554A6132020AB59,ALL,Negative fuel consumption value,Verify and correct fuel consumption data
+EXC-0056,SRC-RAW-897E2C2A87F6559F3523,ALL,No valid fuel data for calculation (NaN or zero),Verify fuel consumption data
+EXC-0057,SRC-RAW-D69E3EB7F873ECF02B86,ALL,No valid fuel data for calculation (NaN or zero),Verify fuel consumption data
+EXC-0058,SRC-RAW-012BAD168535854F2F44,ALL,Negative fuel consumption value,Verify and correct fuel consumption data
+EXC-0059,SRC-RAW-E5F10347A494C8E7973E,ALL,Negative fuel consumption value,Verify and correct fuel consumption data
+EXC-0060,SRC-RAW-68BC9DC70ED301210A11,ALL,No valid fuel data for calculation (NaN or zero),Verify fuel consumption data
+EXC-0061,SRC-RAW-5FB091CB4CD8E0AD37D5,ALL,No valid fuel data for calculation (NaN or zero),Verify fuel consumption data
+EXC-0062,SRC-RAW-B9EDA8106D491D9677A6,ALL,Negative fuel consumption value,Verify and correct fuel consumption data
+EXC-0063,SRC-RAW-34C40F8886BE8F556BFB,ALL,Negative fuel consumption value,Verify and correct fuel consumption data
+EXC-0064,SRC-RAW-A642C3DD5F2D3D5E83AD,ALL,Negative fuel consumption value,Verify and correct fuel consumption data
+EXC-0065,SRC-RAW-2A31F65E2DDE1B721B31,ALL,Negative fuel consumption value,Verify and correct fuel consumption data

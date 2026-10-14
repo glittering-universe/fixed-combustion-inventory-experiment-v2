@@ -1,0 +1,36 @@
+任务完成。全部 5 个输出文件已生成并通过校验（0 错误）。
+
+执行结果
+========
+
+方法依据（仅使用运行包内输入与 T/CSES 144-2024）
+- 分类：电力热力源=GB/T4754 行业 4411 火力发电/4412 热电联产/4417 生物质能发电/4430 热力生产和供应 的企业生产设施（标准 §3.5/§7.1）；工业源=采矿业/制造业/燃气生产和供应业 D45（§8.1/§8.3）；其余（4419 其他电力生产、4690、农业类）为范围外。
+- 核算：产排污系数法 E=A×EF×(1−η)（§7.2.1.2 式(2)）；燃煤 SO2/PM2.5/PM10/BC/OC 用式(3)~(6) 物料衡算（硫分/灰分 % 按 1%=10 g/kg 折算，与标准内固定系数自洽）；NOx 按装机容量分档（≤100/100–300/≥300 MW 取 8.96/8.19/7.21）；治理效率取自基101-2002 同企业+排放口类别（DZGL 电站锅炉/GYGL 工业锅炉）设施，声明去除效率优先，否则用附录A 表A.1，多措施取最大值；低氮燃烧 22%（与 SCR/SNCR 组合行 64/52%）；PM10 按细组分(PM2.5)与粗组分(PM2.5-10)分别用 fine/coarse 去除效率。
+
+候选处置（4442 个候选源全部判定）
+- POWER 火电热力 470 个（target_included）
+- BOILER 工业锅炉 3926 个（decided_industrial_boiler，含工业企业自备电站）
+- OUT_OF_SCOPE 46 个（4419 其他电力生产 39、4690 及其他 7）
+
+核算项（源×污染物，9 项污染物）
+- 共 39978 行：calculated 2457、information_insufficient 1773、not_involved 35748
+- 每个燃料组分（燃料一/燃料二/其他燃料）在 activity/parameter/control 三个 JSON 数组中各占一个元素且 component_id 对齐，多燃料未汇总
+- 燃煤 SO2 生成合计 119.2 万吨、排放 62.3 万吨；NOx 102.3/51.7 万吨；PM2.5 76.6/40.2 万吨；PM10 296.2/154.4 万吨（数值来自合成输入数据，未做任何编造）
+
+输出文件（UTF-8）
+- /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/02_火电热力/03_通用工具调用型Agent/R1/outputs/source_decisions.csv（4442 行）
+- .../outputs/generic_inventory_items.csv（39978 行）
+- .../outputs/generic_source_disposition.csv（4442 行）
+- .../outputs/generic_exception_list.csv（4 个根因组：EXC-01 治理效率缺失 η 按 0 计 47 源；EXC-02 生物质/垃圾燃料无表D.1系数 168 源；EXC-03 其他燃料(吨标准煤)无系数 26 源；EXC-04 余热利用/其他锅炉技术无法匹配 7 源）
+- .../outputs/generic_run_summary.json（输入文件、分类/状态计数、输出路径、未完成事项、规则脚本路径）
+
+校验结果：四个 CSV 列名完全符合契约、source_id 唯一、每源 9 个污染物行唯一、(source_id,pollutant) 无重复、数值非负且 emission≤generation、三个 record JSON 全部合法且数组对齐、PM10 行 fine/coarse 均给出、非 calculated 行数值为空但均有 status+reason_code。复核脚本见 scripts/validate_outputs.py，核算主脚本 scripts/run_inventory.py + scripts/inventory_lib.py。
+
+未完成事项（已如实标注，未编造数值）
+1. 生物燃料/城市生活垃圾/工业废料在表D.1无产生系数 → 相关核算项 information_insufficient，需用户补系数（EXC-02）。
+2. 其他燃料（吨标准煤）无因子 → insufficient（EXC-03）。
+3. 余热利用锅炉/其他锅炉/燃烧方式"其他"无法匹配表D.1技术 → insufficient（EXC-04，7 源）。
+4. 燃气轮机按燃气锅炉因子近似计算（83 源，reason_code=GT_AS_GAS_BOILER，属显式假设）。
+5. 治理设施投运率无数据按 100% 假设；去除效率与工艺均缺失的设施 η 按 0 并列入 EXC-01。
+6. 表D.1无 NH3 产生系数，有因子燃料组分 NH3 产生/排放按 0 计（reason_code=NH3_EF_ZERO_STANDARD）。
+7. 本次数据 16 个缺装机容量行均为 4430 热力源（用热力固定 NOx 系数），未触发 NOx 容量缺失情形；若电力生产源缺装机容量将置 insufficient。

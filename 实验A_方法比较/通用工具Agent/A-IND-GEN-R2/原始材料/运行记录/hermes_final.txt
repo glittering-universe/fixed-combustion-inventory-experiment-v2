@@ -1,0 +1,21 @@
+任务完成。所有输出已生成并通过校验（0 错误）。
+
+实际输出路径（/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/02_实验A_端到端清单编制/01_工业锅炉/03_通用工具调用型Agent/R2/outputs/）：
+1. source_decisions.csv — 5922 个候选源，每源一行（source_id, requested_target=INDUSTRIAL, decided_target, disposition, reason_code）
+2. generic_inventory_items.csv — 45873 行（5097 个工业锅炉源 x 9 污染物：SO2/NOX/CO/VOC/PM2.5/PM10/BC/OC/NH3），三个 *_record_json 均为合法 JSON 数组，组件按 FUEL1/FUEL2/OTHER 一一对齐
+3. generic_source_disposition.csv — 5922 行
+4. generic_exception_list.csv — 9 个根因组（EXC-001..010，空组自动剔除）
+5. generic_run_summary.json — 输入文件、处理源数、核算项数、状态数、输出路径、未完成事项、假设与规则脚本路径
+
+分类结果（全部 5922 候选）：
+- INDUSTRIAL（工业锅炉）5097：工业锅炉编号行且企业行业属采矿/制造/燃气供应（B06-12、C13-43、D45）
+- POWER_THERMAL（火电热力）816：电站锅炉/燃气轮机编号行（737）+ D4411/D4412/D4417/D4430 企业工业锅炉行（79，按标准 7.1）
+- OUT_OF_SCOPE 9：0511/0539/4690 行业（不在标准 8.1 工业源范围）
+
+核算状态（45873 项）：calculated 31651、information_insufficient 14213、not_involved 9。总排放量（仅 calculated，吨）：SO2 3816.7、NOX 9821.8、CO 16256.7、VOC 4772.0、PM2.5 2262.2、PM10 6277.5、BC 59.9、OC 11.2。
+
+方法（全部取自运行包内 T/CSES 144-2024）：产排污系数法 E=A*EF*(1-η)（8.3.1 公式2）；燃煤 SO2/PM2.5/PM10/BC/OC 物料衡算（公式3~6 + 附录C 表C.1~C.3 工业源参数，炉型：煤粉炉/流化床炉/链条炉及层燃炉族=自动炉排层燃炉）；其余因子取附录E 表E.7（气体燃料按 g/m3，与表D.1 电力供应同值行一致）；治理效率优先用基101-2002 填报去除效率（>100% 封顶），缺失时按附录A 表A.1 匹配工艺默认值，低氮燃烧 flag=是取 22%（与 SCR/SNCR 并用按组合行 64%/52%）；PM10 细/粗组分效率均给出；锅炉燃烧 VOCs η=0（标准 8.2.1.2-5）；NH3 标准未提供固定燃烧因子，全部记 information_insufficient 未编造。
+
+未完成事项（均如实记录在异常清单与 run summary）：16 个源燃料活动水平为空、999 个生物质锅炉源（标准仅覆盖化石燃料固定燃烧，无生物质系数）、63 个非常规燃料源、38 个燃气轮机源、8 个源其他燃料类型未指明、23 个燃煤源炉型未知、1 个焦炭源颗粒物/SO2（附录C 参数仅针对燃煤）、NH3 排放整体未核算。
+
+校验结果：4 个 CSV 列名与要求一致、source_id 唯一、数值非负、范围覆盖完整（5922 决策 + 5097x9 核算项）、三数组长度/顺序/component_id 一一对应、PM10 fine/coarse 全量给出。规则脚本：scripts/build_inventory.py、scripts/validate_outputs.py（运行包内）。

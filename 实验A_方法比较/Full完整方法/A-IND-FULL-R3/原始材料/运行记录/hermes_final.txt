@@ -1,0 +1,22 @@
+运行 A-IND-FULL-R3 已全部 8 个阶段完成并封存。
+
+封存状态：sealed = true（archive_complete_calculation_process，完整核算过程追踪 36958 条记录，trace/complete_calculation_process.jsonl）
+
+各阶段记录数：
+- 阶段1a adapt_environmental_workbooks：基102设备候选 5922；基101企业主表 18734；治理设施表 43902（join keys 13704/18731）
+- 阶段1b build_device_emission_sources：源决策 INDUSTRIAL 4046 / POWER 615 / EXCLUDE 1261（候选 5922）
+- 阶段2 generate_pollutant_calculation_items：核算项 36958（NOX/SO2/CO/VOCS/BC/OC/PM10/PM2.5 各 4114，NH3 4046）
+- 阶段3 execute_tcses_calculation_rules：规则匹配项 31960，局部标记 286 组异常来源（未阻断）
+- 阶段4 control_calculation_admission：allow_calculation 35560 / not_applicable 363 / withhold 1035
+- 阶段5 calculate_fixed_combustion_emissions：calculated 35560 / not_applicable_zero 363 / withheld 1035
+- 阶段6 validate_and_export：错误 0、警告 0、异常组 286；工业锅炉工作簿源 4046、项 36958
+- 阶段7 archive_complete_calculation_process：追踪记录 36958，已封存
+
+两个工作簿：
+- /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/02_实验A_端到端清单编制/01_工业锅炉/01_Full完整方法/R3/outputs/固定燃烧源-工业锅炉_实验结果.xlsx（4046 源，公式 216357 处，公式错误 0，外链 0）
+- /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/02_实验A_端到端清单编制/01_工业锅炉/01_Full完整方法/R3/outputs/固定燃烧源-火电、热力生产与供应_实验结果.xlsx（本运行目标 INDUSTRIAL，空工作簿 0 源）
+
+异常清单：
+- /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/02_实验A_端到端清单编制/01_工业锅炉/01_Full完整方法/R3/outputs/最终异常清单.csv（286 组，需人工复核项集中在控制信息缺失、燃烧技术歧义、燃料/因子未匹配等局部问题上；均未影响其余记录核算）
+
+全部输入哈希与各阶段修订链（612219d6 → 460d4f63 → 2fb2985b → 90ff1490 → c83ad56a → ebe1efed → 5f6fbdaa → 37dd897a）与 method_bundle_hash 一致，无系统级失败。

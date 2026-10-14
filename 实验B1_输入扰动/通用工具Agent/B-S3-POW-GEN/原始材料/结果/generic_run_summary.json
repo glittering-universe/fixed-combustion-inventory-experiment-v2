@@ -1,0 +1,73 @@
+{
+  "run_id": "B-S3-POW-GEN",
+  "target": "POWER",
+  "input_files": {
+    "B102_device_fuel_base": "inputs/基102-2002_原始结构脱敏输入.xlsx",
+    "B101_enterprise_master_shards": [
+      "inputs/基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+      "inputs/基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+      "inputs/基101-2001_原始结构脱敏输入_分片03-of04.xlsx",
+      "inputs/基101-2001_原始结构脱敏输入_分片04-of04.xlsx"
+    ],
+    "B101_control_facility_base": "inputs/基101-2002_原始结构脱敏输入.xlsx",
+    "source_identity_index": "inputs/source_identity_index.json",
+    "standard": "inputs/T_CSES_144-2024.pdf"
+  },
+  "candidate_source_count": 5922,
+  "decision_counts": {
+    "INDUSTRIAL_BOILER": 5097,
+    "POWER": 816,
+    "OUT_OF_SCOPE": 9
+  },
+  "inventory_source_count": 816,
+  "inventory_item_count": 7344,
+  "status_counts": {
+    "calculated": 3826,
+    "information_insufficient": 3518
+  },
+  "pollutant_set": [
+    "SO2",
+    "NOx",
+    "CO",
+    "VOC",
+    "PM2.5",
+    "PM10",
+    "BC",
+    "OC",
+    "NH3"
+  ],
+  "output_paths": {
+    "source_decisions": "outputs/source_decisions.csv",
+    "generic_inventory_items": "outputs/generic_inventory_items.csv",
+    "generic_source_disposition": "outputs/generic_source_disposition.csv",
+    "generic_exception_list": "outputs/generic_exception_list.csv",
+    "generic_run_summary": "outputs/generic_run_summary.json"
+  },
+  "rules_and_scripts": [
+    "scripts/10_calc_engine.py (main engine; decision rule + T/CSES 144-2024 §7.2.1.2 公式(2)~(6), 表D.1, 附录A 表A.1, 附录C 表C.1~C.3 embedded)",
+    "scripts/01_inspect_inputs.py, 03_load_and_profile.py, 04_crosstab.py, 05_profile_b101.py, 06_profile_power.py, 07_ambiguity.py, 08_final_checks.py, 09_edge_checks.py, 10_control_detail.py (input profiling)",
+    "scripts/13_validate_outputs.py, 17_aggregate.py, 20_final_checks.py (output validation)",
+    "scripts/02_extract_pdf.py (PDF text extraction to work/pdf_text.txt)"
+  ],
+  "decision_rule": "1) 行业类别代码∈{4411,4412,4417,4419,4430}→POWER（T/CSES 144-2024 §3.5/§7.1 电力热力源，含电力企业内工业锅炉型设备）; 2) 电站锅炉/燃气轮机类型或编号非空→POWER（电站锅炉/燃气轮机设备，含工业企业自备电站）; 3) 采矿(B06-12)/制造(C13-43)/燃气供应(D45)行业→INDUSTRIAL_BOILER（§8.1/§8.3 工业源化石燃料固定燃烧）; 4) 其余（农林牧渔服务业、水的生产供应、服务业等）非工业锅炉→OUT_OF_SCOPE。",
+  "method_notes": [
+    "排放量 E=A×EF×(1-η)（标准公式(2)）；A为发电和供热燃料消耗量（B102中发电消耗量+供热消耗量=燃料消耗量）；",
+    "EF取自表D.1（电力生产/热力生产和供应部门行，g/kg燃料或g/m3气体燃料）；燃煤SO2/PM2.5/PM10/BC/OC采用物料衡算公式(3)~(6)与附录C参数；",
+    "电力生产燃煤NOx按装机容量(≤10万kW:8.96；(10,30)万kW:8.19；≥30万kW:7.21 g/kg)；",
+    "η按附录A表A.1控制措施平均去除效率或基101-2002填报去除效率（有效范围0-100%优先）按设施组合（乘法）计算；低氮燃烧按B102\"是否采用低氮燃烧技术\"；",
+    "治理设施按（企业,排放口类别）关联：电站锅炉类设备→DZGL设施，工业锅炉型设备→GYGL设施；QT(其他排放口)等其他类别设施不用于电力设备（属其他排放口）；无匹配设施时去除效率取0；设施投运率无运行时间数据，取1（默认）;",
+    "填报去除效率（0-100%有效）优先用于该设施类别对应污染物，协同去除按附录A默认；>100%等无效填报值回退附录A默认；",
+    "PM10排放=PM2.5组分×(1-η细)＋PM2.5-10组分×(1-η粗)，η细/η粗分别取附录A的PM2.5与PM2.5-10列；",
+    "NH3：标准未提供电力热力源NH3产生系数/核算方法，全部按information_insufficient处理，efficiency=0；",
+    "生物燃料/城市生活垃圾/工业废料/其他燃料（表D.1无系数）、吨标准煤且无法换算实物量、燃煤硫分/灰分/燃烧方式缺失、装机容量缺失等均不编造参数，标为information_insufficient；",
+    "重复列名（S3扰动）按同一字段多列出现时取首个非空值处理；其中：发电消耗量/供热消耗量重复列同理。"
+  ],
+  "unfinished_items": [
+    "NH3排放无标准方法（需用户补充脱硝氨逃逸核算）",
+    "生物燃料、城市生活垃圾、工业废料、其他燃料（吨标准煤）等燃料缺少表D.1产生系数（可参考生态环境部公告2021年第24号系数手册补充）",
+    "部分燃煤行燃烧方式缺失导致物料衡算及CO/NOx(热力)无法核算（见表EXC-COAL_TECH_UNKNOWN）",
+    "治理设施投运率默认取1（缺少治理设施运行时间数据）",
+    "本运行电力源范围内治理设施填报去除效率均有效(0-100%)；全库存在>100%填报值（如996），未关联到电力源"
+  ],
+  "exception_group_count": 6
+}

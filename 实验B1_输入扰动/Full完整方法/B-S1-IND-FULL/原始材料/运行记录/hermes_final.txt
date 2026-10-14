@@ -1,0 +1,28 @@
+运行已封存，全部 8 个阶段成功完成，无系统级失败。
+
+运行信息
+  run_id            B-S1-IND-FULL
+  场景              full（S1 表头形式扰动，工业锅炉，100%）
+  method_bundle_hash c42349a9…74002b
+
+各阶段记录数（含最终 revision）
+  1a adapt_environmental_workbooks    B102_DEVICE 5922 / 企业主表 18734 / 治理设施表 43902   rev 2dc77827…
+  1b build_device_emission_sources    候选 5922 → INDUSTRIAL 4046 / POWER 615 / EXCLUDE 1261  rev 6603a77a…
+  2  generate_pollutant_calculation_items  核算项 36958（NH3 4046，其余 9 项各 4114）        rev 957d93a1…
+  3  execute_tcses_calculation_rules  规则匹配项 31960（未决问题按标志记录于项级）           rev 6aaf4d21…
+  4  control_calculation_admission    allow_calculation 35560 / not_applicable 363 / withhold 1035  rev 0ab8a532…
+  5  calculate_fixed_combustion_emissions  计算 35560 / 不适用置零 363 / 暂缓 1035          rev 0c984538…
+  6  validate_and_export_fixed_combustion_inventory  硬错误 0 / 警告 0 / 异常组 286          rev 82434654…
+  7  archive_complete_calculation_process  trace 记录 36958，sealed=true                    rev 7be69bdc…
+
+工作簿
+  工业锅炉 /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/01_S1表头形式扰动/01_工业锅炉/01_Full完整方法/R1/outputs/固定燃烧源-工业锅炉_实验结果.xlsx
+      sha256 271c28c7…，源 4046，核算项 36958，公式 216357，公式错误 0，无外部链接
+  火电、热力生产与供应 同目录/outputs/固定燃烧源-火电、热力生产与供应_实验结果.xlsx
+      sha256 9304c79f…，源 0（本运行目标为 INDUSTRIAL，符合预期）
+
+异常清单
+  /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/01_S1表头形式扰动/01_工业锅炉/01_Full完整方法/R1/outputs/最终异常清单.csv  (sha256 2a99608c…)
+  归一化版同目录/outputs/exceptions.csv  (sha256 a9acf211…)，异常组 286 个
+
+补充：未使用 CEMS，未用基102报告产生量/排放量参与方法选择、效率反推或最终结果；全程未读取运行包外旧筛选名单，未修改冻结规则包。

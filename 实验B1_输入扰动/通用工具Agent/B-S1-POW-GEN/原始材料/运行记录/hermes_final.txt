@@ -1,0 +1,37 @@
+All checks pass. The work is complete and fully validated. Final report:
+
+运行完成，结果已写入 R1 运行包的 outputs 目录：
+
+输出路径（5 个 UTF-8 文件，无 BOM）
+- outputs/source_decisions.csv — 5922 行，列: source_id,requested_target,decided_target,disposition,reason_code
+- outputs/generic_inventory_items.csv — 53298 行（5922 源 x 9 污染物），列: source_id,target,pollutant,status,method,activity_record_json,parameter_record_json,control_record_json,generation_t,emission_t,standard_reference,reason_code
+- outputs/generic_source_disposition.csv — 5922 行，列: source_id,target,disposition,reason_code
+- outputs/generic_exception_list.csv — 6 个根因组，列: exception_id,source_id,pollutant,root_cause,action_required
+- outputs/generic_run_summary.json — 输入文件、源数、核算项数、状态数、汇总排放量、输出路径、未完成事项、规则/脚本路径
+
+判定结果（仅依据基102 设备字段，不依据 ID 格式）
+- POWER（电站锅炉/燃气轮机字段非空）: 730
+- INDUSTRIAL_BOILER（工业锅炉字段非空）: 5084（非本运行目标 -> not_involved）
+- OUT_OF_SCOPE（两者皆空）: 108（-> not_involved）
+
+核算方法（全部依据 T/CSES 144-2024）
+- 电力热力源 §7.2.1.2 公式(2) E=A*EF*(1-η)，燃煤 SO2/PM2.5/PM10/BC/OC 按公式(3)-(6) 物料衡算（表C.1-C.3），其余按表D.1 产排污系数；部门映射 4411/4417/4419->电力生产、4412->电力供应、4430->热力生产和供应，其余行业自备电站锅炉按电力供应（与表E.7 工业源系数集相同）
+- 每燃料一组件（F1/F2/F3），activity/parameter/control 三数组按 component_id 一一对齐、不跨燃料汇总；PM10 行 fine/coarse 均给出
+- 治理：基101-2002 按企业关联（设施排放口为 DZGL/QT 厂级编码），优先设施填报去除效率，缺失时按处理工艺匹配表A.1，低氮燃烧技术 22%，串联组合 η=1-Π(1-ηi)；无设施记录按标准"无控制措施"η=0（不编造效率，已列入异常 EXC-003 待核实）
+
+核算项状态：calculated 2818 / information_insufficient 3752 / not_involved 46728 / source_data_invalid 0（数值为空均带状态与 reason_code）
+
+按污染物汇总排放量（calculated 项，吨）：SO2 130102.7 / NOx 226239.3 / CO 343944.9 / VOC 97323.3 / PM2.5 174942.9 / PM10 660789.4 / BC 426.2 / OC 10.9
+
+验证结果：四 CSV 列名与规格一致、source_id 唯一（5922）、源x污染物唯一（53298）、JSON 合法且组件对齐、数值非负、效率在 [0,100]、范围覆盖全部候选、CSV 汇总与 summary 一致（差值 <1e-5）。
+
+未完成事项（需用户处理，均记入 exception_list 与 summary.unfinished_matters）
+1. NH3：标准电力热力源方法未提供 NH3 产生系数，730 个 POWER 源 NH3 项信息不足
+2. 生物燃料/城市生活垃圾/工业废料/其他燃料：表D.1 无系数，320 源全部污染物项不足
+3. 治理设施处理工艺与去除效率均缺失：135 源相关污染物项不足
+4. 企业无治理设施记录（含大型燃煤电厂）：188 源按无控制处理，需核实
+5. 燃烧方式 RM03/RM06 无法映射：4 源物料衡算项不足
+6. 电力供应-煤矸石等表D.1 无对应行：2 源 PM/BC/OC 项不足
+另注：设施投运率未乘入（基101-2002 无运行时间字段）、电力供应表C.3 煤粉炉按 0.002/0 取值、湿式电除尘/SNCR+SCR 按近似措施处理——均已在 summary.control_assumptions 中说明。
+
+实际采用的规则/脚本：build_inventory.py（主核算，含标准系数转录与处理逻辑）、extract_pdf.py（PDF 文本抽取）、analyze_*.py（输入探查）、full_validate.py（输出校验），均位于运行包根目录，路径已写入 summary.rules_scripts。

@@ -1,0 +1,42 @@
+{
+  "wall_seconds": 0.5802315000328235,
+  "child_user_cpu_seconds": 0.4222064,
+  "child_system_cpu_seconds": 0.0137895,
+  "peak_rss_bytes": 44646400,
+  "read_bytes": null,
+  "write_bytes": null,
+  "io_byte_counter_supported": false,
+  "input_artifact_bytes": 16710321,
+  "output_bytes": 1261995,
+  "api_requests": null,
+  "input_tokens": null,
+  "output_tokens": null,
+  "stage_results": [
+    {
+      "stage": "fixed_mapping_lookup_direct_calculation",
+      "status": "completed",
+      "result": {
+        "baseline_definition": "fixed_mapping_plus_fixed_lookup_plus_direct_calculation",
+        "candidate_source_count": 5922,
+        "target_source_count": 0,
+        "enterprise_master_rows": 0,
+        "control_facility_rows": 0,
+        "source_decision_counts": {
+          "INDUSTRIAL": 0,
+          "POWER": 0,
+          "EXCLUDE": 0,
+          "UNRESOLVED": 5922
+        },
+        "normalized_rows": 0,
+        "status_counts": {
+          "calculated": 0,
+          "not_involved": 0,
+          "information_insufficient": 0
+        },
+        "exception_rows": 5922,
+        "complete_process_record": false,
+        "source_classification_performed": true
+      }
+    }
+  ]
+}

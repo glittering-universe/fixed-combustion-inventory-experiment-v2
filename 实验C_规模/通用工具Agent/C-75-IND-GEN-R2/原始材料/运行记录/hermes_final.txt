@@ -1,0 +1,26 @@
+All deliverables are complete and validated. Final summary of the run:
+
+**Run C-75-IND-GEN-R2 (generic tool agent, target INDUSTRIAL) — completed**
+
+Output files (UTF-8, in `/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/01_工业锅炉/03_通用工具调用型Agent/R2/outputs/`):
+- source_decisions.csv — 4442 行: INDUSTRIAL 3820 (included) / POWER_THERMAL 622 (excluded) / OUT_OF_SCOPE 0
+- generic_inventory_items.csv — 34380 行 = 3820 源 × 9 污染物 (SO2/NOx/CO/VOC/PM2.5/PM10/BC/OC/NH3)
+- generic_source_disposition.csv — 4442 行
+- generic_exception_list.csv — 8 个根因组
+- generic_run_summary.json — 输入/计数/输出路径/未完成事项/规则脚本
+
+状态分布: calculated 23679, information_insufficient 6881, not_involved 3820 (全部为 NH3)
+
+**方法要点 (全部由 PDF 标准 + 未留空源字段自主建立, 脚本在 R2/tmp/build_inventory.py):**
+- 分类: 行业 ∈ {4411,4412,4417,4430} 或设备为电站锅炉/燃气轮机 → POWER_THERMAL; 其余工业锅炉 → INDUSTRIAL
+- 核算: 产排污系数法 E=A×EF×(1-η) (T/CSES 144-2024 公式2); 燃煤 SO2/PM2.5/PM10/BC/OC 按物料衡算 (公式3-6, 附录C); 因子取自附录E 表E.7, 治理效率取基101-2002 填报值或附录A 表A.1 (按工艺匹配, PM10 记录 fine/coarse 分离), 低氮燃烧+脱硝串联组合
+- 多燃料按 F1/F2 独立组件记录, 三个 *_record_json 数组逐行校验长度/顺序/component_id 一致 (34380 行全部通过)
+
+**未完成事项 (已如实标 information_insufficient, 未编造):**
+1. 工业生物质锅炉 (767 源) — 标准无工业生物质锅炉产生系数
+2. 工业燃气轮机 (30 源) — 表E.7/表D.1 无燃气轮机系数
+3. 其他燃料 (32)/工业废料 (4)/煤矸石 (2) — 无适用系数
+4. 13 源缺燃料数据; 16 源燃煤锅炉燃烧方式缺失/为"其他" (NOx/CO/VOC/PM 因子不可选, SO2 仍按物料衡算)
+5. 治理设施: QT 类排放口无法关联锅炉设备; 工艺与效率均缺失的设施按无治理 (η=0) 处理; 投运率无运行小时数据未计入
+
+一致性核对: 基101-2001 与基102 行业代码 0 家不符; 全部输出通过列名/唯一性/非负性/覆盖范围/JSON 合法性校验。

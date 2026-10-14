@@ -1,0 +1,22 @@
+运行已封存。以下为 B-S1-POW-FULL（scenario=full, target=POWER, R1）实际执行结果：
+
+运行封存：是（sealed=true，method_bundle_hash c42349a9…74002b 全程校验一致）
+
+各阶段记录数
+ 1. adapt_environmental_workbooks   基102候选 5922；企业主表 18734；治理设施基 43902
+ 2. build_device_emission_sources   候选 5922 → POWER 615 / INDUSTRIAL 4046 / EXCLUDE 1261
+ 3. generate_pollutant_calculation_items  核算项 6231（8 污染物各 702 + NH3 逃逸 615）
+ 4. execute_tcses_calculation_rules 规则匹配项 3528；未匹配与局部旗标按项保留
+ 5. control_calculation_admission   allow 3984 / not_applicable 476 / withhold 1771 / blocked 0
+ 6. calculate_fixed_combustion_emissions  计算 3984 / 不适用置零 476 / 扣留 1771
+ 7. validate_and_export  硬错误 0、警告 0、异常组 398；POWER 工作簿 615 源 / 6231 项 / 28178 公式，公式错误 0、外部链接 0
+ 8. archive_complete_calculation_process  过程记录 6231 条（JSONL），封存完成
+
+两个工作簿
+ /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/01_S1表头形式扰动/02_火电热力/01_Full完整方法/R1/outputs/固定燃烧源-火电、热力生产与供应_实验结果.xlsx （sha256 779dad90…56a8469）
+ /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/01_S1表头形式扰动/02_火电热力/01_Full完整方法/R1/outputs/固定燃烧源-工业锅炉_实验结果.xlsx （sha256 d117b625…6810131；目标为 POWER，工业锅炉 0 源）
+
+异常清单
+ /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/01_S1表头形式扰动/02_火电热力/01_Full完整方法/R1/outputs/最终异常清单.csv （sha256 2fa88d36…6ed568，398 个异常组；规范化版 outputs/exceptions.csv）
+
+补充说明：本运行未使用 CEMS，未以基102报告产生量/排放量选择方法、反推效率或形成结果；全部 8 个阶段由对应工具按 Skill 链顺序一次性批处理提交，无系统级失败。

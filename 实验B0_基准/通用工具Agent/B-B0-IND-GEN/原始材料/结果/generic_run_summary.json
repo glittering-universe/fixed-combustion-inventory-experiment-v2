@@ -1,0 +1,124 @@
+{
+  "run_id": "B-B0-IND-GEN",
+  "scenario": "generic_tool_agent",
+  "target": "INDUSTRIAL",
+  "method_bundle_hash": "99783b8867b213f4eb18c314c4dc28d91d1ea1da9a1c61601c71d4267d823ade",
+  "input_files": [
+    {
+      "role": "device_fuel_base",
+      "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/01_工业锅炉/03_通用工具调用型Agent/R1/inputs/基102-2002_原始结构脱敏输入.xlsx",
+      "sha256": "6cbce53d6b15b59b28c6628512a2466523c0220624379e0734c4692b48386812"
+    },
+    {
+      "role": "enterprise_master",
+      "shards": [
+        "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/01_工业锅炉/03_通用工具调用型Agent/R1/inputs/基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+        "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/01_工业锅炉/03_通用工具调用型Agent/R1/inputs/基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+        "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/01_工业锅炉/03_通用工具调用型Agent/R1/inputs/基101-2001_原始结构脱敏输入_分片03-of04.xlsx",
+        "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/01_工业锅炉/03_通用工具调用型Agent/R1/inputs/基101-2001_原始结构脱敏输入_分片04-of04.xlsx"
+      ]
+    },
+    {
+      "role": "control_facility_base",
+      "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/01_工业锅炉/03_通用工具调用型Agent/R1/inputs/基101-2002_原始结构脱敏输入.xlsx",
+      "sha256": "bf922f88db0e20cf891863beae03b92cfcbf97d71b2476c8b3551f39a3fd9aee"
+    },
+    {
+      "role": "source_identity_index",
+      "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/01_工业锅炉/03_通用工具调用型Agent/R1/inputs/source_identity_index.json",
+      "sha256": "b4d1abd9cba0b3bbbbd0287e70af860321fe12b9ee9d89d05a8e8439ed491c54"
+    },
+    {
+      "role": "standard",
+      "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/01_工业锅炉/03_通用工具调用型Agent/R1/inputs/T_CSES_144-2024.pdf",
+      "sha256": "bc46346443e76ccf063ae5e2b1d1c5d7a8544fb4f7cf6b11239c80bca66181a9"
+    }
+  ],
+  "standard": "T/CSES 144-2024 城市大气污染源排放清单编制技术指南",
+  "source_counts": {
+    "total_candidates": 5922,
+    "decided_industrial": 5185,
+    "decided_power": 737,
+    "decided_out_of_scope": 0,
+    "industrial_calculated": 4027,
+    "industrial_information_insufficient": 1158,
+    "power_not_involved": 737
+  },
+  "item_counts": {
+    "total": 46665,
+    "calculated": 32216,
+    "information_insufficient": 14449
+  },
+  "pollutant_totals_calculated_only_t": {
+    "SO2": {
+      "generation_t": 15976.192,
+      "emission_t": 15976.192
+    },
+    "NOx": {
+      "generation_t": 19512.996,
+      "emission_t": 16774.466
+    },
+    "CO": {
+      "generation_t": 18948.681,
+      "emission_t": 18948.681
+    },
+    "VOC": {
+      "generation_t": 9130.13,
+      "emission_t": 9130.13
+    },
+    "PM2.5": {
+      "generation_t": 10970.945,
+      "emission_t": 10970.945
+    },
+    "PM10": {
+      "generation_t": 31196.558,
+      "emission_t": 31196.558
+    },
+    "BC": {
+      "generation_t": 200.87,
+      "emission_t": 200.87
+    },
+    "OC": {
+      "generation_t": 34.568,
+      "emission_t": 34.568
+    }
+  },
+  "pollutant_totals_exclude_insufficient": "计算汇总仅含status=calculated的核算项；information_insufficient项排放量为空，未计入也不视为零",
+  "output_files": {
+    "source_decisions": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/01_工业锅炉/03_通用工具调用型Agent/R1/outputs/source_decisions.csv",
+    "generic_inventory_items": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/01_工业锅炉/03_通用工具调用型Agent/R1/outputs/generic_inventory_items.csv",
+    "generic_source_disposition": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/01_工业锅炉/03_通用工具调用型Agent/R1/outputs/generic_source_disposition.csv",
+    "generic_exception_list": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/01_工业锅炉/03_通用工具调用型Agent/R1/outputs/generic_exception_list.csv",
+    "generic_run_summary": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/01_工业锅炉/03_通用工具调用型Agent/R1/outputs/generic_run_summary.json"
+  },
+  "rules_scripts": [
+    "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/01_工业锅炉/03_通用工具调用型Agent/R1/work/compute.py",
+    "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/01_工业锅炉/03_通用工具调用型Agent/R1/work/finalize.py"
+  ],
+  "method_notes": [
+    "分类规则：基102行中'电站锅炉/燃气轮机'字段非空 → decided_target=POWER(火电热力)；'工业锅炉'字段非空 → INDUSTRIAL；两者皆空 → OUT_OF_SCOPE（本数据集无）",
+    "核算方法：工业化石燃料固定燃烧采用T/CSES 144-2024 8.3产排污系数法 E=A×EF×(1−η)，系数取自附录E表E.7；气体燃料(天然气/焦炉煤气/高炉煤气/转炉煤气/发生炉煤气等)按表D.1注c以g/m³计",
+    "燃煤(含焦炭/煤制品/其他洗煤)SO2/PM2.5/PM10/BC/OC采用物料衡算法式(3)~(6)，参数取表C.1~C.3工业源行",
+    "控制效率：基101-2002治理设施无法与锅炉排放口(DAxxx)关联，仅计入基102'是否采用低氮燃烧技术=是'的NOx去除效率22%（附录A表A.1），其余污染物η=0",
+    "NH3：标准未提供固定燃烧NH3产生系数，全部核算项置information_insufficient",
+    "无可用系数/活动水平缺失/技术无法匹配的源置information_insufficient且数值为空，不编造任何数值",
+    "基101-2001企业主表仅用于企业身份核验（3459家与基102企业信用代码完全重合），不参与设备级活动水平推算"
+  ],
+  "unfinished_items": [
+    "1158个工业锅炉源（生物燃料、其他燃料、工业废料、煤矸石、燃气轮机、燃烧方式未指明、活动缺失、混合燃料缺系数）待补充系数/数据后核算",
+    "全部源的NH3核算项待补充NH3产生系数",
+    "治理设施-排放口关联缺失，脱硫/除尘/脱硝去除效率未计入（除低氮燃烧）",
+    "电力热力源（737个，decided_target=POWER）不在本次INDUSTRIAL目标汇总范围"
+  ],
+  "qa": {
+    "problems": [],
+    "checked": [
+      "列名",
+      "status词表",
+      "source_id唯一性",
+      "数值非负",
+      "JSON数组合法性与component_id对齐",
+      "范围覆盖"
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+任务完成。已依据运行包内三张基表与 T/CSES 144-2024 PDF 独立建立处理逻辑并完成全部核算与校验（38 项验收检查全部通过）。
+
+输出文件（UTF-8，无 BOM）位于：
+/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/025%规模/01_工业锅炉/03_通用工具调用型Agent/R1/outputs/
+  source_decisions.csv            （1481 行，每候选源一行）
+  generic_inventory_items.csv     （9135 行 = 1015 源 × 9 污染物）
+  generic_source_disposition.csv  （1481 行）
+  generic_exception_list.csv      （5 个根因组）
+  generic_run_summary.json        （输入、统计、规则、未完成事项、脚本路径）
+
+处理结果
+- 1481 个候选设备：工业锅炉 1015、火电热力 179（电站锅炉/燃气轮机段，含工业企业自备电站，与基101-2002 排放口编码 DZGL 交叉验证）、范围外 287（余热锅炉 4、燃气轮机 7、燃生物质锅炉 264、非化石燃料 12）。
+- 处置：calculated 1008、not_involved 466、information_insufficient 7。
+- 核算项状态：calculated 8049、not_involved 986（主要为无脱硝锅炉的 NH3）、information_insufficient 100。
+- 计算排放量（仅 calculated，吨）：SO2 208.5、NOx 2962.3、CO 4644.9、VOC 1438.6、PM2.5 76.0、PM10 152.7、BC 3.0、OC 0.9、NH3 64.7。
+
+方法要点（详见 run summary 与 work/master.py）
+- 分类以基102设备段为准，并用治理设施排放口类型 GYGL/DZGL 交叉验证；范围外判断依据指南 8.3（仅化石燃料固定燃烧）。
+- 核算按指南公式(2) E=A×EF×(1-η)；燃煤 SO2/PM2.5/PM10/BC/OC 用物料衡算（公式3~6，表C.1~C.3，燃烧方式映射煤粉炉/流化床/自动炉排），NOx/CO/VOC 及油、气燃料取表E.7（发生炉煤气按其它煤气、煤矸石按煤炭处理）。
+- 治理效率：设施主污染物优先用基101-2002 报告去除率，否则按工艺名称映射附录A 表A.1（含脱硫/脱硝对 PM 的协同、湿式除尘对 SO2 协同），同类型多设施串联组合；低氮燃烧标识按 22% 与脱硝设施串联；PM10 按细/粗组分分别用 fine/coarse 去除率核算；NH3 仅 SCR/SNCR 燃煤锅炉按表E.1 逃逸系数核算，其余 not_involved。
+- 三个 record JSON 均为按燃料组分（F1/F2/F3）对齐的数组，长度、顺序、component_id 一一对应，多燃料未先汇总。
+
+未完成事项（已在 summary 与异常表中保留）
+- 3 个源无任何燃料数据、4 个源燃料为"其他燃料(吨标准煤)"无法对应因子 → 全部污染物 information_insufficient。
+- 4 个燃煤源燃烧方式为"其他/未填报"→ NOx/CO/VOC/PM 族信息不足（SO2 已算）。
+- 1 个源炼厂干气吨/立方米单位不匹配（NOx 信息不足）。
+- 139 个源对应 GYGL 治理设施缺工艺与去除率，按 0 去除率保守处理（EXC-01，待用户核实）。
+- 治理设施无投运率数据，未乘投运率（记录为方法假设）。
+
+实际采用脚本：work/master.py（主核算）、work/step0~step15 系列（探查/校验）、work/pdf_text.txt（PDF 提取文本）。

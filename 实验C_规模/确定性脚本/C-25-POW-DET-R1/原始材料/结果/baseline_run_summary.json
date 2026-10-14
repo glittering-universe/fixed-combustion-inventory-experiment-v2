@@ -1,0 +1,22 @@
+{
+  "baseline_definition": "fixed_mapping_plus_fixed_lookup_plus_direct_calculation",
+  "candidate_source_count": 1481,
+  "target_source_count": 145,
+  "enterprise_master_rows": 1248,
+  "control_facility_rows": 4063,
+  "source_decision_counts": {
+    "INDUSTRIAL": 1014,
+    "POWER": 145,
+    "EXCLUDE": 322,
+    "UNRESOLVED": 0
+  },
+  "normalized_rows": 1305,
+  "status_counts": {
+    "calculated": 600,
+    "not_involved": 289,
+    "information_insufficient": 416
+  },
+  "exception_rows": 52,
+  "complete_process_record": false,
+  "source_classification_performed": true
+}

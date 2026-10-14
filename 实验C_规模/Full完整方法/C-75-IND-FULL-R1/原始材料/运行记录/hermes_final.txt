@@ -1,0 +1,26 @@
+运行已全部完成并封存。执行结果汇总如下。
+
+运行封存状态
+- run_id: C-75-IND-FULL-R1, scenario: full, target: INDUSTRIAL
+- 封存: 是 (sealed=true)，归档 trace 27,683 条记录 (trace/complete_calculation_process.jsonl)
+- 全程 error_count=0, warning_count=0，无系统级失败
+
+各阶段记录数
+1. adapt_environmental_workbooks: 基102设备 4,442；基101企业主表 3,022；治理设施 8,067（输入哈希校验通过）
+2. build_device_emission_sources: 候选 4,442 → INDUSTRIAL 3,027 / POWER 470 / EXCLUDE 945
+3. generate_pollutant_calculation_items: 核算项 27,683（NOX/SO2/CO/VOCS/PM10/PM2.5/BC/OC 各 3,082，NH3 3,027）
+4. execute_tcses_calculation_rules: 规则匹配项 23,904，其余保留为项级 flag（未强行修复）
+5. control_calculation_admission: allow_calculation 26,621 / not_applicable 317 / withhold 745
+6. calculate_fixed_combustion_emissions: calculated 26,621 / not_applicable_zero 317 / withheld 745
+7. validate_and_export: 工业锅炉源 3,027（26,683 项）；火电热力源 0（本次目标为工业）；异常分组 221
+8. archive_complete_calculation_process: 完整过程记录 27,683 条，运行包封存
+
+两个工作簿
+- /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/01_工业锅炉/01_Full完整方法/R1/outputs/固定燃烧源-工业锅炉_实验结果.xlsx
+- /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/01_工业锅炉/01_Full完整方法/R1/outputs/固定燃烧源-火电、热力生产与供应_实验结果.xlsx
+
+异常清单
+- /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/01_工业锅炉/01_Full完整方法/R1/outputs/最终异常清单.csv（221 个分组）
+- 规范化版本: outputs/exceptions.csv
+
+未使用 CEMS，未用基102报告产生量/排放量参与方法选择或结果形成；局部缺失均以项级 flag/异常保留，未影响其余记录。

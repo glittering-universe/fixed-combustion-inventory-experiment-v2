@@ -1,0 +1,87 @@
+{
+  "run_id": "B-S1-IND-GEN",
+  "scenario": "generic_tool_agent",
+  "target": "INDUSTRIAL",
+  "input_files": {
+    "device_fuel_base": "inputs/基102-2002_原始结构脱敏输入.xlsx",
+    "enterprise_master": "inputs/基101-2001_原始结构脱敏输入_分片01-04-of04.xlsx",
+    "control_facility_base": "inputs/基101-2002_原始结构脱敏输入.xlsx",
+    "source_identity_index": "inputs/source_identity_index.json",
+    "standard": "inputs/T_CSES_144-2024.pdf"
+  },
+  "processed_source_count": 5922,
+  "decided_counts": {
+    "INDUSTRIAL": 5185,
+    "POWER": 737
+  },
+  "item_count": 53298,
+  "status_counts": {
+    "calculated": 32248,
+    "not_involved": 11801,
+    "information_insufficient": 9249
+  },
+  "output_paths": {
+    "source_decisions": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/01_S1表头形式扰动/01_工业锅炉/03_通用工具调用型Agent/R1/outputs/source_decisions.csv",
+    "generic_inventory_items": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/01_S1表头形式扰动/01_工业锅炉/03_通用工具调用型Agent/R1/outputs/generic_inventory_items.csv",
+    "generic_source_disposition": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/01_S1表头形式扰动/01_工业锅炉/03_通用工具调用型Agent/R1/outputs/generic_source_disposition.csv",
+    "generic_exception_list": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/01_S1表头形式扰动/01_工业锅炉/03_通用工具调用型Agent/R1/outputs/generic_exception_list.csv",
+    "generic_run_summary": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/01_S1表头形式扰动/01_工业锅炉/03_通用工具调用型Agent/R1/outputs/generic_run_summary.json"
+  },
+  "rules_scripts": [
+    "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/01_S1表头形式扰动/01_工业锅炉/03_通用工具调用型Agent/R1/work/engine.py",
+    "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/01_S1表头形式扰动/01_工业锅炉/03_通用工具调用型Agent/R1/work/standard_fulltext.txt",
+    "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/01_S1表头形式扰动/01_工业锅炉/03_通用工具调用型Agent/R1/work/parsed_factors.json"
+  ],
+  "unfinished_items": {
+    "information_insufficient_items": 9249,
+    "root_causes": [
+      {
+        "exception_id": "EXC-001",
+        "root_cause": "燃料不在 T/CSES 144-2024 表E.7 覆盖范围 (生物燃料/其他燃料/工业废料/煤制品/煤矸石/其他洗煤/城市生活垃圾等)"
+      },
+      {
+        "exception_id": "EXC-002",
+        "root_cause": "锅炉技术不在表E.7 覆盖范围 (燃气轮机/余热利用锅炉/燃生物质锅炉)"
+      },
+      {
+        "exception_id": "EXC-003",
+        "root_cause": "源记录无燃料消耗量等活动水平数据 (燃料一/燃料二/其他燃料总量均为空或为0)"
+      },
+      {
+        "exception_id": "EXC-005",
+        "root_cause": "T/CSES 144-2024 固定燃烧产生系数表 (表D.1/表E.7) 无 NH3 列, 未核算"
+      },
+      {
+        "exception_id": "EXC-006",
+        "root_cause": "多燃料源中部分燃料组分可核算、部分组分缺少系数, 汇总值仅含可核算组分"
+      },
+      {
+        "exception_id": "EXC-007",
+        "root_cause": "治理设施报告去除效率超出 0-100% 有效范围, 已回退采用表A.1 推荐值"
+      },
+      {
+        "exception_id": "EXC-008",
+        "root_cause": "GYGL 治理设施处理工艺名称为空, 已按设施类别使用表A.1 默认措施 (其他除尘/脱硫/脱硝技术)"
+      }
+    ]
+  },
+  "control_data_notes": {
+    "gygl_facility_total": 2065,
+    "gygl_facility_none_process": 903,
+    "gygl_facility_invalid_reported_efficiency": 1,
+    "enterprise_master_rows": 18734
+  },
+  "method_notes": [
+    "方法: T/CSES 144-2024 第8.3节 化石燃料固定燃烧 (工业锅炉), E=A×EF×(1-η) (公式2); 燃煤 SO2/PM2.5/PM10/BC/OC 采用物料衡算 (公式3-6, 表C.1-C.3); 产生系数取自表E.7; 控制去除效率取自附录A 表A.1",
+    "气体燃料 (天然气/焦炉煤气/高炉煤气/转炉煤气/其它煤气) 产生系数按表D.1 注c 采用 g/m3 计; 液化天然气/液化石油气/炼厂干气及其他固体、液体燃料按 g/kg 计",
+    "治理设施通过 (统一社会信用代码, 排放口类别 GYGL=工业锅炉排放口) 关联到企业全部工业锅炉源 (基102 排放口编号为 DAxxx 具体排放口, 与基101-2002 的类别代码无法一一对应)",
+    "同一措施的多套设施按取最大去除效率处理(视为并行), 不同措施按串联组合 1-∏(1-ηi); 表A.1 已给出组合值的低氮+SCR(64%)/低氮+SNCR(52%) 直接用组合值",
+    "治理设施去除效率优先采用基101-2002 报告值(0-100%), 无效或缺失时回退表A.1 推荐值; PM2.5/PM2.5-10 组分去除效率一律按表A.1 (报告值无粒径拆分)",
+    "未获取治理设施投运率数据, 按投运率=1 (设施全年按报告效率运行) 处理",
+    "燃烧烟气 VOCs 按标准 8.2.1.2-5) 不涉及末端治理, η=0",
+    "NH3: 表E.7/表D.1 无 NH3 产生系数, 全部记 not_involved (nh3_not_covered)",
+    "多燃料源不汇总活动水平与产生系数, 每个燃料为独立组件 (F1/F2/OT), 三个 record 数组按 component_id 一一对应; 汇总值为各可算组件之和",
+    "燃料一/燃料二消耗量为0或缺失的组件不进入计算; 源无任何燃料数据时记 information_insufficient (activity_missing)",
+    "基101-2001 企业主表为企业级汇总字段, 未参与逐源计算链 (设备级活动水平取自基102)"
+  ]
+}

@@ -1,0 +1,45 @@
+任务已完成。最终交付如下：
+
+输出目录（UTF-8）
+/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/050%规模/01_工业锅炉/03_通用工具调用型Agent/R3/outputs/
+  source_decisions.csv              2961 行（每候选源 1 行）
+  generic_inventory_items.csv       26649 行（2961 源 × 9 污染物）
+  generic_source_disposition.csv    2961 行
+  generic_exception_list.csv        9 行（9 个根因组）
+  generic_run_summary.json          运行摘要
+
+实际采用的规则/脚本
+  scripts/build_inventory.py        核算引擎
+  scripts/rules_decision.md         规则文档
+  scripts/validate_outputs.py       校验脚本
+  scripts/explore*.py / spotcheck*.py  探索与抽查脚本
+
+处理逻辑（全部自主建立，未使用专用工具/冻结规则/历史结果）
+1. 目标判定（对全部 2961 条候选）：
+   - 基102 行"电站锅炉/燃气轮机编号"非空 → POWER（火电热力，377 条）→ not_involved（reason: NOT_INVOLVED_TARGET_MISMATCH/DEVICE_BLOCK_POWER_BOILER）
+   - "工业锅炉编号"非空 → INDUSTRIAL（2584 条）→ 汇总（DEVICE_BLOCK_INDUSTRIAL_BOILER）
+   - 两者皆空 → OUT_OF_SCOPE（本数据集 0 条）
+   source_id 仅通过 source_identity_index.json 的行对应关系绑定，未按 ID 格式推断。
+
+2. 核算（T/CSES 144-2024）：
+   - 产排污系数法 E=A×EF×(1−η)（公式2）；燃煤 SO2/PM2.5/PM10/BC/OC 用物料衡算法（公式3~6，表C.1~C.3 参数）。
+   - EF 取自表E.7（燃料类型×燃烧技术）；天然气 g/m3，其余 g/kg。
+   - 治理效率：基101-2002 中"工业锅炉排放口(GYGL)"设施按企业（统一社会信用代码，缺失时组织机构代码）关联；上报去除效率优先，其余取附录A 表A.1 全行值（含协同去除），多设施串联 η=1−∏(1−ηi)；低氮燃烧标志对 NOx 加 22%（工艺已含则不重复）；VOC/CO 无末端治理，η=0。
+   - 组件级记录：activity/parameter/control 三数组按 component_id 对齐（F1/F2/F3），多燃料未汇总。
+
+3. 状态分布：calculated 16123；information_insufficient 7133；not_involved 3393；source_data_invalid 0。
+   数值非负、emission≤generation、PM10 的 fine/coarse 均给值；三个 *_record_json 均为合法 JSON 数组、长度与 component_id 完全对齐。
+
+已核实（抽查与全量校验均通过）
+- 天然气锅炉手算对照、燃煤链条炉（SO2=0.493 g/kg 物料衡算、电袋+脱硫+SCR 串联效率）、天然气+柴油双燃料、炼厂干气+燃料油双燃料、生物燃料信息不足等抽查结果与引擎输出一致。
+- 列名、唯一性、非负性、范围覆盖校验 ISSUES: 0。
+
+未完成事项（如实保留在 generic_exception_list.csv 与 run_summary.pending_items）
+1. NH3：指南表E.7/表D.1 均无固定燃烧 NH3 产生系数 → 全部 2584 项 information_insufficient。
+2. 生物燃料（吨标准煤，516 源）、工业废料（3）、其他燃料（26）、城市生活垃圾（工业块 0）无指南系数 → information_insufficient。
+3. 燃气轮机（工业锅炉块，17 源）无指南系数 → information_insufficient。
+4. 燃煤 SO2/颗粒物个别行缺含硫量/灰分（1 行 S、1 行 ash）→ information_insufficient。
+5. 8 条无燃料记录 → ACTIVITY_DATA_MISSING。
+6. 治理设施投运率无数据，去除效率按上报值或表A.1 直接使用（假定投运率100%）；QT 等其他排放口设施无法归属到具体锅炉，未参与。
+
+一个诚实的边界说明：运行包内未发现独立于以上判断的"参考答案"；所有数值均按上述规则自建并已校验，能力边界（无系数→不编造）按要求保留为 information_insufficient，未发现遗留的空白列被解释为零的情况。

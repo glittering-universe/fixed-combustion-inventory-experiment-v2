@@ -1,0 +1,52 @@
+{
+  "run_id": "B2-300-POW-GEN-R2",
+  "target": "POWER",
+  "method": "T/CSES 144-2024",
+  "input_files": [
+    "inputs/基102-2002_原始结构脱敏输入.xlsx",
+    "inputs/基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+    "inputs/基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+    "inputs/基101-2001_原始结构脱敏输入_分片03-of04.xlsx",
+    "inputs/基101-2001_原始结构脱敏输入_分片04-of04.xlsx",
+    "inputs/基101-2002_原始结构脱敏输入.xlsx",
+    "inputs/source_identity_index.json",
+    "inputs/T_CSES_144-2024.pdf"
+  ],
+  "processing_script": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-POW-GEN-R2/process_inventory.py",
+  "total_sources": 300,
+  "power_sources": 188,
+  "industry_sources": 112,
+  "out_of_scope_sources": 0,
+  "inventory_items": 1692,
+  "status_counts": {
+    "calculated": 869,
+    "not_involved": 124,
+    "information_insufficient": 447,
+    "source_data_invalid": 252
+  },
+  "output_files": [
+    "outputs/source_decisions.csv",
+    "outputs/generic_inventory_items.csv",
+    "outputs/generic_source_disposition.csv",
+    "outputs/generic_exception_list.csv",
+    "outputs/generic_run_summary.json"
+  ],
+  "unresolved_items": 123,
+  "unresolved_detail": "123 exception records requiring user action for missing fuel parameters (sulfur, ash, fuel quantity)",
+  "rules_applied": [
+    "Classification: Has power boiler → POWER (电力生产)",
+    "Classification: Industrial boiler with POWER sector industry code → POWER",
+    "Classification: Industrial boiler with gen field explicitly reported → POWER (热力生产和供应)",
+    "Classification: Industrial boiler without power sector code and without gen → INDUSTRY (out of scope)",
+    "SO2 coal: Mass balance EF = 20 * S% * (1 - 0.15)",
+    "SO2 gas/liquid: Table D.1 values",
+    "NOx coal power gen: ≤100MW=8.96, 100-300MW=8.19, ≥300MW=7.21 g/kg",
+    "NOx coal heat supply: 8.85 (煤粉炉), 7.5 (流化床炉), 4 (层燃炉) g/kg",
+    "PM coal: Mass balance EF = 10 * Ash% * (1-ar) * f_PM",
+    "CO, VOC, BC, OC: Table D.1 values",
+    "NH3: Not in power sector EF table → not_involved",
+    "Control efficiency: Appendix A with fuzzy matching from B101-2002 facility names",
+    "Low-NOx burner: 22% NOx reduction if no other NOx control",
+    "Gas fuel EFs in g/m³, solid/liquid fuel EFs in g/kg"
+  ]
+}

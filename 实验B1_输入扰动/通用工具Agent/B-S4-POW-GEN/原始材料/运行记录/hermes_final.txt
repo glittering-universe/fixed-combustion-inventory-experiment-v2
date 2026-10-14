@@ -1,0 +1,28 @@
+任务完成。全部 5 个输出文件已生成并通过 5955 项 QA 校验（列名、唯一性、非负性、范围覆盖、JSON 数组结构与对齐、效率区间、emission≤generation 均 PASS，0 FAIL）。
+
+输出目录（UTF-8）：
+/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/04_S4组合扰动/02_火电热力/03_通用工具调用型Agent/R1/outputs/
+
+1. source_decisions.csv —— 5922 个候选源全部判定：POWER 615、BOILER 5243、OUT_OF_SCOPE 64
+2. generic_inventory_items.csv —— 5922×9=53298 核算项（calculated 2875 / information_insufficient 2660 / not_involved 47763；未使用 source_data_invalid，因参与核算的字段均为有效正值）
+3. generic_source_disposition.csv —— 5922 行，与 decisions 完全一致
+4. generic_exception_list.csv —— 5 个根因组（EXC-001~005）
+5. generic_run_summary.json —— 输入文件、分类数、状态数、各污染物合计（仅计 calculated）、输出路径、未完成事项、所用脚本
+
+方法与关键判定（依据 inputs/T_CSES_144-2024.pdf）：
+- 核算：E=A×EF×(1−η)（公式2）；燃煤 SO2/PM2.5/PM10/BC/OC 用物料衡算（公式3-6，表C.1-C.3）；产生系数取表D.1（电力生产/热力生产和供应）；电力生产燃煤 NOx 按装机容量分档（≤100MW→8.96，100-300→8.19，≥300→7.21 g/kg）
+- 分类：行业代码 4411/4412/4417/4430 → POWER（标准7.1）；采矿/制造/燃气企业燃烧设备 → BOILER（标准8.3）；4419 其他电力生产、农业/水务行业锅炉及无燃烧证据记录 → 范围外
+- 治理：基101-2002 填报治理效率优先，缺失按治理工艺匹配附录A 表A.1；同(设施名称,工艺)多设施按并联取最大防误串，不同措施按串联 η=1−∏(1−ηi)；低氮燃烧按基102标志叠加，脱硝设施已含低氮时不重复（3 处校验通过）；VOCs 燃烧烟气 η=0（标准8.2.1.2 第5款）；PM10 行同时给出 fine_efficiency 与 coarse_efficiency
+- 多燃料：每燃料为独立组件，activity/parameter/control 三数组按 component_id 一一对齐（共 32 个多燃料 calculated SO2 项，抽查正确）
+
+如实保留的未完成事项（未编造任何数据）：
+- 治理设施投运率：输入无设施年运行小时，η 按填报效率/附录A 直接使用（隐含满投运），已列入 EXC-002 与摘要
+- 生物燃料/城市生活垃圾/其他燃料/工业废料在表D.1 无产生系数：254 个源全部 information_insufficient（EXC-003）
+- NH3：标准燃烧源表无产生系数，615 源全部 information_insufficient（EXC-004）
+- 1 源燃烧技术填"其他"（CO 及颗粒物类缺系数，EXC-005）、2 源煤矸石 PM/BC/OC 缺表C参数（EXC-001）
+
+实际使用的规则/脚本（记录于摘要）：
+- work/build_inventory.py（主核算脚本）
+- work/extract_pdf.py（PDF 文本抽取）、work/explore_*.py（输入探查）、work/qa_outputs.py（校验）
+
+核算结果合计（仅 calculated 项，吨）：SO2 产生 161727 / 排放 84664；NOx 1151589 / 570363；CO 323651 / 323651；VOC 11990 / 11990；PM2.5 97434 / 51552；PM10 374290 / 197191；BC 201 / 102；OC 2.0 / 0.09；NH3 无系数不计。

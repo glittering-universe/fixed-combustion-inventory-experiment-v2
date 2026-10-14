@@ -1,0 +1,24 @@
+任务完成。以下为实际执行结果。
+
+输出文件（均位于运行包 outputs 目录，UTF-8 无 BOM）：
+  /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/050%规模/01_工业锅炉/03_通用工具调用型Agent/R2/outputs/
+  - source_decisions.csv           2961 行（每候选源 1 行）
+  - generic_inventory_items.csv    26649 行（2961 源 × 9 污染物）
+  - generic_source_disposition.csv 2961 行
+  - generic_exception_list.csv     10 个根因组
+  - generic_run_summary.json       输入/统计/方法说明/未完成事项/脚本路径
+
+分类结果（仅依据基102设备块 + 基101/PDF 判定，未使用任何包外资料）：
+  INDUSTRIAL（工业锅炉）2527 台，POWER_HEAT（火电热力）412 台（377 电站锅炉/燃气轮机块 + 35 台电力热力行业企业的工业锅炉），OUT_OF_SCOPE 22 台（17 台工业燃气轮机 R7 非锅炉 + 5 台行业不在 B06-12/C13-43/D45/D44 范围）。
+
+核算方法（T/CSES 144-2024，PDF 已全文提取并经 pdfplumber 双源核对）：
+  - 产排污系数法 E=A×EF×(1-η)，燃煤 SO2/PM2.5/PM10/BC/OC 按公式(3)-(6)物料衡算（附录C 工业源参数）；气体燃料系数按 g/m3、固/液按 g/kg
+  - 治理效率：企业×GYGL(工业锅炉排放口)设施，填报效率优先、缺失时取表A.1默认，多套按串联组合；低氮燃烧 22%；PM10 细/粗组分效率分别记录（湿法脱硫、SCR/SNCR 协同除尘按表A.1计入）
+  - 各状态数：calculated 15800、information_insufficient 6943、not_involved 3906；三个 *_record_json 数组按 component_id 对齐（多燃料设备已验证 2 组件对齐）
+  - 手工复算抽查：燃气锅炉 NOx=1.190 t、燃煤链条炉（S=0.29、灰分6.17）SO2=4.93 t/PM10=1.851 t、带 93.69% 脱硫设施的煤源排放=0.311 t，全部吻合
+
+关键处置（不编造，全部列入例外清单）：非化石燃料（生物燃料/垃圾/工业废料）与"其他燃料"无系数→information_insufficient；NH3 标准无系数→information_insufficient；8 台无活动水平；11 台燃煤燃烧方式缺失；表E.7 中 LNG/LPG/石油焦 VOC=33 g/kg 疑似排版错误（按原文采用并标注）；工业燃气轮机判定范围外待用户确认。
+
+未完成事项（详见 generic_run_summary.json）：非化石燃料锅炉与 NH3 排放未核算、治理设施仅企业级关联（无法到 DA 排放口）、燃气轮机归属待确认。
+
+校验结果：列名、唯一性、数值非负性、2961×9 范围覆盖、JSON 合法性、数组对齐、PM10 双效率——0 错误。主脚本 scripts/build_inventory.py，辅助探查/校验脚本同目录。

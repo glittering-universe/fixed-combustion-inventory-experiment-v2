@@ -1,0 +1,72 @@
+{
+  "run_id": "A-IND-GEN-R2",
+  "target": "INDUSTRIAL",
+  "scenario": "generic_tool_agent",
+  "input_files": [
+    {
+      "role": "device_fuel_base",
+      "path": "inputs/基102-2002_原始结构脱敏输入.xlsx"
+    },
+    {
+      "role": "enterprise_master",
+      "path": "inputs/基101-2001_原始结构脱敏输入_分片01-04-of04.xlsx"
+    },
+    {
+      "role": "control_facility_base",
+      "path": "inputs/基101-2002_原始结构脱敏输入.xlsx"
+    },
+    {
+      "role": "source_identity_index",
+      "path": "inputs/source_identity_index.json"
+    },
+    {
+      "role": "standard",
+      "path": "inputs/T_CSES_144-2024.pdf"
+    }
+  ],
+  "processed_source_count": 5922,
+  "classification": {
+    "INDUSTRIAL": 5097,
+    "POWER_THERMAL": 816,
+    "OUT_OF_SCOPE": 9
+  },
+  "inventory_item_count": 45873,
+  "status_counts": {
+    "calculated": 31651,
+    "information_insufficient": 14213,
+    "not_involved": 9
+  },
+  "output_paths": [
+    "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/02_实验A_端到端清单编制/01_工业锅炉/03_通用工具调用型Agent/R2/outputs/source_decisions.csv",
+    "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/02_实验A_端到端清单编制/01_工业锅炉/03_通用工具调用型Agent/R2/outputs/generic_inventory_items.csv",
+    "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/02_实验A_端到端清单编制/01_工业锅炉/03_通用工具调用型Agent/R2/outputs/generic_source_disposition.csv",
+    "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/02_实验A_端到端清单编制/01_工业锅炉/03_通用工具调用型Agent/R2/outputs/generic_exception_list.csv",
+    "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/02_实验A_端到端清单编制/01_工业锅炉/03_通用工具调用型Agent/R2/outputs/generic_run_summary.json"
+  ],
+  "unfinished_items": [
+    "NH3排放未核算（标准无固定燃烧NH3产生系数）",
+    "16个源燃料活动水平为空未核算",
+    "999个生物质锅炉源未核算（标准无系数）",
+    "63个非常规燃料源未核算",
+    "38个燃气轮机源未核算（标准无系数）",
+    "8个源的其他燃料类型未指明",
+    "23个燃煤源炉型未知",
+    "0个燃煤源煤质参数缺失",
+    "1个焦炭源颗粒物/SO2未核算",
+    "POWER_THERMAL与OUT_OF_SCOPE源未在本次INDUSTRIAL目标清单中核算"
+  ],
+  "rule_scripts": [
+    "scripts/build_inventory.py",
+    "scripts/validate_outputs.py"
+  ],
+  "key_assumptions": [
+    "燃料分类：电站锅炉/燃气轮机编号行→火电热力；工业锅炉编号行→工业锅炉；D4411/D4412/D4417/D4430企业全部生产设施→火电热力（§7.1）；0511/0539/4690行业→范围外（§8.1）",
+    "表E.7气体燃料（天然气/焦炉煤气/高炉煤气/其它煤气/转炉煤气）排放系数按g/m3使用（与表D.1电力供应同值行一致，源数据单位为万立方米）",
+    "治理效率：优先使用基101-2002填报去除效率（>100%封顶为100%），缺失时按附录A表A.1匹配工艺默认值；设施投运率无数据，按1.0处理",
+    "除尘设施多个时取最大去除效率；PM10细/粗组分效率：有填报值时二者取填报值，无填报值时按表A.1细/粗配对值",
+    "低氮燃烧flag=是时NOx去除效率22%，与SCR/SNCR并用时按表A.1组合行（低氮+SCR=64%、低氮+SNCR=52%）",
+    "锅炉燃烧烟气VOCs不涉及末端治理，η=0（§8.2.1.2-5）",
+    "燃煤SO2/PM2.5/PM10/BC/OC采用物料衡算（公式3~6，附录C表C.1~C.3工业源参数）",
+    "排放量单位吨，产生量=Σ(活动水平×产生系数)，排放量=产生量×(1-η)"
+  ]
+}

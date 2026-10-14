@@ -1,0 +1,29 @@
+实验 D 运行完成：`D-POW-W_O_CALCULATION_ITEM_STRUCTURE`（w_o_calculation_item_structure，POWER，100%，B0）
+
+阶段状态
+- 1a adapt_environmental_workbooks: complete（5922 候选，revision b1d98935）
+- 1b build_device_emission_sources: complete（POWER 615 / INDUSTRIAL 4046 / EXCLUDE 1261，revision 94a813c0）
+- 2 generate_device_pollutant_slots（消融替代，未调用 generate_pollutant_calculation_items）: complete（5535 槽 = 615 设备 × 9 污染物，revision adf73cb6）
+- 3 execute_tcses_calculation_rules（恢复）: complete（matched_item_count 0；5535 槽全部标记 CALCULATION_ITEM_STRUCTURE_REMOVED，revision e58de3c3）
+- 4 control_calculation_admission（恢复）: complete（revision 0805151f）
+- 5 calculate_fixed_combustion_emissions: complete（revision aba515a0）
+- 6 validate_and_export_fixed_combustion_inventory: complete（error_count 0，warning_count 0，revision 2ce401f6）
+- 7 archive_complete_calculation_process（恢复完整过程归档，非 minimal）: complete（sealed=true，revision 5f719b9c）
+
+决策覆盖率
+- 准入决策：5535/5535 槽（100%）= allow_calculation 3320 / not_applicable 476 / withhold 1739
+- 计算执行：3320 计算 / 476 不适用零值 / 1739 保留未算
+- 规则匹配：0/5535（结构消融所致，槽级无燃料/工艺核算项关系可匹配）
+
+输出路径（运行包根：…/05_实验D_方法组成贡献/01_去掉污染物核算项结构/02_火电热力/R1）
+- outputs/固定燃烧源-火电、热力生产与供应_实验结果.xlsx（5535 项 / 615 源，23607 公式，0 公式错误）
+- outputs/固定燃烧源-工业锅炉_实验结果.xlsx（POWER 目标，0 项）
+- outputs/最终异常清单.csv（395 异常组）、outputs/exceptions.csv
+- outputs/calculation_items.csv、source_decisions.csv、source_pollutant_totals.csv
+- trace/complete_calculation_process.jsonl（5535 条完整过程记录，sha256 af47bd38）
+
+异常数量
+- 硬校验错误 0，警告 0；最终异常组 395（含 FUEL_UNMAPPED 1344、FACTOR_UNMATCHED 1344、CONTROL_INFO_MISSING_DENOX 3304 等工具返回标志的归并呈现）
+
+运行包封存
+- 已封存（sealed=true），封存后未再修改任何结果。

@@ -1,0 +1,23 @@
+运行 C-75-POW-FULL-R2 全部 7 个阶段执行完毕，运行包已封存（sealed=true）。
+
+封存状态: 已封存（sealed=true），最终 revision 60cc04dc…
+
+各阶段记录数:
+ 1. adapt_environmental_workbooks     基102设备 4442 / 治理设施 8067 / 企业主表 3022
+ 2. build_device_emission_sources     候选 4442 → POWER 470 / INDUSTRIAL 3027 / EXCLUDE 945
+ 3. generate_pollutant_calculation_items  核算项 4766（NOX/SO2/PM10/PM25/BC/OC/CO/VOCS 各537，NH3 470）
+ 4. execute_tcses_calculation_rules   规则命中 2712 项；20 类局部旗标（含 CONTROL_INFO_MISSING_* 等）留待准入处理
+ 5. control_calculation_admission     allow_calculation 3071 / not_applicable 375 / withhold 1320
+ 6. calculate_fixed_combustion_emissions  calculated 3071 / not_applicable_zero 375 / withheld 1320
+ 7. validate_and_export_fixed_combustion_inventory  error_count 0 / warning_count 0；异常组 298；revision 9c65cd…
+ 8. archive_complete_calculation_process  完整过程记录 4766 条（trace/complete_calculation_process.jsonl）
+
+两个工作簿:
+ /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/02_火电热力/01_Full完整方法/R2/outputs/固定燃烧源-工业锅炉_实验结果.xlsx
+ /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/02_火电热力/01_Full完整方法/R2/outputs/固定燃烧源-火电、热力生产与供应_实验结果.xlsx （470 源 / 4766 核算项 / 21648 公式，0 公式错误）
+
+异常清单:
+ /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/02_火电热力/01_Full完整方法/R2/outputs/最终异常清单.csv （298 个异常组）
+ 规范化版本: …/R2/outputs/exceptions.csv
+
+说明: 本运行 target=POWER，机器导出模式下工业锅炉工作簿为空、火电热力工作簿承载全部 470 个 POWER 源与 4766 个核算项；计算全程未使用 CEMS，也未以基102报告产生量/排放量选择方法或参与结果形成。298 个异常组（如治理信息缺失、燃料未映射、参数缺失等）已按规则保留在最终异常清单中供人工复核。

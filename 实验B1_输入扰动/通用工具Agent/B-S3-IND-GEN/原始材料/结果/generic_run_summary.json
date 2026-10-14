@@ -1,0 +1,58 @@
+{
+ "run_id": "B-S3-IND-GEN",
+ "target": "INDUSTRIAL",
+ "input_files": {
+  "device_fuel_base": "inputs/基102-2002_原始结构脱敏输入.xlsx",
+  "enterprise_master": [
+   "inputs/基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+   "inputs/基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+   "inputs/基101-2001_原始结构脱敏输入_分片03-of04.xlsx",
+   "inputs/基101-2001_原始结构脱敏输入_分片04-of04.xlsx"
+  ],
+  "control_facility_base": "inputs/基101-2002_原始结构脱敏输入.xlsx",
+  "source_identity_index": "inputs/source_identity_index.json",
+  "standard": "inputs/T_CSES_144-2024.pdf"
+ },
+ "processed_source_count": 5922,
+ "decided_counts": {
+  "INDUSTRIAL": 5243,
+  "POWER_HEAT": 615,
+  "OUT_OF_SCOPE": 64
+ },
+ "inventory_item_count": 47187,
+ "status_counts": {
+  "calculated": 32580,
+  "not_involved": 5226,
+  "information_insufficient": 9381,
+  "source_data_invalid": 0
+ },
+ "output_paths": {
+  "source_decisions": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/03_S3列与工作表顺序扰动/01_工业锅炉/03_通用工具调用型Agent/R1/outputs/source_decisions.csv",
+  "generic_inventory_items": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/03_S3列与工作表顺序扰动/01_工业锅炉/03_通用工具调用型Agent/R1/outputs/generic_inventory_items.csv",
+  "generic_source_disposition": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/03_S3列与工作表顺序扰动/01_工业锅炉/03_通用工具调用型Agent/R1/outputs/generic_source_disposition.csv",
+  "generic_exception_list": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/03_S3列与工作表顺序扰动/01_工业锅炉/03_通用工具调用型Agent/R1/outputs/generic_exception_list.csv",
+  "generic_run_summary": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/03_S3列与工作表顺序扰动/01_工业锅炉/03_通用工具调用型Agent/R1/outputs/generic_run_summary.json"
+ },
+ "rules_scripts": [
+  "scripts/build_inventory.py",
+  "scripts/analyze_*.py (数据勘察)",
+  "T/CSES 144-2024 §3.5/§5.2/§7.1/§8.1/§8.3, 公式(2)~(6), 表C.1~C.3, 表D.1(参照), 表E.7, 附录A表A.1"
+ ],
+ "unfinished_items": [
+  "生物燃料/其他燃料/工业废料/煤矸石工业锅炉无表E.7产生系数, 判为信息不足未核算",
+  "燃气轮机无产生系数, 判为信息不足未核算",
+  "17个基102行无燃料数据, 未核算(不得填零)",
+  "炼厂干气活动单位(吨)与标准系数单位(g/m3)不匹配, 未核算",
+  "治理设施投运率无数据, 按1.0处理(见EXC-015)",
+  "治理设施按(企业,GYGL/DZGL排放口类别)匹配, 企业内多台锅炉共享治理设施, 存在归因近似",
+  "范围外源(4419其他电力生产等)未核算, 待用户确认归属",
+  "NH3未纳入燃烧源核算(标准无系数)"
+ ],
+ "assumptions": [
+  "分类按企业行业类别代码(基102.行业类别代码): 电力热力源=D4411/4412/4417/4430; 工业源=B06~12/C13~43/D45",
+  "治理去除效率采用附录A表A.1参考值(标准§7.2.1.2/§8.3.1), 未直接采用基101-2002上报去除效率(存在996%异常)",
+  "燃烧烟气VOCs治理效率取0(标准§8.2.1.2-5)",
+  "燃料一/燃料二分别作为独立组件核算, 不合并活动水平",
+  "焦炭PM/BC/OC因表C.1无参数判为信息不足"
+ ]
+}

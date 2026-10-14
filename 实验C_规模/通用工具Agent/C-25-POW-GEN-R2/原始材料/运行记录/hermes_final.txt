@@ -1,0 +1,32 @@
+任务完成。全部结果已生成并通过验证。
+
+## 实际输出路径（运行包 R2/outputs/）
+
+1. source_decisions.csv — 1481 个候选源，每源一行
+2. generic_inventory_items.csv — 145 源 × 9 污染物 = 1305 行核算项
+3. generic_source_disposition.csv — 1481 行
+4. generic_exception_list.csv — 5 个待用户处理的根因组
+5. generic_run_summary.json — 输入、计数、路径、未完成事项、规则脚本
+
+绝对路径前缀：/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/025%规模/02_火电热力/03_通用工具调用型Agent/R2/outputs/
+
+## 处理逻辑（仅用输入工作簿 + T/CSES 144-2024.pdf，未用任何专用工具/冻结规则）
+
+- 分类依据标准 7.1/8.1：行业 4411/4412/4417/4430 → 火电热力(POWER, 145)；B06-12/C13-43/D45 → 工业锅炉(1318)；4419 其他电力生产(16)、A0511(2) → 范围外。
+- 核算方法：产排污系数法 E=A×EF×(1−η)（公式2）；燃煤 SO2/PM2.5/PM10/BC/OC 用物料衡算（公式3–6，附录C表C.1–C.3，燃料硫分/灰分/装机容量取基102源字段）；EF 取附录D表D.1（电力生产/热力生产和供应两个板块，因子表已逐格与PDF原文比对，368 格 0 差异）；控制效率取基101-2002 去除效率（有报告值时）或附录A表A.1，多措施取最大，低氮燃烧 22%，VOCs 燃烧烟气 η=0（标准 8.2.1.2-5），投运率按 1.0 假设并记录。
+- 治理设施按排放口代码 DZGL/GYGL/QT 对接到电站/工业锅炉设备。
+
+## 结果与校验（qa_outputs.py 全部通过）
+
+- 状态：calculated 600 行、information_insufficient 705 行（NH3 全部无燃烧源系数 145 行 + 未覆盖燃料 70 源 × 9）。
+- 未覆盖燃料（表D.1 无系数，未编造）：城市生活垃圾 44 源、生物燃料 18 源、其他燃料(吨标准煤) 7 源、煤制品 1 源 → 整源×污染物标 information_insufficient，理由码与异常清单给出。
+- 三个 *_record_json 均为合法 JSON 数组，逐组件对齐（component_id F1/F2 一致，长度一致），QA 复核 0 错误；PM10 行 fine/coarse 效率均给出；无治理时 efficiency 明确写 0；信息不足行 generation_t/emission_t 留空（不当作零）。
+- 手工抽核 8 个源（燃煤电厂物料衡算、燃气轮机、焦炉煤气、4430 链条炉、CFB 容量法 NOx 等）数值与公式一致；emission ≤ generation、数值非负、source_id 唯一、每源 9 行均通过。
+- 计算口径合计（仅 calculated）：SO2 17799.6 t、NOx 128667.5 t、CO 76913.1 t、VOC 4347.4 t、PM2.5 119799.0 t、PM10 461015.6 t、BC 239.5 t、OC 0.042 t。
+
+## 未完成事项（已写入 summary 与异常清单）
+
+- 4 类燃料无产生系数、NH3 无燃烧源系数，共 5 个根因组（EXC-001~005），需用户补充生态环境部 2021 年第 24 号公告系数手册或实测数据后重算。
+- 治理设施投运率、除尘效率的粒径细分等按文档化假设处理，见 generic_run_summary.json assumptions。
+
+实际采用的规则/脚本：scripts/factors.py（标准系数表编码）、scripts/compute_inventory.py（分类+核算引擎）、scripts/qa_outputs.py（结果校验）。全部写入均在运行包内，未改动运行包以外任何文件。

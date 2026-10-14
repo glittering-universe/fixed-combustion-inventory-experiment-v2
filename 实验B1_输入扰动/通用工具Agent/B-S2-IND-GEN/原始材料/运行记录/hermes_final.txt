@@ -1,0 +1,42 @@
+任务执行状态总结（已达工具调用上限，以下为实际执行结果与未完成事项）
+
+一、已完成
+1. 方法依据（全部来自运行包 inputs/T_CSES_144-2024.pdf，已全文提取到 work/standard_fulltext.txt 并人工核对）
+- 第7.1节/3.5/3.6条：电力热力源=4411/4412/4417/4430企业；工业源=B06-12、C13-43、D45企业
+- 第8.3节：化石燃料固定燃烧按公式(2) E=A×EF×(1−η) 产排污系数法核算
+- 燃煤 SO2/PM2.5/PM10/BC/OC 按公式(3)~(6)物料衡算，参数取附录C表C.1~C.3
+- 系数取附录E表E.7（已用 pdfplumber 核对表格数值），去除效率取附录A表A.1
+- 控制设施按“统一社会信用代码+GYGL/DZGL”关联基101-2002；填报效率0~100%优先，缺失按工艺映射A.1；设施投运率无数据按1.0
+
+2. 处理逻辑（全部自主建立，无任何专用工具/规则包/参照）
+- source_identity_index.json 仅用于 source_id↔基102行的稳定映射（5922条全部覆盖校验通过）
+- 逐候选判断去向：INDUSTRIAL/POWER_HEAT/OUT_OF_SCOPE，再仅汇总 INDUSTRIAL
+- 多燃料/独立组件严格按组件F1、F2、OTH分别取活动、参数、控制三数组，component_id一一对齐
+- PM10 按 PM2.5组分和PM2.5-10组分拆分，分别用 fine_efficiency/coarse_efficiency 核算
+- NH3：标准E.7/D.1未给燃烧源系数，按0核算并在参数记录注明（未编造数值）
+- 燃料类型全映射、燃烧技术映射（层燃炉→自动炉排层燃炉等）、生物燃料/垃圾/废料等标准无系数燃料按 information_insufficient 处理，不造系数
+- 发现并记录标准印刷异常（E.7中LNG/LPG/石油焦VOCs=33 g/kg疑似排版错误，已按印刷值执行并列入异常表）
+
+3. 输出文件（均已生成于运行包 outputs/）
+- .../R1/outputs/source_decisions.csv（5922行×5列）
+- .../R1/outputs/generic_inventory_items.csv（53298行×12列 = 5922源×9污染物）
+- .../R1/outputs/generic_source_disposition.csv（5922行×4列）
+- .../R1/outputs/generic_exception_list.csv（30个根因组）
+- .../R1/outputs/generic_run_summary.json（含输入文件、处理源数、状态统计、输出路径、规则/脚本路径）
+
+4. 结果统计（verify_outputs.py 全部PASS）
+- INDUSTRIAL 5243 / POWER_HEAT 615 / OUT_OF_SCOPE 64
+- calculated 38141（全部INDUSTRIAL）、information_insufficient 9046、not_involved 6111（电力热力5535+范围外576）
+- JSON合法性、三数组对齐、唯一性、非负性、排放≤产生、空值行status/reason_code齐备、PM10 fine/coarse均给出——全部通过
+- 抽查手算（天然气SO2=0/NOx=0.04431t；烟煤链条炉SO2、PM2.5、BC、PM10物料衡算；低氮22%脱除）全部与预期一致
+
+二、未完成事项（需继续）
+1. 最后一个抽查脚本 work/check_f2_fix2.py 已写好但尚未执行：核对4条“燃料2为煤类”行（基102第1578/1579/1909/3006/3240行）在燃料二列族参数修复后能正确取到 燃料二平均收到基含硫量/灰分 并计算。修复已应用到 scripts/run_pipeline.py 并已重新生成输出（修复前后汇总计数一致），但逐行数值确认未跑完。
+2. information_insufficient 明细（已列入异常表）：生物燃料/生活垃圾/工业废料/其他燃料等标准无系数燃料 1080源、煤炭燃烧技术或参数缺失 25源、完全无燃料数据 17源、混合组件部分不可算 8源、治理设施工艺与效率均缺失按η=0的若干设施。
+3. 用户如需，还应人工复核 LPG/LNG/石油焦 VOC=33 g/kg 印刷值是否修正。
+
+三、实际使用的规则/脚本文件路径
+- .../R1/scripts/run_pipeline.py（全部核算逻辑）
+- .../R1/scripts/verify_outputs.py（输出校验）
+- .../R1/work/standard_fulltext.txt（标准PDF提取文本，供核对）
+- .../R1/work/ 下 explore*.py / check_*.py / debug_low_nox.py（过程探索与抽查脚本）

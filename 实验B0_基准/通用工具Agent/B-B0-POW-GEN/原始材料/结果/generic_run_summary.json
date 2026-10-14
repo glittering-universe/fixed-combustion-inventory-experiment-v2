@@ -1,0 +1,53 @@
+{
+  "run_id": "B-B0-POW-GEN",
+  "target": "POWER",
+  "standard": "T/CSES 144-2024 城市大气污染源排放清单编制技术指南",
+  "inputs": [
+    "inputs/基102-2002_原始结构脱敏输入.xlsx",
+    "inputs/基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+    "inputs/基101-2002_原始结构脱敏输入.xlsx",
+    "inputs/source_identity_index.json",
+    "inputs/T_CSES_144-2024.pdf"
+  ],
+  "processed_source_count": 5922,
+  "target_source_count": 737,
+  "inventory_item_count": 6633,
+  "status_counts": {
+    "calculated": 2961,
+    "not_involved": 737,
+    "information_insufficient": 2935
+  },
+  "decision_counts": {
+    "BOILER": 5185,
+    "POWER": 737
+  },
+  "exception_group_count": 8,
+  "output_paths": {
+    "source_decisions.csv": "outputs/source_decisions.csv",
+    "generic_inventory_items.csv": "outputs/generic_inventory_items.csv",
+    "generic_source_disposition.csv": "outputs/generic_source_disposition.csv",
+    "generic_exception_list.csv": "outputs/generic_exception_list.csv",
+    "generic_run_summary.json": "outputs/generic_run_summary.json"
+  },
+  "scripts": [
+    "generic_power_inventory.py"
+  ],
+  "rules_used": [
+    "T/CSES 144-2024 §7.2.1/7.2.2 产排污系数法 公式(2) E=A×EF×(1-η)",
+    "公式(3) EF_SO2=2×S×(1-sr); 公式(4) EF_PM=Aar×(1-ar)×fPM; 公式(5)(6) BC/OC",
+    "附录C 表C.1/C.2/C.3 燃煤源参数(按电力生产/热力生产和供应部门及燃烧技术)",
+    "附录D 表D.1 电力热力源污染物产生系数(部门×燃料×燃烧技术)",
+    "附录A 表A.1 控制措施平均去除效率(治理设施去除效率填报优先，缺省取附录A)",
+    "治理设施归属: 基101-2002 按企业+DZGL(电站锅炉/燃气轮机排放口)类型归集"
+  ],
+  "classification_rule": "按基102设备字段判定: 电站锅炉/燃气轮机编号非空→POWER; 工业锅炉编号非空→BOILER; 均空→OUT_OF_SCOPE",
+  "unfinished_items": [
+    "NH3在电力热力源方法学(表D.1)中无产生系数，标记not_involved；若需脱硝氨逃逸核算，附录E表E.1有烟气脱硝NH3系数(SNCR 0.17 g/kg煤, SCR 0.16 g/kg煤)，属工业源工艺过程参数，是否跨类应用待用户确认",
+    "治理设施投运率无输入数据(无治理设施运行小时数)，η直接采用设施填报去除效率或附录A默认值(视同满负荷运行)",
+    "自备电厂(制造业内电站锅炉146台)按设备类型划入POWER并采用电力生产部门系数，归属口径待用户确认",
+    "表D.1中液化天然气/石油焦VOC产生系数33 g/kg疑为印刷错误，已按原文执行并列exception",
+    "燃气轮机按同燃料燃气锅炉系数核算(标准无燃气轮机专项系数)",
+    "工业锅炉(5185台)不在本POWER目标核算范围，仅记录决策，未核算排放量",
+    "多锅炉企业治理设施无法逐台对应，按企业+DZGL类型归集并取同类型最大效率"
+  ]
+}

@@ -1,0 +1,56 @@
+任务已完成。以下为实际执行结果汇报（未调用更多工具）。
+
+一、产出文件（全部位于 R1 运行包 outputs 目录，UTF-8 无 BOM）
+  .../R1/outputs/source_decisions.csv            5922 行（每个候选源 1 行）
+  .../R1/outputs/generic_inventory_items.csv    47187 行（源×污染物，9 类污染物 × 5243 工业源）
+  .../R1/outputs/generic_source_disposition.csv  5922 行
+  .../R1/outputs/generic_exception_list.csv        12 行（根因组）
+  .../R1/outputs/generic_run_summary.json          完整运行汇总
+
+二、分类结果（按 T/CSES 144-2024 自身定义，仅用行业类别代码）
+  INDUSTRIAL  5243 源（采矿业 B06-12 / 制造业 C13-43 / 燃气生产和供应业 D45）→ 汇总到本清单
+  POWER_HEAT   615 源（行业 4411/4412/4417/4430）→ excluded
+  OUT_OF_SCOPE  64 源（4419 其他电力生产 55、农林牧渔辅助 0511/0539 计 6、水的生产 4690 计 3）→ excluded
+  未使用任何 ID 格式推断，全部依据基102行业类别字段。
+
+三、核算方法（仅汇总 INDUSTRIAL）
+  E = A × EF × (1−η)，公式(2)；燃煤 SO2 用物料衡算 EF=2S(1−sr) 公式(3)；燃煤 PM2.5/PM10/BC/OC
+  用公式(4)~(6) 及表 C.1~C.3；气体/液体燃料系数用表 E.7（g/m3、g/kg）；
+  η 按附录 A 表 A.1 平均去除效率（治理设施按"企业+GYGL/DZGL 排放口类别"匹配基101-2002，
+  燃烧烟气 VOCs η=0 按标准§8.2.1.2-5）；多燃料逐组件核算不合并；NH3 无燃烧源系数→not_involved。
+
+  状态统计：calculated 32580、information_insufficient 9381、not_involved 5226、source_data_invalid 0。
+  PM10 按 PM2.5 组分(fine_efficiency)与 PM2.5-10 组分(coarse_efficiency)分别去除后加和，
+  fine/coarse 均已给出（任务要求的重点项）。
+
+四、手工复核（实际计算结果，非编造）
+  1) 燃气锅炉天然气 2.12 万m3：NOx=21200×2.09/1e6=0.044308 t ✓（CSV 一致）
+  2) 无烟煤链条炉 1074.6t（S=0.39%、A=15%）：SO2=0.71246、NOx=4.2984、PM2.5=0.16925、PM10=0.48357、
+     BC=0.03385、OC=0.00677 t，与手算逐值一致 ✓
+  3) 双碱法+SCR 组合效率修复后 PM2.5=81.51%（曾发现并修复 fraction/% 混叠 bug，修复前 57.4% 错误）
+  4) 袋式除尘+SCR PM2.5=97.635%、PM10 组分 coarse=98.75% ✓
+  5) 焦炭源 SO2 物料衡算 0.0748t、NOx/CO/VOC 按表 E.7，PM/BC/OC 因表 C.1 无焦炭参数判信息不足 ✓
+
+五、校验结果
+  4 个 CSV 列名与任务要求完全一致；source_id 无重复；5922 行处置与分类一致；47187 行
+  (source_id,pollutant) 无重复；3 个 *_record_json 全为合法 JSON 数组（0 坏格），
+  组件对齐 0 错位；generation/emission 无非负值违规（均为 ≥0），无 emission>generation；
+  空数值均带 status≠calculated 与 reason_code，无把空白当 0。
+
+六、未完成事项（已在 run_summary 与 exception_list 中如实列出）
+  - 生物燃料/其他燃料(吨标准煤)/工业废料/煤矸石/炼厂干气(吨 vs g/m3)/燃气轮机：标准表 E.7 无适用
+    产生系数或单位不匹配 → 信息不足未核算（EXC-001~005、010），共涉及约 1000+ 源，占工业源主体的
+    生物质锅炉为最大未决组（1007 源）。
+  - 17 个基102行无燃料数据 → 未填零（EXC-006）。
+  - 23 个燃煤锅炉燃烧方式为"其他/缺失" → 无法选技术系数（EXC-009）；1 个燃煤源缺含硫量、1 个缺灰分
+    （表 C.1 物料衡算受限）。
+  - 治理设施投运率无数据按 1.0 处理；企业级多锅炉共享治理设施存在归因近似；上报去除效率存在 996%
+    异常故按标准采用表 A.1 参考值（EXC-015）。
+  - 55 源 4419 其他电力生产 + 9 源 A05/D46 判定范围外，归属待用户确认（EXC-013/014）。
+
+七、实际使用的规则/脚本路径
+  scripts/build_inventory.py（主核算，含全部规则与系数表）、scripts/validate_outputs.py、
+  scripts/final_check.py、scripts/verify_calc.py、scripts/check_control_rows.py 及数据勘察脚本
+  scripts/analyze_*.py、scripts/dump_structure.py、scripts/extract_pdf.py（仅勘察，不参与核算）。
+
+全部工具调用均为真实执行；未使用任何 fixed-combustion-inventory 专用工具、Skills 或运行包外内容。

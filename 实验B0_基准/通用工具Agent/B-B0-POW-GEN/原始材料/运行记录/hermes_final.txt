@@ -1,0 +1,56 @@
+实验已完成并全部通过校验。以下是最终执行结果。
+
+一、实际产出文件（UTF-8，均位于 R1/outputs/）
+- source_decisions.csv：5922 行（全部基102候选，每候选一行）
+- generic_source_disposition.csv：5922 行
+- generic_inventory_items.csv：6633 行（源×污染物）
+- generic_exception_list.csv：8 行（用户需处理的根因组）
+- generic_run_summary.json：运行汇总
+
+二、候选判定结果（对全部 5922 条候选作出判断）
+- POWER 纳入 737 条：电站锅炉/燃气轮机编号非空（含自备电厂）；状态计算占比最高
+- BOILER 排除 5185 条：工业锅炉编号非空（目标为 POWER，未核算）
+- OUT_OF_SCOPE 0 条
+判定依据为基102原始结构字段：电站锅炉/燃气轮机编号 vs 工业锅炉编号，二者无重叠、无空白行。
+
+三、核算项状态（6633 项 = 737源 × 9污染物）
+- calculated 2961 项（约 337 个源 8 种燃烧污染物全算得）
+- not_involved 737 项（NH3：表D.1 无 NH3 产生系数，按方法学标记）
+- information_insufficient 2935 项（FUEL_EF_MISSING 2648：生物质/垃圾/其他燃料等无表D.1系数；CONTROL_EFF_UNKNOWN 287：治理设施无效率且工艺无法匹配附录A）
+- source_data_invalid 0 项
+
+四、采用的方法（全部取自本次运行包 T_CSES_144-2024.pdf）
+- §7.2 产排污系数法 E=A×EF×(1-η)（公式2）
+- 公式(3)-(6) 燃煤 SO2/PM2.5/PM10/BC/OC 物料衡算
+- 附录C 表C.1/C.2/C.3（sr、ar、粒径分布、BC/OC占比，按电力生产/热力生产和供应部门与燃烧技术）
+- 附录D 表D.1 产生系数（部门×燃料×燃烧技术；燃煤 NOx 按装机容量分档 8.96/8.19/7.21）
+- 附录A 表A.1 控制效率（设施填报效率优先，缺省取附录A；低氮燃烧22%、SCR 42%、湿法脱硫80%等）
+- 治理设施来自基101-2002，按企业+DZGL（电站锅炉/燃气轮机排放口）归集，同类型取最大值；PM10 按细/粗组分分别记录 fine_efficiency/coarse_efficiency
+- 手算核验：天然气源 NOx 419.33 t（4.1 g/m3×10227.7万m3/100）、燃煤+原油源 SO2 5718.65 t（EF=20×0.51×0.85=8.67 g/kg）→ 98.22% 脱硫后 101.79 t，均与脚本一致
+
+五、三个 *_record_json 合规性
+每个组件的 activity/parameter/control 三数组一一对应（长度相同、component_id 顺序一致），JSON 均为合法数组；多燃料（如 F1_原煤+F2_原油）未预汇总活动水平或因子；PM10 行同时给出 fine_efficiency 与 coarse_efficiency；无治理时 efficiency 明确写 0。
+
+六、未完成事项与用户需处理项（exception 8 组）
+1. EXC-01 FUEL_EF_MISSING：生物燃料(56)、城市生活垃圾(196)、其他燃料(44)、工业废料(11) 等燃料表D.1无系数，等待用户提供系数或改判
+2. EXC-02 CONTROL_EFF_UNKNOWN：69 个源存在 DZGL 设施但无效率填报且工艺无法匹配附录A
+3. EXC-03 表D.1 液化天然气/石油焦 VOC 系数 33 g/kg 疑印刷错误，已按原文执行
+4. EXC-04 燃气轮机按同燃料燃气锅炉系数替代
+5. EXC-05 自备电厂（制造业内电站锅炉）按设备类型划入 POWER，归属口径待确认
+6. EXC-06 热电联产/其他电力生产按"电力生产"部门取系数（表D.1未单列）
+7. EXC-07 有脱硝设施填报效率时未叠加低氮燃烧
+8. EXC-08 多锅炉企业设施按企业+DZGL归集无法逐台对应
+另：治理设施投运率无输入数据，η 视同满负荷；NH3 如需脱硝氨逃逸核算，附录E表E.1有相关参数但属工业源工艺过程，是否跨类应用待确认。
+
+七、脚本与临时文件
+主脚本：R1/generic_power_inventory.py（可复跑，输出固定）
+分析/校验脚本（tmp_*.py）为临时诊断文件，保留在运行包内以供追溯，不影响 outputs；如需清理可删除。
+
+八、校验结果（最终跑通）
+- 四个 CSV 列名与任务规定完全一致
+- source_id 在决策/处置表中唯一；source×pollutant 无重复
+- 数值非负（calculated 项 generation/emission 均非负且无空值）
+- 空数值项均带 status 与 reason_code
+- bad_json=0、misalign=0
+
+汇总一句话：全部 5922 条候选已判类，POWER 目标 737 台电站锅炉/燃气轮机按 T/CSES 144-2024 完成核算，产出 2961 项 calculated 排放量与 2935 项信息不足项（均带明确原因与处理建议），8 组根因提交用户处置，五个输出文件均落在 R1/outputs/ 下。

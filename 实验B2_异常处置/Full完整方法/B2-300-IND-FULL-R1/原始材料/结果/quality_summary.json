@@ -1,0 +1,82 @@
+{
+  "common_tables": {
+    "calculation_items": {
+      "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-IND-FULL-R1/outputs/calculation_items.csv",
+      "sha256": "e00b3fdd97ab5310343913818917095121c599652e39f06916c626e2c396e52e"
+    },
+    "source_decisions": {
+      "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-IND-FULL-R1/outputs/source_decisions.csv",
+      "sha256": "f07c314b9bc440ce6accb129f54c76fedb45a9f89476d0bee29ef7fccdf13fde"
+    },
+    "source_pollutant_totals": {
+      "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-IND-FULL-R1/outputs/source_pollutant_totals.csv",
+      "sha256": "1851a669f4fa850509c0daf533e7f2c15efda1cdfb37e4225bf99f9a653d4b54"
+    }
+  },
+  "error_count": 0,
+  "exception_group_count": 120,
+  "exception_path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-IND-FULL-R1/outputs/最终异常清单.csv",
+  "exception_sha256": "074a16d8b63011bcc58d83d484d889a783e66992bd1aed572e51f3f80d082afe",
+  "export_mode": "machine",
+  "normalized_exception_path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-IND-FULL-R1/outputs/exceptions.csv",
+  "normalized_exception_sha256": "7b440496f8c4e07100622fd626da9bb17f648102e8a369150688605d98c1f98f",
+  "warning_count": 0,
+  "workbooks": [
+    {
+      "builder_result": {
+        "export_mode": "machine",
+        "item_count": 1358,
+        "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-IND-FULL-R1/outputs/固定燃烧源-工业锅炉_实验结果.xlsx",
+        "sha256": "656d7b8b7fec5f9054d0c64fdf2e7d2a4f4d3d10fd8fff749face1ffc2fa0438",
+        "sheet_count": 3,
+        "source_count": 150
+      },
+      "export_mode": "machine",
+      "item_count": 1358,
+      "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-IND-FULL-R1/outputs/固定燃烧源-工业锅炉_实验结果.xlsx",
+      "preview_dir": null,
+      "qa_path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-IND-FULL-R1/outputs/machine_qa_industrial.json",
+      "sha256": "656d7b8b7fec5f9054d0c64fdf2e7d2a4f4d3d10fd8fff749face1ffc2fa0438",
+      "source_count": 150,
+      "target": "INDUSTRIAL",
+      "workbook_qa": {
+        "external_link_count": 0,
+        "formula_count": 5086,
+        "formula_error_count": 0,
+        "sheet_names": [
+          "00_说明",
+          "02_核算项",
+          "03_源结果"
+        ]
+      }
+    },
+    {
+      "builder_result": {
+        "export_mode": "machine",
+        "item_count": 0,
+        "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-IND-FULL-R1/outputs/固定燃烧源-火电、热力生产与供应_实验结果.xlsx",
+        "sha256": "45f448a204d7c639c42b6605f42d5b861d16855453b55e3576c075c29f586791",
+        "sheet_count": 3,
+        "source_count": 0
+      },
+      "export_mode": "machine",
+      "item_count": 0,
+      "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-IND-FULL-R1/outputs/固定燃烧源-火电、热力生产与供应_实验结果.xlsx",
+      "preview_dir": null,
+      "qa_path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-IND-FULL-R1/outputs/machine_qa_power.json",
+      "sha256": "45f448a204d7c639c42b6605f42d5b861d16855453b55e3576c075c29f586791",
+      "source_count": 0,
+      "target": "POWER",
+      "workbook_qa": {
+        "external_link_count": 0,
+        "formula_count": 0,
+        "formula_error_count": 0,
+        "sheet_names": [
+          "00_说明",
+          "02_核算项",
+          "03_源结果"
+        ]
+      }
+    }
+  ]
+}

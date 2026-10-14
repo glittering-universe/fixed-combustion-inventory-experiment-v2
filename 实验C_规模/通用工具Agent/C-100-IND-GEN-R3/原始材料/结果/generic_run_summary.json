@@ -1,0 +1,52 @@
+{
+  "run_id": "C-100-IND-GEN-R3",
+  "target": "INDUSTRIAL",
+  "scenario": "generic_tool_agent",
+  "input_files": [
+    "基102-2002_原始结构脱敏输入.xlsx",
+    "基101-2001_原始结构脱敏输入_分片01-04-of04.xlsx",
+    "基101-2002_原始结构脱敏输入.xlsx",
+    "source_identity_index.json",
+    "T_CSES_144-2024.pdf"
+  ],
+  "standard_pdf": "T_CSES_144-2024.pdf",
+  "processed_source_count": 5922,
+  "target_source_count": 5185,
+  "non_target_source_count": 737,
+  "decided_target_counts": {
+    "INDUSTRIAL": 5185,
+    "POWER_HEAT": 737,
+    "OUT_OF_SCOPE": 0
+  },
+  "inventory_item_count": 53298,
+  "status_counts": {
+    "calculated": 32596,
+    "not_involved": 11818,
+    "information_insufficient": 8884
+  },
+  "target_calculated_items": 32596,
+  "output_paths": {
+    "source_decisions": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R3/outputs/source_decisions.csv",
+    "generic_inventory_items": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R3/outputs/generic_inventory_items.csv",
+    "generic_source_disposition": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R3/outputs/generic_source_disposition.csv",
+    "generic_exception_list": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R3/outputs/generic_exception_list.csv",
+    "generic_run_summary": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R3/outputs/generic_run_summary.json"
+  },
+  "unresolved_items": "见 outputs/generic_exception_list.csv（活动水平缺失、燃料无系数、燃气轮机无系数、气体燃料质量单位桥接、燃煤技术未指明、部分燃料覆盖不足、NH3无固定燃烧系数）",
+  "rules_scripts_used": [
+    "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R3/logs/build_inventory.py",
+    "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R3/logs/pdf_text.txt（PDF全文提取）"
+  ],
+  "interpretive_rules": [
+    "分类：基102设备字段——电站锅炉/燃气轮机编号非空→POWER_HEAT（737条）；工业锅炉编号非空→INDUSTRIAL（5185条）；无重叠、无遗漏",
+    "活动水平：燃料一/燃料二消耗量按各自单位；其他燃料消耗总量（吨标准煤）无对应系数，作为独立组件记录为信息不足",
+    "系数：工业源采用附录E表E.7；燃煤SO2/PM2.5/PM10/BC/OC按公式(3)-(6)物料衡算（附录C表C.1-C.3，工业源参数：sr=0.15，ar与粒径分布/BC、OC占比按燃烧技术）",
+    "气体燃料系数单位：按标准气体燃料约定g/m3（附录D表D.1注c、附录E表E.2注b）；E.7表头写g/kg燃料但其气体行取值与E.2一致，本运行按g/m3处理并在参数记录标注单位",
+    "燃煤技术映射：煤粉炉→煤粉炉；循环流化床锅炉→流化床炉；链条炉/其他层燃炉/抛煤机炉/层燃炉/其他→自动炉排层燃炉（文档化判断）",
+    "燃料映射：原煤/一般烟煤/无烟煤/褐煤→煤炭；发生炉煤气→其它煤气；润滑油→其它石油制品；生物燃料/其他燃料/城市生活垃圾/工业废料/煤矸石/煤制品/其他洗煤无表E.7系数→信息不足",
+    "治理设施：基101-2002排放口代码（QT/GYGL等）与基102排放口编号（DAxxx）无交集，只能按企业（统一社会信用代码）关联；SO2取脱硫设施、NOx取脱硝设施、PM取除尘设施的最大去除效率（报告值优先，缺失按附录A表A.1工艺默认）；VOC按标准燃烧烟气无末端治理η=0；CO无治理η=0；低氮燃烧=是时NOx乘法叠加22%（脱硝工艺已含低氮的不再叠加）",
+    "PM10核算：E_PM10=E_PM2.5×(1-η细)+(E_PM10-E_PM2.5)×(1-η粗)；除尘报告效率为单一值，同时用于细/粗组分（文档化简化）",
+    "燃气轮机（工业锅炉类型=燃气轮机，38条）无表E.7系数→信息不足",
+    "排放量单位：吨/年；产生量=活动水平×产生系数；排放量=产生量×(1-η)；generation_t/emission_t为空表示该行无任何可算组件"
+  ]
+}

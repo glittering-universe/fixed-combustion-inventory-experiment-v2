@@ -1,0 +1,33 @@
+Experiment D 运行完成（场景 w_o_complete_trace，run_id D-POW-W_O_COMPLETE_TRACE）。
+
+阶段状态（全部 success:true，顺序执行，未改写任何工具返回结果）
+  1a adapt_environmental_workbooks          complete  rev 9c1273f6…
+  1b build_device_emission_sources          complete  5922 候选，POWER 纳入 615，rev 362b6371…
+  2  generate_pollutant_calculation_items   complete  6231 项（SO2/NOX/CO/VOCS/PM10/PM25/BC/OC 各 702，NH3 615），rev 6f09246f…
+  3  execute_tcses_calculation_rules        complete  匹配 3528 项，rev 0c6503e3…
+  4  control_calculation_admission          complete  allow_calculation 3984 / not_applicable 476 / withhold 1771（合计 6231，全覆盖），rev 66b94aa4…
+  5  calculate_fixed_combustion_emissions   complete  calculated 3984 / not_applicable_zero 476 / withheld 1771，rev c235599b…
+  6  validate_and_export_fixed_combustion_inventory complete  0 错误、0 警告，rev 2046194b…
+  7  archive_minimal_calculation_process    complete  sealed=true，rev 354a0307…
+
+决策覆盖率
+  全部 6231 个核算项均有唯一准入决策（3984 计算 + 476 不适用 + 1771 暂缓 = 6231，100%）。
+
+输出路径（run package: …/05_实验D_方法组成贡献/04_去掉完整核算过程记录/02_火电热力/R1）
+  outputs/固定燃烧源-火电、热力生产与供应_实验结果.xlsx  sha256 dc712cea…（615 源 / 6231 项，28178 公式，0 公式错误）
+  outputs/固定燃烧源-工业锅炉_实验结果.xlsx  sha256 b7b97c73…（0 源，符合 POWER 目标）
+  outputs/最终异常清单.csv  sha256 2fa88d36…（398 个异常组）
+  outputs/exceptions.csv  sha256 6855754a…
+  outputs/calculation_items.csv、source_decisions.csv、source_pollutant_totals.csv
+  outputs/machine_qa_power.json、machine_qa_industrial.json
+
+异常数量
+  398 个异常组（最终异常清单），error_count=0，warning_count=0。
+
+运行包封存
+  已封存（sealed=true）。过程记录按消融要求仅保留 minimal 模式：
+  trace/minimal_stage_log.jsonl（7 条阶段记录，sha256 f3e1f690…）；
+  未调用 archive_complete_calculation_process，未物化逐核算项完整过程记录。
+
+其他
+  全程使用 Plugin 原有批量工具（stage 1a–6 为 Full 原流程），未用基102填报产生量/排放量，未读取 rules/frozen，未读取数据库或原组件实现，未把缺失活动量/燃料/硫分/灰分/容量/产生因子当作 0。

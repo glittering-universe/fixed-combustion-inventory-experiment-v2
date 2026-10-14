@@ -1,0 +1,25 @@
+运行 C-75-IND-FULL-R3 全部 8 个阶段执行完毕，运行包已封存。
+
+封存状态: sealed = true（manifest 已封存，revision 5006589d，trace/complete_calculation_process.jsonl 共 27683 条过程记录，sha256 06b0b80e）
+
+各阶段记录数:
+  1a adapt_environmental_workbooks  complete  B102设备 4442 / 企业主表 3022 / 治理设施 8067（revision 621c8fd8）
+  1b build_device_emission_sources   complete  候选 4442，纳入 INDUSTRIAL 3027 / POWER 470 / EXCLUDE 945（revision 20857805）
+  2  generate_pollutant_calculation_items  complete  核算项 27683（NH3 3027，其余8种污染物各 3082）（revision d131877e）
+  3  execute_tcses_calculation_rules  complete  规则匹配 23904/27683，未匹配与本地冲突作为标志保留（revision a35d6a03）
+  4  control_calculation_admission   complete  allow_calculation 26621 / not_applicable 317 / withhold 745（合计 27683 闭合）（revision 04a651d4）
+  5  calculate_fixed_combustion_emissions  complete  计算 26621 / 不适用置零 317 / 暂扣 745（revision 473f104c）
+  6  validate_and_export_fixed_combustion_inventory  complete  硬错误 0，异常组 221（revision 8b9c1642）
+  7  archive_complete_calculation_process  complete  过程记录 27683 条，封存完成（revision 5006589d）
+
+工作簿（两个输出）:
+  /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/01_工业锅炉/01_Full完整方法/R3/outputs/固定燃烧源-工业锅炉_实验结果.xlsx
+    （源 3027，核算项 27683，公式 162027，公式错误 0，外部链接 0；sha256 21bf2934）
+  /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/01_工业锅炉/01_Full完整方法/R3/outputs/固定燃烧源-火电、热力生产与供应_实验结果.xlsx
+    （目标为 INDUSTRIAL，本包 POWER 源 0，工作簿为空骨架；sha256 4114897b）
+
+异常清单:
+  /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/01_工业锅炉/01_Full完整方法/R3/outputs/最终异常清单.csv
+    （221 个异常组；另有标准化版 outputs/exceptions.csv，sha256 d4b4153a）
+
+说明: 全程未使用 CEMS，未用基102报告产生量/排放量选择方法或反推效率；所有阶段按冻结 manifest 与规则包（hash c42349a9...）执行，局部缺失/冲突均作为本地化异常保留，无系统级失败。

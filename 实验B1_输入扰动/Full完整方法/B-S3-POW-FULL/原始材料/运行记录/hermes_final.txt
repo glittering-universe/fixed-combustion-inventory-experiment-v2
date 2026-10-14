@@ -1,0 +1,19 @@
+运行 B-S3-POW-FULL 已封存（sealed=true）。各阶段记录数如下：
+
+阶段1a adapt_environmental_workbooks：基102设备 5922 条、基101治理设施 43902 条、基101企业主表 18734 条（revision 6d42df61）
+阶段1b build_device_emission_sources：候选 5922 → POWER 615、INDUSTRIAL 4046、EXCLUDE 1261（revision ec18eb22）
+阶段2 generate_pollutant_calculation_items：核算项 6231（8 类燃料项各 702 + NH3 氨逃逸 615）（revision 2e24d8e8）
+阶段3 execute_tcses_calculation_rules：规则匹配项 3528，其余以局部标志保留（revision 85ea56bb）
+阶段4 control_calculation_admission：准入 3984、不适用 476、暂缓 1771（revision 70df4e98）
+阶段5 calculate_fixed_combustion_emissions：计算 3984、不适用置零 476、暂缓 1771（revision b8e45b0b）
+阶段6 validate_and_export：硬错误 0、警告 0、异常分组 398（revision 0e672359）
+阶段7 archive_complete：完整过程记录 6231 条、封存成功（revision 0612aa33）
+
+两个工作簿：
+- 火电热力：R1/outputs/固定燃烧源-火电、热力生产与供应_实验结果.xlsx（615 源 / 6231 项，28178 个公式，0 公式错误）
+- 工业锅炉：R1/outputs/固定燃烧源-工业锅炉_实验结果.xlsx（目标为 POWER，0 源 / 0 项，正常为空）
+
+异常清单：
+- R1/outputs/最终异常清单.csv（398 个分组，未处置项均以原因引用保留，未影响其余记录）
+
+运行包根目录：/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/03_S3列与工作表顺序扰动/02_火电热力/01_Full完整方法/R1

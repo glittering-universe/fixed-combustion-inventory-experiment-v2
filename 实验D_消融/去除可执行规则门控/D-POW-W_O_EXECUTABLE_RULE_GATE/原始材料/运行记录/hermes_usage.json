@@ -1,0 +1,18 @@
+{
+  "estimated_cost_usd": 0.0,
+  "cost_status": "unknown",
+  "cost_source": "none",
+  "input_tokens": 35063,
+  "output_tokens": 32914,
+  "cache_read_tokens": 424064,
+  "cache_write_tokens": 0,
+  "reasoning_tokens": 25425,
+  "total_tokens": 492041,
+  "api_calls": 20,
+  "model": "deepseek-v4-pro",
+  "provider": "custom",
+  "session_id": "20260821_221131_85846d",
+  "completed": true,
+  "failed": false,
+  "service_tier": null
+}

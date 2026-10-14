@@ -1,0 +1,50 @@
+# 运行总结 — 通用工具调用型 Agent / 火电热力 R3 (C-100-POW-GEN-R3)
+
+## 实际完成情况
+
+本运行已从零完成 5922 个候选源的分类判断与 POWER（火电热力）排放清单核算，全部输出已写入运行包 `outputs` 目录并通过结构校验。处理逻辑完全建立在运行包内输入（基102-2002 设备/燃料基表、基101-2001 企业主表 4 分片、基101-2002 治理设施表、`T_CSES_144-2024.pdf`、`source_identity_index.json`）之上，未读取运行包以外任何代码/规则/结果。
+
+## 输出文件（实际路径）
+
+运行包：`/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/02_火电热力/03_通用工具调用型Agent/R3`
+
+- outputs/source_decisions.csv — 5922 行，含 `source_id,requested_target,decided_target,disposition,reason_code`
+- outputs/generic_inventory_items.csv — 53298 行（5922 源 × 9 污染物），含全部 12 个必需列
+- outputs/generic_source_disposition.csv — 5922 行
+- outputs/generic_exception_list.csv — 6 个根因组
+- outputs/generic_run_summary.json — 输入文件清单、处理统计、输出路径、未完成事项、规则/脚本路径
+- 执行与校验脚本：work/standard_tables.py（标准参数转录）、work/build_inventory.py（主核算脚本）、work/validate.py、work/final_qc.py（校验脚本）
+
+## 分类结果
+
+- POWER（火电热力，行业 4411/4412/4417/4430）：615 源 — 本次核算目标
+- INDUSTRIAL_BOILER（工业锅炉，采矿/制造/燃气业）：5243 源 — 判定为范围外目标，全部 `not_involved`
+- OUT_OF_SCOPE（4419 其他电力生产 55、4690 燃气供应 3、0511/0539 采掘 6）：64 源
+
+分类依据 T/CSES 144-2024 第 3.5/3.6/5.2.1/5.2.2/7.1/8.1 条；基101-2001 与基102 行业代码抽样核对 0 冲突。
+
+## 核算方法与校验结果
+
+按标准公式(2) 产排污系数法 E=A×EF×(1−η)，燃煤 SO₂/PM₂.₅/PM₁₀/BC/OC 用公式(3)–(6) 物料衡算（表 C.1–C.3 参数）；表 D.1 分部门（4411/4412/4417→电力生产，4430→热力生产和供应），电力生产燃煤 NOx 按装机容量注 b 取值；治理效率由基101-2002 按企业+设施类别（DZGL/GYGL）关联，同技术取最大后跨技术串联，缺实际效率取表 A.1，低氮组合取表 A.1 组合值。活动水平采用燃料总消耗量（发电/供热拆分字段与总量不一致，85 行中 0 行自洽，已如实记录）。
+
+手工核算对照（3 个抽查源）全部吻合，例如 4411 燃煤煤粉炉源：SO₂ 产生 5718.65 t、PM₂.₅ 4149.48 t、PM₁₀ 15906.35 t 与手算一致；4430 天然气源 NOx 产生 11.9269 t 与 290.9 万 m³ × 4.1/100 一致。
+
+最终 QC 结果：4 个 CSV 列名正确；source_id 全表唯一；所有源×污染物行唯一且每源恰 9 项；status 仅用允许枚举；数值非空的 calculated 行产生量/排放量均非负且排放≤产生；三个 `*_record_json` 均为合法 JSON 数组，数组长度、顺序、component_id 全表对齐（POWER 行逐一校验，0 问题）；PM₁₀ 行同时给出 fine_efficiency 与 coarse_efficiency。
+
+## 核算项状态
+
+- calculated（有完整因子并计算出数值）：2360 项；产生量合计 7,794,459.94 t、排放量合计 3,535,001.07 t
+- information_insufficient（不编造数值，数值留空并给出 reason_code）：3175 项
+- not_involved（非目标或零活动）：47763 项
+- source_data_invalid：0 项
+
+## 未完成事项（需用户处理，见 generic_exception_list.csv）
+
+1. EF_NOT_IN_STANDARD_FUEL — 205 源：城市生活垃圾/生物燃料/工业废料/其他燃料在表 D.1 无产生系数
+2. EF_NOT_IN_STANDARD_TECHNOLOGY — 116 源：燃气轮机/余热利用锅炉无对应技术因子
+3. NH3_EF_NOT_PROVIDED — 615 源（全部 POWER）：标准未提供固定燃烧源 NH₃ 产生系数，统一置 information_insufficient
+4. COMBUSTION_TECH_MISSING — 1 源：燃煤方式填报为"其他"
+5. FUEL_TYPE_MISSING — 1 源：其他燃料消耗量（吨标准煤）无燃料类型
+6. CALCULATED_PARTIAL_COMPONENTS — 51 源：部分燃料组件缺因子，排放量为其余组件之和（已如实标注 PARTIAL 原因码）
+
+按任务要求，未把留空的历史产生/排放列解释为零，信息不足处均未虚构燃料量、因子、治理效率或排放量；空白结果列一律留空并给出状态与 reason_code。

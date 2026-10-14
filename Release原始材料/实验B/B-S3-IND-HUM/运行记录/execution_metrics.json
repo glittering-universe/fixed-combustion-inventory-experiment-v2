@@ -1,0 +1,12 @@
+{
+  "run_id": "B-S3-IND-HUM",
+  "status": "user_supplied_complete",
+  "wall_seconds": 68221.44,
+  "seconds_per_record": 11.52,
+  "record_count": 5922,
+  "timing_basis": "extrapolated_from_user_supplied_per_candidate_rate",
+  "usage": {
+    "api_calls": null,
+    "cost_status": "not_applicable"
+  }
+}

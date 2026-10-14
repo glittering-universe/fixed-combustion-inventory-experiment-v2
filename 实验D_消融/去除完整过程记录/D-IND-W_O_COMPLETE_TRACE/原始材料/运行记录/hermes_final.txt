@@ -1,0 +1,31 @@
+实验执行完毕，run 已封存。以下为实际执行结果（不改写工具返回值）：
+
+运行包: D-IND-W_O_COMPLETE_TRACE (scenario=w_o_complete_trace, target=INDUSTRIAL, scale=100%, input=B0)
+路径: /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/05_实验D_方法组成贡献/04_去掉完整核算过程记录/01_工业锅炉/R1
+
+阶段状态（全部 complete，逐级提交）:
+- stage 1a adapt_environmental_workbooks: complete; B102_DEVICE=5922, enterprise_master=18734, control_facility_base=43902; revision cbe8c793...
+- stage 1b build_device_emission_sources: complete; candidate=5922, INDUSTRIAL=4046, POWER=615, EXCLUDE=1261; revision 38c45c9e...
+- stage 2 generate_pollutant_calculation_items: complete; 36958 items (SO2/NOX/CO/VOCS/PM10/PM25/BC/OC 各4114, NH3=4046); revision f6dd95a4...
+- stage 3 execute_tcses_calculation_rules: complete; matched=31960; revision 302a8b6f...
+- stage 4 control_calculation_admission: complete; allow_calculation=35560, withhold=1035, not_applicable=363; revision 9f10d3fc...
+- stage 5 calculate_fixed_combustion_emissions: complete; calculated=35560, withheld=1035, not_applicable_zero=363; revision 5fed128d...
+- stage 6 validate_and_export_fixed_combustion_inventory: complete; error_count=0, warning_count=0, exception_group_count=286; revision 4fd3f092...
+- stage 7 archive_minimal_calculation_process (Experiment-D 替代): complete; sealed=true, trace mode=minimal, 7 条记录; revision 62f98bc7...
+  未调用 archive_complete_calculation_process，未事后补写逐核算项完整过程记录。
+
+决策覆盖率（基于 36958 项）:
+- 规则匹配: 31960/36958 = 86.5%
+- 准入放行: 35560/36958 = 96.2% (withhold 2.8%, not_applicable 1.0%)
+- 实际计算: 35560/36958 = 96.2%
+
+输出路径:
+- 工业锅炉结果工作簿: .../R1/outputs/固定燃烧源-工业锅炉_实验结果.xlsx (sha256 b1f48b77...; 216357 公式, 0 公式错误, 0 外链)
+- 火电、热力工作簿: .../R1/outputs/固定燃烧源-火电、热力生产与供应_实验结果.xlsx (0 源, 本运行 target 为工业锅炉)
+- 最终异常清单: .../R1/outputs/最终异常清单.csv (sha256 2a99608c...)
+- 公共结果表: .../R1/outputs/calculation_items.csv, source_decisions.csv, source_pollutant_totals.csv
+- 最小过程日志: .../R1/trace/minimal_stage_log.jsonl (sha256 a9b4617c...)
+
+异常数量: 0 硬错误 / 0 警告 / 286 个异常组（最终异常清单, 共 1,035 项 withhold 未计入产生量/排放量, 未将缺失当作 0 处理）
+
+运行包封存: 是 (sealed=true, archive_minimal_calculation_process 已封存 run package)。

@@ -1,0 +1,48 @@
+{
+  "run_id": "C-25-IND-GEN-R2",
+  "target": "INDUSTRIAL",
+  "input_files": [
+    "inputs/基102-2002_原始结构脱敏输入.xlsx",
+    "inputs/基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+    "inputs/基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+    "inputs/基101-2001_原始结构脱敏输入_分片03-of04.xlsx",
+    "inputs/基101-2001_原始结构脱敏输入_分片04-of04.xlsx",
+    "inputs/基101-2002_原始结构脱敏输入.xlsx",
+    "inputs/T_CSES_144-2024.pdf",
+    "inputs/source_identity_index.json"
+  ],
+  "processed_source_count": 1481,
+  "inventory_item_count": 13329,
+  "status_counts": {
+    "calculated": 9058,
+    "not_involved": 4185,
+    "information_insufficient": 86,
+    "source_data_invalid": 0
+  },
+  "decision_counts": {
+    "INDUSTRIAL": 1016,
+    "POWER": 179,
+    "OUT_OF_SCOPE": 286
+  },
+  "output_paths": {
+    "source_decisions.csv": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/025%规模/01_工业锅炉/03_通用工具调用型Agent/R2/outputs/source_decisions.csv",
+    "generic_inventory_items.csv": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/025%规模/01_工业锅炉/03_通用工具调用型Agent/R2/outputs/generic_inventory_items.csv",
+    "generic_source_disposition.csv": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/025%规模/01_工业锅炉/03_通用工具调用型Agent/R2/outputs/generic_source_disposition.csv",
+    "generic_exception_list.csv": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/025%规模/01_工业锅炉/03_通用工具调用型Agent/R2/outputs/generic_exception_list.csv",
+    "generic_run_summary.json": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/025%规模/01_工业锅炉/03_通用工具调用型Agent/R2/outputs/generic_run_summary.json"
+  },
+  "unfinished_items": [
+    "燃料数据完全缺失/燃料种类未知/炼厂干气单位不支持/燃烧方式缺失的源尚未核算, 见 generic_exception_list.csv"
+  ],
+  "rules_scripts": [
+    "scripts/build_inventory.py",
+    "T/CSES 144-2024: §8.3 公式(2)-(6), 附录A 表A.1, 附录C 表C.1-C.3, 附录E 表E.7"
+  ],
+  "assumptions": [
+    "治理设施去除效率: 处理工艺名称可按附录A表A.1匹配时按表A.1取值(多个措施按污染物取最大值); 工艺缺失但有去除效率%时按设施类型对应污染物采用填报效率",
+    "设施投运率因治理设施运行时间缺失按100%计",
+    "燃烧方式'其他'及'其他层燃炉'按自动炉排层燃炉处理; 煤制品/煤矸石按煤炭类燃料选取表E.7系数",
+    "燃烧烟气VOCs不涉及末端治理, η=0 (T/CSES 144-2024 8.2.1.2 第5条)",
+    "NH3: 附录E表E.7未给出固定燃烧NH3产生系数, 按0计"
+  ]
+}

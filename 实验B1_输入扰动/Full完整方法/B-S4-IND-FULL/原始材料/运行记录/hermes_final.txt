@@ -1,0 +1,24 @@
+运行封存完成，全部七个阶段按 Skill 顺序执行，无系统级失败。
+
+运行: B-S4-IND-FULL / scenario=full / target=INDUSTRIAL / method_bundle_hash=c42349a9…002b
+封存状态: sealed = true（run manifest 已封存，stage7 revision 0912f225…）
+
+各阶段记录数:
+- stage 1a adapt_environmental_workbooks: 基102设备 5,922 条；企业主表 18,734 条；治理设施表 43,902 条；3 组原始结构输入哈希已验证
+- stage 1b build_device_emission_sources: 候选 5,922 → INDUSTRIAL 4,046 / POWER 615 / EXCLUDE 1,261（决策闭合）
+- stage 2 generate_pollutant_calculation_items: 核算项 36,958（8 类燃料污染物各 4,114 + SCR/SNCR 氨逃逸 NH3 4,046）
+- stage 3 execute_tcses_calculation_rules: 规则匹配项 31,960，其余按局部标志保留（含 CONTROL_INFO_MISSING_* 等 24 类标志）
+- stage 4 control_calculation_admission: 准入核算 35,560 / 不适用 363 / 暂缓 1,035
+- stage 5 calculate_fixed_combustion_emissions: 计算 35,560 / 不适用置零 363 / 暂缓 1,035
+- stage 6 validate_and_export: 错误 0、警告 0；公式格 216,357 且公式错误 0、外链 0；异常分组 286
+- stage 7 archive_complete_calculation_process: 过程记录 36,958 条（trace/complete_calculation_process.jsonl）
+
+两个工作簿:
+1. /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/04_S4组合扰动/01_工业锅炉/01_Full完整方法/R1/outputs/固定燃烧源-工业锅炉_实验结果.xlsx（4,046 源 / 36,958 项）
+2. /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/04_S4组合扰动/01_工业锅炉/01_Full完整方法/R1/outputs/固定燃烧源-火电、热力生产与供应_实验结果.xlsx（0 源，本运行目标为工业锅炉）
+
+异常清单路径:
+- 最终异常清单: …/R1/outputs/最终异常清单.csv（286 组，sha256 2a99608c…）
+- 规范化异常表: …/R1/outputs/exceptions.csv（sha256 a9acf211…）
+
+未使用 CEMS，未用基102报告产生量/排放量参与方法选择、效率反推或最终结果。

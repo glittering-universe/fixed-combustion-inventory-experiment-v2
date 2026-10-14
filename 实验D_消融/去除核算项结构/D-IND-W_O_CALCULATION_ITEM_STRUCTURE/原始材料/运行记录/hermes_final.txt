@@ -1,0 +1,29 @@
+Experiment D run `D-IND-W_O_CALCULATION_ITEM_STRUCTURE` (scenario: w_o_calculation_item_structure, target: INDUSTRIAL, scale 100%, variant B0) executed end-to-end. All stages ran as one batch through the plugin tools; the removed stage-2 fuel/process calculation-item structure was replaced by `generate_device_pollutant_slots` and never reconstructed downstream.
+
+阶段状态 (stage status)
+- stage 1a adapt_environmental_workbooks: complete — 5922 B102 devices, 18734 enterprise records, 13704 control joins; revision d73a3403...
+- stage 1b build_device_emission_sources: complete — 5922 candidates → 4046 INDUSTRIAL included (POWER 615, EXCLUDE 1261); revision b2d6c62b...
+- stage 2 (D replacement) generate_device_pollutant_slots: complete — 36414 device-by-pollutant slots (9 pollutants x 4046 devices); revision b842a45b... (generate_pollutant_calculation_items NOT called)
+- stage 3 execute_tcses_calculation_rules: complete — matched_item_count 0; flag CALCULATION_ITEM_STRUCTURE_REMOVED=36414; revision 0a046f2e...
+- stage 4 control_calculation_admission: complete — allow_calculation 35104, not_applicable 363, withhold 947; revision f84c25ee...
+- stage 5 calculate_fixed_combustion_emissions: complete — calculated 35104, not_applicable_zero 363, withheld 947; revision 0e2c56dc...
+- stage 6 validate_and_export_fixed_combustion_inventory: complete — error_count 0; revision 026d644b...
+- stage 7 archive_complete_calculation_process: complete — trace mode complete, 36414 records; revision 28fc3d59...
+
+决策覆盖率 (decision coverage)
+- 核算准入: 36414/36414 items decided (96.4% allow, 1.0% not applicable, 2.6% withhold) — full coverage.
+- 规则实施: matched_item_count 0 per stage-3 result (ablation marker present; reported as returned, not rewritten).
+
+输出路径 (output paths)
+- 运行包: /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/05_实验D_方法组成贡献/01_去掉污染物核算项结构/01_工业锅炉/R1
+- 工业锅炉结果: outputs/固定燃烧源-工业锅炉_实验结果.xlsx (36414 items, 4046 sources, 213639 formulas, 0 formula errors; sha256 65115f1b...)
+- 火电热力结果: outputs/固定燃烧源-火电、热力生产与供应_实验结果.xlsx (0 items — target INDUSTRIAL only)
+- 公共表: outputs/calculation_items.csv, outputs/source_decisions.csv, outputs/source_pollutant_totals.csv
+- 机器QA: outputs/machine_qa_industrial.json, outputs/machine_qa_power.json
+- 过程痕迹: trace/complete_calculation_process.jsonl (36414 records, sha256 778c3ee9...)
+
+异常数量 (exceptions)
+- error_count 0; exception_group_count 286 (最终异常清单.csv + normalized exceptions.csv; hard checks passed, exceptions preserved, nothing zero-filled).
+
+运行包封存 (sealed)
+- 是 — archive stage returned sealed=true; run package sealed at revision 28fc3d596ebe665414581f573995f59dbeb9ed6b219e0d81de089506d695f104.

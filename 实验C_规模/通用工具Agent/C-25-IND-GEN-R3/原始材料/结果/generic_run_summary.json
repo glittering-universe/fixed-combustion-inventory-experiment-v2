@@ -1,0 +1,62 @@
+{
+  "run_id": "C-25-IND-GEN-R3",
+  "target": "INDUSTRIAL",
+  "input_files": {
+    "device_fuel_base": "inputs/基102-2002_原始结构脱敏输入.xlsx",
+    "enterprise_master": [
+      "inputs/基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+      "inputs/基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+      "inputs/基101-2001_原始结构脱敏输入_分片03-of04.xlsx",
+      "inputs/基101-2001_原始结构脱敏输入_分片04-of04.xlsx"
+    ],
+    "control_facility_base": "inputs/基101-2002_原始结构脱敏输入.xlsx",
+    "standard": "inputs/T_CSES_144-2024.pdf",
+    "source_identity_index": "inputs/source_identity_index.json"
+  },
+  "processed_sources": 1481,
+  "inventory_items_total": 13329,
+  "status_counts": {
+    "calculated": 7984,
+    "not_involved": 1773,
+    "information_insufficient": 3572,
+    "source_data_invalid": 0
+  },
+  "decided_target_counts": {
+    "INDUSTRIAL": 1284,
+    "POWER": 145,
+    "OUT_OF_SCOPE": 52
+  },
+  "output_files": {
+    "source_decisions": "outputs/source_decisions.csv",
+    "inventory_items": "outputs/generic_inventory_items.csv",
+    "source_disposition": "outputs/generic_source_disposition.csv",
+    "exception_list": "outputs/generic_exception_list.csv",
+    "run_summary": "outputs/generic_run_summary.json"
+  },
+  "rules_scripts": [
+    "scripts/build_inventory.py",
+    "scripts/control_measure_mapping.json"
+  ],
+  "assumptions": [
+    "投运率: 治理设施运行时间数据缺失, 按1.0(全投运)处理",
+    "多治理措施对同一污染物取表A.1控制效率最大值",
+    "处理工艺可映射表A.1时采用表A.1平均去除效率; 不可映射时采用企业填报去除效率; 均缺失按无治理(0)",
+    "治理设施按企业统一社会信用代码+GYGL(工业锅炉排放口)匹配; QT等其他排放口设施不适用于锅炉燃烧核算",
+    "锅炉燃烧烟气VOCs不涉及末端治理, η=0 (标准8.2.1.2-5)",
+    "煤制品、煤矸石按煤炭处理(物料衡算), 发生炉煤气按其它煤气系数",
+    "余热利用锅炉/其他锅炉按填报燃料采用对应燃料系数",
+    "低氮燃烧标志缺失(6条)按未采用处理",
+    "NH3: 标准表E.7/表E.2无NH3产生系数, 全部信息不足",
+    "生物燃料/其他燃料/工业废料无产生系数, 信息不足; 吨标准煤计量燃料无法换算实物量",
+    "范围判定: 自备电站锅炉及4419其他电力生产判定为范围外, 需用户确认"
+  ],
+  "unfinished_items": [
+    "NH3未核算(标准无产生系数)",
+    "生物燃料/其他燃料/工业废料锅炉未核算(标准无产生系数)",
+    "工业燃气轮机未核算(标准无燃气轮机系数)",
+    "3台锅炉无燃料消耗量记录未核算",
+    "其他燃料消耗总量(吨标准煤)组件未核算(无系数且无法换算)",
+    "治理设施投运率按1.0假设, 未按实际运行时间修正",
+    "263条GYGL治理设施处理工艺与去除效率均缺失, 相关源按无治理处理"
+  ]
+}

@@ -1,0 +1,37 @@
+任务完成。全部五个输出文件已生成并通过校验。
+
+实际输出路径（均在运行包 outputs 目录下）
+  /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/03_S3列与工作表顺序扰动/02_火电热力/03_通用工具调用型Agent/R1/outputs/
+    source_decisions.csv            5922 行（每个候选源一行）
+    generic_inventory_items.csv     7344 行（816 源 × 9 污染物）
+    generic_source_disposition.csv  5922 行
+    generic_exception_list.csv      6 个根因组
+    generic_run_summary.json        运行总结
+
+处理结果
+  候选源 5922 个（基102 原始行粒度），判定：
+    POWER（火电热力）816 = 670（行业代码 4411/4412/4417/4419/4430，标准 §3.5/§7.1 电力热力源）
+                          + 146（电站锅炉/燃气轮机设备，含工业企业自备电站，均有发电量>0）
+    INDUSTRIAL_BOILER 5097（采矿 B06-12 / 制造 C13-43 / 燃气供应 D45 企业的固定燃烧装置，§8.1/§8.3）
+    OUT_OF_SCOPE 9（农林牧渔服务业 0511/0539、水的生产供应 4690 的锅炉）
+  核算项 7344：calculated 3826，information_insufficient 3518（未编造任何燃料量/因子/效率）
+  8 个污染物（SO2/NOx/CO/VOC/PM2.5/PM10/BC/OC）按 T/CSES 144-2024 §7.2.1.2 公式(2) E=A×EF×(1-η) 计算：
+    燃煤 SO2/PM/BC/OC 用物料衡算公式(3)~(6)+附录C；电力生产燃煤 NOx 按装机容量取 8.96/8.19/7.21；
+    η 取基101-2002 填报去除效率（0-100% 有效）或附录A 默认，按（企业,排放口类别 DZGL/GYGL）关联，低氮燃烧按基102 标志；
+    PM10 = PM2.5 组分×(1-η细) + PM2.5-10 组分×(1-η粗)。
+  NH3：标准第 7 章与表 D.1 无电力热力源产生系数，816 项全部 information_insufficient（efficiency=0，未虚构）。
+
+校验结果（scripts/13、20）
+  四个 CSV 列名与任务要求一致；source_id 无重复且全部落在 source_identity_index 内；
+  三个 *_record_json 全部为合法 JSON 数组，component_id 在 activity/parameter/control 三数组中一一对齐（多燃料逐组分记录，未先汇总）；
+  generation/emission 无非负值违规，emission 均 ≤ generation；control efficiency/fine/coarse 均在 [0,100]；
+  UTF-8 (BOM) 编码，Excel 可直接打开。
+
+未完成事项（见 run_summary.unfinished_items 与 exception 清单）
+  1. NH3 无标准核算方法，需用户补充脱硝氨逃逸数据或改用其他方法；
+  2. 生物燃料/城市生活垃圾/工业废料/其他燃料（吨标准煤）在表 D.1 无产生系数（196 个垃圾焚烧+59 个生物质+49 个其他燃料源受影响），可参考生态环境部公告 2021 年第 24 号系数手册补算；
+  3. 14 个燃煤源燃烧方式缺失 → 物料衡算与 CO 系数无法确定（EXC-COAL_TECH_UNKNOWN）；
+  4. 治理设施投运率缺运行时间数据默认取 1；QT 等其他排放口类别设施未应用于电力设备；
+  5. 本运行电力源范围内填报去除效率均有效；全库存在 >100% 的异常填报值（如 996）但未关联到电力源。
+
+实际采用的规则与脚本已记录在 outputs/generic_run_summary.json（主引擎 scripts/10_calc_engine.py，标准表格 表D.1/附录A/C 内嵌；输入探查与输出校验脚本 scripts/01~09、13、17、20）。

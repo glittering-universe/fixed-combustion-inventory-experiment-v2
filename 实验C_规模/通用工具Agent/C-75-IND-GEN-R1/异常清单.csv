@@ -1,0 +1,13 @@
+﻿异常编号,源编号,污染物,异常原因,处理建议
+EXC-001,SRC-RAW-0121B5602E28A3313A92,"BC,NOx,OC,PM10,PM2.5,SO2",control_efficiency_undeterminable,由用户提供该企业GYGL排放口治理设施的去除效率或处理工艺名称
+EXC-002,SRC-RAW-1E8F3E240E301800027E,"BC,CO,NH3,NOx,OC,PM10,PM2.5,SO2,VOC",missing_fuel_type,由用户核实基102该锅炉行的燃料类型与消耗量并补录
+EXC-003,SRC-RAW-9E00DEFF9856D58CA30C,"BC,CO,NH3,NOx,OC,PM10,PM2.5,SO2,VOC",no_E7_row_for_润滑油,由用户确认燃料类型归属或提供对应产生系数
+EXC-004,SRC-RAW-31F6076EAB35AFB04D4C,"BC,CO,NH3,NOx,OC,PM10,PM2.5,SO2,VOC",no_E7_row_for_煤矸石（用于燃料）,由用户确认燃料类型归属或提供对应产生系数
+EXC-005,SRC-RAW-0034703C50B2ED845C6B,"BC,CO,NH3,NOx,OC,PM10,PM2.5,SO2,VOC",no_ef_for_nonfossil_fuel_in_E7,由用户提供该燃料(生物质/其他/废弃物)在工业锅炉的污染物产生系数(如生态环境部公告2014年第92号附件5或产排污系数手册)及物理量燃料消耗
+EXC-006,SRC-RAW-B87685FA95BF46796F7A,"BC,CO,NH3,NOx,OC,PM10,PM2.5,SO2,VOC",no_ef_for_nonfossil_fuel_in_E7;tce_unit_no_physical_EF,由用户提供该燃料(生物质/其他/废弃物)在工业锅炉的污染物产生系数(如生态环境部公告2014年第92号附件5或产排污系数手册)及物理量燃料消耗
+EXC-007,SRC-RAW-8188683F65489B0CDE6C,"BC,CO,NH3,NOx,OC,PM10,PM2.5,SO2,VOC",partial:no_ef_for_nonfossil_fuel_in_E7,由用户提供该燃料(生物质/其他/废弃物)在工业锅炉的污染物产生系数(如生态环境部公告2014年第92号附件5或产排污系数手册)及物理量燃料消耗
+EXC-008,SRC-RAW-930FF4E56312323A152D,"BC,OC,PM10,PM2.5",partial:no_ef_for_nonfossil_fuel_in_E7;control_efficiency_undeterminable,由用户提供该燃料(生物质/其他/废弃物)在工业锅炉的污染物产生系数(如生态环境部公告2014年第92号附件5或产排污系数手册)及物理量燃料消耗
+EXC-009,SRC-RAW-8CA9E0A7E8BE582F0B88,"BC,CO,NH3,NOx,OC,PM10,PM2.5,SO2,VOC",partial:tce_unit_no_physical_EF,由用户提供该燃料(生物质/其他/废弃物)在工业锅炉的污染物产生系数(如生态环境部公告2014年第92号附件5或产排污系数手册)及物理量燃料消耗
+EXC-010,SRC-RAW-EAAB377964C8A7EDD5A8,"NOx,SO2",partial:tce_unit_no_physical_EF;control_efficiency_undeterminable,由用户提供该燃料(生物质/其他/废弃物)在工业锅炉的污染物产生系数(如生态环境部公告2014年第92号附件5或产排污系数手册)及物理量燃料消耗
+EXC-011,SRC-RAW-047B5DC7001BE36DF321,"BC,CO,NH3,NOx,OC,PM10,PM2.5,SO2,VOC",unmapped_combustion_tech_nan,由用户核实燃煤锅炉燃烧方式并给出对应炉型(煤粉炉/流化床炉/炉排炉)
+EXC-012,SRC-RAW-1EC1B3A7BDEBCBDC0B18,"BC,CO,NH3,NOx,OC,PM10,PM2.5,SO2,VOC",unmapped_combustion_tech_其他,由用户核实燃煤锅炉燃烧方式并给出对应炉型(煤粉炉/流化床炉/炉排炉)

@@ -1,0 +1,59 @@
+{
+  "run_id": "B-S2-IND-GEN",
+  "target": "INDUSTRIAL",
+  "input_files": [
+    "inputs/基102-2002_原始结构脱敏输入.xlsx",
+    "inputs/基101-2002_原始结构脱敏输入.xlsx",
+    "inputs/基101-2001_原始结构脱敏输入_分片01~04-of04.xlsx",
+    "inputs/T_CSES_144-2024.pdf",
+    "inputs/source_identity_index.json"
+  ],
+  "processed_source_count": 5922,
+  "decision_counts": {
+    "INDUSTRIAL": 5243,
+    "POWER_HEAT": 615,
+    "OUT_OF_SCOPE": 64
+  },
+  "item_count_total": 53298,
+  "item_status_counts": {
+    "calculated": 38141,
+    "information_insufficient": 9046,
+    "not_involved": 6111
+  },
+  "calculated_item_count_by_target": {
+    "INDUSTRIAL": 38141
+  },
+  "output_files": {
+    "source_decisions.csv": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/02_S2等价别名扰动/01_工业锅炉/03_通用工具调用型Agent/R1/outputs/source_decisions.csv",
+    "generic_inventory_items.csv": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/02_S2等价别名扰动/01_工业锅炉/03_通用工具调用型Agent/R1/outputs/generic_inventory_items.csv",
+    "generic_source_disposition.csv": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/02_S2等价别名扰动/01_工业锅炉/03_通用工具调用型Agent/R1/outputs/generic_source_disposition.csv",
+    "generic_exception_list.csv": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/02_S2等价别名扰动/01_工业锅炉/03_通用工具调用型Agent/R1/outputs/generic_exception_list.csv",
+    "generic_run_summary.json": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/02_S2等价别名扰动/01_工业锅炉/03_通用工具调用型Agent/R1/outputs/generic_run_summary.json"
+  },
+  "rules_and_scripts": [
+    "scripts/run_pipeline.py (本清单全部处理逻辑)",
+    "work/standard_fulltext.txt (T/CSES 144-2024 全文提取, 供核对)"
+  ],
+  "method_basis": [
+    "T/CSES 144-2024 第7.1节: 电力热力源=4411/4412/4417/4430企业",
+    "T/CSES 144-2024 第8.1/8.3节: 工业源=B06-12/C13-43/D45企业, 化石燃料固定燃烧按公式(2)产排污系数法",
+    "燃煤SO2/PM2.5/PM10/BC/OC 采用公式(3)~(6)物料衡算, 参数见附录C表C.1~C.3",
+    "控制去除效率优先采用基101-2002治理设施填报效率(0~100%), 缺失时按治理工艺映射附录A表A.1",
+    "设施投运率无数据, 按1.0处理(假设设施全年投运); 低氮燃烧技术按附录A表A.1取22%",
+    "设备与治理设施按(统一社会信用代码+排放口类型GYGL/DZGL)关联; 同服务多设施去除效率按串联组合",
+    "污染物排放量单位统一为吨(t); 气体燃料系数单位g/m3, 固体/液体燃料系数单位g/kg"
+  ],
+  "assumptions": [
+    "治理设施投运率视为1.0(无运行时间数据)",
+    "同企业同服务多座治理设施按串联组合去除效率",
+    "治理设施填报效率>100%视为无效, 回退到附录A表A.1按工艺取值",
+    "燃气轮机(工业锅炉类别)按同燃料燃气锅炉系数近似处理(标准未单列燃气轮机)",
+    "D45燃气生产和供应业企业沿用附录E表E.7燃料行系数",
+    "煤制品/其他洗煤按煤炭处理; 润滑油按其它液体燃料处理; 发生炉煤气按其它煤气处理",
+    "燃煤室燃炉按煤粉炉处理"
+  ],
+  "unfinished_items": [
+    "信息不足未计算项: {'information_insufficient': 9046}",
+    "详见 generic_exception_list.csv 各根因组"
+  ]
+}

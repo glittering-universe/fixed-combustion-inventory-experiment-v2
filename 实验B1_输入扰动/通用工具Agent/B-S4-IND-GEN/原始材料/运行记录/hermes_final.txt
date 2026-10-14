@@ -1,0 +1,28 @@
+任务执行总结（受工具调用次数上限约束，本轮到此为止；以下为实际完成情况）
+
+一、运行包与输入核实
+全部工作严格限定在运行包内：
+/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/04_S4组合扰动/01_工业锅炉/03_通用工具调用型Agent/R1
+
+- run_manifest.json 指向：基102-2002设备燃料表（5922行×93列）、基101-2001企业主表4片、基101-2002治理设施表（43902行）、source_identity_index.json（5922条 source_id↔source_row 映射，无源类答案）、T/CSES 144-2024.pdf。
+- 身份索引与基102行号逐行对齐核验（序号匹配率2000/2000，无重复、无缺失）。
+- 标准方法依据：T/CSES 144-2024 第7/8章、公式(2) E=A×EF×(1−η)、公式(3)–(6)燃煤物料衡算、附录A表A.1控制效率、附录C表C.1–C.3燃煤参数、附录E表E.7固定燃烧产生系数。
+
+二、自主判定与核算逻辑（脚本 scripts/build_inventory.py）
+- 源分类：电站锅炉/燃气轮机设备→POWER_HEAT；企业行业2位码=44（电力热力生产供应）→POWER_HEAT；行业∈B06-12/C13-43/D45→INDUSTRIAL（本运行目标）；其余→OUT_OF_SCOPE。
+- 核算：表E.7各燃料产生系数（气态燃料按 g/m³，燃煤 SO₂/PM₂.₅/PM₁₀/BC/OC 用公式(3)–(6)与表C.1–C.3参数，技术按RM01–RM05/燃烧技术文本映射）；治理设施按(企业,排放口类别GYGL)关联基101-2002，工艺关键词映射表A.1（组合工艺取污染物的最大值），低氮燃烧=再加NOx 22%；PM₁₀按PM₂.₅与PM₂.₅–₁₀两组分分别用 fine/coarse 效率削减；CO/VOC η=0；NH₃无系数一律 not_involved。
+
+三、产出文件（outputs/，UTF-8，已通过校验脚本 scripts/validate_outputs.py）
+1. source_decisions.csv：5922行，5列齐全；INDUSTRIAL 5098 / POWER_HEAT 815 / OUT_OF_SCOPE 9。
+2. generic_inventory_items.csv：53298行（5922源×9污染物），11列齐全；状态 calculated 31707 / not_involved 12514 / information_insufficient 9077 / source_data_invalid 0。三个 *_record_json 均为合法JSON数组，组件数、顺序、component_id 一一对应；多燃料（如F1/F2）按组分分别记录不合并。
+3. generic_source_disposition.csv：5922行，判定与 decisions 一致。
+4. generic_exception_list.csv：5个根因组——EXC-002 无标准系数燃料（生物燃料等，1061源）、EXC-003 燃煤技术不明（22）、EXC-005 无燃料活动水平（17）、EXC-006 燃气轮机无系数（38）、EXC-007 焦炭物料衡算参数缺失（1）。
+5. generic_run_summary.json：输入文件、处理5922源、核算项53298、状态数、各污染物状态分布、输出路径、规则/脚本路径、未完成事项。
+
+四、质量核验结果
+校验脚本实测：列名、source_id×pollutant唯一性、JSON数组合法性与对齐、数值非负、emission≤generation、PM₁₀ fine/coarse 效率均填写、决策与处置一致性 —— 0 errors / 0 warnings。数值抽查：天然气锅炉NOx 产生量=2.12万m³×2.09g/m³×10⁻²=0.044308t 与手算一致；燃煤(RM02链条炉) SO₂/PM₂.₅/PM₁₀/BC/OC 物料衡算结果与手算一致。
+
+五、未完成事项（如实报告）
+1. 在最后一次成功运行与校验之后，我又向 scripts/build_inventory.py 追加了 method_notes 方法记录段（纯文档，不改核算结果），但未在追加后重新执行脚本。当前磁盘上的 generic_run_summary.json 是此前一次运行生成的，缺少该 method_notes 字段；交付前需重跑 scripts/build_inventory.py 再 scripts/validate_outputs.py 一次。核算结果本身不受影响（该补丁仅新增文档字段）。
+2. 无法核算的候选已按信息不足留痕：生物燃料/城市生活垃圾/工业废料/其他燃料/煤矸石/润滑油（表E.7无系数）、燃煤技术不明、燃气轮机、无燃料记录、焦炭物料衡算参数缺失 —— 均给出 status 与 reason_code，未编造燃料量、因子、效率或排放量。
+3. 治理设施投运率数据缺失，去除效率按表A.1平均效率×100%投运处理；填报效率>100%等异常值未直接采用，已在 summary 中注明。

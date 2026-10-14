@@ -1,0 +1,82 @@
+{
+  "common_tables": {
+    "calculation_items": {
+      "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/025%规模/02_火电热力/01_Full完整方法/R2/outputs/calculation_items.csv",
+      "sha256": "e2990e1a0d149059c2e1dc06aa056d5644ac84ad71ab8d105bdf6c86e9ca3125"
+    },
+    "source_decisions": {
+      "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/025%规模/02_火电热力/01_Full完整方法/R2/outputs/source_decisions.csv",
+      "sha256": "7c2b1d12fa85482b8e6f348dbc72b2ab3d9755dd6c1a033e5fc2977135b64a72"
+    },
+    "source_pollutant_totals": {
+      "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/025%规模/02_火电热力/01_Full完整方法/R2/outputs/source_pollutant_totals.csv",
+      "sha256": "ae05163bd999f5bdfafc6d44d38516293ff5395820b15bdcef3dd7524ef05330"
+    }
+  },
+  "error_count": 0,
+  "exception_group_count": 98,
+  "exception_path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/025%规模/02_火电热力/01_Full完整方法/R2/outputs/最终异常清单.csv",
+  "exception_sha256": "3588e3b0448e541fc6bafc701711220f19eb5ebaa6b77334af2a06d01c3c1953",
+  "export_mode": "machine",
+  "normalized_exception_path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/025%规模/02_火电热力/01_Full完整方法/R2/outputs/exceptions.csv",
+  "normalized_exception_sha256": "2e69588d3033b1d63a64521f5643d8ebbd0adf5052ba4e0f0cf606cf5b4a08e3",
+  "warning_count": 0,
+  "workbooks": [
+    {
+      "builder_result": {
+        "export_mode": "machine",
+        "item_count": 0,
+        "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/025%规模/02_火电热力/01_Full完整方法/R2/outputs/固定燃烧源-工业锅炉_实验结果.xlsx",
+        "sha256": "57c4b1a1faff587819b21a53aa5e8ecb2b95b31192d517dbb97e05c8c76821bb",
+        "sheet_count": 3,
+        "source_count": 0
+      },
+      "export_mode": "machine",
+      "item_count": 0,
+      "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/025%规模/02_火电热力/01_Full完整方法/R2/outputs/固定燃烧源-工业锅炉_实验结果.xlsx",
+      "preview_dir": null,
+      "qa_path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/025%规模/02_火电热力/01_Full完整方法/R2/outputs/machine_qa_industrial.json",
+      "sha256": "57c4b1a1faff587819b21a53aa5e8ecb2b95b31192d517dbb97e05c8c76821bb",
+      "source_count": 0,
+      "target": "INDUSTRIAL",
+      "workbook_qa": {
+        "external_link_count": 0,
+        "formula_count": 0,
+        "formula_error_count": 0,
+        "sheet_names": [
+          "00_说明",
+          "02_核算项",
+          "03_源结果"
+        ]
+      }
+    },
+    {
+      "builder_result": {
+        "export_mode": "machine",
+        "item_count": 1473,
+        "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/025%规模/02_火电热力/01_Full完整方法/R2/outputs/固定燃烧源-火电、热力生产与供应_实验结果.xlsx",
+        "sha256": "32ca2ac7e300e741a8e51c31fc0c5da8d81f5be70bc94de0261acaefc58489d7",
+        "sheet_count": 3,
+        "source_count": 145
+      },
+      "export_mode": "machine",
+      "item_count": 1473,
+      "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/025%规模/02_火电热力/01_Full完整方法/R2/outputs/固定燃烧源-火电、热力生产与供应_实验结果.xlsx",
+      "preview_dir": null,
+      "qa_path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/025%规模/02_火电热力/01_Full完整方法/R2/outputs/machine_qa_power.json",
+      "sha256": "32ca2ac7e300e741a8e51c31fc0c5da8d81f5be70bc94de0261acaefc58489d7",
+      "source_count": 145,
+      "target": "POWER",
+      "workbook_qa": {
+        "external_link_count": 0,
+        "formula_count": 6481,
+        "formula_error_count": 0,
+        "sheet_names": [
+          "00_说明",
+          "02_核算项",
+          "03_源结果"
+        ]
+      }
+    }
+  ]
+}

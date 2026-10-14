@@ -1,0 +1,30 @@
+All five deliverables are complete and validated. Final status:
+
+运行完成（run A-IND-GEN-R1，target=INDUSTRIAL，方法依据：运行包内唯一标准 T/CSES 144-2024）
+
+实际输出路径（UTF-8，无 BOM）：
+- /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/02_实验A_端到端清单编制/01_工业锅炉/03_通用工具调用型Agent/R1/outputs/source_decisions.csv             （5922 行，全部候选）
+- .../outputs/generic_inventory_items.csv      （46665 行 = 5185 源 × 9 污染物）
+- .../outputs/generic_source_disposition.csv   （5922 行）
+- .../outputs/generic_exception_list.csv       （14 个根因组）
+- .../outputs/generic_run_summary.json
+
+核心结果
+- 判定：5922 条基102设备 → 工业锅炉 5185（INDUSTRIAL，按设备字段"工业锅炉编号"）、火电热力 737（POWER，"电站锅炉/燃气轮机编号"）、范围外 0。仅汇总 INDUSTRIAL。
+- 核算项状态：calculated 31746、information_insufficient 9782、not_involved 5137（NH3 无脱硝时）、source_data_invalid 0。
+- 排放总量(t)：SO2 1863.09、NOX 14682.27、CO 16872.53、VOC 8822.12、PM2.5 1258.51、PM10 2399.42、BC 20.30、OC 9.43、NH3 61.72（NH3 仅 SCR/SNCR 氨逃逸，表E.1）。
+
+处理逻辑（全部取自 PDF 与未留空字段，未使用包外任何内容）
+- 产排污系数法 E=A×EF×(1−η)（公式2）：燃气/燃油/焦化产品等按表E.7；气体燃料系数按 g/m3（表E.7/D.1 注c）。
+- 燃煤 SO2/PM2.5/PM10/BC/OC 物料衡算（公式3–6，表C.1–C.3）：硫分/灰分取设备填报值；燃烧方式映射 煤粉炉/循环流化床/链条炉/抛煤机炉→自动炉排层燃炉（判断），其余（其他层燃炉/其他/未填）判信息不足。
+- 治理效率：设备填报"低氮燃烧"→NOX 22%；基101-2002 治理设施按企业+GXGL(工业锅炉排放口)匹配、仅单锅炉企业可归属到设备，填报效率优先、缺失/异常回退附录A表A.1；串联按 1−Π(1−ηi) 复合；PM10 分 fine/coarse 记录（PM2.5 组分与 PM2.5–10 组分）。
+- 每个燃料/独立组件在 activity/parameter/control 三个 JSON 数组中各占一个元素，component_id 一一对应（燃料一/燃料二/其他燃料分列，不先汇总）。
+
+未完成事项（见例外清单 14 组与 summary）
+- 工业生物质锅炉(1008源)、垃圾/工业废料/其他燃料、燃气轮机/余热/其他锅炉(82源)、燃烧方式未细分的燃煤锅炉(65源)、煤矸石、以吨计炼厂干气、焦炭物料衡算参数、17条无活动数据记录 → 标准表E.7未覆盖，判 information_insufficient，需用户补充系数/数据后重算。
+- 多锅炉企业治理设施归属不明（1021源，治理效率按0），需排放口-设备对应关系。
+- 源类交叉（79台工业锅炉位于D44企业、201台电站锅炉位于非D44企业）：按设备字段判定，需用户确认。
+
+校验结果：四个 CSV 列名、source_id 唯一性、数值非负、generation≥emission、JSON 数组合法性/对齐/最低字段、5922 全覆盖、每源 9 项齐全 —— 全部通过（work/validate.py）。
+
+实际使用的脚本（记录于 run summary）：work/engine.py（主核算引擎）、work/extract_pdf.py（标准文本提取）、work/analyze1-9.py（数据探查）、work/validate.py（校验）。

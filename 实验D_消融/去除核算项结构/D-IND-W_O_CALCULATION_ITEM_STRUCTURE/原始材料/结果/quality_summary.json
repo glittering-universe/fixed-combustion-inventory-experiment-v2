@@ -1,0 +1,82 @@
+{
+  "common_tables": {
+    "calculation_items": {
+      "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/05_实验D_方法组成贡献/01_去掉污染物核算项结构/01_工业锅炉/R1/outputs/calculation_items.csv",
+      "sha256": "2eba4e78ee8466f4231751538898deffcfdbd3f1a495682ee28a6cc5f0d5f7d0"
+    },
+    "source_decisions": {
+      "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/05_实验D_方法组成贡献/01_去掉污染物核算项结构/01_工业锅炉/R1/outputs/source_decisions.csv",
+      "sha256": "59c3c0337fe67c335a240c4e4d2afa43e257d33976355a3d57d6746f4571512a"
+    },
+    "source_pollutant_totals": {
+      "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/05_实验D_方法组成贡献/01_去掉污染物核算项结构/01_工业锅炉/R1/outputs/source_pollutant_totals.csv",
+      "sha256": "7ac28fc9ade2267aa20f375291f7f8e527b42d5dae826a8184c0a0e98b4b304c"
+    }
+  },
+  "error_count": 0,
+  "exception_group_count": 286,
+  "exception_path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/05_实验D_方法组成贡献/01_去掉污染物核算项结构/01_工业锅炉/R1/outputs/最终异常清单.csv",
+  "exception_sha256": "66a7a52deb4bf41d2b5822ac9ac166464c5f6768b41df0aede868b6707796700",
+  "export_mode": "machine",
+  "normalized_exception_path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/05_实验D_方法组成贡献/01_去掉污染物核算项结构/01_工业锅炉/R1/outputs/exceptions.csv",
+  "normalized_exception_sha256": "a9acf2110fb5aa12d95e2320129e5cfae62f8b08d436528b07e45e96d51778f7",
+  "warning_count": 0,
+  "workbooks": [
+    {
+      "builder_result": {
+        "export_mode": "machine",
+        "item_count": 36414,
+        "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/05_实验D_方法组成贡献/01_去掉污染物核算项结构/01_工业锅炉/R1/outputs/固定燃烧源-工业锅炉_实验结果.xlsx",
+        "sha256": "65115f1b8288b131b3c81de7dca45fe32e8a4f5907a8b6dd83530e16a27e4031",
+        "sheet_count": 3,
+        "source_count": 4046
+      },
+      "export_mode": "machine",
+      "item_count": 36414,
+      "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/05_实验D_方法组成贡献/01_去掉污染物核算项结构/01_工业锅炉/R1/outputs/固定燃烧源-工业锅炉_实验结果.xlsx",
+      "preview_dir": null,
+      "qa_path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/05_实验D_方法组成贡献/01_去掉污染物核算项结构/01_工业锅炉/R1/outputs/machine_qa_industrial.json",
+      "sha256": "65115f1b8288b131b3c81de7dca45fe32e8a4f5907a8b6dd83530e16a27e4031",
+      "source_count": 4046,
+      "target": "INDUSTRIAL",
+      "workbook_qa": {
+        "external_link_count": 0,
+        "formula_count": 213639,
+        "formula_error_count": 0,
+        "sheet_names": [
+          "00_说明",
+          "02_核算项",
+          "03_源结果"
+        ]
+      }
+    },
+    {
+      "builder_result": {
+        "export_mode": "machine",
+        "item_count": 0,
+        "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/05_实验D_方法组成贡献/01_去掉污染物核算项结构/01_工业锅炉/R1/outputs/固定燃烧源-火电、热力生产与供应_实验结果.xlsx",
+        "sha256": "bc922da10865e79296f764489fd90aea7cf12b24097324d456ed7f59fcc122fa",
+        "sheet_count": 3,
+        "source_count": 0
+      },
+      "export_mode": "machine",
+      "item_count": 0,
+      "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/05_实验D_方法组成贡献/01_去掉污染物核算项结构/01_工业锅炉/R1/outputs/固定燃烧源-火电、热力生产与供应_实验结果.xlsx",
+      "preview_dir": null,
+      "qa_path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/05_实验D_方法组成贡献/01_去掉污染物核算项结构/01_工业锅炉/R1/outputs/machine_qa_power.json",
+      "sha256": "bc922da10865e79296f764489fd90aea7cf12b24097324d456ed7f59fcc122fa",
+      "source_count": 0,
+      "target": "POWER",
+      "workbook_qa": {
+        "external_link_count": 0,
+        "formula_count": 0,
+        "formula_error_count": 0,
+        "sheet_names": [
+          "00_说明",
+          "02_核算项",
+          "03_源结果"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "run_id": "C-25-POW-GEN-R3",
+  "input_files": {
+    "device_fuel_base": "inputs/基102-2002_原始结构脱敏输入.xlsx",
+    "enterprise_master": [
+      "inputs/基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+      "inputs/基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+      "inputs/基101-2001_原始结构脱敏输入_分片03-of04.xlsx",
+      "inputs/基101-2001_原始结构脱敏输入_分片04-of04.xlsx"
+    ],
+    "control_facility_base": "inputs/基101-2002_原始结构脱敏输入.xlsx",
+    "identity_index": "inputs/source_identity_index.json",
+    "standard_pdf": "inputs/T_CSES_144-2024.pdf"
+  },
+  "candidate_sources": 1481,
+  "target": "POWER",
+  "decided": {
+    "BOILER": 1320,
+    "POWER": 145,
+    "OUT_OF_SCOPE": 16
+  },
+  "inventory_items": 1305,
+  "status_counts": {
+    "calculated": 608,
+    "information_insufficient": 552,
+    "not_involved": 145
+  },
+  "output_files": {
+    "source_decisions": "outputs/source_decisions.csv",
+    "inventory_items": "outputs/generic_inventory_items.csv",
+    "source_disposition": "outputs/generic_source_disposition.csv",
+    "exception_list": "outputs/generic_exception_list.csv",
+    "run_summary": "outputs/generic_run_summary.json"
+  },
+  "unfinished": [
+    "69个生物质/生活垃圾/其他燃料(吨标准煤)源的排放量未核算(附录D无对应产生系数, 无在线监测数据), 见EXC-01",
+    "23个燃气轮机源按燃气锅炉系数近似, 需用户确认, 见EXC-02",
+    "77个有治理设施的源按投运率=1处理, 见EXC-03",
+    "77个源按企业+排放口类型级匹配治理设施, 同企业多台设备共享效率, 见EXC-04",
+    "74个源治理设施信息缺失(无记录或缺工艺/效率), 按η=0处理, 见EXC-05",
+    "NH3未纳入核算(标准电力热力源无NH3产生系数), 状态not_involved"
+  ],
+  "rules_scripts": [
+    "scripts/rules_and_method.md",
+    "scripts/build_inventory.py"
+  ]
+}

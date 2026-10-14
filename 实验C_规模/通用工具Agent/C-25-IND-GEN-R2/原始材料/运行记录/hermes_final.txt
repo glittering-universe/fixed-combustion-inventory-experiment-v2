@@ -1,0 +1,36 @@
+任务完成。已基于运行包内的全部输入（三张基表工作簿 + T/CSES 144-2024 标准 PDF + 目标中立身份索引）自主完成固定燃烧源清单编制，全部 1481 个候选源均已作出判断，输出已写入 outputs 目录并通过校验。
+
+实际执行结果
+============
+
+源判定（source_decisions.csv，1481 行，与 candidate_ids 完全一致）
+- INDUSTRIAL（工业锅炉/化石燃料固定燃烧）：1016 个
+- POWER（火电热力：电站锅炉/燃气轮机，含垃圾焚烧与生物质发电电站侧设备）：179 个
+- OUT_OF_SCOPE：286 个（生物质锅炉 274、燃气轮机 7、余热利用锅炉 4、垃圾/工业废料燃料锅炉 1）
+
+核算项（generic_inventory_items.csv，13329 行 = 1481 源 × 9 污染物）
+- calculated：9058；not_involved：4185；information_insufficient：86；source_data_invalid：0
+- 汇总排放量（吨）：SO2 288.9 / NOx 3428.8 / CO 4696.7 / VOC 1446.0 / PM2.5 87.9 / PM10 175.1 / BC 3.21 / OC 0.98 / NH3 0
+
+方法与规则（仅取自运行包内 PDF 与源字段）
+- T/CSES 144-2024 §8.3 化石燃料固定燃烧：公式(2) E=A·EF·(1−η)；燃煤 SO2/PM2.5/PM10/BC/OC 物料衡算公式(3)~(6)
+- 附录E 表E.7 产生系数（气体燃料 g/m³，固/液 g/kg）；附录C 表C.1~C.3 燃煤参数（sr=0.15、ar、粒径分布、BC/OC 占比，按燃烧方式映射：链条炉/抛煤机炉/其他层燃炉→自动炉排，循环流化床→流化床炉，煤粉炉→煤粉炉）
+- 附录A 表A.1 控制效率：治理设施按企业(统一社会信用代码)+工业锅炉排放口(GYGL)关联，工艺名称关键词映射，多措施按污染物取最大值；基102"低氮燃烧=是"与 SCR/SNCR 组合（22/42/64/52%）；燃烧烟气 VOC η=0（标准 8.2.1.2 第5条）；投运率无数据按 100%
+- NH3 按表 E.7 无固定燃烧系数计 0；多燃料逐组件核算，三数组按 component_id 对齐（54 个多组件行已验证对齐）
+
+未完成事项（generic_exception_list.csv，4 个根因组，共 10 个源）
+- EXC-001：3 个源燃料数据全空（无活动水平）
+- EXC-002：5 个源燃料为"其他燃料(吨标准煤)"，种类未知无法选系数
+- EXC-003：1 个源（580 行）炼厂干气以"吨"计、另有其他燃料(tce)，NOx 无法核算
+- EXC-004：2 个燃煤源未填报燃烧方式，CO/NOx/VOC/PM 类无法选系数（SO2 仍按硫分物料衡算）
+
+校验结果
+- 四个 CSV 列名、行数与规范一致；source_id 唯一、items (source_id,pollutant) 唯一；数值全部非负；覆盖全部 1481 候选；三个 *_record_json 均合法 JSON 数组且长度/顺序/component_id 一一对应；PM10 行 fine_efficiency 与 coarse_efficiency 均给出。手工复算抽查（燃气低氮锅炉、燃煤链条炉、循环流化床+袋式除尘+脱硫/脱硝组合）与输出完全一致。
+
+输出文件
+- /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/025%规模/01_工业锅炉/03_通用工具调用型Agent/R2/outputs/source_decisions.csv
+- .../outputs/generic_inventory_items.csv
+- .../outputs/generic_source_disposition.csv
+- .../outputs/generic_exception_list.csv
+- .../outputs/generic_run_summary.json
+规则/脚本：scripts/build_inventory.py（含全部系数表与映射），辅助脚本 scripts/validate_outputs.py、scripts/qa_final.py 等；全部过程文件与假设记录在 generic_run_summary.json 的 assumptions 中。

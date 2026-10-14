@@ -1,0 +1,554 @@
+﻿异常编号,源编号,污染物,异常原因,处理建议
+EXC-0001,SRC-RAW-09CC07AB1163C70FFAC1,SO2,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-09CC07AB1163C70FFAC1
+EXC-0002,SRC-RAW-09CC07AB1163C70FFAC1,NOx,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-09CC07AB1163C70FFAC1
+EXC-0003,SRC-RAW-09CC07AB1163C70FFAC1,CO,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-09CC07AB1163C70FFAC1
+EXC-0004,SRC-RAW-09CC07AB1163C70FFAC1,VOC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-09CC07AB1163C70FFAC1
+EXC-0005,SRC-RAW-09CC07AB1163C70FFAC1,PM2.5,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-09CC07AB1163C70FFAC1
+EXC-0006,SRC-RAW-09CC07AB1163C70FFAC1,BC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-09CC07AB1163C70FFAC1
+EXC-0007,SRC-RAW-09CC07AB1163C70FFAC1,OC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-09CC07AB1163C70FFAC1
+EXC-0008,SRC-RAW-09CC07AB1163C70FFAC1,PM10,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-09CC07AB1163C70FFAC1
+EXC-0009,SRC-RAW-09CC07AB1163C70FFAC1,NH3,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-09CC07AB1163C70FFAC1
+EXC-0010,SRC-RAW-1AB2981F39D95390A9AA,SO2,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-1AB2981F39D95390A9AA
+EXC-0011,SRC-RAW-1AB2981F39D95390A9AA,NOx,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-1AB2981F39D95390A9AA
+EXC-0012,SRC-RAW-1AB2981F39D95390A9AA,CO,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-1AB2981F39D95390A9AA
+EXC-0013,SRC-RAW-1AB2981F39D95390A9AA,VOC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-1AB2981F39D95390A9AA
+EXC-0014,SRC-RAW-1AB2981F39D95390A9AA,PM2.5,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-1AB2981F39D95390A9AA
+EXC-0015,SRC-RAW-1AB2981F39D95390A9AA,BC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-1AB2981F39D95390A9AA
+EXC-0016,SRC-RAW-1AB2981F39D95390A9AA,OC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-1AB2981F39D95390A9AA
+EXC-0017,SRC-RAW-1AB2981F39D95390A9AA,PM10,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-1AB2981F39D95390A9AA
+EXC-0018,SRC-RAW-1AB2981F39D95390A9AA,NH3,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-1AB2981F39D95390A9AA
+EXC-0019,SRC-RAW-B8510A104767F52727BA,SO2,Material balance parameter missing: SO2 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-B8510A104767F52727BA fuel 一般烟煤
+EXC-0020,SRC-RAW-9AFF69BBAFECE52DAA67,SO2,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-9AFF69BBAFECE52DAA67
+EXC-0021,SRC-RAW-9AFF69BBAFECE52DAA67,NOx,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-9AFF69BBAFECE52DAA67
+EXC-0022,SRC-RAW-9AFF69BBAFECE52DAA67,CO,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-9AFF69BBAFECE52DAA67
+EXC-0023,SRC-RAW-9AFF69BBAFECE52DAA67,VOC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-9AFF69BBAFECE52DAA67
+EXC-0024,SRC-RAW-9AFF69BBAFECE52DAA67,PM2.5,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-9AFF69BBAFECE52DAA67
+EXC-0025,SRC-RAW-9AFF69BBAFECE52DAA67,BC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-9AFF69BBAFECE52DAA67
+EXC-0026,SRC-RAW-9AFF69BBAFECE52DAA67,OC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-9AFF69BBAFECE52DAA67
+EXC-0027,SRC-RAW-9AFF69BBAFECE52DAA67,PM10,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-9AFF69BBAFECE52DAA67
+EXC-0028,SRC-RAW-9AFF69BBAFECE52DAA67,NH3,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-9AFF69BBAFECE52DAA67
+EXC-0029,SRC-RAW-3E1F4674BE5DEDEDE380,PM2.5,Material balance parameter missing: PM2.5 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-3E1F4674BE5DEDEDE380 fuel 一般烟煤
+EXC-0030,SRC-RAW-3E1F4674BE5DEDEDE380,BC,Material balance parameter missing: BC requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-3E1F4674BE5DEDEDE380 fuel 一般烟煤
+EXC-0031,SRC-RAW-3E1F4674BE5DEDEDE380,OC,Material balance parameter missing: OC requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-3E1F4674BE5DEDEDE380 fuel 一般烟煤
+EXC-0032,SRC-RAW-3E1F4674BE5DEDEDE380,PM10,Material balance parameter missing: PM10 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-3E1F4674BE5DEDEDE380 fuel 一般烟煤
+EXC-0033,SRC-RAW-3ADCA80952BFB5C3B56A,SO2,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-3ADCA80952BFB5C3B56A
+EXC-0034,SRC-RAW-3ADCA80952BFB5C3B56A,NOx,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-3ADCA80952BFB5C3B56A
+EXC-0035,SRC-RAW-3ADCA80952BFB5C3B56A,CO,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-3ADCA80952BFB5C3B56A
+EXC-0036,SRC-RAW-3ADCA80952BFB5C3B56A,VOC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-3ADCA80952BFB5C3B56A
+EXC-0037,SRC-RAW-3ADCA80952BFB5C3B56A,PM2.5,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-3ADCA80952BFB5C3B56A
+EXC-0038,SRC-RAW-3ADCA80952BFB5C3B56A,BC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-3ADCA80952BFB5C3B56A
+EXC-0039,SRC-RAW-3ADCA80952BFB5C3B56A,OC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-3ADCA80952BFB5C3B56A
+EXC-0040,SRC-RAW-3ADCA80952BFB5C3B56A,PM10,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-3ADCA80952BFB5C3B56A
+EXC-0041,SRC-RAW-3ADCA80952BFB5C3B56A,NH3,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-3ADCA80952BFB5C3B56A
+EXC-0042,SRC-RAW-CCDE74141F81CA791FFA,SO2,Material balance parameter missing: SO2 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-CCDE74141F81CA791FFA fuel 原煤
+EXC-0043,SRC-RAW-3EF4C285FA23D36D8A39,PM2.5,Material balance parameter missing: PM2.5 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-3EF4C285FA23D36D8A39 fuel 一般烟煤
+EXC-0044,SRC-RAW-3EF4C285FA23D36D8A39,BC,Material balance parameter missing: BC requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-3EF4C285FA23D36D8A39 fuel 一般烟煤
+EXC-0045,SRC-RAW-3EF4C285FA23D36D8A39,OC,Material balance parameter missing: OC requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-3EF4C285FA23D36D8A39 fuel 一般烟煤
+EXC-0046,SRC-RAW-3EF4C285FA23D36D8A39,PM10,Material balance parameter missing: PM10 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-3EF4C285FA23D36D8A39 fuel 一般烟煤
+EXC-0047,SRC-RAW-E9553B256B7E6AEFE791,SO2,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-E9553B256B7E6AEFE791
+EXC-0048,SRC-RAW-E9553B256B7E6AEFE791,NOx,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-E9553B256B7E6AEFE791
+EXC-0049,SRC-RAW-E9553B256B7E6AEFE791,CO,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-E9553B256B7E6AEFE791
+EXC-0050,SRC-RAW-E9553B256B7E6AEFE791,VOC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-E9553B256B7E6AEFE791
+EXC-0051,SRC-RAW-E9553B256B7E6AEFE791,PM2.5,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-E9553B256B7E6AEFE791
+EXC-0052,SRC-RAW-E9553B256B7E6AEFE791,BC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-E9553B256B7E6AEFE791
+EXC-0053,SRC-RAW-E9553B256B7E6AEFE791,OC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-E9553B256B7E6AEFE791
+EXC-0054,SRC-RAW-E9553B256B7E6AEFE791,PM10,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-E9553B256B7E6AEFE791
+EXC-0055,SRC-RAW-E9553B256B7E6AEFE791,NH3,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-E9553B256B7E6AEFE791
+EXC-0056,SRC-RAW-82B5828D08384E0505B2,PM2.5,Material balance parameter missing: PM2.5 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-82B5828D08384E0505B2 fuel 原煤
+EXC-0057,SRC-RAW-82B5828D08384E0505B2,BC,Material balance parameter missing: BC requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-82B5828D08384E0505B2 fuel 原煤
+EXC-0058,SRC-RAW-82B5828D08384E0505B2,OC,Material balance parameter missing: OC requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-82B5828D08384E0505B2 fuel 原煤
+EXC-0059,SRC-RAW-82B5828D08384E0505B2,PM10,Material balance parameter missing: PM10 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-82B5828D08384E0505B2 fuel 原煤
+EXC-0060,SRC-RAW-0FD82B1672C4D5D5BD9F,SO2,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-0FD82B1672C4D5D5BD9F
+EXC-0061,SRC-RAW-0FD82B1672C4D5D5BD9F,NOx,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-0FD82B1672C4D5D5BD9F
+EXC-0062,SRC-RAW-0FD82B1672C4D5D5BD9F,CO,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-0FD82B1672C4D5D5BD9F
+EXC-0063,SRC-RAW-0FD82B1672C4D5D5BD9F,VOC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-0FD82B1672C4D5D5BD9F
+EXC-0064,SRC-RAW-0FD82B1672C4D5D5BD9F,PM2.5,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-0FD82B1672C4D5D5BD9F
+EXC-0065,SRC-RAW-0FD82B1672C4D5D5BD9F,BC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-0FD82B1672C4D5D5BD9F
+EXC-0066,SRC-RAW-0FD82B1672C4D5D5BD9F,OC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-0FD82B1672C4D5D5BD9F
+EXC-0067,SRC-RAW-0FD82B1672C4D5D5BD9F,PM10,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-0FD82B1672C4D5D5BD9F
+EXC-0068,SRC-RAW-0FD82B1672C4D5D5BD9F,NH3,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-0FD82B1672C4D5D5BD9F
+EXC-0069,SRC-RAW-031B3589BCDCF633B0EA,SO2,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-031B3589BCDCF633B0EA
+EXC-0070,SRC-RAW-031B3589BCDCF633B0EA,NOx,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-031B3589BCDCF633B0EA
+EXC-0071,SRC-RAW-031B3589BCDCF633B0EA,CO,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-031B3589BCDCF633B0EA
+EXC-0072,SRC-RAW-031B3589BCDCF633B0EA,VOC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-031B3589BCDCF633B0EA
+EXC-0073,SRC-RAW-031B3589BCDCF633B0EA,PM2.5,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-031B3589BCDCF633B0EA
+EXC-0074,SRC-RAW-031B3589BCDCF633B0EA,BC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-031B3589BCDCF633B0EA
+EXC-0075,SRC-RAW-031B3589BCDCF633B0EA,OC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-031B3589BCDCF633B0EA
+EXC-0076,SRC-RAW-031B3589BCDCF633B0EA,PM10,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-031B3589BCDCF633B0EA
+EXC-0077,SRC-RAW-031B3589BCDCF633B0EA,NH3,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-031B3589BCDCF633B0EA
+EXC-0078,SRC-RAW-7F76A3AC469336B1002A,SO2,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-7F76A3AC469336B1002A
+EXC-0079,SRC-RAW-7F76A3AC469336B1002A,NOx,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-7F76A3AC469336B1002A
+EXC-0080,SRC-RAW-7F76A3AC469336B1002A,CO,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-7F76A3AC469336B1002A
+EXC-0081,SRC-RAW-7F76A3AC469336B1002A,VOC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-7F76A3AC469336B1002A
+EXC-0082,SRC-RAW-7F76A3AC469336B1002A,PM2.5,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-7F76A3AC469336B1002A
+EXC-0083,SRC-RAW-7F76A3AC469336B1002A,BC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-7F76A3AC469336B1002A
+EXC-0084,SRC-RAW-7F76A3AC469336B1002A,OC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-7F76A3AC469336B1002A
+EXC-0085,SRC-RAW-7F76A3AC469336B1002A,PM10,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-7F76A3AC469336B1002A
+EXC-0086,SRC-RAW-7F76A3AC469336B1002A,NH3,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-7F76A3AC469336B1002A
+EXC-0087,SRC-RAW-7620EF002BA9ADAD6CF1,SO2,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-7620EF002BA9ADAD6CF1
+EXC-0088,SRC-RAW-7620EF002BA9ADAD6CF1,NOx,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-7620EF002BA9ADAD6CF1
+EXC-0089,SRC-RAW-7620EF002BA9ADAD6CF1,CO,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-7620EF002BA9ADAD6CF1
+EXC-0090,SRC-RAW-7620EF002BA9ADAD6CF1,VOC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-7620EF002BA9ADAD6CF1
+EXC-0091,SRC-RAW-7620EF002BA9ADAD6CF1,PM2.5,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-7620EF002BA9ADAD6CF1
+EXC-0092,SRC-RAW-7620EF002BA9ADAD6CF1,BC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-7620EF002BA9ADAD6CF1
+EXC-0093,SRC-RAW-7620EF002BA9ADAD6CF1,OC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-7620EF002BA9ADAD6CF1
+EXC-0094,SRC-RAW-7620EF002BA9ADAD6CF1,PM10,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-7620EF002BA9ADAD6CF1
+EXC-0095,SRC-RAW-7620EF002BA9ADAD6CF1,NH3,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-7620EF002BA9ADAD6CF1
+EXC-0096,SRC-RAW-6B2A959B5DD6F8A603F6,PM2.5,Material balance parameter missing: PM2.5 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-6B2A959B5DD6F8A603F6 fuel 褐煤
+EXC-0097,SRC-RAW-6B2A959B5DD6F8A603F6,BC,Material balance parameter missing: BC requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-6B2A959B5DD6F8A603F6 fuel 褐煤
+EXC-0098,SRC-RAW-6B2A959B5DD6F8A603F6,OC,Material balance parameter missing: OC requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-6B2A959B5DD6F8A603F6 fuel 褐煤
+EXC-0099,SRC-RAW-6B2A959B5DD6F8A603F6,PM10,Material balance parameter missing: PM10 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-6B2A959B5DD6F8A603F6 fuel 褐煤
+EXC-0100,SRC-RAW-B9D25D90184C1D6081DC,SO2,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-B9D25D90184C1D6081DC
+EXC-0101,SRC-RAW-B9D25D90184C1D6081DC,NOx,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-B9D25D90184C1D6081DC
+EXC-0102,SRC-RAW-B9D25D90184C1D6081DC,CO,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-B9D25D90184C1D6081DC
+EXC-0103,SRC-RAW-B9D25D90184C1D6081DC,VOC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-B9D25D90184C1D6081DC
+EXC-0104,SRC-RAW-B9D25D90184C1D6081DC,PM2.5,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-B9D25D90184C1D6081DC
+EXC-0105,SRC-RAW-B9D25D90184C1D6081DC,BC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-B9D25D90184C1D6081DC
+EXC-0106,SRC-RAW-B9D25D90184C1D6081DC,OC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-B9D25D90184C1D6081DC
+EXC-0107,SRC-RAW-B9D25D90184C1D6081DC,PM10,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-B9D25D90184C1D6081DC
+EXC-0108,SRC-RAW-B9D25D90184C1D6081DC,NH3,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-B9D25D90184C1D6081DC
+EXC-0109,SRC-RAW-72233F12645656D2C844,SO2,Material balance parameter missing: SO2 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-72233F12645656D2C844 fuel 原煤
+EXC-0110,SRC-RAW-6F0411A459B438D419BD,PM2.5,Material balance parameter missing: PM2.5 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-6F0411A459B438D419BD fuel 褐煤
+EXC-0111,SRC-RAW-6F0411A459B438D419BD,BC,Material balance parameter missing: BC requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-6F0411A459B438D419BD fuel 褐煤
+EXC-0112,SRC-RAW-6F0411A459B438D419BD,OC,Material balance parameter missing: OC requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-6F0411A459B438D419BD fuel 褐煤
+EXC-0113,SRC-RAW-6F0411A459B438D419BD,PM10,Material balance parameter missing: PM10 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-6F0411A459B438D419BD fuel 褐煤
+EXC-0114,SRC-RAW-D16EA3E11682DFFC3340,SO2,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-D16EA3E11682DFFC3340
+EXC-0115,SRC-RAW-D16EA3E11682DFFC3340,NOx,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-D16EA3E11682DFFC3340
+EXC-0116,SRC-RAW-D16EA3E11682DFFC3340,CO,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-D16EA3E11682DFFC3340
+EXC-0117,SRC-RAW-D16EA3E11682DFFC3340,VOC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-D16EA3E11682DFFC3340
+EXC-0118,SRC-RAW-D16EA3E11682DFFC3340,PM2.5,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-D16EA3E11682DFFC3340
+EXC-0119,SRC-RAW-D16EA3E11682DFFC3340,BC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-D16EA3E11682DFFC3340
+EXC-0120,SRC-RAW-D16EA3E11682DFFC3340,OC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-D16EA3E11682DFFC3340
+EXC-0121,SRC-RAW-D16EA3E11682DFFC3340,PM10,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-D16EA3E11682DFFC3340
+EXC-0122,SRC-RAW-D16EA3E11682DFFC3340,NH3,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-D16EA3E11682DFFC3340
+EXC-0123,SRC-RAW-45FDCD49242692C59CC2,SO2,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-45FDCD49242692C59CC2
+EXC-0124,SRC-RAW-45FDCD49242692C59CC2,NOx,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-45FDCD49242692C59CC2
+EXC-0125,SRC-RAW-45FDCD49242692C59CC2,CO,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-45FDCD49242692C59CC2
+EXC-0126,SRC-RAW-45FDCD49242692C59CC2,VOC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-45FDCD49242692C59CC2
+EXC-0127,SRC-RAW-45FDCD49242692C59CC2,PM2.5,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-45FDCD49242692C59CC2
+EXC-0128,SRC-RAW-45FDCD49242692C59CC2,BC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-45FDCD49242692C59CC2
+EXC-0129,SRC-RAW-45FDCD49242692C59CC2,OC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-45FDCD49242692C59CC2
+EXC-0130,SRC-RAW-45FDCD49242692C59CC2,PM10,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-45FDCD49242692C59CC2
+EXC-0131,SRC-RAW-45FDCD49242692C59CC2,NH3,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-45FDCD49242692C59CC2
+EXC-0132,SRC-RAW-F4E2E3A5D2805919502A,SO2,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-F4E2E3A5D2805919502A
+EXC-0133,SRC-RAW-F4E2E3A5D2805919502A,NOx,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-F4E2E3A5D2805919502A
+EXC-0134,SRC-RAW-F4E2E3A5D2805919502A,CO,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-F4E2E3A5D2805919502A
+EXC-0135,SRC-RAW-F4E2E3A5D2805919502A,VOC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-F4E2E3A5D2805919502A
+EXC-0136,SRC-RAW-F4E2E3A5D2805919502A,PM2.5,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-F4E2E3A5D2805919502A
+EXC-0137,SRC-RAW-F4E2E3A5D2805919502A,BC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-F4E2E3A5D2805919502A
+EXC-0138,SRC-RAW-F4E2E3A5D2805919502A,OC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-F4E2E3A5D2805919502A
+EXC-0139,SRC-RAW-F4E2E3A5D2805919502A,PM10,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-F4E2E3A5D2805919502A
+EXC-0140,SRC-RAW-F4E2E3A5D2805919502A,NH3,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-F4E2E3A5D2805919502A
+EXC-0141,SRC-RAW-EA575374F3359E937FB7,SO2,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-EA575374F3359E937FB7
+EXC-0142,SRC-RAW-EA575374F3359E937FB7,NOx,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-EA575374F3359E937FB7
+EXC-0143,SRC-RAW-EA575374F3359E937FB7,CO,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-EA575374F3359E937FB7
+EXC-0144,SRC-RAW-EA575374F3359E937FB7,VOC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-EA575374F3359E937FB7
+EXC-0145,SRC-RAW-EA575374F3359E937FB7,PM2.5,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-EA575374F3359E937FB7
+EXC-0146,SRC-RAW-EA575374F3359E937FB7,BC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-EA575374F3359E937FB7
+EXC-0147,SRC-RAW-EA575374F3359E937FB7,OC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-EA575374F3359E937FB7
+EXC-0148,SRC-RAW-EA575374F3359E937FB7,PM10,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-EA575374F3359E937FB7
+EXC-0149,SRC-RAW-EA575374F3359E937FB7,NH3,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-EA575374F3359E937FB7
+EXC-0150,SRC-RAW-FAB5057D4C83F3A4DE14,PM2.5,Material balance parameter missing: PM2.5 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-FAB5057D4C83F3A4DE14 fuel 一般烟煤
+EXC-0151,SRC-RAW-FAB5057D4C83F3A4DE14,BC,Material balance parameter missing: BC requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-FAB5057D4C83F3A4DE14 fuel 一般烟煤
+EXC-0152,SRC-RAW-FAB5057D4C83F3A4DE14,OC,Material balance parameter missing: OC requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-FAB5057D4C83F3A4DE14 fuel 一般烟煤
+EXC-0153,SRC-RAW-FAB5057D4C83F3A4DE14,PM10,Material balance parameter missing: PM10 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-FAB5057D4C83F3A4DE14 fuel 一般烟煤
+EXC-0154,SRC-RAW-57975824CAAF1FEA69F8,SO2,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-57975824CAAF1FEA69F8
+EXC-0155,SRC-RAW-57975824CAAF1FEA69F8,NOx,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-57975824CAAF1FEA69F8
+EXC-0156,SRC-RAW-57975824CAAF1FEA69F8,CO,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-57975824CAAF1FEA69F8
+EXC-0157,SRC-RAW-57975824CAAF1FEA69F8,VOC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-57975824CAAF1FEA69F8
+EXC-0158,SRC-RAW-57975824CAAF1FEA69F8,PM2.5,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-57975824CAAF1FEA69F8
+EXC-0159,SRC-RAW-57975824CAAF1FEA69F8,BC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-57975824CAAF1FEA69F8
+EXC-0160,SRC-RAW-57975824CAAF1FEA69F8,OC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-57975824CAAF1FEA69F8
+EXC-0161,SRC-RAW-57975824CAAF1FEA69F8,PM10,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-57975824CAAF1FEA69F8
+EXC-0162,SRC-RAW-57975824CAAF1FEA69F8,NH3,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-57975824CAAF1FEA69F8
+EXC-0163,SRC-RAW-E1396E97602796F2B2D9,SO2,Material balance parameter missing: SO2 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-E1396E97602796F2B2D9 fuel 原煤
+EXC-0164,SRC-RAW-A42AE6EB5B122E58A6B2,PM2.5,Material balance parameter missing: PM2.5 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-A42AE6EB5B122E58A6B2 fuel 一般烟煤
+EXC-0165,SRC-RAW-A42AE6EB5B122E58A6B2,BC,Material balance parameter missing: BC requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-A42AE6EB5B122E58A6B2 fuel 一般烟煤
+EXC-0166,SRC-RAW-A42AE6EB5B122E58A6B2,OC,Material balance parameter missing: OC requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-A42AE6EB5B122E58A6B2 fuel 一般烟煤
+EXC-0167,SRC-RAW-A42AE6EB5B122E58A6B2,PM10,Material balance parameter missing: PM10 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-A42AE6EB5B122E58A6B2 fuel 一般烟煤
+EXC-0168,SRC-RAW-91758580F3D639F02735,SO2,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-91758580F3D639F02735
+EXC-0169,SRC-RAW-91758580F3D639F02735,NOx,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-91758580F3D639F02735
+EXC-0170,SRC-RAW-91758580F3D639F02735,CO,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-91758580F3D639F02735
+EXC-0171,SRC-RAW-91758580F3D639F02735,VOC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-91758580F3D639F02735
+EXC-0172,SRC-RAW-91758580F3D639F02735,PM2.5,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-91758580F3D639F02735
+EXC-0173,SRC-RAW-91758580F3D639F02735,BC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-91758580F3D639F02735
+EXC-0174,SRC-RAW-91758580F3D639F02735,OC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-91758580F3D639F02735
+EXC-0175,SRC-RAW-91758580F3D639F02735,PM10,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-91758580F3D639F02735
+EXC-0176,SRC-RAW-91758580F3D639F02735,NH3,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-91758580F3D639F02735
+EXC-0177,SRC-RAW-730A96C0F1BB19F1D46E,SO2,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-730A96C0F1BB19F1D46E
+EXC-0178,SRC-RAW-730A96C0F1BB19F1D46E,NOx,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-730A96C0F1BB19F1D46E
+EXC-0179,SRC-RAW-730A96C0F1BB19F1D46E,CO,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-730A96C0F1BB19F1D46E
+EXC-0180,SRC-RAW-730A96C0F1BB19F1D46E,VOC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-730A96C0F1BB19F1D46E
+EXC-0181,SRC-RAW-730A96C0F1BB19F1D46E,PM2.5,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-730A96C0F1BB19F1D46E
+EXC-0182,SRC-RAW-730A96C0F1BB19F1D46E,BC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-730A96C0F1BB19F1D46E
+EXC-0183,SRC-RAW-730A96C0F1BB19F1D46E,OC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-730A96C0F1BB19F1D46E
+EXC-0184,SRC-RAW-730A96C0F1BB19F1D46E,PM10,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-730A96C0F1BB19F1D46E
+EXC-0185,SRC-RAW-730A96C0F1BB19F1D46E,NH3,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-730A96C0F1BB19F1D46E
+EXC-0186,SRC-RAW-CBBFC1A28AA95EDC417A,SO2,Material balance parameter missing: SO2 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-CBBFC1A28AA95EDC417A fuel 一般烟煤
+EXC-0187,SRC-RAW-1119E36BA6B9144F2860,SO2,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-1119E36BA6B9144F2860
+EXC-0188,SRC-RAW-1119E36BA6B9144F2860,NOx,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-1119E36BA6B9144F2860
+EXC-0189,SRC-RAW-1119E36BA6B9144F2860,CO,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-1119E36BA6B9144F2860
+EXC-0190,SRC-RAW-1119E36BA6B9144F2860,VOC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-1119E36BA6B9144F2860
+EXC-0191,SRC-RAW-1119E36BA6B9144F2860,PM2.5,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-1119E36BA6B9144F2860
+EXC-0192,SRC-RAW-1119E36BA6B9144F2860,BC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-1119E36BA6B9144F2860
+EXC-0193,SRC-RAW-1119E36BA6B9144F2860,OC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-1119E36BA6B9144F2860
+EXC-0194,SRC-RAW-1119E36BA6B9144F2860,PM10,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-1119E36BA6B9144F2860
+EXC-0195,SRC-RAW-1119E36BA6B9144F2860,NH3,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-1119E36BA6B9144F2860
+EXC-0196,SRC-RAW-A39EE44DA4D0B77CDE6B,SO2,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-A39EE44DA4D0B77CDE6B
+EXC-0197,SRC-RAW-A39EE44DA4D0B77CDE6B,NOx,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-A39EE44DA4D0B77CDE6B
+EXC-0198,SRC-RAW-A39EE44DA4D0B77CDE6B,CO,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-A39EE44DA4D0B77CDE6B
+EXC-0199,SRC-RAW-A39EE44DA4D0B77CDE6B,VOC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-A39EE44DA4D0B77CDE6B
+EXC-0200,SRC-RAW-A39EE44DA4D0B77CDE6B,PM2.5,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-A39EE44DA4D0B77CDE6B
+EXC-0201,SRC-RAW-A39EE44DA4D0B77CDE6B,BC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-A39EE44DA4D0B77CDE6B
+EXC-0202,SRC-RAW-A39EE44DA4D0B77CDE6B,OC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-A39EE44DA4D0B77CDE6B
+EXC-0203,SRC-RAW-A39EE44DA4D0B77CDE6B,PM10,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-A39EE44DA4D0B77CDE6B
+EXC-0204,SRC-RAW-A39EE44DA4D0B77CDE6B,NH3,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-A39EE44DA4D0B77CDE6B
+EXC-0205,SRC-RAW-08ED845850C20B09F0BA,SO2,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-08ED845850C20B09F0BA
+EXC-0206,SRC-RAW-08ED845850C20B09F0BA,NOx,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-08ED845850C20B09F0BA
+EXC-0207,SRC-RAW-08ED845850C20B09F0BA,CO,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-08ED845850C20B09F0BA
+EXC-0208,SRC-RAW-08ED845850C20B09F0BA,VOC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-08ED845850C20B09F0BA
+EXC-0209,SRC-RAW-08ED845850C20B09F0BA,PM2.5,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-08ED845850C20B09F0BA
+EXC-0210,SRC-RAW-08ED845850C20B09F0BA,BC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-08ED845850C20B09F0BA
+EXC-0211,SRC-RAW-08ED845850C20B09F0BA,OC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-08ED845850C20B09F0BA
+EXC-0212,SRC-RAW-08ED845850C20B09F0BA,PM10,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-08ED845850C20B09F0BA
+EXC-0213,SRC-RAW-08ED845850C20B09F0BA,NH3,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-08ED845850C20B09F0BA
+EXC-0214,SRC-RAW-7B1B93A760DD2B1DB0F8,PM2.5,Material balance parameter missing: PM2.5 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-7B1B93A760DD2B1DB0F8 fuel 一般烟煤
+EXC-0215,SRC-RAW-7B1B93A760DD2B1DB0F8,BC,Material balance parameter missing: BC requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-7B1B93A760DD2B1DB0F8 fuel 一般烟煤
+EXC-0216,SRC-RAW-7B1B93A760DD2B1DB0F8,OC,Material balance parameter missing: OC requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-7B1B93A760DD2B1DB0F8 fuel 一般烟煤
+EXC-0217,SRC-RAW-7B1B93A760DD2B1DB0F8,PM10,Material balance parameter missing: PM10 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-7B1B93A760DD2B1DB0F8 fuel 一般烟煤
+EXC-0218,SRC-RAW-2FB8FC20271C9C66798A,SO2,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-2FB8FC20271C9C66798A
+EXC-0219,SRC-RAW-2FB8FC20271C9C66798A,NOx,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-2FB8FC20271C9C66798A
+EXC-0220,SRC-RAW-2FB8FC20271C9C66798A,CO,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-2FB8FC20271C9C66798A
+EXC-0221,SRC-RAW-2FB8FC20271C9C66798A,VOC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-2FB8FC20271C9C66798A
+EXC-0222,SRC-RAW-2FB8FC20271C9C66798A,PM2.5,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-2FB8FC20271C9C66798A
+EXC-0223,SRC-RAW-2FB8FC20271C9C66798A,BC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-2FB8FC20271C9C66798A
+EXC-0224,SRC-RAW-2FB8FC20271C9C66798A,OC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-2FB8FC20271C9C66798A
+EXC-0225,SRC-RAW-2FB8FC20271C9C66798A,PM10,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-2FB8FC20271C9C66798A
+EXC-0226,SRC-RAW-2FB8FC20271C9C66798A,NH3,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-2FB8FC20271C9C66798A
+EXC-0227,SRC-RAW-6EAB6262167FA0E8D39E,SO2,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-6EAB6262167FA0E8D39E
+EXC-0228,SRC-RAW-6EAB6262167FA0E8D39E,NOx,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-6EAB6262167FA0E8D39E
+EXC-0229,SRC-RAW-6EAB6262167FA0E8D39E,CO,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-6EAB6262167FA0E8D39E
+EXC-0230,SRC-RAW-6EAB6262167FA0E8D39E,VOC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-6EAB6262167FA0E8D39E
+EXC-0231,SRC-RAW-6EAB6262167FA0E8D39E,PM2.5,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-6EAB6262167FA0E8D39E
+EXC-0232,SRC-RAW-6EAB6262167FA0E8D39E,BC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-6EAB6262167FA0E8D39E
+EXC-0233,SRC-RAW-6EAB6262167FA0E8D39E,OC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-6EAB6262167FA0E8D39E
+EXC-0234,SRC-RAW-6EAB6262167FA0E8D39E,PM10,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-6EAB6262167FA0E8D39E
+EXC-0235,SRC-RAW-6EAB6262167FA0E8D39E,NH3,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-6EAB6262167FA0E8D39E
+EXC-0236,SRC-RAW-094CC43E62D48F0DFC4D,SO2,Material balance parameter missing: SO2 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-094CC43E62D48F0DFC4D fuel 无烟煤
+EXC-0237,SRC-RAW-139C8F4E7E7BCF1E39F8,SO2,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-139C8F4E7E7BCF1E39F8
+EXC-0238,SRC-RAW-139C8F4E7E7BCF1E39F8,NOx,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-139C8F4E7E7BCF1E39F8
+EXC-0239,SRC-RAW-139C8F4E7E7BCF1E39F8,CO,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-139C8F4E7E7BCF1E39F8
+EXC-0240,SRC-RAW-139C8F4E7E7BCF1E39F8,VOC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-139C8F4E7E7BCF1E39F8
+EXC-0241,SRC-RAW-139C8F4E7E7BCF1E39F8,PM2.5,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-139C8F4E7E7BCF1E39F8
+EXC-0242,SRC-RAW-139C8F4E7E7BCF1E39F8,BC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-139C8F4E7E7BCF1E39F8
+EXC-0243,SRC-RAW-139C8F4E7E7BCF1E39F8,OC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-139C8F4E7E7BCF1E39F8
+EXC-0244,SRC-RAW-139C8F4E7E7BCF1E39F8,PM10,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-139C8F4E7E7BCF1E39F8
+EXC-0245,SRC-RAW-139C8F4E7E7BCF1E39F8,NH3,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-139C8F4E7E7BCF1E39F8
+EXC-0246,SRC-RAW-AD963A2E98F587C4C005,SO2,Material balance parameter missing: SO2 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-AD963A2E98F587C4C005 fuel 一般烟煤
+EXC-0247,SRC-RAW-13544BB87A2F5434234E,SO2,Material balance parameter missing: SO2 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-13544BB87A2F5434234E fuel 一般烟煤
+EXC-0248,SRC-RAW-3D68C3391F8E405ACFFC,SO2,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-3D68C3391F8E405ACFFC
+EXC-0249,SRC-RAW-3D68C3391F8E405ACFFC,NOx,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-3D68C3391F8E405ACFFC
+EXC-0250,SRC-RAW-3D68C3391F8E405ACFFC,CO,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-3D68C3391F8E405ACFFC
+EXC-0251,SRC-RAW-3D68C3391F8E405ACFFC,VOC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-3D68C3391F8E405ACFFC
+EXC-0252,SRC-RAW-3D68C3391F8E405ACFFC,PM2.5,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-3D68C3391F8E405ACFFC
+EXC-0253,SRC-RAW-3D68C3391F8E405ACFFC,BC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-3D68C3391F8E405ACFFC
+EXC-0254,SRC-RAW-3D68C3391F8E405ACFFC,OC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-3D68C3391F8E405ACFFC
+EXC-0255,SRC-RAW-3D68C3391F8E405ACFFC,PM10,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-3D68C3391F8E405ACFFC
+EXC-0256,SRC-RAW-3D68C3391F8E405ACFFC,NH3,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-3D68C3391F8E405ACFFC
+EXC-0257,SRC-RAW-F800B5F8A13295EAB36B,SO2,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-F800B5F8A13295EAB36B
+EXC-0258,SRC-RAW-F800B5F8A13295EAB36B,NOx,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-F800B5F8A13295EAB36B
+EXC-0259,SRC-RAW-F800B5F8A13295EAB36B,CO,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-F800B5F8A13295EAB36B
+EXC-0260,SRC-RAW-F800B5F8A13295EAB36B,VOC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-F800B5F8A13295EAB36B
+EXC-0261,SRC-RAW-F800B5F8A13295EAB36B,PM2.5,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-F800B5F8A13295EAB36B
+EXC-0262,SRC-RAW-F800B5F8A13295EAB36B,BC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-F800B5F8A13295EAB36B
+EXC-0263,SRC-RAW-F800B5F8A13295EAB36B,OC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-F800B5F8A13295EAB36B
+EXC-0264,SRC-RAW-F800B5F8A13295EAB36B,PM10,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-F800B5F8A13295EAB36B
+EXC-0265,SRC-RAW-F800B5F8A13295EAB36B,NH3,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-F800B5F8A13295EAB36B
+EXC-0266,SRC-RAW-0EA1C3FA4810EDBD34F9,SO2,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-0EA1C3FA4810EDBD34F9
+EXC-0267,SRC-RAW-0EA1C3FA4810EDBD34F9,NOx,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-0EA1C3FA4810EDBD34F9
+EXC-0268,SRC-RAW-0EA1C3FA4810EDBD34F9,CO,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-0EA1C3FA4810EDBD34F9
+EXC-0269,SRC-RAW-0EA1C3FA4810EDBD34F9,VOC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-0EA1C3FA4810EDBD34F9
+EXC-0270,SRC-RAW-0EA1C3FA4810EDBD34F9,PM2.5,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-0EA1C3FA4810EDBD34F9
+EXC-0271,SRC-RAW-0EA1C3FA4810EDBD34F9,BC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-0EA1C3FA4810EDBD34F9
+EXC-0272,SRC-RAW-0EA1C3FA4810EDBD34F9,OC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-0EA1C3FA4810EDBD34F9
+EXC-0273,SRC-RAW-0EA1C3FA4810EDBD34F9,PM10,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-0EA1C3FA4810EDBD34F9
+EXC-0274,SRC-RAW-0EA1C3FA4810EDBD34F9,NH3,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-0EA1C3FA4810EDBD34F9
+EXC-0275,SRC-RAW-A9FB6E4E293E435004D8,SO2,Material balance parameter missing: SO2 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-A9FB6E4E293E435004D8 fuel 原煤
+EXC-0276,SRC-RAW-EDFD19AE3DB2C5C2A978,SO2,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-EDFD19AE3DB2C5C2A978
+EXC-0277,SRC-RAW-EDFD19AE3DB2C5C2A978,NOx,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-EDFD19AE3DB2C5C2A978
+EXC-0278,SRC-RAW-EDFD19AE3DB2C5C2A978,CO,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-EDFD19AE3DB2C5C2A978
+EXC-0279,SRC-RAW-EDFD19AE3DB2C5C2A978,VOC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-EDFD19AE3DB2C5C2A978
+EXC-0280,SRC-RAW-EDFD19AE3DB2C5C2A978,PM2.5,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-EDFD19AE3DB2C5C2A978
+EXC-0281,SRC-RAW-EDFD19AE3DB2C5C2A978,BC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-EDFD19AE3DB2C5C2A978
+EXC-0282,SRC-RAW-EDFD19AE3DB2C5C2A978,OC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-EDFD19AE3DB2C5C2A978
+EXC-0283,SRC-RAW-EDFD19AE3DB2C5C2A978,PM10,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-EDFD19AE3DB2C5C2A978
+EXC-0284,SRC-RAW-EDFD19AE3DB2C5C2A978,NH3,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-EDFD19AE3DB2C5C2A978
+EXC-0285,SRC-RAW-3203977F5D5270B760BF,PM2.5,Material balance parameter missing: PM2.5 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-3203977F5D5270B760BF fuel 原煤
+EXC-0286,SRC-RAW-3203977F5D5270B760BF,BC,Material balance parameter missing: BC requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-3203977F5D5270B760BF fuel 原煤
+EXC-0287,SRC-RAW-3203977F5D5270B760BF,OC,Material balance parameter missing: OC requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-3203977F5D5270B760BF fuel 原煤
+EXC-0288,SRC-RAW-3203977F5D5270B760BF,PM10,Material balance parameter missing: PM10 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-3203977F5D5270B760BF fuel 原煤
+EXC-0289,SRC-RAW-E2673803482D4F76F5EC,SO2,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-E2673803482D4F76F5EC
+EXC-0290,SRC-RAW-E2673803482D4F76F5EC,NOx,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-E2673803482D4F76F5EC
+EXC-0291,SRC-RAW-E2673803482D4F76F5EC,CO,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-E2673803482D4F76F5EC
+EXC-0292,SRC-RAW-E2673803482D4F76F5EC,VOC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-E2673803482D4F76F5EC
+EXC-0293,SRC-RAW-E2673803482D4F76F5EC,PM2.5,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-E2673803482D4F76F5EC
+EXC-0294,SRC-RAW-E2673803482D4F76F5EC,BC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-E2673803482D4F76F5EC
+EXC-0295,SRC-RAW-E2673803482D4F76F5EC,OC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-E2673803482D4F76F5EC
+EXC-0296,SRC-RAW-E2673803482D4F76F5EC,PM10,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-E2673803482D4F76F5EC
+EXC-0297,SRC-RAW-E2673803482D4F76F5EC,NH3,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-E2673803482D4F76F5EC
+EXC-0298,SRC-RAW-C31AC3A1AA390A1FBEB2,SO2,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-C31AC3A1AA390A1FBEB2
+EXC-0299,SRC-RAW-C31AC3A1AA390A1FBEB2,NOx,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-C31AC3A1AA390A1FBEB2
+EXC-0300,SRC-RAW-C31AC3A1AA390A1FBEB2,CO,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-C31AC3A1AA390A1FBEB2
+EXC-0301,SRC-RAW-C31AC3A1AA390A1FBEB2,VOC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-C31AC3A1AA390A1FBEB2
+EXC-0302,SRC-RAW-C31AC3A1AA390A1FBEB2,PM2.5,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-C31AC3A1AA390A1FBEB2
+EXC-0303,SRC-RAW-C31AC3A1AA390A1FBEB2,BC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-C31AC3A1AA390A1FBEB2
+EXC-0304,SRC-RAW-C31AC3A1AA390A1FBEB2,OC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-C31AC3A1AA390A1FBEB2
+EXC-0305,SRC-RAW-C31AC3A1AA390A1FBEB2,PM10,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-C31AC3A1AA390A1FBEB2
+EXC-0306,SRC-RAW-C31AC3A1AA390A1FBEB2,NH3,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-C31AC3A1AA390A1FBEB2
+EXC-0307,SRC-RAW-BFD53C684A1E68C0BAD5,PM2.5,Material balance parameter missing: PM2.5 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-BFD53C684A1E68C0BAD5 fuel 原煤
+EXC-0308,SRC-RAW-BFD53C684A1E68C0BAD5,BC,Material balance parameter missing: BC requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-BFD53C684A1E68C0BAD5 fuel 原煤
+EXC-0309,SRC-RAW-BFD53C684A1E68C0BAD5,OC,Material balance parameter missing: OC requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-BFD53C684A1E68C0BAD5 fuel 原煤
+EXC-0310,SRC-RAW-BFD53C684A1E68C0BAD5,PM10,Material balance parameter missing: PM10 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-BFD53C684A1E68C0BAD5 fuel 原煤
+EXC-0311,SRC-RAW-00C256E474D31C7B6CE7,SO2,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-00C256E474D31C7B6CE7
+EXC-0312,SRC-RAW-00C256E474D31C7B6CE7,NOx,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-00C256E474D31C7B6CE7
+EXC-0313,SRC-RAW-00C256E474D31C7B6CE7,CO,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-00C256E474D31C7B6CE7
+EXC-0314,SRC-RAW-00C256E474D31C7B6CE7,VOC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-00C256E474D31C7B6CE7
+EXC-0315,SRC-RAW-00C256E474D31C7B6CE7,PM2.5,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-00C256E474D31C7B6CE7
+EXC-0316,SRC-RAW-00C256E474D31C7B6CE7,BC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-00C256E474D31C7B6CE7
+EXC-0317,SRC-RAW-00C256E474D31C7B6CE7,OC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-00C256E474D31C7B6CE7
+EXC-0318,SRC-RAW-00C256E474D31C7B6CE7,PM10,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-00C256E474D31C7B6CE7
+EXC-0319,SRC-RAW-00C256E474D31C7B6CE7,NH3,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-00C256E474D31C7B6CE7
+EXC-0320,SRC-RAW-6811A2193F6208E866A7,SO2,Material balance parameter missing: SO2 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-6811A2193F6208E866A7 fuel 一般烟煤
+EXC-0321,SRC-RAW-59D25E06FBF47F3798DD,SO2,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-59D25E06FBF47F3798DD
+EXC-0322,SRC-RAW-59D25E06FBF47F3798DD,NOx,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-59D25E06FBF47F3798DD
+EXC-0323,SRC-RAW-59D25E06FBF47F3798DD,CO,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-59D25E06FBF47F3798DD
+EXC-0324,SRC-RAW-59D25E06FBF47F3798DD,VOC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-59D25E06FBF47F3798DD
+EXC-0325,SRC-RAW-59D25E06FBF47F3798DD,PM2.5,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-59D25E06FBF47F3798DD
+EXC-0326,SRC-RAW-59D25E06FBF47F3798DD,BC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-59D25E06FBF47F3798DD
+EXC-0327,SRC-RAW-59D25E06FBF47F3798DD,OC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-59D25E06FBF47F3798DD
+EXC-0328,SRC-RAW-59D25E06FBF47F3798DD,PM10,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-59D25E06FBF47F3798DD
+EXC-0329,SRC-RAW-59D25E06FBF47F3798DD,NH3,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-59D25E06FBF47F3798DD
+EXC-0330,SRC-RAW-7BA6D986CE61FF7D51B7,PM2.5,Material balance parameter missing: PM2.5 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-7BA6D986CE61FF7D51B7 fuel 一般烟煤
+EXC-0331,SRC-RAW-7BA6D986CE61FF7D51B7,BC,Material balance parameter missing: BC requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-7BA6D986CE61FF7D51B7 fuel 一般烟煤
+EXC-0332,SRC-RAW-7BA6D986CE61FF7D51B7,OC,Material balance parameter missing: OC requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-7BA6D986CE61FF7D51B7 fuel 一般烟煤
+EXC-0333,SRC-RAW-7BA6D986CE61FF7D51B7,PM10,Material balance parameter missing: PM10 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-7BA6D986CE61FF7D51B7 fuel 一般烟煤
+EXC-0334,SRC-RAW-1BCCD905C534AF5E1304,SO2,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-1BCCD905C534AF5E1304
+EXC-0335,SRC-RAW-1BCCD905C534AF5E1304,NOx,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-1BCCD905C534AF5E1304
+EXC-0336,SRC-RAW-1BCCD905C534AF5E1304,CO,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-1BCCD905C534AF5E1304
+EXC-0337,SRC-RAW-1BCCD905C534AF5E1304,VOC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-1BCCD905C534AF5E1304
+EXC-0338,SRC-RAW-1BCCD905C534AF5E1304,PM2.5,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-1BCCD905C534AF5E1304
+EXC-0339,SRC-RAW-1BCCD905C534AF5E1304,BC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-1BCCD905C534AF5E1304
+EXC-0340,SRC-RAW-1BCCD905C534AF5E1304,OC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-1BCCD905C534AF5E1304
+EXC-0341,SRC-RAW-1BCCD905C534AF5E1304,PM10,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-1BCCD905C534AF5E1304
+EXC-0342,SRC-RAW-1BCCD905C534AF5E1304,NH3,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-1BCCD905C534AF5E1304
+EXC-0343,SRC-RAW-061DB3E543B16331E37B,SO2,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-061DB3E543B16331E37B
+EXC-0344,SRC-RAW-061DB3E543B16331E37B,NOx,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-061DB3E543B16331E37B
+EXC-0345,SRC-RAW-061DB3E543B16331E37B,CO,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-061DB3E543B16331E37B
+EXC-0346,SRC-RAW-061DB3E543B16331E37B,VOC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-061DB3E543B16331E37B
+EXC-0347,SRC-RAW-061DB3E543B16331E37B,PM2.5,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-061DB3E543B16331E37B
+EXC-0348,SRC-RAW-061DB3E543B16331E37B,BC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-061DB3E543B16331E37B
+EXC-0349,SRC-RAW-061DB3E543B16331E37B,OC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-061DB3E543B16331E37B
+EXC-0350,SRC-RAW-061DB3E543B16331E37B,PM10,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-061DB3E543B16331E37B
+EXC-0351,SRC-RAW-061DB3E543B16331E37B,NH3,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-061DB3E543B16331E37B
+EXC-0352,SRC-RAW-689A0257BF9EEA8A27B5,SO2,Material balance parameter missing: SO2 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-689A0257BF9EEA8A27B5 fuel 一般烟煤
+EXC-0353,SRC-RAW-FCC268F768A43B518486,SO2,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-FCC268F768A43B518486
+EXC-0354,SRC-RAW-FCC268F768A43B518486,NOx,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-FCC268F768A43B518486
+EXC-0355,SRC-RAW-FCC268F768A43B518486,CO,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-FCC268F768A43B518486
+EXC-0356,SRC-RAW-FCC268F768A43B518486,VOC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-FCC268F768A43B518486
+EXC-0357,SRC-RAW-FCC268F768A43B518486,PM2.5,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-FCC268F768A43B518486
+EXC-0358,SRC-RAW-FCC268F768A43B518486,BC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-FCC268F768A43B518486
+EXC-0359,SRC-RAW-FCC268F768A43B518486,OC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-FCC268F768A43B518486
+EXC-0360,SRC-RAW-FCC268F768A43B518486,PM10,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-FCC268F768A43B518486
+EXC-0361,SRC-RAW-FCC268F768A43B518486,NH3,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-FCC268F768A43B518486
+EXC-0362,SRC-RAW-DEAEFF26B2F6E10A50BC,SO2,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-DEAEFF26B2F6E10A50BC
+EXC-0363,SRC-RAW-DEAEFF26B2F6E10A50BC,NOx,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-DEAEFF26B2F6E10A50BC
+EXC-0364,SRC-RAW-DEAEFF26B2F6E10A50BC,CO,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-DEAEFF26B2F6E10A50BC
+EXC-0365,SRC-RAW-DEAEFF26B2F6E10A50BC,VOC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-DEAEFF26B2F6E10A50BC
+EXC-0366,SRC-RAW-DEAEFF26B2F6E10A50BC,PM2.5,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-DEAEFF26B2F6E10A50BC
+EXC-0367,SRC-RAW-DEAEFF26B2F6E10A50BC,BC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-DEAEFF26B2F6E10A50BC
+EXC-0368,SRC-RAW-DEAEFF26B2F6E10A50BC,OC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-DEAEFF26B2F6E10A50BC
+EXC-0369,SRC-RAW-DEAEFF26B2F6E10A50BC,PM10,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-DEAEFF26B2F6E10A50BC
+EXC-0370,SRC-RAW-DEAEFF26B2F6E10A50BC,NH3,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-DEAEFF26B2F6E10A50BC
+EXC-0371,SRC-RAW-8454B9202B0628E9CEC4,SO2,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-8454B9202B0628E9CEC4
+EXC-0372,SRC-RAW-8454B9202B0628E9CEC4,NOx,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-8454B9202B0628E9CEC4
+EXC-0373,SRC-RAW-8454B9202B0628E9CEC4,CO,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-8454B9202B0628E9CEC4
+EXC-0374,SRC-RAW-8454B9202B0628E9CEC4,VOC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-8454B9202B0628E9CEC4
+EXC-0375,SRC-RAW-8454B9202B0628E9CEC4,PM2.5,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-8454B9202B0628E9CEC4
+EXC-0376,SRC-RAW-8454B9202B0628E9CEC4,BC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-8454B9202B0628E9CEC4
+EXC-0377,SRC-RAW-8454B9202B0628E9CEC4,OC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-8454B9202B0628E9CEC4
+EXC-0378,SRC-RAW-8454B9202B0628E9CEC4,PM10,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-8454B9202B0628E9CEC4
+EXC-0379,SRC-RAW-8454B9202B0628E9CEC4,NH3,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-8454B9202B0628E9CEC4
+EXC-0380,SRC-RAW-59CF1BC6B0C3ADF43BD2,SO2,Material balance parameter missing: SO2 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-59CF1BC6B0C3ADF43BD2 fuel 原煤
+EXC-0381,SRC-RAW-DC9E490E1C8A44C540C5,SO2,Material balance parameter missing: SO2 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-DC9E490E1C8A44C540C5 fuel 原煤
+EXC-0382,SRC-RAW-B56086824F04D846DBFA,SO2,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-B56086824F04D846DBFA
+EXC-0383,SRC-RAW-B56086824F04D846DBFA,NOx,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-B56086824F04D846DBFA
+EXC-0384,SRC-RAW-B56086824F04D846DBFA,CO,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-B56086824F04D846DBFA
+EXC-0385,SRC-RAW-B56086824F04D846DBFA,VOC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-B56086824F04D846DBFA
+EXC-0386,SRC-RAW-B56086824F04D846DBFA,PM2.5,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-B56086824F04D846DBFA
+EXC-0387,SRC-RAW-B56086824F04D846DBFA,BC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-B56086824F04D846DBFA
+EXC-0388,SRC-RAW-B56086824F04D846DBFA,OC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-B56086824F04D846DBFA
+EXC-0389,SRC-RAW-B56086824F04D846DBFA,PM10,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-B56086824F04D846DBFA
+EXC-0390,SRC-RAW-B56086824F04D846DBFA,NH3,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-B56086824F04D846DBFA
+EXC-0391,SRC-RAW-0CF0D8335C0BB992C611,SO2,Material balance parameter missing: SO2 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-0CF0D8335C0BB992C611 fuel 原煤
+EXC-0392,SRC-RAW-6A3D9F0940947CB1906F,SO2,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-6A3D9F0940947CB1906F
+EXC-0393,SRC-RAW-6A3D9F0940947CB1906F,NOx,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-6A3D9F0940947CB1906F
+EXC-0394,SRC-RAW-6A3D9F0940947CB1906F,CO,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-6A3D9F0940947CB1906F
+EXC-0395,SRC-RAW-6A3D9F0940947CB1906F,VOC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-6A3D9F0940947CB1906F
+EXC-0396,SRC-RAW-6A3D9F0940947CB1906F,PM2.5,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-6A3D9F0940947CB1906F
+EXC-0397,SRC-RAW-6A3D9F0940947CB1906F,BC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-6A3D9F0940947CB1906F
+EXC-0398,SRC-RAW-6A3D9F0940947CB1906F,OC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-6A3D9F0940947CB1906F
+EXC-0399,SRC-RAW-6A3D9F0940947CB1906F,PM10,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-6A3D9F0940947CB1906F
+EXC-0400,SRC-RAW-6A3D9F0940947CB1906F,NH3,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-6A3D9F0940947CB1906F
+EXC-0401,SRC-RAW-8638EC6E8AF122B97D6A,SO2,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-8638EC6E8AF122B97D6A
+EXC-0402,SRC-RAW-8638EC6E8AF122B97D6A,NOx,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-8638EC6E8AF122B97D6A
+EXC-0403,SRC-RAW-8638EC6E8AF122B97D6A,CO,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-8638EC6E8AF122B97D6A
+EXC-0404,SRC-RAW-8638EC6E8AF122B97D6A,VOC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-8638EC6E8AF122B97D6A
+EXC-0405,SRC-RAW-8638EC6E8AF122B97D6A,PM2.5,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-8638EC6E8AF122B97D6A
+EXC-0406,SRC-RAW-8638EC6E8AF122B97D6A,BC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-8638EC6E8AF122B97D6A
+EXC-0407,SRC-RAW-8638EC6E8AF122B97D6A,OC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-8638EC6E8AF122B97D6A
+EXC-0408,SRC-RAW-8638EC6E8AF122B97D6A,PM10,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-8638EC6E8AF122B97D6A
+EXC-0409,SRC-RAW-8638EC6E8AF122B97D6A,NH3,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-8638EC6E8AF122B97D6A
+EXC-0410,SRC-RAW-2FD3C0B7571FF8A81961,PM2.5,Material balance parameter missing: PM2.5 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-2FD3C0B7571FF8A81961 fuel 一般烟煤
+EXC-0411,SRC-RAW-2FD3C0B7571FF8A81961,BC,Material balance parameter missing: BC requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-2FD3C0B7571FF8A81961 fuel 一般烟煤
+EXC-0412,SRC-RAW-2FD3C0B7571FF8A81961,OC,Material balance parameter missing: OC requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-2FD3C0B7571FF8A81961 fuel 一般烟煤
+EXC-0413,SRC-RAW-2FD3C0B7571FF8A81961,PM10,Material balance parameter missing: PM10 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-2FD3C0B7571FF8A81961 fuel 一般烟煤
+EXC-0414,SRC-RAW-3CE84EFE5438CA8FB4A0,PM2.5,Material balance parameter missing: PM2.5 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-3CE84EFE5438CA8FB4A0 fuel 一般烟煤
+EXC-0415,SRC-RAW-3CE84EFE5438CA8FB4A0,BC,Material balance parameter missing: BC requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-3CE84EFE5438CA8FB4A0 fuel 一般烟煤
+EXC-0416,SRC-RAW-3CE84EFE5438CA8FB4A0,OC,Material balance parameter missing: OC requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-3CE84EFE5438CA8FB4A0 fuel 一般烟煤
+EXC-0417,SRC-RAW-3CE84EFE5438CA8FB4A0,PM10,Material balance parameter missing: PM10 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-3CE84EFE5438CA8FB4A0 fuel 一般烟煤
+EXC-0418,SRC-RAW-F2AC45A6F890FFE96ABF,SO2,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-F2AC45A6F890FFE96ABF
+EXC-0419,SRC-RAW-F2AC45A6F890FFE96ABF,NOx,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-F2AC45A6F890FFE96ABF
+EXC-0420,SRC-RAW-F2AC45A6F890FFE96ABF,CO,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-F2AC45A6F890FFE96ABF
+EXC-0421,SRC-RAW-F2AC45A6F890FFE96ABF,VOC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-F2AC45A6F890FFE96ABF
+EXC-0422,SRC-RAW-F2AC45A6F890FFE96ABF,PM2.5,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-F2AC45A6F890FFE96ABF
+EXC-0423,SRC-RAW-F2AC45A6F890FFE96ABF,BC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-F2AC45A6F890FFE96ABF
+EXC-0424,SRC-RAW-F2AC45A6F890FFE96ABF,OC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-F2AC45A6F890FFE96ABF
+EXC-0425,SRC-RAW-F2AC45A6F890FFE96ABF,PM10,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-F2AC45A6F890FFE96ABF
+EXC-0426,SRC-RAW-F2AC45A6F890FFE96ABF,NH3,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-F2AC45A6F890FFE96ABF
+EXC-0427,SRC-RAW-D754FE900ADCABAF2D31,SO2,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-D754FE900ADCABAF2D31
+EXC-0428,SRC-RAW-D754FE900ADCABAF2D31,NOx,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-D754FE900ADCABAF2D31
+EXC-0429,SRC-RAW-D754FE900ADCABAF2D31,CO,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-D754FE900ADCABAF2D31
+EXC-0430,SRC-RAW-D754FE900ADCABAF2D31,VOC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-D754FE900ADCABAF2D31
+EXC-0431,SRC-RAW-D754FE900ADCABAF2D31,PM2.5,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-D754FE900ADCABAF2D31
+EXC-0432,SRC-RAW-D754FE900ADCABAF2D31,BC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-D754FE900ADCABAF2D31
+EXC-0433,SRC-RAW-D754FE900ADCABAF2D31,OC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-D754FE900ADCABAF2D31
+EXC-0434,SRC-RAW-D754FE900ADCABAF2D31,PM10,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-D754FE900ADCABAF2D31
+EXC-0435,SRC-RAW-D754FE900ADCABAF2D31,NH3,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-D754FE900ADCABAF2D31
+EXC-0436,SRC-RAW-7DFFD694C7B5B4F656CF,SO2,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-7DFFD694C7B5B4F656CF
+EXC-0437,SRC-RAW-7DFFD694C7B5B4F656CF,NOx,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-7DFFD694C7B5B4F656CF
+EXC-0438,SRC-RAW-7DFFD694C7B5B4F656CF,CO,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-7DFFD694C7B5B4F656CF
+EXC-0439,SRC-RAW-7DFFD694C7B5B4F656CF,VOC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-7DFFD694C7B5B4F656CF
+EXC-0440,SRC-RAW-7DFFD694C7B5B4F656CF,PM2.5,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-7DFFD694C7B5B4F656CF
+EXC-0441,SRC-RAW-7DFFD694C7B5B4F656CF,BC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-7DFFD694C7B5B4F656CF
+EXC-0442,SRC-RAW-7DFFD694C7B5B4F656CF,OC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-7DFFD694C7B5B4F656CF
+EXC-0443,SRC-RAW-7DFFD694C7B5B4F656CF,PM10,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-7DFFD694C7B5B4F656CF
+EXC-0444,SRC-RAW-7DFFD694C7B5B4F656CF,NH3,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-7DFFD694C7B5B4F656CF
+EXC-0445,SRC-RAW-13051E02DF7384D16801,SO2,Material balance parameter missing: SO2 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-13051E02DF7384D16801 fuel 一般烟煤
+EXC-0446,SRC-RAW-F05D274D40AC9B642368,SO2,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-F05D274D40AC9B642368
+EXC-0447,SRC-RAW-F05D274D40AC9B642368,NOx,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-F05D274D40AC9B642368
+EXC-0448,SRC-RAW-F05D274D40AC9B642368,CO,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-F05D274D40AC9B642368
+EXC-0449,SRC-RAW-F05D274D40AC9B642368,VOC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-F05D274D40AC9B642368
+EXC-0450,SRC-RAW-F05D274D40AC9B642368,PM2.5,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-F05D274D40AC9B642368
+EXC-0451,SRC-RAW-F05D274D40AC9B642368,BC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-F05D274D40AC9B642368
+EXC-0452,SRC-RAW-F05D274D40AC9B642368,OC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-F05D274D40AC9B642368
+EXC-0453,SRC-RAW-F05D274D40AC9B642368,PM10,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-F05D274D40AC9B642368
+EXC-0454,SRC-RAW-F05D274D40AC9B642368,NH3,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-F05D274D40AC9B642368
+EXC-0455,SRC-RAW-D4CA402F1C186726C968,SO2,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-D4CA402F1C186726C968
+EXC-0456,SRC-RAW-D4CA402F1C186726C968,NOx,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-D4CA402F1C186726C968
+EXC-0457,SRC-RAW-D4CA402F1C186726C968,CO,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-D4CA402F1C186726C968
+EXC-0458,SRC-RAW-D4CA402F1C186726C968,VOC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-D4CA402F1C186726C968
+EXC-0459,SRC-RAW-D4CA402F1C186726C968,PM2.5,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-D4CA402F1C186726C968
+EXC-0460,SRC-RAW-D4CA402F1C186726C968,BC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-D4CA402F1C186726C968
+EXC-0461,SRC-RAW-D4CA402F1C186726C968,OC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-D4CA402F1C186726C968
+EXC-0462,SRC-RAW-D4CA402F1C186726C968,PM10,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-D4CA402F1C186726C968
+EXC-0463,SRC-RAW-D4CA402F1C186726C968,NH3,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-D4CA402F1C186726C968
+EXC-0464,SRC-RAW-7F67D5F7567694B8061E,SO2,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-7F67D5F7567694B8061E
+EXC-0465,SRC-RAW-7F67D5F7567694B8061E,NOx,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-7F67D5F7567694B8061E
+EXC-0466,SRC-RAW-7F67D5F7567694B8061E,CO,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-7F67D5F7567694B8061E
+EXC-0467,SRC-RAW-7F67D5F7567694B8061E,VOC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-7F67D5F7567694B8061E
+EXC-0468,SRC-RAW-7F67D5F7567694B8061E,PM2.5,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-7F67D5F7567694B8061E
+EXC-0469,SRC-RAW-7F67D5F7567694B8061E,BC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-7F67D5F7567694B8061E
+EXC-0470,SRC-RAW-7F67D5F7567694B8061E,OC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-7F67D5F7567694B8061E
+EXC-0471,SRC-RAW-7F67D5F7567694B8061E,PM10,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-7F67D5F7567694B8061E
+EXC-0472,SRC-RAW-7F67D5F7567694B8061E,NH3,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-7F67D5F7567694B8061E
+EXC-0473,SRC-RAW-8E880A58EC31520571BD,SO2,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-8E880A58EC31520571BD
+EXC-0474,SRC-RAW-8E880A58EC31520571BD,NOx,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-8E880A58EC31520571BD
+EXC-0475,SRC-RAW-8E880A58EC31520571BD,CO,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-8E880A58EC31520571BD
+EXC-0476,SRC-RAW-8E880A58EC31520571BD,VOC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-8E880A58EC31520571BD
+EXC-0477,SRC-RAW-8E880A58EC31520571BD,PM2.5,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-8E880A58EC31520571BD
+EXC-0478,SRC-RAW-8E880A58EC31520571BD,BC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-8E880A58EC31520571BD
+EXC-0479,SRC-RAW-8E880A58EC31520571BD,OC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-8E880A58EC31520571BD
+EXC-0480,SRC-RAW-8E880A58EC31520571BD,PM10,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-8E880A58EC31520571BD
+EXC-0481,SRC-RAW-8E880A58EC31520571BD,NH3,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-8E880A58EC31520571BD
+EXC-0482,SRC-RAW-B156C48CC9B1A481901B,SO2,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-B156C48CC9B1A481901B
+EXC-0483,SRC-RAW-B156C48CC9B1A481901B,NOx,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-B156C48CC9B1A481901B
+EXC-0484,SRC-RAW-B156C48CC9B1A481901B,CO,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-B156C48CC9B1A481901B
+EXC-0485,SRC-RAW-B156C48CC9B1A481901B,VOC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-B156C48CC9B1A481901B
+EXC-0486,SRC-RAW-B156C48CC9B1A481901B,PM2.5,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-B156C48CC9B1A481901B
+EXC-0487,SRC-RAW-B156C48CC9B1A481901B,BC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-B156C48CC9B1A481901B
+EXC-0488,SRC-RAW-B156C48CC9B1A481901B,OC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-B156C48CC9B1A481901B
+EXC-0489,SRC-RAW-B156C48CC9B1A481901B,PM10,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-B156C48CC9B1A481901B
+EXC-0490,SRC-RAW-B156C48CC9B1A481901B,NH3,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-B156C48CC9B1A481901B
+EXC-0491,SRC-RAW-B930DCDEBEC973B533F5,SO2,Material balance parameter missing: SO2 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-B930DCDEBEC973B533F5 fuel 原煤
+EXC-0492,SRC-RAW-93EDE4EC759B923B8B11,SO2,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-93EDE4EC759B923B8B11
+EXC-0493,SRC-RAW-93EDE4EC759B923B8B11,NOx,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-93EDE4EC759B923B8B11
+EXC-0494,SRC-RAW-93EDE4EC759B923B8B11,CO,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-93EDE4EC759B923B8B11
+EXC-0495,SRC-RAW-93EDE4EC759B923B8B11,VOC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-93EDE4EC759B923B8B11
+EXC-0496,SRC-RAW-93EDE4EC759B923B8B11,PM2.5,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-93EDE4EC759B923B8B11
+EXC-0497,SRC-RAW-93EDE4EC759B923B8B11,BC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-93EDE4EC759B923B8B11
+EXC-0498,SRC-RAW-93EDE4EC759B923B8B11,OC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-93EDE4EC759B923B8B11
+EXC-0499,SRC-RAW-93EDE4EC759B923B8B11,PM10,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-93EDE4EC759B923B8B11
+EXC-0500,SRC-RAW-93EDE4EC759B923B8B11,NH3,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-93EDE4EC759B923B8B11
+EXC-0501,SRC-RAW-A0F2F7DA56B515FFF089,SO2,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-A0F2F7DA56B515FFF089
+EXC-0502,SRC-RAW-A0F2F7DA56B515FFF089,NOx,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-A0F2F7DA56B515FFF089
+EXC-0503,SRC-RAW-A0F2F7DA56B515FFF089,CO,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-A0F2F7DA56B515FFF089
+EXC-0504,SRC-RAW-A0F2F7DA56B515FFF089,VOC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-A0F2F7DA56B515FFF089
+EXC-0505,SRC-RAW-A0F2F7DA56B515FFF089,PM2.5,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-A0F2F7DA56B515FFF089
+EXC-0506,SRC-RAW-A0F2F7DA56B515FFF089,BC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-A0F2F7DA56B515FFF089
+EXC-0507,SRC-RAW-A0F2F7DA56B515FFF089,OC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-A0F2F7DA56B515FFF089
+EXC-0508,SRC-RAW-A0F2F7DA56B515FFF089,PM10,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-A0F2F7DA56B515FFF089
+EXC-0509,SRC-RAW-A0F2F7DA56B515FFF089,NH3,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-A0F2F7DA56B515FFF089
+EXC-0510,SRC-RAW-46E9F3F37A52CE5698EF,SO2,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-46E9F3F37A52CE5698EF
+EXC-0511,SRC-RAW-46E9F3F37A52CE5698EF,NOx,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-46E9F3F37A52CE5698EF
+EXC-0512,SRC-RAW-46E9F3F37A52CE5698EF,CO,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-46E9F3F37A52CE5698EF
+EXC-0513,SRC-RAW-46E9F3F37A52CE5698EF,VOC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-46E9F3F37A52CE5698EF
+EXC-0514,SRC-RAW-46E9F3F37A52CE5698EF,PM2.5,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-46E9F3F37A52CE5698EF
+EXC-0515,SRC-RAW-46E9F3F37A52CE5698EF,BC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-46E9F3F37A52CE5698EF
+EXC-0516,SRC-RAW-46E9F3F37A52CE5698EF,OC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-46E9F3F37A52CE5698EF
+EXC-0517,SRC-RAW-46E9F3F37A52CE5698EF,PM10,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-46E9F3F37A52CE5698EF
+EXC-0518,SRC-RAW-46E9F3F37A52CE5698EF,NH3,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-46E9F3F37A52CE5698EF
+EXC-0519,SRC-RAW-F7E56B123AF69F40ACAB,PM2.5,Material balance parameter missing: PM2.5 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-F7E56B123AF69F40ACAB fuel 一般烟煤
+EXC-0520,SRC-RAW-F7E56B123AF69F40ACAB,BC,Material balance parameter missing: BC requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-F7E56B123AF69F40ACAB fuel 一般烟煤
+EXC-0521,SRC-RAW-F7E56B123AF69F40ACAB,OC,Material balance parameter missing: OC requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-F7E56B123AF69F40ACAB fuel 一般烟煤
+EXC-0522,SRC-RAW-F7E56B123AF69F40ACAB,PM10,Material balance parameter missing: PM10 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-F7E56B123AF69F40ACAB fuel 一般烟煤
+EXC-0523,SRC-RAW-4C935755D3373975791B,SO2,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-4C935755D3373975791B
+EXC-0524,SRC-RAW-4C935755D3373975791B,NOx,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-4C935755D3373975791B
+EXC-0525,SRC-RAW-4C935755D3373975791B,CO,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-4C935755D3373975791B
+EXC-0526,SRC-RAW-4C935755D3373975791B,VOC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-4C935755D3373975791B
+EXC-0527,SRC-RAW-4C935755D3373975791B,PM2.5,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-4C935755D3373975791B
+EXC-0528,SRC-RAW-4C935755D3373975791B,BC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-4C935755D3373975791B
+EXC-0529,SRC-RAW-4C935755D3373975791B,OC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-4C935755D3373975791B
+EXC-0530,SRC-RAW-4C935755D3373975791B,PM10,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-4C935755D3373975791B
+EXC-0531,SRC-RAW-4C935755D3373975791B,NH3,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-4C935755D3373975791B
+EXC-0532,SRC-RAW-D61018B198766BD3C03F,PM2.5,Material balance parameter missing: PM2.5 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-D61018B198766BD3C03F fuel 原煤
+EXC-0533,SRC-RAW-D61018B198766BD3C03F,BC,Material balance parameter missing: BC requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-D61018B198766BD3C03F fuel 原煤
+EXC-0534,SRC-RAW-D61018B198766BD3C03F,OC,Material balance parameter missing: OC requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-D61018B198766BD3C03F fuel 原煤
+EXC-0535,SRC-RAW-D61018B198766BD3C03F,PM10,Material balance parameter missing: PM10 requires sulfur/ash data for coal,Provide fuel quality data (sulfur/ash content) for source SRC-RAW-D61018B198766BD3C03F fuel 原煤
+EXC-0536,SRC-RAW-30E77AB597BA9DCFE076,SO2,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-30E77AB597BA9DCFE076
+EXC-0537,SRC-RAW-30E77AB597BA9DCFE076,NOx,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-30E77AB597BA9DCFE076
+EXC-0538,SRC-RAW-30E77AB597BA9DCFE076,CO,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-30E77AB597BA9DCFE076
+EXC-0539,SRC-RAW-30E77AB597BA9DCFE076,VOC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-30E77AB597BA9DCFE076
+EXC-0540,SRC-RAW-30E77AB597BA9DCFE076,PM2.5,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-30E77AB597BA9DCFE076
+EXC-0541,SRC-RAW-30E77AB597BA9DCFE076,BC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-30E77AB597BA9DCFE076
+EXC-0542,SRC-RAW-30E77AB597BA9DCFE076,OC,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-30E77AB597BA9DCFE076
+EXC-0543,SRC-RAW-30E77AB597BA9DCFE076,PM10,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-30E77AB597BA9DCFE076
+EXC-0544,SRC-RAW-30E77AB597BA9DCFE076,NH3,Negative fuel consumption quantity in source data,Verify and correct fuel consumption data for SRC-RAW-30E77AB597BA9DCFE076
+EXC-0545,SRC-RAW-4C2DE7BEF32D7CAEC468,SO2,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-4C2DE7BEF32D7CAEC468
+EXC-0546,SRC-RAW-4C2DE7BEF32D7CAEC468,NOx,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-4C2DE7BEF32D7CAEC468
+EXC-0547,SRC-RAW-4C2DE7BEF32D7CAEC468,CO,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-4C2DE7BEF32D7CAEC468
+EXC-0548,SRC-RAW-4C2DE7BEF32D7CAEC468,VOC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-4C2DE7BEF32D7CAEC468
+EXC-0549,SRC-RAW-4C2DE7BEF32D7CAEC468,PM2.5,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-4C2DE7BEF32D7CAEC468
+EXC-0550,SRC-RAW-4C2DE7BEF32D7CAEC468,BC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-4C2DE7BEF32D7CAEC468
+EXC-0551,SRC-RAW-4C2DE7BEF32D7CAEC468,OC,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-4C2DE7BEF32D7CAEC468
+EXC-0552,SRC-RAW-4C2DE7BEF32D7CAEC468,PM10,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-4C2DE7BEF32D7CAEC468
+EXC-0553,SRC-RAW-4C2DE7BEF32D7CAEC468,NH3,Fuel consumption quantity is missing (NaN),Provide fuel consumption quantity for SRC-RAW-4C2DE7BEF32D7CAEC468

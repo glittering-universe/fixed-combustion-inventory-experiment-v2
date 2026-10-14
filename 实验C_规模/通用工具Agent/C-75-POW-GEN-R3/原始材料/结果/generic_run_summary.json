@@ -1,0 +1,50 @@
+{
+  "run_id": "C-75-POW-GEN-R3",
+  "target": "POWER",
+  "inputs": {
+    "manifest": "run_manifest.json",
+    "device_fuel_base": "inputs/基102-2002_原始结构脱敏输入.xlsx",
+    "enterprise_master_shards": 4,
+    "control_facility_base": "inputs/基101-2002_原始结构脱敏输入.xlsx",
+    "source_identity_index": "inputs/source_identity_index.json",
+    "method_standard": "inputs/T_CSES_144-2024.pdf"
+  },
+  "candidate_count": 4442,
+  "power_source_count": 470,
+  "inventory_item_count": 4230,
+  "status_counts": {
+    "information_insufficient": 2399,
+    "calculated": 1831
+  },
+  "decided_target_counts": {
+    "INDUSTRIAL": 3926,
+    "OUT_OF_SCOPE": 46,
+    "POWER": 470
+  },
+  "outputs": {
+    "source_decisions_csv": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/02_火电热力/03_通用工具调用型Agent/R3/outputs/source_decisions.csv",
+    "generic_inventory_items_csv": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/02_火电热力/03_通用工具调用型Agent/R3/outputs/generic_inventory_items.csv",
+    "generic_source_disposition_csv": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/02_火电热力/03_通用工具调用型Agent/R3/outputs/generic_source_disposition.csv",
+    "generic_exception_list_csv": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/02_火电热力/03_通用工具调用型Agent/R3/outputs/generic_exception_list.csv",
+    "generic_run_summary_json": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/02_火电热力/03_通用工具调用型Agent/R3/outputs/generic_run_summary.json"
+  },
+  "rules_and_scripts": {
+    "coefficient_tables": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/02_火电热力/03_通用工具调用型Agent/R3/scripts/ef_tables.py",
+    "build_script": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/02_火电热力/03_通用工具调用型Agent/R3/scripts/build_inventory.py",
+    "extracted_pdf_text": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/075%规模/02_火电热力/03_通用工具调用型Agent/R3/work/pdf_text.txt"
+  },
+  "method_notes": [
+    "源分类依据 T/CSES 144-2024 §7.1（电力热力源=D4411/D4412/D4417/D4430企业生产设施）与§8.1（工业源=B06-12/C13-43/D45）",
+    "排放核算：§7.2 公式(2) E=A×EF×(1−η)；A为各燃料消耗量（不合并多燃料），EF取表D.1，燃煤SO2/PM/BC/OC按公式(3)~(6)物料衡算（表C.1~C.3），电力生产燃煤NOx按装机容量（表D.1注b）",
+    "η取基101-2002治理设施上报去除效率；设施去除效率缺失时按处理工艺名称回退表A.1；无治理或未匹配设施取0；低氮燃烧按表A.1取22%（仅当无脱硝设施效率时）",
+    "投运率：运行包内无治理设施运行时间数据，直接采用上报去除效率作为实际去除效率（假定已反映实际运行状况）",
+    "每个燃料/独立计算组件在 activity/parameter/control 三个JSON数组中各占一个元素，component_id 对齐；多燃料不合并",
+    "PM10按PM2.5与PM2.5-10两组分分别用fine/coarse去除效率核算",
+    "燃气轮机、余热利用锅炉、城市生活垃圾、生物燃料、其他燃料（吨标准煤）、煤制品、工业废料在表D.1中无产生系数，按信息不足处理，不编造系数"
+  ],
+  "unfinished": [
+    "4442条候选全部作出分类判断；仅POWER目标（470源）纳入核算",
+    "470个POWER源×9污染物=4230个核算项；其中无法核算项已在exception_list中列出根因，需用户补充数据后重算",
+    "燃气轮机/余热锅炉/垃圾焚烧等源类产生系数不在提供的T/CSES 144-2024范围内，未估算"
+  ]
+}

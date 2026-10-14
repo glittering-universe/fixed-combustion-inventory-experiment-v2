@@ -1,0 +1,61 @@
+{
+  "run_id": "C-100-IND-GEN-R1",
+  "method": "generic_tool_agent",
+  "requested_target": "INDUSTRIAL",
+  "input_files": [
+    "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R1/inputs/基102-2002_原始结构脱敏输入.xlsx",
+    "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R1/inputs/基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+    "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R1/inputs/基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+    "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R1/inputs/基101-2001_原始结构脱敏输入_分片03-of04.xlsx",
+    "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R1/inputs/基101-2001_原始结构脱敏输入_分片04-of04.xlsx",
+    "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R1/inputs/基101-2002_原始结构脱敏输入.xlsx",
+    "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R1/inputs/source_identity_index.json",
+    "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R1/inputs/T_CSES_144-2024.pdf"
+  ],
+  "processed_source_count": 5922,
+  "decision_counts": {
+    "INDUSTRIAL": 5185,
+    "POWER_HEAT": 737
+  },
+  "inventory_item_count": 46665,
+  "item_status_counts": {
+    "calculated": 32529,
+    "not_involved": 5185,
+    "information_insufficient": 8951
+  },
+  "output_paths": {
+    "source_decisions.csv": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R1/outputs/source_decisions.csv",
+    "generic_inventory_items.csv": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R1/outputs/generic_inventory_items.csv",
+    "generic_source_disposition.csv": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R1/outputs/generic_source_disposition.csv",
+    "generic_exception_list.csv": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R1/outputs/generic_exception_list.csv",
+    "generic_run_summary.json": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R1/outputs/generic_run_summary.json"
+  },
+  "rule_scripts": [
+    "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R1/scripts/build_inventory.py"
+  ],
+  "method_basis": "T/CSES 144-2024 §8.3 公式(2)~(6), 附录A 表A.1, 附录C 表C.1~C.3, 附录E 表E.7",
+  "assumptions": [
+    "表E.7单位g/kg燃料: 气体燃料(万立方米)按标准状态密度换算为质量(天然气0.717, 焦炉煤气0.48, 高炉煤气1.30, 转炉煤气1.25, 发生炉煤气1.10 kg/m3)",
+    "燃煤SO2/PM物料衡算公式(3)~(6)中, 硫分S(%)与灰分Aar(%)均按质量浓度换算(1%=10g/kg)",
+    "层燃炉/链条炉/其他层燃炉/抛煤机炉按'自动炉排层燃炉'处理",
+    "治理设施按企业级(统一社会信用代码)关联基102工业锅炉; 仅采用'工业锅炉排放口(GYGL)'设施",
+    "除尘设施填报去除效率同时用于PM2.5与PM2.5-10(粗细组分)及BC/OC; 无填报时按附录A表A.1工艺映射",
+    "燃烧烟气VOCs不涉及末端治理(η=0); CO无适用治理(η=0); NH3无产生系数",
+    "低氮燃烧技术(设备标志'是')仅在无脱硝设施时按附录A NOx 22%计",
+    "工业锅炉排放量按设备(基102行)核算, 未使用基101-2001企业表汇总活动水平(避免重复)"
+  ],
+  "unresolved_items": [
+    "生物燃料/城市生活垃圾/工业废料/其他燃料(吨标准煤)工业锅炉无表E.7系数, 未量化",
+    "其他燃料消耗总量(吨标准煤)未指明燃料类型, 未量化",
+    "燃煤锅炉燃烧方式为'其他'或缺失的行无法确定燃烧技术, 未量化",
+    "燃料二为煤炭的行未提供煤质(含硫量/灰分), 未量化其SO2/颗粒物",
+    "无燃料活动水平的工业锅炉行(17行)未量化",
+    "气体燃料密度为按标准状态假设值, 建议用户核实"
+  ],
+  "status_reason_codes": {
+    "calculated": "CALC_OK",
+    "not_involved": "NH3_EF_NOT_DEFINED / ZERO_ACTIVITY",
+    "information_insufficient": "FUEL_EF_UNAVAILABLE / FUEL_UNIT_TCE / COAL_TECH_UNKNOWN / COAL_QUALITY_MISSING / NO_ACTIVITY_DATA",
+    "source_data_invalid": "(未使用)"
+  }
+}

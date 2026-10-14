@@ -1,0 +1,47 @@
+{
+  "run_id": "B2-300-IND-GEN-R2",
+  "scenario": "B2",
+  "target": "INDUSTRIAL",
+  "input_files": [
+    "inputs/基102-2002_原始结构脱敏输入.xlsx",
+    "inputs/基101-2001_原始结构脱敏输入_分片01-of04.xlsx (unused for this task)",
+    "inputs/基101-2001_原始结构脱敏输入_分片02-of04.xlsx (unused)",
+    "inputs/基101-2001_原始结构脱敏输入_分片03-of04.xlsx (unused)",
+    "inputs/基101-2001_原始结构脱敏输入_分片04-of04.xlsx (unused)",
+    "inputs/基101-2002_原始结构脱敏输入.xlsx",
+    "inputs/T_CSES_144-2024.pdf",
+    "inputs/source_identity_index.json"
+  ],
+  "total_candidate_sources": 300,
+  "classification": {
+    "INDUSTRIAL": 161,
+    "THERMAL": 139,
+    "OUT_OF_SCOPE": 0
+  },
+  "inventory_items_total": 2700,
+  "status_counts": {
+    "calculated": 594,
+    "not_involved": 1251,
+    "information_insufficient": 567,
+    "source_data_invalid": 288
+  },
+  "exceptions_total": 855,
+  "output_files": [
+    "outputs/source_decisions.csv",
+    "outputs/generic_inventory_items.csv",
+    "outputs/generic_source_disposition.csv",
+    "outputs/generic_exception_list.csv",
+    "outputs/generic_run_summary.json"
+  ],
+  "unresolved": [],
+  "rules_script": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/B2补充实验/runs/B2-300-IND-GEN-R2/build_inventory.py",
+  "method_notes": [
+    "Classification: 工业锅炉编号非空 → INDUSTRIAL, 电站锅炉编号非空 → THERMAL",
+    "Emission factors from T/CSES 144-2024 Appendix E Table E.7 (采矿业和制造业)",
+    "Control efficiencies from Appendix A Table A.1",
+    "SO2 material balance for coal: EF = 2 * S * (1-0.15) g/kg",
+    "PM material balance for coal: EF = Aar * (1-ar) * f_PM g/kg",
+    "NH₃: No emission factor in standard for fixed combustion → 0",
+    "Gas fuel EF units: g/m³; Liquid/solid EF units: g/kg"
+  ]
+}

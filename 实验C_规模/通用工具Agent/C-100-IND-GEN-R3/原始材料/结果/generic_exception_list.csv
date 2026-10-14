@@ -1,0 +1,8 @@
+﻿exception_id,source_id,pollutant,root_cause,action_required
+EXC_NH3_NO_FACTOR,SRC-RAW-49D2AA9711B49056C72D,NH3,T/CSES 144-2024 固定燃烧（表E.7/D.1）未提供NH3产生系数，燃烧源NH3不在本标准核算范围（涉及源数：5185）,如需核算NH3需采用氨逃逸专项监测或行业产排污系数手册补充
+EXC_ACTIVITY_MISSING,SRC-RAW-49D2AA9711B49056C72D,ALL,基102记录无任何燃料类型与消耗量（涉及源数：17）,补充燃料类型与年消耗量后重算
+EXC_FUEL_NO_FACTOR,SRC-RAW-14966318FE4415CD8006,SO2,该源×污染物无可用产生系数（FUEL_NO_FACTOR）（涉及源数：8624）,补充系数或换算关系后重算
+EXC_PARTIAL_COMPONENT,SRC-RAW-B63F3D36D47460AB74AE,SO2,部分燃料组件缺少系数或单位桥接（FUEL_NO_FACTOR），数值为可算组件之合（涉及源数：80）,补充缺失燃料的系数或换算关系后重算
+EXC_UNIT_MISMATCH,SRC-RAW-EE22E15D60E5F3179A7C,SO2,该源×污染物无可用产生系数（UNIT_MISMATCH）（涉及源数：24）,补充系数或换算关系后重算
+EXC_COKE_NO_PM_PARAMS,SRC-RAW-DFEB03B84F6D6B549DC6,PM2.5,该源×污染物无可用产生系数（COKE_NO_PM_PARAMS）（涉及源数：4）,补充系数或换算关系后重算
+EXC_TECH_UNSPECIFIED,SRC-RAW-C284CBCD81B9F3AACDD0,SO2,该源×污染物无可用产生系数（TECH_UNSPECIFIED）（涉及源数：16）,补充系数或换算关系后重算

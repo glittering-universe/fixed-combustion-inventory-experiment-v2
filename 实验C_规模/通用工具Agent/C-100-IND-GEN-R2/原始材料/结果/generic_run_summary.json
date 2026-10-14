@@ -1,0 +1,78 @@
+{
+  "run_id": "C-100-IND-GEN-R2",
+  "target": "INDUSTRIAL",
+  "input_files": {
+    "device_fuel_base": [
+      "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R2/inputs/基102-2002_原始结构脱敏输入.xlsx"
+    ],
+    "enterprise_master": [
+      "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R2/inputs/基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+      "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R2/inputs/基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+      "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R2/inputs/基101-2001_原始结构脱敏输入_分片03-of04.xlsx",
+      "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R2/inputs/基101-2001_原始结构脱敏输入_分片04-of04.xlsx"
+    ],
+    "control_facility_base": [
+      "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R2/inputs/基101-2002_原始结构脱敏输入.xlsx"
+    ],
+    "method_reference": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R2/inputs/T_CSES_144-2024.pdf",
+    "source_identity_index": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R2/inputs/source_identity_index.json"
+  },
+  "source_counts": {
+    "total_candidates": 5922,
+    "decided_industrial": 5243,
+    "decided_power_heat": 670,
+    "decided_out_of_scope": 9
+  },
+  "item_counts": {
+    "total_items": 47187,
+    "by_status": {
+      "calculated": 29982,
+      "information_insufficient": 11962,
+      "not_involved": 5243
+    },
+    "by_pollutant": {
+      "SO2": 5243,
+      "NOx": 5243,
+      "CO": 5243,
+      "VOC": 5243,
+      "PM2.5": 5243,
+      "PM10": 5243,
+      "BC": 5243,
+      "OC": 5243,
+      "NH3": 5243
+    }
+  },
+  "output_paths": {
+    "source_decisions_csv": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R2/outputs/source_decisions.csv",
+    "generic_inventory_items_csv": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R2/outputs/generic_inventory_items.csv",
+    "generic_source_disposition_csv": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R2/outputs/generic_source_disposition.csv",
+    "generic_exception_list_csv": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R2/outputs/generic_exception_list.csv",
+    "generic_run_summary_json": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R2/outputs/generic_run_summary.json"
+  },
+  "rules_and_scripts": {
+    "method_constants": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R2/work/method_constants.py",
+    "build_script": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R2/work/build_inventory.py",
+    "pdf_extract": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/100%规模/01_工业锅炉/03_通用工具调用型Agent/R2/work/pdf_full_text.txt"
+  },
+  "assumptions": [
+    "源分类按指南7.1/8.1企业行业类别代码: 4411/4412/4417/4419/4430 -> 电力热力源; 采矿业B06-12/制造业C13-43/燃气生产和供应业D45 -> 工业源; 其余 -> 范围外",
+    "电站锅炉/燃气轮机设备所在企业为工业行业时按工业源处理(指南8.1 工业企业所有生产设施), 产生系数采用表E.7",
+    "治理设施按企业组织机构代码+排放口类别(GYGL工业锅炉/DZGL电站锅炉)关联, 未使用QT(其他排放口)设施",
+    "控制措施去除效率按表A.1平均去除效率取值(工艺名称映射), 工艺无法映射时用填报去除效率(0-100%), 设施投运率无数据按100%假设",
+    "燃烧烟气VOCs无末端治理效率(指南8.2.1.2(5)), CO无表A.1去除行, 均取η=0",
+    "焦炭SO2物料衡算的硫分进入底灰比例按燃煤取值0.15 (指南表C.1未单列焦炭)",
+    "液化天然气/液化石油气/炼厂干气按吨填报与表E.7的g/m3系数单位不匹配, 指南未提供密度换算, 判定信息不足",
+    "生物燃料/城市生活垃圾/工业废料/其他燃料无表E.7产生系数, 判定信息不足",
+    "燃气轮机无表E.7/D.1产生系数, 判定信息不足"
+  ],
+  "outstanding_items": [
+    "FUEL_NOT_COVERED_BY_E7: 燃料类型不在指南表E.7覆盖范围 (生物燃料/城市生活垃圾/工业废料/其他燃料), 无产生系数 (影响源×污染物记录数: 8704)",
+    "GAS_TURBINE_NOT_COVERED: 燃气轮机燃烧技术不在指南表E.7/D.1覆盖范围, 无产生系数 (影响源×污染物记录数: 328)",
+    "FUEL_UNIT_MISMATCH_EF: 液化天然气/液化石油气/炼厂干气活动水平以吨填报, 指南系数单位为g/m3, 未提供密度换算 (影响源×污染物记录数: 1784)",
+    "COAL_COMBUSTION_TECH_UNSPECIFIED: 燃煤锅炉燃烧方式为其他/空缺, 无法选择表E.7及表C.1-C.3对应技术参数 (影响源×污染物记录数: 192)",
+    "NO_FUEL_ACTIVITY: 设备无燃料消耗记录 (燃料一/二/其他燃料均空缺) (影响源×污染物记录数: 136)",
+    "CONTROL_EFFICIENCY_UNKNOWN: 存在关联治理设施但工艺名称无法映射表A.1且未填报有效去除效率 (影响源×污染物记录数: 1905)",
+    "NH3_NOT_IN_GUIDELINE_SCOPE: 指南表E.7/D.1未定义固定燃烧源NH3产生系数, NH3按不在指南核算范围处理(状态not_involved) (影响源×污染物记录数: 5243)",
+    "COKE_PM_PARAMS_MISSING: 焦炭燃烧PM2.5/PM10/BC/OC需物料衡算, 但指南表C.1-C.3无焦炭参数 (影响源×污染物记录数: 4)"
+  ]
+}

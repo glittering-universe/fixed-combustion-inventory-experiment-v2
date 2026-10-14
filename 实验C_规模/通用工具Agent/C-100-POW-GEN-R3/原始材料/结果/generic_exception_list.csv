@@ -1,0 +1,7 @@
+﻿exception_id,source_id,pollutant,root_cause,action_required
+EXC-001,SRC-RAW-03DE8EF23ED7B791BADC,"BC,CO,NOx,OC,PM10,PM2.5,SO2,VOC",CALCULATED_PARTIAL_COMPONENTS (涉及51个源),"该源部分燃料组件已核算、部分组件缺因子/参数, 排放量为已核算组件之和, 需补充缺项后汇总"
+EXC-002,SRC-RAW-C2A07E8B37DA4337574A,"BC,CO,NOx,OC,PM10,PM2.5,SO2,VOC",COMBUSTION_TECH_MISSING (涉及1个源),"燃煤源燃烧方式为'其他'或缺失, 表C.1~C.3/D.1无法确定对应技术, 需补充燃烧方式"
+EXC-003,SRC-RAW-008874CA96532DE69412,"BC,CO,NOx,OC,PM10,PM2.5,SO2,VOC",EF_NOT_IN_STANDARD_FUEL (涉及205个源),"该燃料(城市生活垃圾/生物燃料/工业废料/其他燃料)在T/CSES144-2024表D.1中无产生系数, 需补充实测或行业手册系数后方可核算"
+EXC-004,SRC-RAW-017C98E5B9CB826F2F33,"BC,CO,NOx,OC,PM10,PM2.5,SO2,VOC",EF_NOT_IN_STANDARD_TECHNOLOGY (涉及116个源),"燃气轮机/余热利用锅炉等燃烧技术在T/CSES144-2024表D.1中无对应产生系数, 需补充相应技术因子"
+EXC-005,SRC-RAW-B87685FA95BF46796F7A,"BC,CO,NOx,OC,PM10,PM2.5,SO2,VOC",FUEL_TYPE_MISSING (涉及1个源),"其他燃料消耗总量未给出燃料类型且单位为吨标准煤, 无法选取产生系数, 需补充燃料构成"
+EXC-006,SRC-RAW-00533932A04254ABB991,NH3,NH3_EF_NOT_PROVIDED (涉及615个源),"T/CSES144-2024表D.1/E.7未提供固定燃烧源NH3产生系数, 需按氨源专项指南或实测数据补充"

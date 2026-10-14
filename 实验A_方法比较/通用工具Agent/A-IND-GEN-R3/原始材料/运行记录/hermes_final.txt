@@ -1,0 +1,28 @@
+任务完成。全部 5922 个候选源已处理，5 个交付文件已生成并通过结构/对齐/非负性/手工复算校验。
+
+实际输出路径（UTF-8）：
+  /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/02_实验A_端到端清单编制/01_工业锅炉/03_通用工具调用型Agent/R3/outputs/
+  - source_decisions.csv                5922 行（source_id,requested_target,decided_target,disposition,reason_code）
+  - generic_inventory_items.csv         53298 行（5922 源 x 9 污染物；12 列齐全）
+  - generic_source_disposition.csv      5922 行
+  - generic_exception_list.csv          11 个根因组
+  - generic_run_summary.json            输入、计数、规则、未完成事项、脚本路径
+
+处理逻辑（全部依据 T/CSES 144-2024 与未留空源字段，未使用任何冻结规则/专用工具）：
+  1. 分类：基102 行有工业锅炉编号 -> INDUSTRIAL(5185)；有电站锅炉/燃气轮机编号 -> POWER_THERMAL(737，非目标，not_involved)；无编号 -> 范围外(0)。不依据 ID 格式推断。
+  2. 核算：公式(2) E=A x EF x (1-eta)。煤炭 SO2/PM2.5/PM10/BC/OC 用公式(3)-(6)物料衡算（含硫量/灰分逐行取自基102，表C.1-C.3 参数按燃烧方式：煤粉炉/流化床/层燃炉）；CO/NOx/VOC 及气液燃料用表E.7；NH3 表E.7 无燃烧因子取 0，燃煤且企业 GYGL 排放口有 SNCR/SCR 脱硝设施时按表E.1 氨逃逸（0.17/0.16 g/kg煤）。
+  3. 治理：基101-2002 治理设施按排放口类别 GYGL(工业锅炉排放口) 关联企业；主污染物用填报去除效率（0<eta<=100），协同去除与缺失回退表A.1；低氮燃烧 22%（与 SCR/SNCR 组合按表A.1 52%/64%）；燃烧烟气 VOCs eta=0（8.2.1.2-5）。
+  4. 多燃料按 F1/F2/F3 组分逐项记录，三个 JSON 数组长度、顺序、component_id 严格对齐（已验证 0 处错位）。
+
+核算结果（仅 INDUSTRIAL 且 calculated 的源）：SO2 排放 6637.9 t、NOx 13243.2 t、CO 21013.2 t、VOC 9432.6 t、PM2.5 2740.97 t、BC 106.3 t、OC 25.0 t、NH3 197.1 t（脱硝逃逸）、PM10 7402.8 t（产生量见文件）。
+
+状态统计：calculated 36805 条（4090 源）、information_insufficient 9860 条（1095 源）、not_involved 6633 条（737 源）、source_data_invalid 0 条。信息不足时未编造燃料量/因子/治理效率/排放量，数值留空并给出 reason_code。
+
+未完成事项（已列入例外清单与 run_summary，需要用户处理）：
+  - 燃生物质工业锅炉（约 1008 源）无工业生物质因子，未核算
+  - 其他燃料(吨标准煤)、工业废料、煤矸石(工业)组分无因子；焦炭 SO2/PM 物料衡算参数标准未提供
+  - 17 行工业锅炉无任何燃料数据
+  - 治理设施只能按排放口类别归属（无法逐台），同型多套取均值；设施投运率缺省取 1；仅 QT 排放口的设施未应用
+  - 工业燃气轮机、燃烧方式"其他"燃煤锅炉采用标准内近似因子（润滑油按"其它石油制品"）
+
+主要校验：4 个 CSV 列名、5922 唯一性、数值非负、候选全覆盖；三个 JSON 数组合法且逐元素对齐；PM10 的 fine/coarse 去除效率均已给出；燃气管线、煤物料衡算（S/Aar 手算复算一致）、生物质/火电/混合燃料/无燃料等边界源逐一手工核对通过（scripts/validate_outputs.py、scripts/spotcheck_edges.py）。计算与规则脚本：scripts/build_inventory.py（规则全部写入 run_summary 的 method_rules_used）。

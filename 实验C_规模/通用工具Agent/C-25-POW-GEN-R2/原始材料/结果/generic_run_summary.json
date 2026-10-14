@@ -1,0 +1,57 @@
+{
+  "run_id": "C-25-POW-GEN-R2",
+  "input_files": {
+    "B102-2002": "基102-2002_原始结构脱敏输入.xlsx",
+    "B101-2001": [
+      "基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+      "基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+      "基101-2001_原始结构脱敏输入_分片03-of04.xlsx",
+      "基101-2001_原始结构脱敏输入_分片04-of04.xlsx"
+    ],
+    "B101-2002": "基101-2002_原始结构脱敏输入.xlsx",
+    "standard": "T_CSES_144-2024.pdf",
+    "source_identity_index": "source_identity_index.json"
+  },
+  "processed_sources": 1481,
+  "inventory_items": 1305,
+  "status_counts": {
+    "information_insufficient": 705,
+    "calculated": 600
+  },
+  "decided_target_counts": {
+    "INDUSTRIAL_BOILER": 1318,
+    "POWER": 145,
+    "OUT_OF_SCOPE": 18
+  },
+  "disposition_counts": {
+    "not_involved": 1318,
+    "included": 145,
+    "out_of_scope": 18
+  },
+  "output_paths": {
+    "source_decisions": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/025%规模/02_火电热力/03_通用工具调用型Agent/R2/outputs/source_decisions.csv",
+    "generic_inventory_items": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/025%规模/02_火电热力/03_通用工具调用型Agent/R2/outputs/generic_inventory_items.csv",
+    "generic_source_disposition": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/025%规模/02_火电热力/03_通用工具调用型Agent/R2/outputs/generic_source_disposition.csv",
+    "generic_exception_list": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/025%规模/02_火电热力/03_通用工具调用型Agent/R2/outputs/generic_exception_list.csv",
+    "generic_run_summary": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/025%规模/02_火电热力/03_通用工具调用型Agent/R2/outputs/generic_run_summary.json"
+  },
+  "rules_scripts": [
+    "scripts/factors.py (T/CSES 144-2024 表A.1/表C.1-C.3/表D.1 编码)",
+    "scripts/compute_inventory.py (分类、物料衡算、产排污系数法、控制效率)"
+  ],
+  "assumptions": [
+    "治理设施投运率无数据，取1.0（η=平均去除效率×1.0）",
+    "除尘设施报告去除效率同时用于PM2.5与PM2.5-10组分",
+    "多种控制措施按附录A表A.1注记取最大去除效率",
+    "低氮燃烧=是 按附录A表A.1 低氮燃烧技术 22%计入NOx控制",
+    "电站锅炉燃烧方式: 链条炉/层燃炉/其他层燃炉/抛煤机炉归为自动炉排层燃炉",
+    "VOCs燃烧烟气无末端治理（标准8.2.1.2-5），效率取0",
+    "NH3无燃烧源产生系数（表D.1无NH3列），标记信息不足",
+    "未覆盖燃料（城市生活垃圾、生物燃料、其他燃料(吨标准煤)、煤制品）表D.1无系数，标记信息不足",
+    "基101-2001仅用于企业级行业代码校验（1家企业B102=4511与B101=712不一致，不影响D45/B分类结论）"
+  ],
+  "unfinished": [
+    "信息不足源×污染物需用户补充燃料产生系数（见generic_exception_list.csv）",
+    "4419其他电力生产(16)、A0511(2)不在标准7.1/8.1核算范围，判定范围外"
+  ]
+}

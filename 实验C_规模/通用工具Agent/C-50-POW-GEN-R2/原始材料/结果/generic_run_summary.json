@@ -1,0 +1,109 @@
+{
+  "run_id": "C-50-POW-GEN-R2",
+  "target": "POWER",
+  "scale_percent": 50,
+  "input_variant": "B0",
+  "standard_pdf": "inputs/T_CSES_144-2024.pdf",
+  "standard_reference": "T/CSES 144-2024《城市大气污染源排放清单编制技术指南》：§5.2.1/§7.1源分类，§7.2.1.2/§7.2.2产排污系数法（公式2），公式3-6物料衡算，附录A表A.1、附录C表C.1-C.3、附录D表D.1",
+  "classification_rule": "POWER=行业类别代码∈{4411,4412,4417,4430}(指南§7.1)；INDUSTRIAL_BOILER=工业锅炉且行业∈工业源范围(B06-12/C13-43/D45,指南§8.1/§8.3)；其余(电站锅炉位于非电力热力行业、4419垃圾焚烧、非工业行业工业锅炉)=OUT_OF_SCOPE",
+  "control_rule": "治理设施按统一社会信用代码归并到企业；处理工艺名称映射附录A表A.1，设施填报去除效率(0<η≤100)覆盖其主控污染物组，跨污染物协同效率取表A.1；多设施按串联组合1-∏(1-η)；基102低氮燃烧=是且无低氮脱硝设施时叠加NOx 22%；VOCs燃烧烟气η=0(指南§8.2.1.2(5))；投运率无运行时间数据，η直接采用填报/表A.1值",
+  "inputs": {
+    "base102": "inputs/基102-2002_原始结构脱敏输入.xlsx",
+    "base101_2001_shards": [
+      "inputs/基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+      "inputs/基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+      "inputs/基101-2001_原始结构脱敏输入_分片03-of04.xlsx",
+      "inputs/基101-2001_原始结构脱敏输入_分片04-of04.xlsx"
+    ],
+    "base101_2002": "inputs/基101-2002_原始结构脱敏输入.xlsx",
+    "source_identity_index": "inputs/source_identity_index.json",
+    "standard_pdf": "inputs/T_CSES_144-2024.pdf"
+  },
+  "sources_processed": 2961,
+  "decided_target_counts": {
+    "INDUSTRIAL_BOILER": 2544,
+    "OUT_OF_SCOPE": 109,
+    "POWER": 308
+  },
+  "inventory_items_total": 26649,
+  "inventory_items_status_counts": {
+    "not_involved": 24185,
+    "information_insufficient": 1072,
+    "calculated": 1392
+  },
+  "power_items_total": 2772,
+  "power_calculated_items": 1392,
+  "pollutant_totals_calculated": {
+    "SO2": {
+      "generation_t": 795715.8018,
+      "emission_t": 348791.4656,
+      "source_count": 174
+    },
+    "NOx": {
+      "generation_t": 564127.1249,
+      "emission_t": 227462.2178,
+      "source_count": 174
+    },
+    "CO": {
+      "generation_t": 159371.8173,
+      "emission_t": 159371.8173,
+      "source_count": 174
+    },
+    "VOC": {
+      "generation_t": 8735.4884,
+      "emission_t": 8735.4884,
+      "source_count": 174
+    },
+    "PM2.5": {
+      "generation_t": 515824.2199,
+      "emission_t": 220205.946,
+      "source_count": 174
+    },
+    "PM10": {
+      "generation_t": 1998683.9657,
+      "emission_t": 860676.1028,
+      "source_count": 174
+    },
+    "BC": {
+      "generation_t": 1037.93,
+      "emission_t": 440.1465,
+      "source_count": 174
+    },
+    "OC": {
+      "generation_t": 1.8197,
+      "emission_t": 0.0356,
+      "source_count": 174
+    },
+    "NH3": {
+      "generation_t": 0.0,
+      "emission_t": 0.0,
+      "source_count": 0
+    }
+  },
+  "exception_groups": 10,
+  "exception_ids": [
+    "EXC-SCOPE-01",
+    "EXC-SCOPE-02",
+    "EXC-SCOPE-03",
+    "EXC-POWER-01",
+    "EXC-POWER-02",
+    "EXC-POWER-03",
+    "EXC-CTRL-01",
+    "EXC-CTRL-02",
+    "EXC-DATA-01",
+    "EXC-VOC-01"
+  ],
+  "outputs": {
+    "source_decisions": "outputs/source_decisions.csv",
+    "generic_inventory_items": "outputs/generic_inventory_items.csv",
+    "generic_source_disposition": "outputs/generic_source_disposition.csv",
+    "generic_exception_list": "outputs/generic_exception_list.csv",
+    "generic_run_summary": "outputs/generic_run_summary.json"
+  },
+  "scripts": {
+    "build": "scripts/build_inventory.py",
+    "factor_tables": "work/factor_tables.py",
+    "pdf_text": "work/pdf_text.txt"
+  },
+  "unfinished": "1) 生物质/垃圾/废料/其他燃料无D.1系数源未核算（information_insufficient）；2) 燃气轮机采用同燃料燃气锅炉系数近似；3) NH3无系数来源全部not_involved；4) 治理设施按企业归并、投运率缺数据；5) 非POWER目标源按要求未参与汇总"
+}

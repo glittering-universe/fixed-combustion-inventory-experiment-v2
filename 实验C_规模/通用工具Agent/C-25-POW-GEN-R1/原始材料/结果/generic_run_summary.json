@@ -1,0 +1,48 @@
+{
+  "run_id": "C-25-POW-GEN-R1",
+  "target": "POWER",
+  "inputs": {
+    "device_fuel_base": "inputs/基102-2002_原始结构脱敏输入.xlsx",
+    "enterprise_master": [
+      "inputs/基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+      "inputs/基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+      "inputs/基101-2001_原始结构脱敏输入_分片03-of04.xlsx",
+      "inputs/基101-2001_原始结构脱敏输入_分片04-of04.xlsx"
+    ],
+    "control_facility_base": "inputs/基101-2002_原始结构脱敏输入.xlsx",
+    "standard": "inputs/T_CSES_144-2024.pdf",
+    "identity_index": "inputs/source_identity_index.json"
+  },
+  "processed_sources": 1481,
+  "decided_target_counts": {
+    "POWER": 145,
+    "BOILER": 1318,
+    "OUT_OF_SCOPE": 18
+  },
+  "status_counts": {
+    "not_involved": 12024,
+    "information_insufficient": 705,
+    "calculated": 600
+  },
+  "output_paths": {
+    "source_decisions": "./outputs/source_decisions.csv",
+    "inventory_items": "./outputs/generic_inventory_items.csv",
+    "source_disposition": "./outputs/generic_source_disposition.csv",
+    "exception_list": "./outputs/generic_exception_list.csv",
+    "run_summary": "./outputs/generic_run_summary.json"
+  },
+  "unfinished_items": [
+    "70个POWER源燃料(城市生活垃圾/生物燃料/其他燃料/煤制品)无标准产生系数，排放量未核算(EXC-001)",
+    "全部145个POWER源NH3无产生系数，未核算(EXC-002)",
+    "27个燃气轮机源按燃气锅炉系数替代(EXC-003)，需用户确认",
+    "16个多燃料源存在无产生系数组件，源×污染物总排放未核算(EXC-004)",
+    "58个POWER源无匹配治理设施记录，可核算源η按0处理(EXC-005)，需核实"
+  ],
+  "rules_scripts": [
+    "scripts/build_inventory.py (本运行实际采用的规则与计算脚本)",
+    "T/CSES 144-2024 第7章公式(2)(3)(4)(5)(6), 附录A表A.1, 附录C表C.1/C.2/C.3, 附录D表D.1",
+    "治理效率组合规则: 同类设施(脱硫/脱硝/除尘)取该污染物效率最大值(视为并联/重复填报)，不同类之间串联(1-∏(1-η))",
+    "基101-2001(企业基表)用于行业分类交叉校验与背景信息；点源核算以基102设备行+基101-2002治理设施行为准"
+  ],
+  "item_count": 13329
+}

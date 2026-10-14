@@ -1,0 +1,30 @@
+任务完成。所有验证通过，5 个输出文件已写入运行包的 `outputs` 目录。
+
+执行结果摘要
+============
+
+输入处理（仅运行包内文件）
+- 基102-2002（5922 行设备/燃料基表）、基101-2001（企业主表 4 分片，用于企业级交叉核对）、基101-2002（43902 行治理设施表）、source_identity_index.json（5922 条 source_id↔行号映射）、T_CSES_144-2024.pdf（86 页，作为唯一方法依据，已全文提取并据此建表）
+
+分类判断（全部 5922 条候选，依据标准 3.5/5.2.1/7.1/8.1/8.3）
+- POWER 火电热力 615 条：行业 4411/4412/4417/4430
+- INDUSTRIAL_BOILER 工业锅炉 5243 条：采矿 B06-B12 / 制造 C13-C43 / 燃气 D45（含 4119/4190/4210/4220/4341/4349 等 C41-C43）
+- OUT_OF_SCOPE 64 条：4419 其他电力生产(55)、4690 水的生产(3)、A05 农林辅助(6)
+
+核算（仅汇总 POWER 目标，5535 项 = 615 源 × 9 污染物）
+- E = A×EF×(1−η)（标准公式2）；燃煤 SO2/PM2.5/PM10/BC/OC 按公式(3)-(6)物料衡算，参数取表 C.1-C.3；其余取表 D.1（电力生产/热力生产和供应分部门、分燃料、分技术）；电力生产燃煤 NOx 按装机容量分级（≤100MW 8.96 / 100-300 8.19 / ≥300 7.21 g/kg）
+- 去除效率：治理设施按企业（统一社会信用代码，缺失时用组织机构代码）+ 排放口类型（DZGL/GYGL，QT 回退；VOC 除外按标准 8.2.1.2-5 燃烧烟气无末端治理）取平均填报值；无脱硝设施且低氮燃烧=是时按附录A 取 22%；设施投运率无数据按 100%
+- 状态：calculated 2000 项（250 源 × 8 污染物），information_insufficient 3535 项（燃气轮机 127 源、生物燃料 43、生活垃圾 168、其他燃料 28、工业废料 1、燃烧方式无对应 1、NH3 全部 615）；未编造任何因子或数值，产生量/排放量留空并给出 reason_code
+
+输出文件（UTF-8）
+- outputs/source_decisions.csv（5922 行，source_id/requested_target/decided_target/disposition/reason_code）
+- outputs/generic_inventory_items.csv（5535 行，12 列；三个 *_record_json 均为合法 JSON 数组，数组长度、顺序、component_id 逐行对齐，PM10 同时给出 fine/coarse 效率）
+- outputs/generic_source_disposition.csv（5922 行）
+- outputs/generic_exception_list.csv（7 个根因组：生物燃料、生活垃圾、工业废料、其他燃料、燃气轮机、燃煤技术、NH3 缺系数）
+- outputs/generic_run_summary.json（输入文件、处理源数、状态数、输出路径、未完成事项、规则与脚本路径）
+
+自检结果：四个 CSV 列名与契约一致、source_id/(source_id,pollutant) 唯一、数值非负、状态只用了 calculated/information_insufficient、calculated 项数值齐全、insufficient 项数值为空且给出 reason_code、NH3 全部按信息不足处置；抽查手算复核（SO2=2×0.65×0.85×A/1000、PM10 粒径分解、双燃料组件对齐、99.92% 湿法脱硫效率应用）均一致。
+
+未完成事项（详见 summary.unfinished）：燃气轮机、生物燃料、城市生活垃圾、工业废料、其他燃料(吨标准煤)在表 D.1 无产生系数，以及 NH3 无标准因子——共 7 类需用户补充系数后重算；治理设施投运率按 100% 假设已在 summary 中明示。
+
+脚本位于运行包 scripts/（01-19，主脚本 10_build_inventory.py、校验 11_validate_outputs.py）。

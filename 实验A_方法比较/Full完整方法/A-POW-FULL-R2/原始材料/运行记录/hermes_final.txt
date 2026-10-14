@@ -1,0 +1,23 @@
+运行已封存。A-POW-FULL-R2 八个阶段全部以工具确定性结果完成，无系统级失败；各阶段记录数如下。
+
+运行封存: 是 (sealed=true, 最终修订 59baaac3...)
+
+各阶段记录数
+1. adapt_environmental_workbooks: 基102设备 5922 条、治理设施库 43902、企业主表 18734 (修订 0b4a30eb...)
+2. build_device_emission_sources: 候选 5922 -> POWER 纳入 615 / INDUSTRIAL 4046 / EXCLUDE 1261 (修订 6735291e...)
+3. generate_pollutant_calculation_items: 核算项 6231 (SO2/NOX/CO/VOCS/PM10/PM25/BC/OC 各 702 + NH3 氨逃逸 615) (修订 112f0fd1...)
+4. execute_tcses_calculation_rules: 规则匹配 3528 项；2703 项带局部旗标 (如 FUEL_UNMAPPED 1344、FACTOR_UNMATCHED 1344、CONTROL_INFO_MISSING_DUST 3832 等) (修订 f486af2f...)
+5. control_calculation_admission: 允许核算 3984 / 不适用 476 / 暂缓 1771 (修订 48890e08...)
+6. calculate_fixed_combustion_emissions: 已计算 3984 / 不适用记零 476 / 暂缓 1771 (修订 68ea9a82...)
+7. validate_and_export: 硬校验错误 0、警告 0；异常组 398 组 (修订 9cc922f1...)
+8. archive_complete_calculation_process: 过程记录 6231 条 (trace/complete_calculation_process.jsonl, sha256 0f4e25c2...)，运行包封存
+
+两个工作簿
+- 火电热力: /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/02_实验A_端到端清单编制/02_火电热力/01_Full完整方法/R2/outputs/固定燃烧源-火电、热力生产与供应_实验结果.xlsx (615 源、6231 核算项、28178 公式、0 公式错误、0 外链)
+- 工业锅炉: /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/02_实验A_端到端清单编制/02_火电热力/01_Full完整方法/R2/outputs/固定燃烧源-工业锅炉_实验结果.xlsx (本运行 target=POWER, 0 源 0 项, 结构完整)
+
+异常清单
+- 用户终版: .../R2/outputs/最终异常清单.csv (398 组, sha256 2fa88d36...)
+- 机器归一版: .../R2/outputs/exceptions.csv (sha256 6855754a...)
+
+局部缺失/冲突均按异常保留在清单中未阻断主流程；未使用 CEMS，未以基102报告产生量/排放量参与方法选择、反推或成稿。

@@ -1,0 +1,40 @@
+实验运行完成。运行包已封存。以下为最终报告（数据均为工具返回原文，未改写）：
+
+运行信息
+- run_id: D-IND-W_O_EXECUTABLE_RULE_GATE
+- scenario: w_o_executable_rule_gate（去掉可执行规则门控）
+- run_package: /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/05_实验D_方法组成贡献/02_去掉可执行规则门控/01_工业锅炉/R1
+
+阶段状态（7 阶段全部 complete，按序执行）
+1. adapt_environmental_workbooks: complete，revision 22d9f10da…，候选 5922 设备
+2. build_device_emission_sources: complete，revision 26d6fd99…，INDUSTRIAL 4046 / POWER 615 / EXCLUDE 1261
+3. generate_pollutant_calculation_items: complete，revision e4417b34…，核算项 36958（SO2/NOX/CO/VOCS/PM10/PM25/BC/OC 各 4114，NH3 4046）
+4. record_agent_rule_choices（Agent 接管，未调用 execute_tcses_calculation_rules）: complete，revision 43a46da7…
+5. control_calculation_admission: complete，revision c9b72fcf…
+6. calculate_fixed_combustion_emissions: complete，revision 80ca9dfa…
+7. validate_and_export_fixed_combustion_inventory: complete，revision 0b257df6…
+8. archive_complete_calculation_process: complete，revision c278150e…
+
+决策覆盖率（Agent 策略）
+- record_agent_rule_choices: item_count 36958，recorded_count 36958，coverage 1.0，complete_decision_count 36958
+- 策略为紧凑 agent_policy，含 factor_rules（燃气/燃煤/燃油/生物质产污系数规则，含 * 通配）、control_efficiency_by_pollutant（默认 0，不虚构控制措施）、pm_efficiencies（粒径级配常数）、nh3（SCR 2.5ppm / SNCR 5.0ppm，无脱硝或缺失不赋系数）。因子值按 T/CSES 144—2024 通常核算逻辑与常用产污系数自行判断，未读取任何冻结规则。
+
+准入与计算
+- control_calculation_admission: allow_calculation 36165，not_applicable 205，withhold 588
+- calculate_fixed_combustion_emissions: calculated 36165，not_applicable_zero 205，withheld 588（无缺失信息被当作 0 处理；无法判断项保留为空并由准入阶段标记）
+
+输出路径
+- 工业锅炉结果工作簿: outputs/固定燃烧源-工业锅炉_实验结果.xlsx（sha256 5a65a062…，4046 源，36958 项，公式 218262，公式错误 0，外部链接 0）
+- 火电热力工作簿: outputs/固定燃烧源-火电、热力生产与供应_实验结果.xlsx（0 源，本运行目标为 INDUSTRIAL）
+- 明细表: outputs/calculation_items.csv、outputs/source_decisions.csv、outputs/source_pollutant_totals.csv
+- QA: outputs/machine_qa_industrial.json、outputs/machine_qa_power.json
+
+异常数量
+- 硬校验 error_count 0，warning_count 0
+- 最终异常清单 204 个异常组（outputs/最终异常清单.csv，sha256 d2fff4c5…），对应 588 条 withhold + 205 条 not_applicable 项的归组呈现，供最终人工复核
+
+运行包封存
+- 已封存（sealed: true）
+- 完整过程归档 trace/complete_calculation_process.jsonl，record_count 36958，sha256 7c41fff5…
+
+约束合规：全程未读取 rules/frozen、标准答案或评价结果；未调用被移除的 execute_tcses_calculation_rules；未用基102填报值选择方法或反推效率；未把缺失活动水平/燃料/硫分/灰分/容量/产生因子当作 0。

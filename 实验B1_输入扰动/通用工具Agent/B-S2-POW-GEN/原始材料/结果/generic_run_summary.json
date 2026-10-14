@@ -1,0 +1,151 @@
+{
+  "run_id": "B-S2-POW-GEN",
+  "scenario": "generic_tool_agent",
+  "method_bundle_hash": "99783b8867b213f4eb18c314c4dc28d91d1ea1da9a1c61601c71d4267d823ade",
+  "target": "POWER",
+  "scale_percent": 100,
+  "input_variant": "S2",
+  "input_files": [
+    {
+      "tag": "B102-2002",
+      "role": "device_fuel_base",
+      "path": "inputs/基102-2002_原始结构脱敏输入.xlsx",
+      "rows": 5922
+    },
+    {
+      "tag": "B101-2001",
+      "role": "enterprise_master",
+      "path": "inputs/基101-2001_原始结构脱敏输入_分片01-of04.xlsx 等4片",
+      "rows": 18734
+    },
+    {
+      "tag": "B101-2002",
+      "role": "control_facility_base",
+      "path": "inputs/基101-2002_原始结构脱敏输入.xlsx",
+      "rows": 43902
+    },
+    {
+      "tag": "SII",
+      "role": "source_identity_index",
+      "path": "inputs/source_identity_index.json",
+      "rows": 5922
+    },
+    {
+      "tag": "STD",
+      "role": "standard",
+      "path": "inputs/T_CSES_144-2024.pdf"
+    }
+  ],
+  "processed_source_count": 5922,
+  "in_scope_source_count": 473,
+  "decided_target_counts": {
+    "INDUSTRIAL": 5243,
+    "POWER": 473,
+    "OUT_OF_SCOPE": 206
+  },
+  "item_count_by_status": {
+    "not_involved": 49041,
+    "calculated": 3052,
+    "information_insufficient": 1205
+  },
+  "calculated_emission_totals_t": {
+    "generation_t": {
+      "BC": 1569.129517,
+      "CO": 323703.157425,
+      "NH3": 0.0,
+      "NOx": 917607.446244,
+      "OC": 10.262689,
+      "PM10": 3000052.974473,
+      "PM2.5": 780189.20249,
+      "SO2": 97844.048707,
+      "VOC": 16730.884563
+    },
+    "emission_t": {
+      "BC": 455.677845,
+      "CO": 323703.157425,
+      "NH3": 0.0,
+      "NOx": 328940.5861,
+      "OC": 8.334682,
+      "PM10": 867211.989573,
+      "PM2.5": 226854.487619,
+      "SO2": 3400.315948,
+      "VOC": 16730.884563
+    }
+  },
+  "output_files": {
+    "source_decisions.csv": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/02_S2等价别名扰动/02_火电热力/03_通用工具调用型Agent/R1/outputs/source_decisions.csv",
+    "generic_inventory_items.csv": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/02_S2等价别名扰动/02_火电热力/03_通用工具调用型Agent/R1/outputs/generic_inventory_items.csv",
+    "generic_source_disposition.csv": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/02_S2等价别名扰动/02_火电热力/03_通用工具调用型Agent/R1/outputs/generic_source_disposition.csv",
+    "generic_exception_list.csv": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/02_S2等价别名扰动/02_火电热力/03_通用工具调用型Agent/R1/outputs/generic_exception_list.csv",
+    "generic_run_summary.json": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/02_S2等价别名扰动/02_火电热力/03_通用工具调用型Agent/R1/outputs/generic_run_summary.json"
+  },
+  "rules_scripts_used": [
+    "scripts/compile_inventory.py",
+    "scripts/build_outputs.py"
+  ],
+  "unfinished_items": [
+    {
+      "exception_id": "EXC-01",
+      "affected_sources": 59,
+      "pollutant": "ALL",
+      "root_cause": "生物质能发电/热力源燃料为生物燃料, T/CSES 144-2024 附录D表D.1未提供生物质燃料产生系数, 无法核算",
+      "action_required": "用户提供生物质燃料产生系数(或实测/产排污系数库数据)后补算"
+    },
+    {
+      "exception_id": "EXC-02",
+      "affected_sources": 49,
+      "pollutant": "ALL",
+      "root_cause": "燃料类型'其他燃料'无法映射到附录D表D.1任何燃料行, 产生系数缺失",
+      "action_required": "用户明确'其他燃料'具体燃料种类后按对应系数核算"
+    },
+    {
+      "exception_id": "EXC-03",
+      "affected_sources": 197,
+      "pollutant": "ALL",
+      "root_cause": "燃料为'城市生活垃圾/工业废料', 按T/CSES 144-2024第13章归入废弃物处理源(生活垃圾焚烧), 不属于电力热力源, 本次划为范围外",
+      "action_required": "用户确认垃圾焚烧/废物焚烧发电设施是否纳入电力热力清单(或改按废弃物处理源另编)"
+    },
+    {
+      "exception_id": "EXC-04",
+      "affected_sources": 148,
+      "pollutant": "ALL",
+      "root_cause": "附录D表D.1未单列'燃气轮机'燃烧技术行, 采用同燃料'燃气锅炉'行产生系数近似",
+      "action_required": "用户确认该近似处理或提供燃气轮机专用产生系数"
+    },
+    {
+      "exception_id": "EXC-05",
+      "affected_sources": 1,
+      "pollutant": "ALL",
+      "root_cause": "燃煤设备燃烧技术填报为'其他', 无法映射表D.1煤炭技术行(煤粉炉/流化床炉/自动炉排层燃炉)",
+      "action_required": "用户补充燃烧技术信息后核算"
+    },
+    {
+      "exception_id": "EXC-06",
+      "affected_sources": 72,
+      "pollutant": "SO2;NOx;PM2.5;PM10;BC;OC",
+      "root_cause": "基101-2002治理设施存在但治理效率与治理工艺均未填报, 无法确定实际去除效率(不得编造治理效率)",
+      "action_required": "用户补充治理设施去除效率/工艺数据后重算对应污染物"
+    },
+    {
+      "exception_id": "EXC-07",
+      "affected_sources": 146,
+      "pollutant": "ALL",
+      "root_cause": "非电力行业(采矿业/制造业/燃气供应业)企业自备电站锅炉, 按标准8.1/8.3归入工业源化石燃料固定燃烧, 不在本次POWER目标范围",
+      "action_required": "用户确认自备电厂设施源类归属(工业源 vs 电力热力源)"
+    },
+    {
+      "exception_id": "EXC-08",
+      "affected_sources": 2,
+      "pollutant": "SO2;PM2.5;PM10;BC;OC",
+      "root_cause": "燃料2为煤矸石, 表D.1按物料衡算但附录C表C.1~C.3仅列煤炭参数, 采用同设备燃煤技术ar/f参数近似",
+      "action_required": "用户确认煤矸石组分物料衡算参数"
+    },
+    {
+      "exception_id": "EXC-09",
+      "affected_sources": 4,
+      "pollutant": "ALL",
+      "root_cause": "燃料1为天然气但燃料2掺烧城市生活垃圾, 掺烧组分属废弃物处理范畴且无电力热力系数, 全污染物信息不足",
+      "action_required": "用户确认掺烧设施的处理方式与活动水平拆分"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "run_id": "C-75-IND-GEN-R3",
+  "target": "INDUSTRIAL",
+  "inputs": {
+    "standard_pdf": "inputs/T_CSES_144-2024.pdf",
+    "b102": "inputs/基102-2002_原始结构脱敏输入.xlsx",
+    "b101_2001_shards": [
+      "inputs/基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+      "inputs/基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+      "inputs/基101-2001_原始结构脱敏输入_分片03-of04.xlsx",
+      "inputs/基101-2001_原始结构脱敏输入_分片04-of04.xlsx"
+    ],
+    "b101_2002": "inputs/基101-2002_原始结构脱敏输入.xlsx",
+    "identity_index": "inputs/source_identity_index.json"
+  },
+  "source_counts": {
+    "source:INDUSTRIAL": 3853,
+    "source:OUT_OF_SCOPE": 119,
+    "source:POWER_THERMAL": 470
+  },
+  "disposition_counts": {
+    "disp:excluded": 589,
+    "disp:included": 3853
+  },
+  "item_status_counts": {
+    "item:calculated": 22427,
+    "item:information_insufficient": 8397,
+    "item:not_involved": 9154
+  },
+  "item_total": 39978,
+  "aggregate_emissions_t": {
+    "SO2": {
+      "generation_t": 11665.7931,
+      "emission_t": 7298.3391
+    },
+    "NOx": {
+      "generation_t": 50471.2523,
+      "emission_t": 35542.841
+    },
+    "CO": {
+      "generation_t": 34584.4882,
+      "emission_t": 34584.4882
+    },
+    "VOC": {
+      "generation_t": 47504.7756,
+      "emission_t": 47504.7756
+    },
+    "PM2.5": {
+      "generation_t": 5942.6497,
+      "emission_t": 1515.4865
+    },
+    "PM10": {
+      "generation_t": 15776.3565,
+      "emission_t": 3713.7752
+    },
+    "BC": {
+      "generation_t": 84.2611,
+      "emission_t": 30.4402
+    },
+    "OC": {
+      "generation_t": 14.3917,
+      "emission_t": 6.9297
+    }
+  },
+  "method_notes": [
+    "分类：行业类别代码∈{4411,4412,4417,4430}→火电热力（T/CSES 144-2024 7.1）；B06-12/C13-43/D45且具备锅炉设备→工业锅炉（8.1/8.3）；其余→范围外。",
+    "核算：E=A×EF×(1-η)（公式2）；燃煤SO2/PM2.5/PM10/BC/OC用物料衡算（公式3-6，附录C表C.1-C.3）；其余系数取附录E表E.7。",
+    "治理效率：按企业+排放口类型(工业锅炉排放口/电站锅炉排放口)关联基101-2002治理设施；设施已报去除效率时用实测值，否则按处理工艺匹配附录A表A.1；投运率缺省取100%。低氮燃烧技术按B102标志取22%。",
+    "VOCs：燃烧烟气源项不涉及末端治理，η=0（8.2.1.2第5项）。CO无控制措施，η=0。NH3：表E.7无固定燃烧NH3系数，不核算。",
+    "多燃料：每个燃料/独立计算组件在activity/parameter/control三个数组中各占一个元素，component_id一一对应（FUEL1/FUEL2/OTHERFUEL），不汇总活动水平与因子。",
+    "经验缺失处置：生物燃料/城市生活垃圾/工业废料/其他燃料/煤制品/煤矸石、燃气轮机、燃烧方式缺失、其他燃料消耗总量>0、治理设施工艺与效率缺失、煤质参数缺失→information_insufficient，不编造任何数值。",
+    "液化天然气/液化石油气/炼厂干气消耗量单位为吨，系数按g/kg配对；以万立方米计量的燃气（天然气/高炉煤气/焦炉煤气/转炉煤气/发生炉煤气）系数按g/m3配对（表E.7注a）。",
+    "基101-2001企业主表4个分片仅用于企业与信用代码一致性核验（2826家企业均与基102重叠）；活动水平以基102逐台设备燃料消耗量为准（6.2c点源核算）。",
+    "表E.7给定石油焦/液化天然气/液化石油气VOCs产生系数为33 g/kg（标准原文值），按标准如实采用；石油焦为炼油/化工自备电站燃料，导致VOC总量较高。"
+  ],
+  "rules_scripts": [
+    "scripts/compile_inventory.py（本次运行主脚本）",
+    "scripts/extract_pdf.py（PDF文本抽取）",
+    "scripts/analyze_*.py（数据探索脚本）"
+  ],
+  "unfinished": [
+    "生物质/垃圾/工业废料锅炉、燃气轮机、未知燃料等其他燃料组分的排放量无法按T/CSES 144-2024计算，列入exception_list待补充系数或实测。",
+    "治理设施投运率无数据，按100%假设；处理工艺名称与附录A表A.1按关键词匹配，未匹配工艺按无效率处理。"
+  ]
+}

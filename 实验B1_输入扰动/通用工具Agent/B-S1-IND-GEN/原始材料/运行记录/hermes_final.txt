@@ -1,0 +1,31 @@
+任务已按契约完成：所有输出文件已生成并通过校验。由于本轮工具调用次数已达上限，以下为最终交付说明（不追加更多工具调用）。
+
+实际执行结果（最后两次运行均为同一结果，校验通过）
+- 候选源：5922 条全部作出判定并写入。目标归属：INDUSTRIAL 5185（工业锅炉编号存在）、POWER 737（电站锅炉/燃气轮机编号）、OUT_OF_SCOPE 0。判定依据为源记录中设备编号列，与 source_identity_index 的 source_id 一一对应（rows 2–5923）。
+- 核算项：53298 = 5922 源 x 9 污染物，无缺失、无重复 (source_id, pollutant) 键。状态分布：calculated 32248，not_involved 11801，information_insufficient 9249，source_data_invalid 0。
+- 校验（work/validate.py）：CSV 列名、source_id 唯一性、JSON 合法性与三数组 component_id 对齐、数值非负、PM10 的 fine/coarse_efficiency 齐全、8 项污染物的 efficiency 齐全，全部通过（json parse errors=0，alignment errors=0，negative=0）。
+- 数值抽查与独立重算一致：燃气锅炉 NOx（2.09 g/m3）与燃煤循环流化床 SO2（2*S*(1-0.15) 物料衡算）多个样本 manual == engine。
+
+输出文件（绝对路径，UTF-8）
+- .../R1/outputs/source_decisions.csv（5922 行）
+- .../R1/outputs/generic_inventory_items.csv（53298 行）
+- .../R1/outputs/generic_source_disposition.csv（5922 行）
+- .../R1/outputs/generic_exception_list.csv（7 行）
+- .../R1/outputs/generic_run_summary.json（含输入文件、源数、状态计数、输出路径、规则脚本、未完成事项）
+
+方法依据（仅用 T/CSES 144-2024）
+- 工业锅炉固定燃烧按 8.3 节公式(2) E=A×EF×(1-η)；产生系数表 E.7（采矿业和制造业）；燃煤 SO2/PM2.5/PM10/BC/OC 按公式(3)-(6) 物料衡算 + 表 C.1-C.3；气体燃料按表 D.1 注 c 用 g/m3；控制效率按附录 A 表 A.1（报告效率有效时优先，60+% 报告值回退表 A.1；同一措施取最大、多措施串联 1-∏(1-η)；低氮+SCR/SNCR 直接用表 A.1 组合值 64%/52%）。
+- 明确不臆造：无产生的燃料（生物燃料/其他燃料/工业废料/煤制品/煤矸石/城市生活垃圾等）、无技术行（燃气轮机/余热利用锅炉/燃生物质锅炉）全部记 information_insufficient 并保留观测属性（含硫量、灰分、热值）；空白不视为零。
+
+未完成/需用户处理事项（已在 EXC 清单与 summary 中保留）
+- 220 源 x 8 污染物（共 9249 项）信息不足：表 E.7 未覆盖的燃料系数（EXC-001）、未覆盖锅炉技术（EXC-002）、无活动水平（EXC-003）、多燃料部分覆盖（EXC-006）。
+- NH3：固定燃烧产生系数表无 NH3 列，全部 5905 项记 not_involved（EXC-005）。
+- 治理设施数据：GYGL 工艺名 903 条为空按设施类别默认措施（EXC-008）；1 条报告效率 996% 视为无效回退表 A.1（EXC-007）。
+- 关键局限（summary method_notes 已说明）：基 102 排放口为 DAxxx 具体编号，无法与基 101-2002 的排放口类别代码一一对应，故治理设施按“企业×GYGL 工业锅炉排放口”关联到该企业全部工业锅炉源；未获得投运率数据，按投运率=1 处理；基 101-2001 企业主表为企业级汇总字段（共 18734 行），未进入逐源计算链。
+
+规则/脚本文件（运行包内 work/ 目录）
+- work/engine.py（主引擎）、work/validate.py（校验）、work/standard_fulltext.txt（标准全文抽取）、work/parsed_factors.json（表 E.7/C.1-C.3 结构化因子）；另有探索脚本 explore_b102.py、crosstab.py、units.py、audit*.py、match_control.py、gygl*.py、parse_std.py、parse_factors.py、deepcheck.py、voc_check.py。
+
+最后说明
+- 最后一次 engine+validate 运行在去掉无实例异常组（EXC-004/004b，经验证无源缺少 S/Aar 而落入该情形——缺 S/Aar 的 3 条均为已无 EF 的燃料）后重跑通过，最终异常组 7 条、状态计数与文件均未再变化。
+- 未浏览运行包外任何目录，未使用专用工具/Skills/冻结规则；所有数据仅来自 run_manifest.json 指向的输入与标准 PDF。

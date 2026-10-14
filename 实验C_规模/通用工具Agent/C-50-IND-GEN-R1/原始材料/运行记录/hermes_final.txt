@@ -1,0 +1,41 @@
+All checks pass. The deliverables are complete and verified. Final report:
+
+运行包 C-50-IND-GEN-R1（通用工具调用型Agent，目标 INDUSTRIAL）已完成。
+
+输出文件（UTF-8，全部写入 outputs 目录）
+- /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/050%规模/01_工业锅炉/03_通用工具调用型Agent/R1/outputs/source_decisions.csv（2961 行，每候选源一行）
+- .../outputs/generic_inventory_items.csv（26649 行 = 2961 源 × 9 污染物）
+- .../outputs/generic_source_disposition.csv（2961 行）
+- .../outputs/generic_exception_list.csv（5 个根因组）
+- .../outputs/generic_run_summary.json
+
+实际采用的规则/脚本
+- /Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/050%规模/01_工业锅炉/03_通用工具调用型Agent/R1/work/compile_inventory.py（核算主脚本，规则全部内嵌并写入 summary）
+- 规则来源：T/CSES 144-2024（PDF 逐页核验表E.7/表D.1/表A.1/表C.1~C.3 原文）+ 三张原始结构基表 + source_identity_index.json（仅用于 source_id↔基102行 稳定标识）
+
+决策（2961 候选全部判定）
+- INDUSTRIAL 2579：基102 工业锅炉字段（含企业行业属电力热力的 35 条，按设备类型判定，已列入例外供确认）
+- POWER_HEAT 377：电站锅炉/燃气轮机字段
+- OUT_OF_SCOPE 5：农业(A05 0511/0539)与水的生产(D46)行业
+- 未使用 candidate_ids 之外的任何外部代码、规则或结果
+
+核算方法（产排污系数法 E=A×EF×(1−η)）
+- EF 取表E.7（气体燃料按表D.1注c 用 g/m³；燃煤 SO2/PM2.5/PM10/BC/OC 按公式(3)~(6)物料衡算，参数取表C.1~C.3，燃烧方式空白按自动炉排层燃炉缺省）
+- 治理效率：基101-2002 按（统一社会信用代码, GYGL设施类别）关联，优先用设施填报去除效率，缺省用表A.1，多措施取最大值；低氮燃烧取基102字段（22%）
+- 燃烧烟气 VOCs η=0（标准8.2.1.2）；NH3 无燃烧产生系数按 0 计；多燃料按 FUEL1/FUEL2 组件分别核算，三数组逐组件对齐（19 个双燃料源已核验）
+- 基102“其他燃料消耗总量（吨标准煤）”经数据比对为燃料一吨标准煤的等量汇总值，不作为独立燃料重复计入
+
+核算结果（INDUSTRIAL 计算项汇总，吨）
+- 产生量/排放量：SO2 1634.2/1064.8；NOx 10912.9/6983.0；CO 11775.2/11775.2；VOC 5898.6/5898.6；PM2.5 698.4/244.5；PM10 1812.0/520.2；BC 19.6/11.9；OC 7.7/6.5；NH3 0/0
+- 项状态：calculated 18252（2028 源），not_involved 3438（382 源），information_insufficient 4959（551 源）；无 source_data_invalid
+
+已完成的检查
+- 四个 CSV 列名与任务要求一致；source_id 唯一、源×污染物组合唯一（26649）；数值全非负；JSON 三数组全部合法且长度/component_id 对齐（0 错误）；PM10 记录 fine/coarse 双效率均给出；calculated 项均有数值、其余项数值留空；抽 3 个燃煤/燃气源手工复算（含物料衡算、PM10 分段、低氮 0.78 折减）全部一致
+
+未完成事项（需用户处理，详见 generic_exception_list.csv 与 summary.unfinished）
+1. 生物质/生活垃圾/工业废料/煤矸石等燃料（521 源）在 T/CSES 144-2024 无工业锅炉产生系数，未核算（EXC-001）
+2. “其他燃料”/燃料类型空白（22 源）无对应系数（EXC-003）
+3. 8 条设备记录无任何燃料消耗量（EXC-005）
+4. 35 条工业锅炉记录所在企业属电力热力行业，本次按设备类型判为工业锅炉，需确认归属（EXC-004）
+5. 564 源企业存在无工艺/无效率的 GYGL 治理设施记录，未计入去除（EXC-002）
+6. 190 条设备无统一社会信用代码，无法关联治理设施；治理效率直接采用填报值（基表无投运率字段，未按 η=平均去除效率×投运率折算）——均已在 summary 中如实说明

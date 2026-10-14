@@ -1,0 +1,85 @@
+{
+  "run_id": "C-50-IND-GEN-R2",
+  "target": "INDUSTRIAL",
+  "method": "generic_tool_agent",
+  "input_files": [
+    "inputs/基102-2002_原始结构脱敏输入.xlsx",
+    "inputs/基101-2001_原始结构脱敏输入_分片01-of04.xlsx",
+    "inputs/基101-2001_原始结构脱敏输入_分片02-of04.xlsx",
+    "inputs/基101-2001_原始结构脱敏输入_分片03-of04.xlsx",
+    "inputs/基101-2001_原始结构脱敏输入_分片04-of04.xlsx",
+    "inputs/基101-2002_原始结构脱敏输入.xlsx",
+    "inputs/T_CSES_144-2024.pdf",
+    "inputs/source_identity_index.json"
+  ],
+  "candidate_sources_total": 2961,
+  "decided_target_counts": {
+    "INDUSTRIAL": 2527,
+    "POWER_HEAT": 412,
+    "OUT_OF_SCOPE": 22
+  },
+  "inventory_items_total": 26649,
+  "status_counts": {
+    "calculated": 15800,
+    "information_insufficient": 6943,
+    "not_involved": 3906
+  },
+  "pollutant_status_counts": {
+    "BC|calculated": 1975,
+    "BC|information_insufficient": 552,
+    "BC|not_involved": 434,
+    "CO|calculated": 1975,
+    "CO|information_insufficient": 552,
+    "CO|not_involved": 434,
+    "NH3|information_insufficient": 2527,
+    "NH3|not_involved": 434,
+    "NOx|calculated": 1975,
+    "NOx|information_insufficient": 552,
+    "NOx|not_involved": 434,
+    "OC|calculated": 1975,
+    "OC|information_insufficient": 552,
+    "OC|not_involved": 434,
+    "PM10|calculated": 1975,
+    "PM10|information_insufficient": 552,
+    "PM10|not_involved": 434,
+    "PM2.5|calculated": 1975,
+    "PM2.5|information_insufficient": 552,
+    "PM2.5|not_involved": 434,
+    "SO2|calculated": 1975,
+    "SO2|information_insufficient": 552,
+    "SO2|not_involved": 434,
+    "VOC|calculated": 1975,
+    "VOC|information_insufficient": 552,
+    "VOC|not_involved": 434
+  },
+  "industry_mismatch_102_vs_101": 0,
+  "output_paths": {
+    "source_decisions": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/050%规模/01_工业锅炉/03_通用工具调用型Agent/R2/outputs/source_decisions.csv",
+    "generic_inventory_items": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/050%规模/01_工业锅炉/03_通用工具调用型Agent/R2/outputs/generic_inventory_items.csv",
+    "generic_source_disposition": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/050%规模/01_工业锅炉/03_通用工具调用型Agent/R2/outputs/generic_source_disposition.csv",
+    "generic_exception_list": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/050%规模/01_工业锅炉/03_通用工具调用型Agent/R2/outputs/generic_exception_list.csv",
+    "generic_run_summary": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/050%规模/01_工业锅炉/03_通用工具调用型Agent/R2/outputs/generic_run_summary.json"
+  },
+  "rules_script": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/04_实验C_规模与资源表现/050%规模/01_工业锅炉/03_通用工具调用型Agent/R2/scripts/build_inventory.py",
+  "method_notes": [
+    "源分类：基102设备块为主——电站锅炉/燃气轮机块→POWER_HEAT；工业锅炉块(R1-R6)且企业行业属B06-12/C13-43/D45→INDUSTRIAL；工业锅炉块但企业属D4411/4412/4417/4430→POWER_HEAT(§7.1)；其他行业→OUT_OF_SCOPE；工业块燃气轮机(R7)非锅炉→OUT_OF_SCOPE",
+    "核算：产排污系数法 E=A×EF×(1-η)（公式(2)）；燃煤SO2/PM2.5/PM10/BC/OC物料衡算（公式(3)-(6)，附录C表C.1-C.3工业源参数，Aar/S按百分数数值×10/×20换算为g/kg）",
+    "产生系数：附录E表E.7（燃气生产和供应业同表E.2）；气体燃料系数按g/m3（表D.1注c），固体/液体按g/kg；天然气等按万立方米×1e4折算m3，吨按×1e3折算kg",
+    "治理效率：企业级GYGL(工业锅炉排放口)设施；设施填报去除效率优先，缺失时按处理工艺取表A.1默认值；多套设施按串联 1-Π(1-ηi) 组合；低氮燃烧技术(设备填报'是')按表A.1取22%，若脱硝设施工艺已含低氮燃烧则不重复",
+    "PM10：fine_efficiency/coarse_efficiency分别用于PM2.5与PM2.5-10组分（除尘设施填报效率对两组分同用；表A.1默认按PM2.5/PM2.5-10列）；湿法脱硫及SCR/SNCR的PM协同去除按表A.1默认值计入",
+    "VOC：燃烧烟气无末端治理，η=0（§8.2.1.2-5）；NH3：标准无固定燃烧产生系数→information_insufficient",
+    "非化石燃料（生物燃料/城市生活垃圾/工业废料）与'其他燃料'(吨标准煤)、煤矸石：表E.7无产生系数→information_insufficient（不编造系数）",
+    "治理设施按企业×排放口类别(GYGL)关联，无法映射到具体DA排放口——多锅炉企业同一设施集，为已知局限",
+    "其他燃料消耗总量(吨标准煤)>0且不与燃料一/二重复时记为F3组件（无系数→information_insufficient）",
+    "表E.7中液化天然气/液化石油气/石油焦VOCs=33 g/kg疑似排版错误，按标准原文采用并列入例外清单",
+    "三个*_record_json数组按组件对齐：activity含全部燃料组件；parameter/control对无系数组件以mode=unavailable/无治理记录"
+  ],
+  "unfinished_items": [
+    "17台工业燃气轮机(R7)无核算方法（判定范围外，需用户确认）",
+    "非化石燃料工业锅炉（生物燃料、垃圾、工业废料）无产生系数，未核算",
+    "NH3排放未核算（标准无系数）",
+    "治理设施无法映射到具体DA排放口（企业级关联）",
+    "8台工业锅炉无活动水平数据（含1台消耗量0且无燃料类型）",
+    "11台燃煤锅炉燃烧方式为'其他'/缺失，物料衡算与煤炭分技术系数无法选取"
+  ]
+}

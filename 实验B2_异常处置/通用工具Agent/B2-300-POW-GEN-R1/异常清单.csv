@@ -1,0 +1,26 @@
+﻿异常编号,源编号,污染物,异常原因,处理建议
+EXC-0001,SRC-RAW-031B3589BCDCF633B0EA,ALL,NO_VALID_FUEL_CONSUMPTION,Provide fuel consumption data for fuel 1 and/or fuel 2
+EXC-0002,SRC-RAW-08ED845850C20B09F0BA,ALL,NO_VALID_FUEL_CONSUMPTION,Provide fuel consumption data for fuel 1 and/or fuel 2
+EXC-0003,SRC-RAW-0EA1C3FA4810EDBD34F9,ALL,NO_VALID_FUEL_CONSUMPTION,Provide fuel consumption data for fuel 1 and/or fuel 2
+EXC-0004,SRC-RAW-1AB2981F39D95390A9AA,ALL,NO_VALID_FUEL_CONSUMPTION,Provide fuel consumption data for fuel 1 and/or fuel 2
+EXC-0005,SRC-RAW-1BCCD905C534AF5E1304,ALL,NO_VALID_FUEL_CONSUMPTION,Provide fuel consumption data for fuel 1 and/or fuel 2
+EXC-0006,SRC-RAW-3D68C3391F8E405ACFFC,ALL,NO_VALID_FUEL_CONSUMPTION,Provide fuel consumption data for fuel 1 and/or fuel 2
+EXC-0007,SRC-RAW-45FDCD49242692C59CC2,ALL,NO_VALID_FUEL_CONSUMPTION,Provide fuel consumption data for fuel 1 and/or fuel 2
+EXC-0008,SRC-RAW-46E9F3F37A52CE5698EF,ALL,NO_VALID_FUEL_CONSUMPTION,Provide fuel consumption data for fuel 1 and/or fuel 2
+EXC-0009,SRC-RAW-4C2DE7BEF32D7CAEC468,ALL,NO_VALID_FUEL_CONSUMPTION,Provide fuel consumption data for fuel 1 and/or fuel 2
+EXC-0010,SRC-RAW-6A3D9F0940947CB1906F,ALL,NO_VALID_FUEL_CONSUMPTION,Provide fuel consumption data for fuel 1 and/or fuel 2
+EXC-0011,SRC-RAW-730A96C0F1BB19F1D46E,ALL,NO_VALID_FUEL_CONSUMPTION,Provide fuel consumption data for fuel 1 and/or fuel 2
+EXC-0012,SRC-RAW-7DFFD694C7B5B4F656CF,ALL,NO_VALID_FUEL_CONSUMPTION,Provide fuel consumption data for fuel 1 and/or fuel 2
+EXC-0013,SRC-RAW-7F76A3AC469336B1002A,ALL,NO_VALID_FUEL_CONSUMPTION,Provide fuel consumption data for fuel 1 and/or fuel 2
+EXC-0014,SRC-RAW-8454B9202B0628E9CEC4,ALL,NO_VALID_FUEL_CONSUMPTION,Provide fuel consumption data for fuel 1 and/or fuel 2
+EXC-0015,SRC-RAW-8E880A58EC31520571BD,ALL,NO_VALID_FUEL_CONSUMPTION,Provide fuel consumption data for fuel 1 and/or fuel 2
+EXC-0016,SRC-RAW-B56086824F04D846DBFA,ALL,NO_VALID_FUEL_CONSUMPTION,Provide fuel consumption data for fuel 1 and/or fuel 2
+EXC-0017,SRC-RAW-B9D25D90184C1D6081DC,ALL,NO_VALID_FUEL_CONSUMPTION,Provide fuel consumption data for fuel 1 and/or fuel 2
+EXC-0018,SRC-RAW-C31AC3A1AA390A1FBEB2,ALL,NO_VALID_FUEL_CONSUMPTION,Provide fuel consumption data for fuel 1 and/or fuel 2
+EXC-0019,SRC-RAW-D16EA3E11682DFFC3340,ALL,NO_VALID_FUEL_CONSUMPTION,Provide fuel consumption data for fuel 1 and/or fuel 2
+EXC-0020,SRC-RAW-D4CA402F1C186726C968,ALL,NO_VALID_FUEL_CONSUMPTION,Provide fuel consumption data for fuel 1 and/or fuel 2
+EXC-0021,SRC-RAW-D754FE900ADCABAF2D31,ALL,NO_VALID_FUEL_CONSUMPTION,Provide fuel consumption data for fuel 1 and/or fuel 2
+EXC-0022,SRC-RAW-E2673803482D4F76F5EC,ALL,NO_VALID_FUEL_CONSUMPTION,Provide fuel consumption data for fuel 1 and/or fuel 2
+EXC-0023,SRC-RAW-E9553B256B7E6AEFE791,ALL,NO_VALID_FUEL_CONSUMPTION,Provide fuel consumption data for fuel 1 and/or fuel 2
+EXC-0024,SRC-RAW-EA575374F3359E937FB7,ALL,NO_VALID_FUEL_CONSUMPTION,Provide fuel consumption data for fuel 1 and/or fuel 2
+EXC-0025,SRC-RAW-F2AC45A6F890FFE96ABF,ALL,NO_VALID_FUEL_CONSUMPTION,Provide fuel consumption data for fuel 1 and/or fuel 2

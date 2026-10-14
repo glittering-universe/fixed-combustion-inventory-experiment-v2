@@ -1,0 +1,82 @@
+{
+  "common_tables": {
+    "calculation_items": {
+      "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/02_火电热力/01_Full完整方法/R1/outputs/calculation_items.csv",
+      "sha256": "1fac0b25a33dd6913ec85dca1678367f9b4050eabe7a78c3c4af1a694eb82a16"
+    },
+    "source_decisions": {
+      "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/02_火电热力/01_Full完整方法/R1/outputs/source_decisions.csv",
+      "sha256": "2041218c6f1976cdb7d2e05febdefeb5ef858de63a5137222eddac8ba31391f7"
+    },
+    "source_pollutant_totals": {
+      "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/02_火电热力/01_Full完整方法/R1/outputs/source_pollutant_totals.csv",
+      "sha256": "ced6a1ce9a00878bda57b82194c6a41e0c17cbf0ef3fee3e030cfca7315dc75c"
+    }
+  },
+  "error_count": 0,
+  "exception_group_count": 398,
+  "exception_path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/02_火电热力/01_Full完整方法/R1/outputs/最终异常清单.csv",
+  "exception_sha256": "2fa88d36ec93594e271030f766953dfcc6e7a5066a005b1b590093357a6ed568",
+  "export_mode": "machine",
+  "normalized_exception_path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/02_火电热力/01_Full完整方法/R1/outputs/exceptions.csv",
+  "normalized_exception_sha256": "6855754a109a96074e35c2029301e2f806b32a877ff0817d92901cc569470cbe",
+  "warning_count": 0,
+  "workbooks": [
+    {
+      "builder_result": {
+        "export_mode": "machine",
+        "item_count": 0,
+        "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/02_火电热力/01_Full完整方法/R1/outputs/固定燃烧源-工业锅炉_实验结果.xlsx",
+        "sha256": "94612aa92e2dabb1e79b0d17228521f791a36856c91f5cd9cd1753796dc4825c",
+        "sheet_count": 3,
+        "source_count": 0
+      },
+      "export_mode": "machine",
+      "item_count": 0,
+      "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/02_火电热力/01_Full完整方法/R1/outputs/固定燃烧源-工业锅炉_实验结果.xlsx",
+      "preview_dir": null,
+      "qa_path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/02_火电热力/01_Full完整方法/R1/outputs/machine_qa_industrial.json",
+      "sha256": "94612aa92e2dabb1e79b0d17228521f791a36856c91f5cd9cd1753796dc4825c",
+      "source_count": 0,
+      "target": "INDUSTRIAL",
+      "workbook_qa": {
+        "external_link_count": 0,
+        "formula_count": 0,
+        "formula_error_count": 0,
+        "sheet_names": [
+          "00_说明",
+          "02_核算项",
+          "03_源结果"
+        ]
+      }
+    },
+    {
+      "builder_result": {
+        "export_mode": "machine",
+        "item_count": 6231,
+        "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/02_火电热力/01_Full完整方法/R1/outputs/固定燃烧源-火电、热力生产与供应_实验结果.xlsx",
+        "sha256": "0d0e7eba84f4bfed5c7d824745e45010d18f3cab55e853314cefc4e8a86bcf45",
+        "sheet_count": 3,
+        "source_count": 615
+      },
+      "export_mode": "machine",
+      "item_count": 6231,
+      "path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/02_火电热力/01_Full完整方法/R1/outputs/固定燃烧源-火电、热力生产与供应_实验结果.xlsx",
+      "preview_dir": null,
+      "qa_path": "/Users/wushuo/Desktop/环境学院论文/固定燃烧源清单经验缺失处置实验/实验结果/03_实验B_输入不变性与异常处置/01_B1整体输入扰动/00_B0原始输入/02_火电热力/01_Full完整方法/R1/outputs/machine_qa_power.json",
+      "sha256": "0d0e7eba84f4bfed5c7d824745e45010d18f3cab55e853314cefc4e8a86bcf45",
+      "source_count": 615,
+      "target": "POWER",
+      "workbook_qa": {
+        "external_link_count": 0,
+        "formula_count": 28178,
+        "formula_error_count": 0,
+        "sheet_names": [
+          "00_说明",
+          "02_核算项",
+          "03_源结果"
+        ]
+      }
+    }
+  ]
+}
