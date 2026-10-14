@@ -23,3 +23,11 @@ Full完整方法,火电热力,S4,B-B0-POW-FULL,B-S4-POW-FULL,5535,5535,0,1,{}
 通用工具Agent,火电热力,S2,B-B0-POW-GEN,B-S2-POW-GEN,53298,0,53298,0,"{""row_presence"":46665,""method"":6633,""activity"":4162,""parameter"":4691,""control"":4433,""standard_reference"":4663,""reason_codes"":6490,""status"":3221,""generation_t"":1351,""emission_t"":1425}"
 通用工具Agent,火电热力,S3,B-B0-POW-GEN,B-S3-POW-GEN,7344,0,7344,0,"{""status"":1110,""method"":6633,""parameter"":1498,""control"":4010,""standard_reference"":6633,""reason_codes"":6633,""generation_t"":1856,""emission_t"":2092,""row_presence"":711}"
 通用工具Agent,火电热力,S4,B-B0-POW-GEN,B-S4-POW-GEN,53298,0,53298,0,"{""row_presence"":46665,""status"":2322,""method"":6633,""parameter"":2618,""control"":4382,""standard_reference"":5799,""reason_codes"":6633,""generation_t"":1603,""emission_t"":1655,""activity"":1827}"
+EW,工业锅炉,S1,EW-B0-IND,EW-S1-IND,36243,36243,0,1,{}
+EW,工业锅炉,S2,EW-B0-IND,EW-S2-IND,36243,36243,0,1,{}
+EW,工业锅炉,S3,EW-B0-IND,EW-S3-IND,36243,36243,0,1,{}
+EW,工业锅炉,S4,EW-B0-IND,EW-S4-IND,36243,36243,0,1,{}
+EW,火电热力,S1,EW-B0-POW,EW-S1-POW,5535,5535,0,1,{}
+EW,火电热力,S2,EW-B0-POW,EW-S2-POW,5535,5535,0,1,{}
+EW,火电热力,S3,EW-B0-POW,EW-S3-POW,5535,5535,0,1,{}
+EW,火电热力,S4,EW-B0-POW,EW-S4-POW,5535,5535,0,1,{}
